@@ -1,11 +1,16 @@
+import {StayList} from '../cmps/explore/StayList'
+import {StayFilter} from '../cmps/explore/StayFilter'
+ 
 
-
-
-export function Explore() {
+export function Explore({ stays }) {
 
   return (
-    <main>
-      <h1>Explore Page</h1>
+    <main className="explore-container">
+
+    <h1>Find Places to stay</h1>
+    <StayFilter/>
+    <StayList stays={stays}/>
+
     </main>
   )
 }

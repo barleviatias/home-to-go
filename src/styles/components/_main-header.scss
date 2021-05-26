@@ -1,0 +1,52 @@
+.main-header {
+    position: fixed;
+    z-index: 5;
+    top: 0px;
+    width: 100vw;
+    height: 80px;
+    background-color: white;
+    color: #ff385c;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 10vw;
+
+    .logo {
+        h1 {
+            font-size: 24px;
+        }
+
+        &:hover {
+            color: $clr1;
+        }
+    }
+
+    .main-filter {
+        width: unset;
+    }
+
+    nav {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 25px;
+
+        > * {
+            font-size: rem(20px);
+            &:hover {
+                color: $clr1;
+            }
+            &.active {
+                color: rgb(27, 195, 247);
+            }
+        }
+    }
+}
+
+// background: linear-gradient(
+//     0deg,
+//     rgba(255, 255, 255, 0) 0%,
+//     rgba(255, 255, 255, 0.8) 10%,
+//     rgba(255, 255, 255, 1) 40%,
+//     rgba(255, 255, 255, 1) 100%
+// );

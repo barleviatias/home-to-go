@@ -1,0 +1,18 @@
+.banner{
+    width: 100%;
+    height: 250px;
+    border-radius: 20px;
+    margin-bottom: 50px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &.banner-top{
+        background-image: url("https://a0.muscache.com/im/pictures/4602a952-afa0-46a6-b08a-24e67e958309.jpg?im_w=720");
+
+    }
+
+    &.banner-bottom{
+        background-image: url("https://a0.muscache.com/im/pictures/5b4dc94a-0b4c-4c27-b50f-9c5a5b93c775.jpg?im_w=720");
+    }
+
+}

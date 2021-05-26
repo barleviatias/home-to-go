@@ -1,11 +1,21 @@
+import { Component } from 'react'
+import { FilterGallery } from '../cmps/home/FilterGallery'
+import { Banner } from '../cmps/home/Banner'
 
 
+export class Home extends Component {
 
-export function Home() {
+  render() {
 
-  return (
-    <main>
-      <h1>Homepage</h1>
-    </main>
-  )
+    return (
+
+      <main>
+        <FilterGallery />
+        <Banner name={'banner-top'} />
+        <FilterGallery />
+        <Banner name={'banner-bottom'} />
+      </main>
+
+    )
+  }
 }

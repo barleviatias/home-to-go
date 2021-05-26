@@ -1,0 +1,25 @@
+.home-page {
+    position: relative;
+    background-color: #fff;
+    margin: 15vh 0px 0px;
+    padding: 0%;
+    width: 100%;
+    height: 85vh;
+
+    h1 {
+        position: absolute;
+        font-size: 3rem;
+        top: 10%;
+        left: 40%;
+        color: $clr1;
+    }
+
+    img {
+        margin: 0%;
+        padding: 0%;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: 0px 10vh;
+    }
+}
