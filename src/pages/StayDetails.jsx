@@ -1,11 +1,40 @@
+export function StayDetails({stay}) {
+  console.log(stay);
+  console.log(stay.host);
+	const {amenities,capacity, summary,price, stayType, imgUrls, rate, name ,host } = stay;
 
-
-
-export function StayDetails() {
-
-  return (
-    <main>
-      <h1>Stay Details</h1>
-    </main>
-  )
+	return (
+		<main>
+			<h1>Stay Details</h1>
+			<h4>stay title {name}</h4>
+			<div className="stay-short-info">
+				<div>
+					<p>4.5 start</p>
+					<p>tel aviv arlozorov</p>
+				</div>
+				<div>
+					<button>share</button>
+					<button>save</button>
+				</div>
+			</div>
+      <div className="stay-gallery">
+      <img  src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+      <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+      <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+      <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+      <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+      </div>
+      <div className="stay-info-continer">
+        <div className="stay-long-info">
+          <span>{`${stayType} hosted by ${host.fullname}`}  </span>
+          <img src={host.imgUrl} alt="" />
+          <div><span>capacity: {capacity} guests</span></div>
+          <span>{summary}</span>
+        </div>
+        <div className="order-form">
+          <span>Price ${price}</span>
+        </div>
+      </div>
+		</main>
+	);
 }

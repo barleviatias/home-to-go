@@ -18,6 +18,7 @@ export class Header extends React.Component {
 
                 <nav>
                     <NavLink to="/explore">Explore</NavLink>
+                    <NavLink to="/stay">StayDetails</NavLink>
                     <NavLink to="/user">User</NavLink>
                 </nav>
             </header>

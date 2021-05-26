@@ -1,0 +1,20 @@
+.stay-short-info{
+    display: flex;
+    justify-content: space-between;
+    align-items: center
+}
+.stay-gallery{
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(25vw,1fr));
+    grid-template-rows: 25vw,25vw;
+    gap:10px;
+
+
+
+
+    &::first-child{
+        grid-row: span 2;
+        grid-column: span 2;
+    
+    }
+}
