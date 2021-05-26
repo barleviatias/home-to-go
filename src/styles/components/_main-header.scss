@@ -12,12 +12,19 @@
     padding: 0px 10vw;
 
     .logo {
-        h1 {
-            font-size: 24px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 10px;
+
+        img{
+            height: 40px;
+            width: 30px;
+            object-fit: contain;
         }
 
-        &:hover {
-            color: $clr1;
+        h1 {
+            font-size: 24px;
         }
     }
 
