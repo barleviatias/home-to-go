@@ -10,6 +10,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 0px 10vw;
+    box-shadow: 0 0 0px 1px #00000014;
 
     .logo {
         display: flex;
@@ -17,7 +18,7 @@
         align-items: center;
         gap: 10px;
 
-        img{
+        img {
             height: 40px;
             width: 30px;
             object-fit: contain;
@@ -38,14 +39,40 @@
         justify-content: space-evenly;
         gap: 25px;
 
-        > * {
-            font-size: rem(20px);
-            &:hover {
-                color: $clr1;
-            }
-            &.active {
-                color: rgb(27, 195, 247);
-            }
+        // > * {
+        //     font-size: rem(20px);
+        //     &:hover {
+        //         color: $clr1;
+        //     }
+        //     &.active {
+        //         color: rgb(27, 195, 247);
+        //     }
+        // }
+    }
+
+    .user-menu-btn{
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        gap: 10px;
+        padding: 5px 10px;
+        border: 1px solid #00000025;
+        border-radius: 200px;
+
+        img{
+            object-fit: contain;
+            height: 30px;
+            width: 30px;
+        }
+
+        span{
+            font-size: 13px;
+            font-weight: 900;
+            color: rgb(63, 63, 63);
+        }
+
+        &:hover{
+            box-shadow:0 3px 3px #0000003b;
         }
     }
 }
