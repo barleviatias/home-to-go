@@ -1,11 +1,11 @@
 
-import { Header } from '../cmps/Header';
+
 
 export function Home() {
 
   return (
-    <div>
-      <Header />
-    </div>
+    <main>
+      <h1>Homepage</h1>
+    </main>
   )
 }

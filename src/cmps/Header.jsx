@@ -1,17 +1,19 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
+import {ExploreFilter} from '../cmps/app/ExploreFilter'
 
 
 export class Header extends React.Component {
     render() {
         return (
             <header>
-                <div className="header-container">
-                    <h1>TOY SHOP</h1>
-                    <div className="link-container">
-                        <NavLink to="/">Home</NavLink>
-                    </div>
-                </div>
+                <h1>Home To Go</h1>
+                <ExploreFilter/>
+                <nav>
+                    <NavLink to="/explore">Home</NavLink>
+                    <NavLink to="/explore">Home</NavLink>
+                    <NavLink to="/">Home</NavLink>
+                </nav>
             </header>
         )
     }
