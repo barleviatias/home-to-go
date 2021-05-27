@@ -6,10 +6,10 @@ export const userService = {
 	login,
 	logout,
 	signup,
-	// getById,
+	getById,
 	// getUsers,
 	// remove,
-	// update,
+	update,
 	// getLoggedinUser,
 };
 
@@ -33,7 +33,15 @@ async function logout() {
 	sessionStorage.clear();
 	// return await httpService.post('auth/logout')
 }
-
+async function update(user) {
+    return storageService.put('user', user)
+    // return await httpService.put(`stay/${stay._id}`, stay)
+    // Handle case in which admin updates other stay's details
+    // if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
+}
+function getById(userId) {
+    return storageService.get('user', userId)
+}
 function _saveLocalUser(user) {
 	sessionStorage.setItem('loggedinUser', JSON.stringify(user));
 	return user;

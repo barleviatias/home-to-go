@@ -1,20 +1,38 @@
 .stay-details-container {
     width: 1100px;
-    margin: 10vh auto;
+    margin: 14vh auto;
 
-    .stay-short-info {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 14px;
-        text-transform: capitalize;
-        font-family: airbnb-regular;
-        letter-spacing: -0.3px;
-
-        > div:first-of-type {
+    .stay-details-header {
+        .stay-short-info {
             display: flex;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            text-transform: capitalize;
+            font-family: airbnb-regular;
+            letter-spacing: -0.3px;
 
+            .stay-short-info-rate {
+                display: flex;
+                align-items: center;
+            }
+
+            p {
+                text-decoration: underline;
+                color: rgb(82, 82, 82);
+            }
+
+            > div:first-of-type {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .stay-save-btn:hover {
+                .fa-heart {
+                    color: rgb(255, 56, 92);
+                }
+            }
         }
     }
 
@@ -27,7 +45,7 @@
         grid-template-columns: repeat(4, minmax(250px, 1fr));
         grid-template-rows: 250px 250px;
         gap: 8px;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
 
         img {
             height: 100%;
@@ -50,24 +68,156 @@
         }
     }
 
-    .stay-long-info {
+    .stay-info-container {
         display: flex;
-        flex-direction: column;
+        gap: 20px;
 
-        .stay-long-info-header {
+        .stay-long-info {
             display: flex;
-            align-items: center;
-            justify-content: space-between;
+            flex-direction: column;
+            flex: 2;
+
+            .stay-long-info-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                img {
+                    object-fit: contain;
+                    height: 50px;
+                    width: 50px;
+                    border-radius: 50%;
+                }
+
+                > span:first-of-type {
+                    border-bottom: 1px solid #00000029;
+                }
+            }
         }
 
-        > span:first-of-type {
-            border-bottom: 1px solid #00000029;
-        }
+        .stay-details-botton-right {
 
-        img {
-            object-fit: contain;
-            height: 40px;
-            width: 50px;
+            flex: 1;
+
+            .order-form {
+              
+                border: 1px solid rgb(204, 204, 204);
+                border-radius: 15px;
+                padding: 20px 20px;
+                box-shadow: 0 6px 16px -2px #d8d8d8;
+
+                .order-form-header {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding-bottom: 20px;
+
+                    .order-price {
+                        font-weight: 700;
+                    }
+                }
+
+                .order-form-date-picker {
+                    display: flex;
+                    align-items: center;
+                    gap: 0px;
+                }
+
+                form {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    label {
+                        position: relative;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+                        height: 100%;
+                        padding: 15px 25px;
+                        cursor: pointer;
+                        width: 100%;
+                        border: 1px solid rgb(153, 153, 153);
+
+                        &.check-in-lable {
+                            border-top-left-radius: 10px;
+                            border-bottom-color: rgba(255, 255, 255, 0);
+                            border-right-color: rgba(255, 255, 255, 0);
+                        }
+
+                        &.check-out-lable {
+                            border-top-right-radius: 10px;
+                            border-bottom-color: rgba(255, 255, 255, 0);
+                        }
+
+                        &.guests-lable {
+                            border-bottom-left-radius: 10px;
+                            border-bottom-right-radius: 10px;
+                        }
+
+                        span {
+                            color: black;
+                            text-transform: uppercase;
+                            font-size: 10px;
+                            font-weight: 600;
+                            cursor: pointer;
+                        }
+
+                        input {
+                            font-size: 14px;
+                            border: none;
+                            font-size: 15px;
+                            line-height: 15px;
+                            height: 15px;
+                            width: 100%;
+                            outline: none;
+                            background-color: transparent;
+                            cursor: pointer;
+                            padding: 0px;
+                        }
+                    }
+
+                    .book-stay-btn {
+                        padding: 12px;
+                        margin: 15px 0px;
+                        width: 100%;
+                        border-radius: 10px;
+                        background-color: rgb(255, 56, 92);
+                        color: white;
+                        font-size: 16px;
+                        font-weight: 600;
+                    }
+                }
+            }
+
+            .report-listing-btn{
+                display: flex;
+            }
         }
+    }
+
+    .stay-rate-display {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .fas,
+    .far {
+        font-size: 0.8rem;
+        padding-inline-end: 5px;
+    }
+
+    .fa-star {
+        color: rgb(255, 56, 92);
+        padding-bottom: 3px;
+    }
+
+    .fa-heart {
+        color: rgb(53, 53, 53);
+    }
+
+    .fa-external-link-alt {
+        color: rgb(53, 53, 53);
     }
 }
