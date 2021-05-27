@@ -1,5 +1,5 @@
 const initialState = {
-  trip: null
+  trip: { guests: { adults: 0, kids: 0, baby: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }
 }
 
 export function tripReducer(state = initialState, action = {}) {

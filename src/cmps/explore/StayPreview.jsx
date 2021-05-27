@@ -2,7 +2,7 @@ import {Link} from 'react-router-dom'
 
 export function StayPreview({ stay }) {
 
-    console.log(stay);
+    // console.log(stay);
     return (
         <section >
             <Link to={`/stay/${stay._id}`} className="stay-preview">

@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from 'react-router-dom'
 import { DateRange } from './DateRange'
 
 
@@ -25,8 +26,6 @@ export class MainFilter extends Component {
         ev.preventDefault()
         const inputName = ev.target.name
         let inputValue = ev.target.value;
-        console.log(ev.target.id);
-
         if (ev.target.type === 'date') {
             this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [inputName]: inputValue } } });
         } else if (ev.target.id === 'guests') {
@@ -38,8 +37,8 @@ export class MainFilter extends Component {
 
     onSearch = (ev) => {
         ev.preventDefault();
-        console.log('on search', this.state);
-        this.props.addTrip(this.state)
+        console.log('trip from onSearch', this.state.trip);
+        this.props.onSearch(this.state.trip)
     }
 
     render() {
@@ -74,7 +73,7 @@ export class MainFilter extends Component {
                         <span>kids</span>
                         <input type="number" id="guests" name="kids" min="0" placeholder="Ages 2–12" onChange={this.handleChange} />
                     </label>
-                    <button onClick={this.onSearch}>🔍</button>
+                    <button onClick={this.onSearch}> <Link to="/explore">🔍</Link></button>
                 </form>
             </section>
         )
