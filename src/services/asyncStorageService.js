@@ -1,4 +1,6 @@
-
+import user from '../data/user.json'
+import stay from '../data/stay.json'
+import order from '../data/order.json'
 
 export const storageService = {
     query,
@@ -8,16 +10,34 @@ export const storageService = {
     remove,
 }
 
+loadDB()
+
+function loadDB() {
+    var userDB = JSON.parse(localStorage.getItem('user')) || []
+    var stayDB = JSON.parse(localStorage.getItem('stay')) || []
+    var orderDB = JSON.parse(localStorage.getItem('order')) || []
+
+    if (!userDB || !userDB.length) {
+        _save('user', user)
+    }
+    if (!stayDB || !stayDB.length) {
+        _save('stay', stay)
+    }
+    if (!orderDB || !orderDB.length) {
+        _save('order', order)
+    }
+}
+
 function query(entityType) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     return Promise.resolve(entities)
 }
 
-
 function get(entityType, entityId) {
     return query(entityType)
         .then(entities => entities.find(entity => entity._id === entityId))
 }
+
 function post(entityType, newEntity) {
     newEntity._id = _makeId()
     return query(entityType)
@@ -27,8 +47,6 @@ function post(entityType, newEntity) {
             return newEntity
         })
 }
-
-
 
 function put(entityType, updatedEntity) {
     return query(entityType)

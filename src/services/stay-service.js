@@ -1,4 +1,5 @@
 import { storageService } from './asyncStorageService'
+
 // import axios from 'axios'
 // import { httpService } from './http.service'
 // const SCORE_FOR_REVIEW = 10
@@ -13,46 +14,44 @@ export const stayService = {
     // getStayImage,
     // getPriceData,
     // getDateData
-
-
 }
 
 window.stayService = stayService
 // Note: due to async, must run one by one...
-// toyService.signup({fullname: 'Puki Norma', toyname: 'toy1', password:'123',score: 100, isAdmin: false})
-// toyService.signup({fullname: 'Master Adminov', toyname: 'admin', password:'123', score: 100, isAdmin: true})
-// toyService.signup({fullname: 'Muki G', toyname: 'muki', password:'123', score: 100})
+// stayService.signup({fullname: 'Puki Norma', stayname: 'stay1', password:'123',score: 100, isAdmin: false})
+// stayService.signup({fullname: 'Master Adminov', stayname: 'admin', password:'123', score: 100, isAdmin: true})
+// stayService.signup({fullname: 'Muki G', stayname: 'muki', password:'123', score: 100})
 
 function query(filterBy = { searchTxt: '', availability: 'all', sortBy: 'all', type: 'all' }) {
-    return storageService.query('toy')
+    return storageService.query('stay')
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
-    // return httpService.get(`toy${queryStr}`)
-
+    // return httpService.get(`stay${queryStr}`)
 }
 
-function getById(toyId) {
-    return storageService.get('toy', toyId)
-    // return httpService.get(`toy/${toyId}`)
-}
-function remove(toyId) {
-    return storageService.remove('toy', toyId)
-    // return httpService.delete(`toy/${toyId}`)
+function getById(stayId) {
+    return storageService.get('stay', stayId)
+    // return httpService.get(`stay/${stayId}`)
 }
 
-async function update(toy) {
-    return storageService.put('toy', toy)
-    // return await httpService.put(`toy/${toy._id}`, toy)
-    // Handle case in which admin updates other toy's details
-    // if (getLoggedinToy()._id === toy._id) _saveLocalToy(toy)
+function remove(stayId) {
+    return storageService.remove('stay', stayId)
+    // return httpService.delete(`stay/${stayId}`)
 }
 
-async function add(toy) {
-    return storageService.put('toy', toy)
-    // toy.imgUrl = await getStayImage(toy.name)
-    // toy.msgs = []
-    // return await httpService.post(`toy`, toy)
-    // Handle case in which admin updates other toy's details
-    // if (getLoggedinToy()._id === toy._id) _saveLocalToy(toy)
+async function update(stay) {
+    return storageService.put('stay', stay)
+    // return await httpService.put(`stay/${stay._id}`, stay)
+    // Handle case in which admin updates other stay's details
+    // if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
+}
+
+async function add(stay) {
+    return storageService.put('stay', stay)
+    // stay.imgUrl = await getStayImage(stay.name)
+    // stay.msgs = []
+    // return await httpService.post(`stay`, stay)
+    // Handle case in which admin updates other stay's details
+    // if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
 }
 
 // async function getStayImage(txt) {
@@ -63,19 +62,19 @@ async function add(toy) {
 // }
 
 // async function getPriceData() {
-//     const toys = await query()
-//     return toys.reduce((acc, toy) => {
-//         const { type } = toy
+//     const stays = await query()
+//     return stays.reduce((acc, stay) => {
+//         const { type } = stay
 //         if (!acc[type]) acc[type] = 0
-//         acc[type] += toy.price
+//         acc[type] += stay.price
 //         return acc
 //     }, {})
 // }
 
 // async function getDateData() {
-//     const toys = await query()
-//     return toys.reduce((acc, toy, idx) => {
-//         const { createdAt } = toy
+//     const stays = await query()
+//     return stays.reduce((acc, stay, idx) => {
+//         const { createdAt } = stay
 //         const year = new Date(createdAt).getFullYear()
 //         if (!acc[year]) acc[year] = 0
 //         acc[year]++
