@@ -8,7 +8,7 @@ import { Home } from './pages/Home';
 import { Header } from './cmps/Header';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadStays } from './store/actions/stayActions'
+import { loadStays, loadTopRated ,loadNearby} from './store/actions/stayActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
 
@@ -17,38 +17,42 @@ class _App extends Component {
   componentDidMount() {
     this.props.loadStays()
     this.props.loadUsers()
+    this.props.loadTopRated();
+    this.props.loadNearby('Portugal');
   }
 
   onSearch = (trip) => {
     this.props.addTrip(trip);
-    this.props.loadStays(trip)
+    this.props.loadStays(trip);
   }
 
 
 
   render() {
 
-    const { stays, orders, updateUser, trip, addTrip, loggedInUser, logout } = this.props
+    const { staysState, orders, updateUser, trip, addTrip, loggedInUser, logout } = this.props
 
     return (
       <Router>
-        <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout}/>
+        <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
           <Route path='/stay/:stayId' component={StayDetails} />
-          <Route path='/explore' render={() => (<Explore stays={stays} />)} />
+          <Route path='/explore' render={() => (<Explore stays={staysState.stays} />)} />
           <Route path='/stay' render={() => (<StayDetails />)} />
           <Route path='/user' render={() => (<UserDetails updateUser={updateUser} />)} />
-          <Route path='/' component={Home} />
+          <Route path='/' render={() => (<Home topRatedStays={staysState.topRatedStays} nearbayStays={staysState.nearbayStays} />)}  />
         </Switch>
       </Router>
     )
   }
 }
 
+// component={Home}
+
 const mapStateToProps = (state) => {
   return {
-    stays: state.stayModule.stays,
+    staysState: state.stayModule,
     // orders: state.ordersModule.order,
     // users: state.usersModule.user
     trip: state.tripModule.trip,
@@ -63,7 +67,9 @@ const mapDispatchToProps = {
   updateUser,
   loadUsers,
   loadTrip,
-  logout
+  logout,
+  loadTopRated,
+  loadNearby
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

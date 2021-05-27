@@ -11,7 +11,8 @@ export const stayService = {
     remove,
     update,
     add,
-    // getTopRatedStays
+    getTopRatedStays,
+    getNearbyStays
     // getStayImage,
     // getPriceData,
     // getDateData
@@ -56,24 +57,42 @@ async function add(stay) {
     // if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
 }
 
-// async function getTopRatedStays() {
-//     let stays = await storageService.query('stay')
-//     stays = stays.filter(stay)
-//     const stays = await stayService.query(trip)
 
-//     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
-//     // return httpService.get(`stay${queryStr}`)
-// }
+async function getTopRatedStays() {
+    var stays = await storageService.query('stay')
+    stays = stays.map(stay => {
+        stay.avgRate = _getRate(stay);
+        return stay
+    })
+    stays.sort(function (a, b) {
+        return b.avgRate - a.avgRate
+    })
+    return Promise.resolve(stays.slice(0, 4))
 
+    // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
+    // return httpService.get(`stay${queryStr}`)
+}
 
-// getRate = () => {
-//     const rates = this.state.stay.reviews.map(review => review.avgRate)
-//     const sum = rates.reduce((acc, rate) => {
-//         acc += rate
-//         return acc
-//     }, 0)
-//     return sum / rates.length
-// }
+function _getRate(stay) {
+    const rates = stay.reviews.map(review => review.avgRate)
+    const sum = rates.reduce((acc, rate) => {
+        acc += rate
+        return acc
+    }, 0)
+    return sum / rates.length
+}
+
+async function getNearbyStays(location) {
+    var stays = await storageService.query('stay')
+    stays = stays.filter(stay => {
+        return stay.loc.address.toUpperCase().includes(location.toUpperCase())
+    })
+    return Promise.resolve(stays.slice(0, 4))
+
+    // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
+    // return httpService.get(`stay${queryStr}`)
+}
+
 
 
 

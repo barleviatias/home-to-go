@@ -389,64 +389,6 @@
         ]
     },
     {
-        "_id": "10006551",
-        "name": "House of Pok",
-        "imgUrls": [
-            "https://a0.muscache.com/im/pictures/c533bbad-3f4b-4054-9491-f7b50418aaff.jpg?im_w=1200",
-            "https://a0.muscache.com/im/pictures/7baa2d22-c243-4f48-b578-23094756ab22.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/d895a987-6942-4f8b-b867-349357d20faa.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/005ce767-f2f3-4d2c-b888-d94fdb6986ef.jpg?im_w=720",
-            "https://a0.muscache.com/im/pictures/59f27e10-3a0e-4e94-997f-1e032ddf7ab4.jpg?im_w=720"
-        ],
-        "price": 180.00,
-        "desc": "Luxury apartment with 5 bedrooms,  in Porto, Ribeira",
-        "capacity": 8,
-        "favorites": [],
-        "amenities": [
-            "TV",
-            "Wifi",
-            "Kitchen",
-            "Smoking allowed",
-            "Pets allowed",
-            "Cooking basics"
-        ],
-        "stayType": "entire place",
-        "propertyType": "loft",
-        "host": {
-            "_id": "u108",
-            "fullname": "Davit Pok",
-            "imgUrl": "https://randomuser.me/api/portraits/men/8.jpg"
-        },
-        "loc": {
-            "country": "Portugal",
-            "countryCode": "PT",
-            "address": "Porto, Portugal",
-            "lat": -8.61308,
-            "lng": 41.1413
-        },
-        "reviews": [
-            {
-                "id": "u111rev",
-                "txt": "Very helpful hosts. Cooked traditional...",
-                "avgRate": 3,
-                "category": {
-                    "Cleanliness": 4,
-                    "Accuracy": 4,
-                    "Communication": 2,
-                    "Location": 2,
-                    "Check-in": 3,
-                    "Accessibility": 3
-                },
-                "user": {
-                    "_id": "u111",
-                    "fullname": "Brus Lorance",
-                    "imgUrl": "https://randomuser.me/api/portraits/men/11.jpg",
-                    "time": 1606124717372
-                }
-            }
-        ]
-    },
-    {
         "_id": "10006552",
         "name": "Mor loft",
         "imgUrls": [
@@ -640,7 +582,7 @@
         ]
     },
     {
-        "_id": "10006555",
+        "_id": "10006535",
         "name": "Private house on the beach",
         "imgUrls": [
             "https://a0.muscache.com/im/pictures/b1a2053e-4c99-4daa-98e5-cd4e78aa55a3.jpg?im_w=1200",
@@ -751,6 +693,64 @@
                     "fullname": "Tom Partush",
                     "imgUrl": "https://randomuser.me/api/portraits/men/16.jpg",
                     "time": 1506113717372
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10006551",
+        "name": "House of Pok",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/c533bbad-3f4b-4054-9491-f7b50418aaff.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/7baa2d22-c243-4f48-b578-23094756ab22.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/d895a987-6942-4f8b-b867-349357d20faa.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/005ce767-f2f3-4d2c-b888-d94fdb6986ef.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/59f27e10-3a0e-4e94-997f-1e032ddf7ab4.jpg?im_w=720"
+        ],
+        "price": 180.00,
+        "desc": "Luxury apartment with 5 bedrooms,  in Porto, Ribeira",
+        "capacity": 8,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Kitchen",
+            "Smoking allowed",
+            "Pets allowed",
+            "Cooking basics"
+        ],
+        "stayType": "entire place",
+        "propertyType": "loft",
+        "host": {
+            "_id": "u108",
+            "fullname": "Davit Pok",
+            "imgUrl": "https://randomuser.me/api/portraits/men/8.jpg"
+        },
+        "loc": {
+            "country": "Portugal",
+            "countryCode": "PT",
+            "address": "Porto, Portugal",
+            "lat": -8.61308,
+            "lng": 41.1413
+        },
+        "reviews": [
+            {
+                "id": "u111rev",
+                "txt": "Very helpful hosts. Cooked traditional...",
+                "avgRate": 3,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 2,
+                    "Location": 2,
+                    "Check-in": 3,
+                    "Accessibility": 3
+                },
+                "user": {
+                    "_id": "u111",
+                    "fullname": "Brus Lorance",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/11.jpg",
+                    "time": 1606124717372
                 }
             }
         ]
