@@ -13,7 +13,7 @@ export class Header extends React.Component {
 
                 <NavLink to="/"><h1 className="logo">Home <img src={Logo} alt="logo" /> Go</h1></NavLink>
 
-                {/* <MainFilter addTrip={addTrip} /> */}
+                <MainFilter addTrip={addTrip} />
 
                 <nav>
                     <NavLink to="/explore">Explore</NavLink>
