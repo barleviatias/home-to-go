@@ -1,43 +1,66 @@
-export function StayDetails({ stay }) {
+import { Component } from "react";
+import { stayService } from "../services/stay-service";
 
-  const { amenities, capacity, summary, price, stayType, imgUrls, rate, name, host } = stay;
+export class StayDetails extends Component {
 
-  return (
-    <main className="stay-details-container">
-      <h1>Stay Details</h1>
-      <h4>stay title {name}</h4>
-      <div className="stay-short-info">
-        <div>
-          <p>4.5 start</p>
-          <span>•</span>
-          <p>tel aviv arlozorov</p>
-        </div>
-        <div>
-          <button>share</button>
-          <button>save</button>
-        </div>
-      </div>
-      <div className="stay-gallery">
-        <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
-        <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
-        <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
-        <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
-        <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
-      </div>
+  state = {
+    stay: null
+  }
 
-      <div className="stay-info-continer">
-        <div className="stay-long-info">
-          <div className="stay-long-info-header">
-            <span>{`${stayType} hosted by ${host.fullname}`}</span>
-            <img src={host.imgUrl} alt="" />
+  componentDidMount() {
+    this.loadStay()
+  }
+
+  loadStay = async () => {
+    const { stayId } = this.props.match.params
+    const stay = await stayService.getById(stayId)
+    this.setState({ stay })
+  }
+
+
+  render() {
+    const { stay } = this.state
+
+    if (!stay) return <h1>loading...</h1>
+    const { capacity, summary, price, stayType, name, host } = stay;
+
+    return (
+      <main className="stay-details-container">
+        <h1>Stay Details</h1>
+        <h4>stay title {name}</h4>
+        <div className="stay-short-info">
+          <div>
+            <p>4.5 start</p>
+            <span>•</span>
+            <p>tel aviv arlozorov</p>
           </div>
-          <span>capacity: {capacity} guests</span>
-          <span>{summary}</span>
+          <div>
+            <button>share</button>
+            <button>save</button>
+          </div>
         </div>
-        <div className="order-form">
-          <span>Price ${price}</span>
+        <div className="stay-gallery">
+          <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+          <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+          <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+          <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
+          <img src="https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720" />
         </div>
-      </div>
-    </main>
-  );
+
+        <div className="stay-info-continer">
+          <div className="stay-long-info">
+            <div className="stay-long-info-header">
+              <span>{`${stayType} hosted by ${host.fullname}`}</span>
+              <img src={host.imgUrl} alt="" />
+            </div>
+            <span>capacity: {capacity} guests</span>
+            <span>{summary}</span>
+          </div>
+          <div className="order-form">
+            <span>Price ${price}</span>
+          </div>
+        </div>
+      </main>
+    );
+  }
 }
