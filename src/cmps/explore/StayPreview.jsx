@@ -2,10 +2,11 @@ import {Link} from 'react-router-dom'
 
 export function StayPreview({ stay }) {
 
+    console.log(stay);
     return (
         <section >
             <Link to={`/stay/${stay._id}`} className="stay-preview">
-                <img src={`http://www.bamia.com/${stay.imgUrl}`} alt="" />
+                <img src={stay.imgUrls[0]} alt="stay-preview" />
                 <div className="stay-preview-info">
                     <h3>{stay.rate}</h3>
                     <h3>{stay.propertyType}</h3>
