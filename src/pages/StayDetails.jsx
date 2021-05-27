@@ -31,7 +31,7 @@ export class StayDetails extends Component {
     const { stay } = this.state
 
     if (!stay) return <h1>loading...</h1>
-    const { loc, capacity, summary, price, propertyType, reviews, name, host } = stay
+    const { loc, capacity, summary, price,stayType, propertyType, reviews, name, host } = stay
 
     return (
       <main className="stay-details-container">
@@ -60,11 +60,14 @@ export class StayDetails extends Component {
           <div className="stay-long-info">
 
             <div className="stay-long-info-header">
-              <h2>{`${propertyType} hosted by ${host.fullname}`}</h2>
+              <div>
+                <h2>{`${propertyType} hosted by ${host.fullname}`}</h2>
+                <span>{capacity} guests • {stayType} • {propertyType}</span>
+              </div>
               <img src={host.imgUrl} alt="" />
             </div>
 
-            <span>capacity: {capacity} guests</span>
+            
             <span>{summary}</span>
 
           </div>
