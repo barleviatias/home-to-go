@@ -9,11 +9,8 @@ import { Header } from './cmps/Header';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays } from './store/actions/stayActions'
-<<<<<<< HEAD
 import { addTrip } from './store/actions/tripActions'
-=======
-import { updateUser ,loadUsers } from './store/actions/userActions'
->>>>>>> e063d9a8f5e98f168aaffdf501b0a073e4c8d071
+import { updateUser, loadUsers } from './store/actions/userActions'
 
 class _App extends Component {
 
@@ -23,13 +20,8 @@ class _App extends Component {
   }
 
   render() {
-<<<<<<< HEAD
 
-    const { stays, users, orders, trip, addTrip } = this.props
-=======
-    console.log(this.props);
-    const { stays,  orders ,updateUser } = this.props
->>>>>>> e063d9a8f5e98f168aaffdf501b0a073e4c8d071
+    const { stays, orders, updateUser, trip, addTrip } = this.props
 
     return (
       <Router>
@@ -51,23 +43,17 @@ const mapStateToProps = (state) => {
   return {
     stays: state.stayModule.stays,
     // orders: state.ordersModule.order,
-<<<<<<< HEAD
     // users: state.usersModule.user
-    trip: state.tripModule.trip
-=======
+    trip: state.tripModule.trip,
     users: state.userModule.users
->>>>>>> e063d9a8f5e98f168aaffdf501b0a073e4c8d071
   }
 }
 
 const mapDispatchToProps = {
   loadStays,
-<<<<<<< HEAD
-  addTrip
-=======
+  addTrip,
   updateUser,
   loadUsers
->>>>>>> e063d9a8f5e98f168aaffdf501b0a073e4c8d071
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
