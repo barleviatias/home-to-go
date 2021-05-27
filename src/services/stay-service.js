@@ -24,6 +24,7 @@ window.stayService = stayService
 
 function query(filterBy = { searchTxt: '', availability: 'all', sortBy: 'all', type: 'all' }) {
     return storageService.query('stay')
+   
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`stay${queryStr}`)
 }
