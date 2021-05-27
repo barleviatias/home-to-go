@@ -17,6 +17,12 @@ export function userReducer(state = initialState, action = {}) {
       }
     case 'SET_USERS':
       return { ...state, users: action.users }
+      case 'UPDATE_USER':
+      return {
+        ...state,
+        users: state.users.map(user =>
+          user._id === action.user._id ? action.user : user
+        )}
       default:
         return state
       }

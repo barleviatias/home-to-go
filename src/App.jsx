@@ -1,6 +1,7 @@
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { StayDetails } from './pages/StayDetails';
+import { UserDetails } from './pages/UserDetails';
 import { Explore } from './pages/Explore';
 import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
@@ -8,16 +9,18 @@ import { Header } from './cmps/Header';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays } from './store/actions/stayActions'
+import { updateUser ,loadUsers } from './store/actions/userActions'
 
 class _App extends Component {
 
   componentDidMount() {
     this.props.loadStays()
+    this.props.loadUsers()
   }
 
   render() {
-
-    const { stays, users, orders } = this.props
+    console.log(this.props);
+    const { stays,  orders ,updateUser } = this.props
 
     return (
       <Router>
@@ -27,6 +30,7 @@ class _App extends Component {
           <Route path='/stay/:stayId' component={StayDetails} />
           <Route path='/explore' render={() => (<Explore stays={stays} />)} />
           <Route path='/stay' render={() => (<StayDetails />)} />
+          <Route path='/user' render={() => (<UserDetails updateUser={updateUser} />)} />
           <Route path='/' component={Home} />
         </Switch>
       </Router>
@@ -38,12 +42,14 @@ const mapStateToProps = (state) => {
   return {
     stays: state.stayModule.stays,
     // orders: state.ordersModule.order,
-    // users: state.usersModule.user
+    users: state.userModule.users
   }
 }
 
 const mapDispatchToProps = {
-  loadStays
+  loadStays,
+  updateUser,
+  loadUsers
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
