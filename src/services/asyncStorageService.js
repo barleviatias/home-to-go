@@ -36,9 +36,9 @@ function query(entityType, trip = { guests: { adults: 0, kids: 0, baby: 0 }, loc
 }
 
 function _filterByTripInfo(entities, trip) {
-    const address = trip.loc.address;
+    const address = trip.loc.address.toUpperCase();
     var filteredEntities = entities.filter((entitie) => {
-        return entitie.loc.address.includes(address)
+        return entitie.loc.address.toUpperCase().includes(address)
     })
     console.log('filtered', filteredEntities, trip.loc.address);
     return filteredEntities

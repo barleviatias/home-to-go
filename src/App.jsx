@@ -20,7 +20,6 @@ class _App extends Component {
   }
 
   onSearch = (trip) => {
-    console.log(trip.loc);
     this.props.addTrip(trip);
     this.props.loadStays(trip)
   }
