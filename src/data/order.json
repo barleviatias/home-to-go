@@ -1,0 +1,288 @@
+[
+    {
+        "_id": "u105ord",
+        "createdAt": 9898989,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u105",
+            "fullname": "John Lenon"
+        },
+        "totalPrice": 160,
+        "startDate": "04/25/2021",
+        "endDate": "04/27/2021",
+        "guests": {
+            "adults": 2,
+            "kids": 1
+        },
+        "stay": {
+            "_id": "10006546",
+            "name": "House Of Mor",
+            "price": 80.00
+        },
+        "status": "approve"
+    },
+    {
+        "_id": "u108ord",
+        "createdAt": 9898992,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u108",
+            "fullname": "Davit Pok"
+        },
+        "totalPrice": 160,
+        "startDate": "03/15/2025",
+        "endDate": "03/17/2025",
+        "guests": {
+            "adults": 2,
+            "kids": 0
+        },
+        "stay": {
+            "_id": "10006546",
+            "name": "House Of Mor",
+            "price": 80.00
+        },
+        "status": "approve"
+    },
+    {
+        "_id": "u104ord",
+        "createdAt": 9898953,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u104",
+            "fullname": "Adi Ben David"
+        },
+        "totalPrice": 160,
+        "startDate": "10/15/2025",
+        "endDate": "10/17/2025",
+        "guests": {
+            "adults": 3,
+            "kids": 0
+        },
+        "stay": {
+            "_id": "10006548",
+            "name": "Apartment of Mor",
+            "price": 80.00
+        },
+        "status": "pending"
+    },
+    {
+        "_id": "u106ord",
+        "createdAt": 9898999,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u106",
+            "fullname": "Adam Kolt"
+        },
+        "totalPrice": 130,
+        "startDate": "08/01/2027",
+        "endDate": "09/01/2027",
+        "guests": {
+            "adults": 4,
+            "kids": 0
+        },
+        "stay": {
+            "_id": "10006547",
+            "name": "House Of Davit",
+            "price": 60.00
+        },
+        "status": "pending"
+    },
+    {
+        "_id": "u107ord",
+        "createdAt": 9893999,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u107",
+            "fullname": "Chan Mi Sun"
+        },
+        "totalPrice": 130,
+        "startDate": "08/01/2027",
+        "endDate": "09/01/2027",
+        "guests": {
+            "adults": 4,
+            "kids": 0
+        },
+        "stay": {
+            "_id": "10006552",
+            "name": "Mor loft",
+            "price": 60.00
+        },
+        "status": "pending"
+    },
+    {
+        "_id": "u207ord",
+        "createdAt": 98939929,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u107",
+            "fullname": "Chan Mi Sun"
+        },
+        "totalPrice": 270,
+        "startDate": "10/15/2022",
+        "endDate": "10/18/2022",
+        "guests": {
+            "adults": 2,
+            "kids": 0
+        },
+        "stay": {
+            "_id": "10006553",
+            "name": "The castle of Mor",
+            "price": 90.00
+        },
+        "status": "approve"
+    },
+    {
+        "_id": "u206ord",
+        "createdAt": 98939929,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u106",
+            "fullname": "Adam Kolt"
+        },
+        "totalPrice": 600,
+        "startDate": "05/02/2021",
+        "endDate": "05/12/2021",
+        "guests": {
+            "adults": 2,
+            "kids": 2
+        },
+        "stay": {
+            "_id": "10006552",
+            "name": "Mor loft",
+            "price": 60.00
+        },
+        "status": "pending"
+    },
+    {
+        "_id": "u103ord",
+        "createdAt": 98939329,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u103",
+            "fullname": "Jack Daniel"
+        },
+        "totalPrice": 600,
+        "startDate": "05/02/2021",
+        "endDate": "05/12/2021",
+        "guests": {
+            "adults": 2,
+            "kids": 2
+        },
+        "stay": {
+            "_id": "10006555",
+            "name": "Private house on the beach",
+            "price": 60.00
+        },
+        "status": "pending"
+    },
+    {
+        "_id": "u102ord",
+        "createdAt": 98939379,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u102",
+            "fullname": "Nicolas Roho"
+        },
+        "totalPrice": 600,
+        "startDate": "05/02/2021",
+        "endDate": "05/12/2021",
+        "guests": {
+            "adults": 2,
+            "kids": 5
+        },
+        "stay": {
+            "_id": "10006555",
+            "name": "Private house on the beach",
+            "price": 60.00
+        },
+        "status": "approve"
+    },
+    {
+        "_id": "u307ord",
+        "createdAt": 98939999,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u107",
+            "fullname": "Chan Mi Sun"
+        },
+        "totalPrice": 300,
+        "startDate": "09/02/2021",
+        "endDate": "09/07/2021",
+        "guests": {
+            "adults": 4,
+            "kids": 0
+        },
+        "stay": {
+            "_id": "10006549",
+            "name": "Charming Duplex of Mor",
+            "price": 60.00
+        },
+        "status": "approve"
+    },
+    {
+        "_id": "u205ord",
+        "createdAt": 98939999,
+        "host": {
+            "_id": "j102j",
+            "fullname": "puki ba",
+            "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg"
+        },
+        "user": {
+            "_id": "u105",
+            "fullname": "John Lenon"
+        },
+        "totalPrice": 180,
+        "startDate": "10/14/2021",
+        "endDate": "10/17/2021",
+        "guests": {
+            "adults": 4,
+            "kids": 0
+        },
+        "stay": {
+            "_id": "10006549",
+            "name": "Charming Duplex of Mor",
+            "price": 60.00
+        },
+        "status": "pending"
+    }
+]

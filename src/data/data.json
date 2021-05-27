@@ -200,11 +200,13 @@
         "createdAt": 9898989,
         "user": {
           "_id": "u102",
-          "fullname": "Toto Loto"
+          "fullname": "Toto Loto",
+          "imgUrl": "/img/img2.jpg"
         },
         "host": {
           "_id": "u103",
-          "fullname": "momo lomo"
+          "fullname": "momo lomo",
+          "imgUrl": "/img/img2.jpg"
         },
         "totalPrice": 280,
         "startDate": "2025/10/15",
@@ -228,7 +230,8 @@
         "imgUrl": "src/assets/img/avatar.png",
         "isHost": false,
         "username" : "popo",
-        "password" : "popo1"
+        "password" : "popo1",
+        "email": "ofek@gmail.com"
       },
       {
         "_id": "u102",
@@ -236,7 +239,8 @@
         "imgUrl": "src/assets/img/avatar.png",
         "isHost": false,
         "username" : "toto",
-        "password" : "toto1"
+        "password" : "toto1",
+        "email": "eli@gmail.com"
       }
     ]  
   }
