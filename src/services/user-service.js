@@ -1,6 +1,6 @@
 import { storageService } from './asyncStorageService';
 // import { httpService } from './http.service.js';
-// const SCORE_FOR_REVIEW = 10
+
 
 export const userService = {
 	login,
@@ -11,7 +11,6 @@ export const userService = {
 	// remove,
 	// update,
 	// getLoggedinUser,
-	// increaseScore
 };
 
 window.userService = userService;
