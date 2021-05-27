@@ -1,12 +1,22 @@
 import { Component } from "react";
+import { DateRange } from './DateRange'
 
 
 export class MainFilter extends Component {
 
     state = {
-        filterBy: {
-            loc: '',
+        trip: {
 
+            guests: {
+                adults: 0,
+                kids: 0,
+                baby: 0
+            },
+            filterBy: {
+                location: '',
+                checkIn: '',
+                checkOut: ''
+            }
         }
 
     }
@@ -14,34 +24,55 @@ export class MainFilter extends Component {
     handleChange = (ev) => {
         ev.preventDefault()
         const inputName = ev.target.name
-        const inputValue = (ev.target.type === 'number') ? +ev.target.value : ev.target.value
-        this.setState({ filterBy: { ...this.state.filterBy, [inputName]: inputValue } }, () => {
-            this.props.onSetFilter(this.state.filterBy)
-        })
+        let inputValue;
+        if (inputName === 'adults' || inputName === 'kids') {
+            inputValue = +ev.target.value;
+            this.setState({ guests: { ...this.state.guests, [inputName]: inputValue } })
+        }
+        else {
+            inputValue = ev.target.value;
+            this.setState({ filterBy: { ...this.state.filterBy, [inputName]: inputValue } })
+        }
+    }
+
+    onSearch = (ev) => {
+        ev.preventDefault();
+        console.log('on search', this.state);
+        this.props.addTrip(this.state)
     }
 
     render() {
 
+        const { location, checkIn, checkOut } = this.state.filterBy;
+        const { adult } = this.state.guests;
         return (
             <section className="main-filter">
                 <form>
                     <label htmlFor="location">
                         <span>Location</span>
-                        <input name="location" id="location" type="search" placeholder="Where are you going?" />
+                        <input name="location" value={location} id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
                     </label>
+
+
+                    {/* <DateRange /> */}
+
                     <label htmlFor="check-in">
                         <span>Check in</span>
-                        <input name="check-in" id="check-in" type="text" placeholder="Add dates" />
+                        <input type="date" value={checkIn} name="checkIn" id="check-in" placeholder="Add dates" onChange={this.handleChange} />
                     </label>
                     <label htmlFor="check-out">
                         <span>Check out</span>
-                        <input name="check-out" id="check-out" type="text" placeholder="Add dates" />
+                        <input type="date" value={checkOut} name="checkOut" id="check-out" placeholder="Add dates" onChange={this.handleChange} />
                     </label>
+
+
                     <label htmlFor="guests">
-                        <span>Guests</span>
-                        <input name="guests" id="guests" type="text" placeholder="Add guests" />
+                        <span>Adults</span>
+                        <input type="number" name="adults" min="0" placeholder="Ages 13 or above" onChange={this.handleChange} />
+                        <span>kids</span>
+                        <input type="number" name="kids" min="0" placeholder="Ages 2–12" onChange={this.handleChange} />
                     </label>
-                    <button>🔍</button>
+                    <button onClick={this.onSearch}>🔍</button>
                 </form>
             </section>
         )

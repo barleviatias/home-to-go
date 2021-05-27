@@ -7,12 +7,13 @@ import Avatar from "../assets/img/avatar.png"
 
 export class Header extends React.Component {
     render() {
+        const {trip, addTrip} = this.props
         return (
             <header className="main-header">
 
                 <NavLink to="/"><h1 className="logo">Home <img src={Logo} alt="logo" /> Go</h1></NavLink>
 
-                <MainFilter />
+                <MainFilter addTrip={addTrip} />
 
                 <nav>
                     <NavLink to="/explore">Explore</NavLink>

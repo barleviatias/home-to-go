@@ -8,6 +8,7 @@ import { Header } from './cmps/Header';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays } from './store/actions/stayActions'
+import { addTrip } from './store/actions/tripActions'
 
 class _App extends Component {
 
@@ -17,11 +18,11 @@ class _App extends Component {
 
   render() {
 
-    const { stays, users, orders } = this.props
+    const { stays, users, orders, trip, addTrip } = this.props
 
     return (
       <Router>
-        <Header />
+        <Header trip={trip} addTrip={addTrip} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
           <Route path='/stay/:stayId' component={StayDetails} />
@@ -39,11 +40,15 @@ const mapStateToProps = (state) => {
     stays: state.stayModule.stays,
     // orders: state.ordersModule.order,
     // users: state.usersModule.user
+    trip: state.tripModule.trip
   }
 }
 
 const mapDispatchToProps = {
-  loadStays
+  loadStays,
+  addTrip
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
+
+// 

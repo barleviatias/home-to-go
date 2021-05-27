@@ -7,7 +7,7 @@ export const storageService = {
     get,
     post,
     put,
-    remove,
+    remove
 }
 
 loadDB()
