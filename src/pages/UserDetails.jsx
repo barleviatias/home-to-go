@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { userService } from "../services/user-service";
-
+import {NavMenu} from '../cmps/app/NavMenu'
 export class UserDetails extends Component {
 
   state = {
@@ -41,7 +41,7 @@ onUpdateUser = () => {
     const currUser = this.state.user
     
     if (!currUser) return <h1>loading...</h1>
-    const {fullname,username,email,id}=currUser
+    const {fullname,username,email,id,imgUrl}=currUser
     const firstName=fullname.split(' ')
     const isEditMode=this.state.isEditMode
     console.log(isEditMode);
@@ -49,7 +49,8 @@ onUpdateUser = () => {
 
     return (
         
-      <main className="">
+      <main className="user-details">
+        <img src={imgUrl} alt=""/>
         <h1>hey {firstName[0]}</h1>
         <h1>Your Details</h1>
           {!isEditMode && <div>
@@ -64,6 +65,7 @@ onUpdateUser = () => {
             <h3>email: <input type="text" name="email" autoComplete="off" onChange={this.handleChange} value={email} /></h3>
         <button onClick={this.onUpdateUser}>save</button>
             </div>}
+            <NavMenu/>
       </main>
     );
   }
