@@ -2,10 +2,10 @@ import { stayService } from '../../services/stay-service'
 import { userService } from '../../services/user-service'
 
 
-export function loadStays() {
+export function loadStays(trip) {
   return async dispatch => {
     try {
-      const stays = await stayService.query()
+      const stays = await stayService.query(trip)
       dispatch({ type: 'SET_STAYS', stays })
 
     } catch (err) {

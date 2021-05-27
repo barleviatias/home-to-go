@@ -23,17 +23,18 @@ export class Header extends React.Component {
         // console.log(user.imgUrl);
       }
     render() {
-        const {trip, addTrip} = this.props
+        const {trip, addTrip,onSearch} = this.props
         let imgUrl=""
         if(this.state.user){
              imgUrl=this.state.user.imgUrl
         }
+
         return (
             <header className="main-header">
 
                 <NavLink to="/"><h1 className="logo">Home <img src={Logo} alt="logo" /> Go</h1></NavLink>
 
-                <MainFilter addTrip={addTrip} />
+                <MainFilter onSearch={onSearch} />
 
                 <nav>
                     <NavLink to="/explore">Explore</NavLink>

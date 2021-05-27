@@ -28,9 +28,20 @@ function loadDB() {
     }
 }
 
-function query(entityType) {
+function query(entityType, trip = { guests: { adults: 0, kids: 0, baby: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }) {
+    console.log(trip);
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
+    if (entityType === 'stay') entities = _filterByTripInfo(entities, trip)
     return Promise.resolve(entities)
+}
+
+function _filterByTripInfo(entities, trip) {
+    const address = trip.loc.address;
+    var filteredEntities = entities.filter((entitie) => {
+        return entitie.loc.address.includes(address)
+    })
+    console.log('filtered', filteredEntities, trip.loc.address);
+    return filteredEntities
 }
 
 function get(entityType, entityId) {

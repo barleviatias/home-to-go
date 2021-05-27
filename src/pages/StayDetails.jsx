@@ -1,3 +1,4 @@
+import { lighten } from "@material-ui/core";
 import { Component } from "react";
 import { stayService } from "../services/stay-service";
 
@@ -26,12 +27,31 @@ export class StayDetails extends Component {
     return sum / rates.length
   }
 
+  getAmenityIcon(amenity) {
+    switch (amenity) {
+      case 'TV':
+        return <i className="fas fa-tv"></i>
+      case 'Wifi':
+        return <i className="fas fa-wifi"></i>
+      case 'Air-conditioning':
+        return <i className="fas fa-fan"></i>
+      case 'Smoking allowed':
+        return <i className="fas fa-smoking"></i>
+      case 'Pets allowed':
+        return <i className="fas fa-paw"></i>
+      case 'Cooking basics':
+        return <i className="fas fa-blender"></i>
+      default:
+        return <i className="fab fa-airbnb"></i>
+    }
+  }
+
 
   render() {
     const { stay } = this.state
 
     if (!stay) return <h1>loading...</h1>
-    const { loc, capacity, summary, price,stayType, propertyType, reviews, name, host } = stay
+    const { loc, capacity, desc, amenities, price, stayType, propertyType, reviews, name, host } = stay
 
     return (
       <main className="stay-details-container">
@@ -67,8 +87,45 @@ export class StayDetails extends Component {
               <img src={host.imgUrl} alt="" />
             </div>
 
-            
-            <span>{summary}</span>
+            <div className="stay-feature-container">
+              <div>
+                <i className="fas fa-home"></i>
+                <div>
+                  <h3>{stayType}</h3>
+                  <h4>{stayType === 'entire place' ? "You\'ll have the place to yourself." : "You\'ll have a private room to yourself."}</h4>
+                </div>
+              </div>
+              <div>
+                <i className="fas fa-book-open"></i>
+                <div>
+                  <h3>House rules</h3>
+                  <h4>This place isn’t suitable for children under 12 and the host doesn’t allow pets.</h4>
+                </div>
+              </div>
+              <div>
+                <i class="fas fa-medal"></i>
+                <div>
+                  <h3>{name} is a Superhost</h3>
+                  <h4>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</h4>
+                </div>
+              </div>
+              <div>
+                <i class="fas fa-bookmark"></i>
+                <div>
+                  <h3>Wifi</h3>
+                  <h4>Guests often search for this popular amenity</h4>
+                </div>
+              </div>
+            </div>
+
+            <span className="description">{desc}</span>
+
+            <div className="amenities-list">
+              <h2>Amenities</h2>
+              <ul>
+                {amenities.map(amenity => { return <li key="amenity"><span>{this.getAmenityIcon(amenity)}</span><span>{amenity}</span></li> })}
+              </ul>
+            </div>
 
           </div>
 

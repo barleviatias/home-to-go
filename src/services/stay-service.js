@@ -22,9 +22,9 @@ window.stayService = stayService
 // stayService.signup({fullname: 'Master Adminov', stayname: 'admin', password:'123', score: 100, isAdmin: true})
 // stayService.signup({fullname: 'Muki G', stayname: 'muki', password:'123', score: 100})
 
-function query(filterBy = { searchTxt: '', availability: 'all', sortBy: 'all', type: 'all' }) {
-    return storageService.query('stay')
-   
+function query(trip) {
+    return storageService.query('stay',trip)
+
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`stay${queryStr}`)
 }

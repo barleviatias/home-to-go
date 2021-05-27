@@ -81,7 +81,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                border-bottom: 1px solid black;
+                padding-bottom: 20px;
+                border-bottom: 1px solid rgb(221, 221, 221);
 
                 img {
                     object-fit: contain;
@@ -94,14 +95,67 @@
                     border-bottom: 1px solid #00000029;
                 }
             }
+
+            .stay-feature-container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+                padding: 20px 0px;
+                border-bottom: 1px solid #00000029;
+
+                > div {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+
+                    i {
+                        font-size: 20px;
+                        color: rgb(44, 44, 44);
+                    }
+
+                    div {
+                        display: flex;
+                        flex-direction: column;
+
+                        h3 {
+                            font-weight: 600;
+                            color: rgb(44, 44, 44);
+                        }
+
+                        h4 {
+                            font-weight: 100;
+                            color: rgb(87, 87, 87);
+                        }
+                    }
+                }
+            }
+
+            .description{
+                padding: 20px 0px;
+                border-bottom: 1px solid #00000029;  
+            }
+
+            .amenities-list {
+                padding: 20px 0px;
+                border-bottom: 1px solid #00000029;
+
+                ul {
+                    list-style: none;
+                    padding: 0px;
+
+                    li {
+                        padding: 5px 0px;
+                        display: flex;
+                        gap: 20px;
+                    }
+                }
+            }
         }
 
         .stay-details-botton-right {
-
             flex: 1;
 
             .order-form {
-              
                 border: 1px solid rgb(204, 204, 204);
                 border-radius: 15px;
                 padding: 20px 20px;
@@ -192,7 +246,7 @@
                 }
             }
 
-            .report-listing-btn{
+            .report-listing-btn {
                 display: flex;
                 align-items: center;
                 justify-content: center;
