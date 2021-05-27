@@ -2,7 +2,8 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 
 import { StayDetails } from './pages/StayDetails';
 import { Explore } from './pages/Explore';
-// import { StayDetails } from './pages/StayDetails
+import { LoginSignup } from './pages/LoginSignup';
+// import { LoginSignup } from './pages/LoginS÷ignup';
 import { Home } from './pages/Home';
 import data from '../src/data/data.json'
 
@@ -17,6 +18,7 @@ function App() {
     <Router>
       <Header />
       <Switch>
+        <Route path='/login' component={LoginSignup} />
         <Route path='/stay/:stayId' component={StayDetails} />
         <Route path='/explore' render={() => (<Explore stays={stays} />)} />
         <Route path='/stay' render={() => (<StayDetails stay={stay} />)} />

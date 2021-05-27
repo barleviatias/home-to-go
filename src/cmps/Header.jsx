@@ -17,6 +17,7 @@ export class Header extends React.Component {
                 <nav>
                     <NavLink to="/explore">Explore</NavLink>
                     <NavLink to="/stay">StayDetails</NavLink>
+                    <NavLink to="/login">login</NavLink>
                     <button className="user-menu-btn">
                         <span>☰</span>
                         <img src={Avatar} />

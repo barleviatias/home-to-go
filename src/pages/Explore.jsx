@@ -7,7 +7,7 @@ export function Explore({ stays }) {
   return (
     <main className="explore-container">
       <span>{stays.length}+ stays</span>
-    <h1>Find Places to stay</h1>
+    <h1>Find Places to stay<i class="fas fa-truck"></i></h1>
     <StayFilter/>
     <StayList stays={stays}/>
 
