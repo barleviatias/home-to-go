@@ -20,7 +20,7 @@
         "name": "Ribeira Charming Duplex",
         "imgUrls": ["https://a0.muscache.com/im/pictures/88318135-5f04-4e68-bca3-1b81d0d6e013.jpg?im_w=720", "otherImg.jpg"],
         "price": 80.00,
-        "summary": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
+        "desc": "Fantastic duplex apartment with three bedrooms, located in the historic area of Porto, Ribeira (Cube)...",
         "capacity": 8,
         "stayType":"entire place",
         "propertyType":"loft",
@@ -63,7 +63,7 @@
         "name": "Casa Rosa",
         "imgUrls": ["https://a0.muscache.com/im/pictures/prohost-api/Hosting-49314202/original/fd44afb2-be9d-4528-8669-a63994f7002d.jpeg?im_w=1200", "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49314202/original/c78621a0-1704-48f2-b348-cda4cc8d87af.jpeg?im_w=720" , "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49314202/original/e8cfbba4-bed6-4d7f-9587-0e70db5167d8.jpeg?im_w=720" , "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49314202/original/6a51c525-c231-4020-acea-1a544ad1b18a.jpeg?im_w=720" , "https://a0.muscache.com/im/pictures/prohost-api/Hosting-49314202/original/9df15e61-ebed-404e-8d8f-778bd30045f8.jpeg?im_w=720"],
         "price": 89.00,
-        "summary": "Living/dining room with local TV, CD player and dinette. Smoking not allowed. Internet (Wireless LAN [WLAN]). Sleeping room with 2 bunk beds. Sleeping room with 1 single bed. Sleeping room with 2 single beds. Sleeping room with 2 single beds. Sleeping room with 2 single beds. Sleeping room with 3 single beds. Open kitchen with 4 hot plates, micro wave, oven, dining table, dishwasher, fridge and deep freezer.Bath/shower/WC. Terrace 60 m2, terrace furniture, 2 deck chairs. Other equipment: hair dryer, iron, washing machine, dryer. Groups of youngsters under 25 years on request. HUTB045296 Additional service charges may have to be paid locally on-site, see house rules and house manual for details. Please don't hesitate to contact us should you have any questions. Thank you.",
+        "desc": "Living/dining room with local TV, CD player and dinette. Smoking not allowed. Internet (Wireless LAN [WLAN]). Sleeping room with 2 bunk beds. Sleeping room with 1 single bed. Sleeping room with 2 single beds. Sleeping room with 2 single beds. Sleeping room with 2 single beds. Sleeping room with 3 single beds. Open kitchen with 4 hot plates, micro wave, oven, dining table, dishwasher, fridge and deep freezer.Bath/shower/WC. Terrace 60 m2, terrace furniture, 2 deck chairs. Other equipment: hair dryer, iron, washing machine, dryer. Groups of youngsters under 25 years on request. HUTB045296 Additional service charges may have to be paid locally on-site, see house rules and house manual for details. Please don't hesitate to contact us should you have any questions. Thank you.",
         "capacity": 12,
         "stayType":"entire place",
         "propertyType":"villa",
@@ -108,7 +108,7 @@
         "name": "Shinjuku Tokyo Free PocketWifi",
         "imgUrls": ["https://a0.muscache.com/im/pictures/2d4c7d10-d74d-4456-9c8e-41cd1e3b41a7.jpg?im_w=1200", "https://a0.muscache.com/im/pictures/44ce2ed2-2b85-427e-b3e8-60b6b25faba4.jpg?im_w=720" , "https://a0.muscache.com/im/pictures/e844c5e7-6eb1-4622-aff2-792796024969.jpg?im_w=720" , "https://a0.muscache.com/im/pictures/15ecd68c-eacd-4c4f-8a5c-52b75356e7ad.jpg?im_w=720" , "https://a0.muscache.com/im/pictures/17b3a246-2ec9-445b-ab29-baf4f97d3415.jpg?im_w=720"],
         "price": 89.00,
-        "summary": "optical line! Private house! Near the station! Free wi-fi! With kitchen! For girls-only gatherings, birthday parties, moms-only gatherings, cosplay photography, conference use, etc.! Any number of people can come and go! It's easy because you can reach it by walking straight from Takadanobaba Station, which is a very convenient place! 40% OFF for 30 nights or more !! NURO optical line Download heavy videos quickly! You can enjoy telework and games comfortably. Since it is a private house, you can use it all freely.",
+        "desc": "optical line! Private house! Near the station! Free wi-fi! With kitchen! For girls-only gatherings, birthday parties, moms-only gatherings, cosplay photography, conference use, etc.! Any number of people can come and go! It's easy because you can reach it by walking straight from Takadanobaba Station, which is a very convenient place! 40% OFF for 30 nights or more !! NURO optical line Download heavy videos quickly! You can enjoy telework and games comfortably. Since it is a private house, you can use it all freely.",
         "capacity": 12,
         "stayType":"entire place",
         "propertyType":"villa",
@@ -153,7 +153,7 @@
         "name": "The Bird House at Invergarry Windermere",
         "imgUrls": ["https://a0.muscache.com/im/pictures/a96d3103-ab15-4822-84b6-0a7e4fdc968e.jpg?im_w=1200", "https://a0.muscache.com/im/pictures/75ea1eff-b77f-4101-8fa6-a2c38a312d20.jpg?im_w=720" , "https://a0.muscache.com/im/pictures/49b36642-ff06-4e88-958d-a255abf6fd3e.jpg?im_w=720" , "https://a0.muscache.com/im/pictures/a1130c18-07fa-499f-8edb-58c04e936371.jpg?im_w=720" , "https://a0.muscache.com/im/pictures/8a905044-513b-4276-9e32-b75f4e422585.jpg?im_w=720"],
         "price": 89.00,
-        "summary": "French doors from the courtyard to open plan fully equipped kitchen, dining & living area has high quality fittings & fixtures. Bedroom has a double bed, flat creen TV. The Ensuite leads from the bedroom. A three-piece bathroom suite including a rain shower, hair washing head and jacuzzi bath. All rooms have underfloor heating and mood lighting. Pets welcome on request for an additional £20 per stay. Designated off street parking is provided for one car. Total indoor square footage 360 SF",
+        "desc": "French doors from the courtyard to open plan fully equipped kitchen, dining & living area has high quality fittings & fixtures. Bedroom has a double bed, flat creen TV. The Ensuite leads from the bedroom. A three-piece bathroom suite including a rain shower, hair washing head and jacuzzi bath. All rooms have underfloor heating and mood lighting. Pets welcome on request for an additional £20 per stay. Designated off street parking is provided for one car. Total indoor square footage 360 SF",
         "capacity": 2,
         "stayType":"entire place",
         "propertyType":"villa",
@@ -198,9 +198,13 @@
       {
         "_id": "o1226",
         "createdAt": 9898989,
-        "buyer": {
+        "user": {
           "_id": "u102",
           "fullname": "Toto Loto"
+        },
+        "host": {
+          "_id": "u103",
+          "fullname": "momo lomo"
         },
         "totalPrice": 280,
         "startDate": "2025/10/15",
@@ -222,7 +226,7 @@
         "_id": "u101",
         "fullname": "popo lopo",
         "imgUrl": "src/assets/img/avatar.png",
-        "isAdmin": false,
+        "isHost": false,
         "username" : "popo",
         "password" : "popo1"
       },
@@ -230,7 +234,7 @@
         "_id": "u102",
         "fullname": "toto loto",
         "imgUrl": "src/assets/img/avatar.png",
-        "isAdmin": false,
+        "isHost": false,
         "username" : "toto",
         "password" : "toto1"
       }
