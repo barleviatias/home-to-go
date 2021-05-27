@@ -67,11 +67,15 @@ export class MainFilter extends Component {
                     </label>
 
 
-                    <label htmlFor="guests">
-                        <span>Adults</span>
-                        <input type="number" id="guests" name="adults" min="0" placeholder="Ages 13 or above" onChange={this.handleChange} />
-                        <span>kids</span>
-                        <input type="number" id="guests" name="kids" min="0" placeholder="Ages 2–12" onChange={this.handleChange} />
+                    <label className="guests" htmlFor="guests">
+                        <div>
+                            <span>Adults</span>
+                            <input type="number" id="guests" name="adults" min="0" placeholder="Ages 13 or above" onChange={this.handleChange} />
+                        </div>
+                        <div>
+                            <span>kids</span>
+                            <input type="number" id="guests" name="kids" min="0" placeholder="Ages 2–12" onChange={this.handleChange} />
+                        </div>
                     </label>
                     <button onClick={this.onSearch}> <Link to="/explore">🔍</Link></button>
                 </form>

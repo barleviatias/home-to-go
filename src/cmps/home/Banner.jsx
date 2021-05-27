@@ -1,11 +1,13 @@
 
-
-
-export function Banner({name}) {
+export function Banner({ name, btnTxt, title, subtitle }) {
 
     return (
         <section className={"banner " + name}>
-            <button>Action</button>
+            <div>
+                <h1>{title}</h1>
+                <h2>{subtitle}</h2>
+                <button>{btnTxt}</button>
+            </div>
         </section>
     )
 }

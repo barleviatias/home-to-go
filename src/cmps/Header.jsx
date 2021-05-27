@@ -32,13 +32,13 @@ export class Header extends React.Component {
         return (
             <header className="main-header">
 
-                <NavLink to="/"><h1 className="logo">Home <img src={Logo} alt="logo" /> Go</h1></NavLink>
+                <NavLink to="/"><h1 className="logo">Home<img src={Logo} alt="logo"/>Go</h1></NavLink>
 
                 <MainFilter onSearch={onSearch} />
 
                 <nav>
-                    <NavLink to="/explore">Explore</NavLink>
-                    <NavLink to="/stay">StayDetails</NavLink>
+                    {/* <NavLink to="/explore">Explore</NavLink> */}
+                    {/* <NavLink to="/stay">StayDetails</NavLink> */}
                     <NavLink to="/login">login</NavLink>
                     <button className="user-menu-btn">
                         <span>☰</span>

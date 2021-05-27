@@ -13,9 +13,9 @@ export class Home extends Component {
       <main>
         {/* <Hero/> */}
         <FilterGallery />
-        <Banner name={'banner-top'} />
+        <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'}/>
         <FilterGallery />
-        <Banner name={'banner-bottom'} />
+        <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} />
       </main>
 
     )

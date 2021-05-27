@@ -1,18 +1,58 @@
-.banner{
+.banner {
+    position: relative;
     width: 100%;
-    height: 250px;
+    height: 400px;
     border-radius: 10px;
     margin-bottom: 50px;
     background-repeat: no-repeat;
     background-size: cover;
 
-    &.banner-top{
+    div {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+        position: absolute;
+        top: 30%;
+        left: 8%;
+
+        h1 {
+            font-size: 2.5rem;
+            line-height: 2.6rem;
+            width: 60%;
+        }
+        h2 {
+            font-size: 18px;
+            font-weight: 100;
+            width: 60%;
+        }
+
+        button {
+                     font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+        }
+    }
+
+    &.banner-top {
         background-image: url("https://a0.muscache.com/im/pictures/4602a952-afa0-46a6-b08a-24e67e958309.jpg?im_w=720");
-
+        button{
+            background-color: #222222;
+            color: white;
+        }
     }
 
-    &.banner-bottom{
+    &.banner-bottom {
         background-image: url("https://a0.muscache.com/im/pictures/5b4dc94a-0b4c-4c27-b50f-9c5a5b93c775.jpg?im_w=720");
+        div{
+            color:white ;
+        }
+        button{
+            background-color: white;
+            color: #222222;
+        }
     }
-
 }
