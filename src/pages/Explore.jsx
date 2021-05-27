@@ -6,7 +6,7 @@ export function Explore({ stays }) {
 
   return (
     <main className="explore-container">
-
+      <span>{stays.length}+ stays</span>
     <h1>Find Places to stay</h1>
     <StayFilter/>
     <StayList stays={stays}/>

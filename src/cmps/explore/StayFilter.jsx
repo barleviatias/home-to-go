@@ -5,7 +5,7 @@ export class StayFilter extends Component {
 
     render() {
         return (
-            <section>
+            <section className="stay-filter">
                 <button>Cancellation flexibillty</button>
                 <button>Type of place</button>
                 {/* entire place */}

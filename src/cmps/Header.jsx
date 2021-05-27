@@ -9,11 +9,8 @@ export class Header extends React.Component {
     render() {
         return (
             <header className="main-header">
-                
-                <div className="logo" >
-                    <img src={Logo} alt="logo" />
-                    <NavLink to="/"><h1>Home To Go</h1></NavLink>
-                </div>
+
+                <NavLink to="/"><h1 className="logo">Home <img src={Logo} alt="logo" /> Go</h1></NavLink>
 
                 <MainFilter />
 
@@ -22,7 +19,7 @@ export class Header extends React.Component {
                     <NavLink to="/stay">StayDetails</NavLink>
                     <button className="user-menu-btn">
                         <span>☰</span>
-                        <img src={Avatar}/>
+                        <img src={Avatar} />
                     </button>
                 </nav>
             </header>
