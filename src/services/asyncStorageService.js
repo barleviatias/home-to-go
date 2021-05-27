@@ -35,12 +35,12 @@ function query(entityType, trip = { guests: { adults: 0, kids: 0, baby: 0 }, loc
     return Promise.resolve(entities)
 }
 
-function _filterByTripInfo(entities, trip) {
-    const address = trip.loc.address.toUpperCase();
+function _filterByTripInfo(entities, { loc, guests }) {
+    const address = loc.address.toUpperCase();
+    const capacity = guests.adults + guests.kids + guests.baby;
     var filteredEntities = entities.filter((entitie) => {
-        return entitie.loc.address.toUpperCase().includes(address)
+        return entitie.loc.address.toUpperCase().includes(address) && capacity <= entitie.capacity;
     })
-    console.log('filtered', filteredEntities, trip.loc.address);
     return filteredEntities
 }
 

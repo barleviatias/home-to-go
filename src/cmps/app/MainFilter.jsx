@@ -37,7 +37,6 @@ export class MainFilter extends Component {
 
     onSearch = (ev) => {
         ev.preventDefault();
-        console.log('trip from onSearch', this.state.trip);
         this.props.onSearch(this.state.trip)
     }
 

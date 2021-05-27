@@ -39,3 +39,15 @@ export function removeStay(stayId) {
     }
   }
 }
+
+// export function loadStays(trip) {
+//   return async dispatch => {
+//     try {
+//       const stays = await stayService.query(trip)
+//       dispatch({ type: 'SET_STAYS', stays })
+
+//     } catch (err) {
+//       console.log('StayActions: err in loadStays', err)
+//     }
+//   }
+// } 

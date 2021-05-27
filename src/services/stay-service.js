@@ -11,6 +11,7 @@ export const stayService = {
     remove,
     update,
     add,
+    // getTopRatedStays
     // getStayImage,
     // getPriceData,
     // getDateData
@@ -23,7 +24,7 @@ window.stayService = stayService
 // stayService.signup({fullname: 'Muki G', stayname: 'muki', password:'123', score: 100})
 
 function query(trip) {
-    return storageService.query('stay',trip)
+    return storageService.query('stay', trip)
 
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`stay${queryStr}`)
@@ -55,33 +56,28 @@ async function add(stay) {
     // if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
 }
 
-// async function getStayImage(txt) {
-//     const res = await axios.get(`https://pixabay.com/api/?key=${IMG_API_KEY}&q=${txt}&image_type=photo`)
-//     if (res.data.hits.length === 0 || !res.data.hits[0] || !res.data.hits[0].webformatURL) return "https://images-na.ssl-images-amazon.com/images/I/61%2B-nrfoudS._AC_SX425_.jpg"
-//     const imgUrl = res.data.hits[0].webformatURL
-//     return imgUrl
+// async function getTopRatedStays() {
+//     let stays = await storageService.query('stay')
+//     stays = stays.filter(stay)
+//     const stays = await stayService.query(trip)
+
+//     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
+//     // return httpService.get(`stay${queryStr}`)
 // }
 
-// async function getPriceData() {
-//     const stays = await query()
-//     return stays.reduce((acc, stay) => {
-//         const { type } = stay
-//         if (!acc[type]) acc[type] = 0
-//         acc[type] += stay.price
+
+// getRate = () => {
+//     const rates = this.state.stay.reviews.map(review => review.avgRate)
+//     const sum = rates.reduce((acc, rate) => {
+//         acc += rate
 //         return acc
-//     }, {})
+//     }, 0)
+//     return sum / rates.length
 // }
 
-// async function getDateData() {
-//     const stays = await query()
-//     return stays.reduce((acc, stay, idx) => {
-//         const { createdAt } = stay
-//         const year = new Date(createdAt).getFullYear()
-//         if (!acc[year]) acc[year] = 0
-//         acc[year]++
-//         return acc
-//     }, {})
-// }
+
+
+
 
 
 
