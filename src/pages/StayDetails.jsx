@@ -17,45 +17,88 @@ export class StayDetails extends Component {
     this.setState({ stay })
   }
 
+  getRate = () => {
+    const rates = this.state.stay.reviews.map(review => review.avgRate)
+    const sum = rates.reduce((acc, rate) => {
+      acc += rate
+      return acc
+    }, 0)
+    return sum / rates.length
+  }
+
 
   render() {
     const { stay } = this.state
 
     if (!stay) return <h1>loading...</h1>
-    const { capacity, summary, price, stayType, name, host } = stay;
+    const { loc, capacity, summary, price, propertyType, reviews, name, host } = stay
 
     return (
       <main className="stay-details-container">
-        <h1>Stay Details</h1>
-        <h4>stay title {name}</h4>
-        <div className="stay-short-info">
-          <div>
-            <p>4.5 start</p>
-            <span>•</span>
-            <p>tel aviv arlozorov</p>
+
+        <section className="stay-details-header">
+          <h1>{name}</h1>
+          <div className="stay-short-info">
+            <div>
+              <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getRate()}<p>( {reviews.length} reviews )</p></span>
+              <span>•</span>
+              <p>{loc.address}</p>
+            </div>
+            <div>
+              <button><p><i className="fas fa-external-link-alt"></i>share</p></button>
+              <button className="stay-save-btn"><p><i className="far fa-heart"></i>save</p></button>
+            </div>
           </div>
-          <div>
-            <button>share</button>
-            <button>save</button>
-          </div>
-        </div>
+        </section>
+
         <div className="stay-gallery">
           {stay.imgUrls.map(imgUrl => <img src={imgUrl} alt="stay-gallery-preview-img" />)}
         </div>
 
-        <div className="stay-info-continer">
+        <section className="stay-info-container">
+
           <div className="stay-long-info">
+
             <div className="stay-long-info-header">
-              <span>{`${stayType} hosted by ${host.fullname}`}</span>
+              <h2>{`${propertyType} hosted by ${host.fullname}`}</h2>
               <img src={host.imgUrl} alt="" />
             </div>
+
             <span>capacity: {capacity} guests</span>
             <span>{summary}</span>
+
           </div>
-          <div className="order-form">
-            <span>Price ${price}</span>
+
+          <div className="stay-details-botton-right">
+            <div className="order-form">
+              <div className="order-form-header">
+                <p><span className="order-price">${price}</span><span> / night</span></p>
+                <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getRate()}<p>( {reviews.length} reviews )</p></span>
+              </div>
+
+              <form>
+                <div className="order-form-date-picker">
+                  <label className="check-in-lable" htmlFor="check-in">
+                    <span>Check in</span>
+                    <input name="check-in" id="check-in" type="text" placeholder="Add dates" />
+                  </label>
+                  <label className="check-out-lable" htmlFor="check-out">
+                    <span>Check out</span>
+                    <input name="check-out" id="check-out" type="text" placeholder="Add dates" />
+                  </label>
+                </div>
+
+                <label className="guests-lable" htmlFor="guests">
+                  <span>Guests</span>
+                  <input name="guests" id="guests" type="text" placeholder="Add guests" />
+                </label>
+                <button className="book-stay-btn">Check availability</button>
+              </form>
+            </div>
+            <span className="report-listing-btn"><i className="fab fa-font-awesome-flag"></i><p>Report this listing</p></span>
           </div>
-        </div>
+
+        </section>
       </main>
     );
   }
