@@ -10,7 +10,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays } from './store/actions/stayActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
-import { updateUser, loadUsers } from './store/actions/userActions'
+import { updateUser, loadUsers, logout } from './store/actions/userActions'
 
 class _App extends Component {
 
@@ -28,11 +28,11 @@ class _App extends Component {
 
   render() {
 
-    const { stays, orders, updateUser, trip, addTrip } = this.props
+    const { stays, orders, updateUser, trip, addTrip, loggedInUser, logout } = this.props
 
     return (
       <Router>
-        <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} />
+        <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout}/>
         <Switch>
           <Route path='/login' component={LoginSignup} />
           <Route path='/stay/:stayId' component={StayDetails} />
@@ -52,7 +52,8 @@ const mapStateToProps = (state) => {
     // orders: state.ordersModule.order,
     // users: state.usersModule.user
     trip: state.tripModule.trip,
-    users: state.userModule.users
+    users: state.userModule.users,
+    loggedInUser: state.userModule.loggedInUser
   }
 }
 
@@ -61,7 +62,8 @@ const mapDispatchToProps = {
   addTrip,
   updateUser,
   loadUsers,
-  loadTrip
+  loadTrip,
+  logout
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

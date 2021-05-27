@@ -3,36 +3,32 @@ import { NavLink } from 'react-router-dom'
 import { MainFilter } from './app/MainFilter'
 import Logo from "../assets/img/logo.png"
 import Avatar from "../assets/img/avatar.png"
+import { NavMenu } from './app/NavMenu'
 
 
 export class Header extends React.Component {
-    state = {
-        user:"",
-      }
-      componentDidMount() {
-        this.loadUser()
-        console.log(this.state);
-      }
-    
-      loadUser = async () => {
-        let user = sessionStorage.getItem('loggedinUser')
-        console.log(user);
-        user = JSON.parse(user)
 
-        this.setState({ user })
-        // console.log(user.imgUrl);
-      }
+    state = {
+        isUserMenu: false
+    }
+
+    toggleUserMenu = () => {
+        this.setState({ isUserMenu: !this.state.isUserMenu })
+    }
+
     render() {
-        const {trip, addTrip,onSearch} = this.props
-        let imgUrl=""
-        if(this.state.user){
-             imgUrl=this.state.user.imgUrl
-        }
+        const { trip, addTrip, onSearch, loggedInUser,logout } = this.props
+
+        const { isUserMenu } = this.state
+
+        const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
+
+
 
         return (
             <header className="main-header">
 
-                <NavLink to="/"><h1 className="logo">Home<img src={Logo} alt="logo"/>Go</h1></NavLink>
+                <NavLink to="/"><h1 className="logo">Home<img src={Logo} alt="logo" />Go</h1></NavLink>
 
                 <MainFilter onSearch={onSearch} />
 
@@ -40,12 +36,13 @@ export class Header extends React.Component {
                     {/* <NavLink to="/explore">Explore</NavLink> */}
                     {/* <NavLink to="/stay">StayDetails</NavLink> */}
                     <NavLink to="/login">login</NavLink>
-                    <button className="user-menu-btn">
+                    <button onClick={this.toggleUserMenu} className="user-menu-btn">
                         <span>☰</span>
-                        {imgUrl&&<img src={imgUrl} alt=""/>}
-                        {!imgUrl&&<img src={Avatar} alt=""/>}
+                        <img src={imgUrl} alt="avatar" />
+
                     </button>
                 </nav>
+                {isUserMenu && <NavMenu logout={logout} />}
             </header>
         )
     }

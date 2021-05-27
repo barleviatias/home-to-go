@@ -105,7 +105,7 @@ export class StayDetails extends Component {
               <div>
                 <i class="fas fa-medal"></i>
                 <div>
-                  <h3>{name} is a Superhost</h3>
+                  <h3>{host.fullname} is a Superhost</h3>
                   <h4>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</h4>
                 </div>
               </div>
