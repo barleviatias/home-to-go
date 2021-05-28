@@ -1,16 +1,14 @@
 // Colors
-$clr1: rgb(45, 183, 224);
-$clr2: #092f32;
-$clr3: #574f7d;
-$clr4: #95adbe;
-$clr5: #dff0ea;
-$clr6: #fff;
-$clr-dark: rgb(32, 32, 32);
-$clr-light: rgb(243, 243, 243);
-$clr-success: rgb(35, 155, 45);
-$clr-alert: rgb(236, 131, 131);
+
+$clr-brand: #FF5A5F;
+$clr-dark: #484848;
+$clr-light: #ffffff;
+$clr-gray: #767676;
+$clr-green: #00A699;
+$clr-orange: #FC642D;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
+$wide-breakpoint: 1400px;

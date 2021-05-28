@@ -17,7 +17,7 @@ export class Header extends React.Component {
     }
 
     render() {
-        const { trip, addTrip, onSearch, loggedInUser,logout } = this.props
+        const { trip, addTrip, onSearch, loggedInUser, logout } = this.props
 
         const { isUserMenu } = this.state
 
@@ -27,22 +27,24 @@ export class Header extends React.Component {
 
         return (
             <header className="main-header">
+                <section>
+                    <NavLink to="/"><h1 className="logo">Home<img src={Logo} alt="logo" />Go</h1></NavLink>
+                    <MainFilter onSearch={onSearch} />
 
-                <NavLink to="/"><h1 className="logo">Home<img src={Logo} alt="logo" />Go</h1></NavLink>
+                    <nav>
+                        {/* <NavLink to="/explore">Explore</NavLink> */}
+                        {/* <NavLink to="/stay">StayDetails</NavLink> */}
+                        <NavLink to="/login">login</NavLink>
+                        <button onClick={this.toggleUserMenu} className="user-menu-btn">
+                            <span>☰</span>
+                            <img src={imgUrl} alt="avatar" />
 
-                <MainFilter onSearch={onSearch} />
+                        </button>
+                    </nav>
 
-                <nav>
-                    {/* <NavLink to="/explore">Explore</NavLink> */}
-                    {/* <NavLink to="/stay">StayDetails</NavLink> */}
-                    <NavLink to="/login">login</NavLink>
-                    <button onClick={this.toggleUserMenu} className="user-menu-btn">
-                        <span>☰</span>
-                        <img src={imgUrl} alt="avatar" />
-
-                    </button>
-                </nav>
-                {isUserMenu && <NavMenu logout={logout} />}
+                    {isUserMenu && <NavMenu logout={logout} />}
+                </section>
+                
             </header>
         )
     }

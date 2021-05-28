@@ -3,7 +3,7 @@
 }
 
 ::selection {
-    background-color: $clr1;
+    background-color: $clr-brand;
     color: #fff;
 }
 
@@ -27,9 +27,6 @@ img {
     width: 100%;
 }
 
-main {
-    margin: 15vh 10vw;
-}
 
 section {
     width: 100%;

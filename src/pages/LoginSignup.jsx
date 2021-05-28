@@ -197,7 +197,7 @@ class _LoginSignup extends Component {
 		const { formType } = this.state;
 
 		return (
-			<main className="login-container">
+			<main className="login-container page">
 				{/* <h2> Login / Signup </h2> */}
 				<p>{this.state.msg}</p>
 				{loggedInUser && <button onClick={this.props.logout}>logged out</button>}

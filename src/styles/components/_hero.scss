@@ -1,10 +1,38 @@
 .main-hero{
+    position: relative;
     background-image: url('../../assets/img/hero.jpeg');
-    height: 400px;
-    position: absolute;
-    right: 0%;
-    left: 0%;
-    top: 0%;
+    height: 95vh;
+    background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    margin-bottom: 20px;
+
+
+    div{
+        position: absolute;
+        bottom: 15%;
+        left: 5%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+        
+        h1{
+            font-size: 2rem;
+            width: 50%;
+            color: $clr-light;
+        }
+
+        button {
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            padding: 10px 30px;
+            border: none;
+            border-radius: 8px;
+            background-color: $clr-dark;
+            color: $clr-light;
+        }
+
+    }
 }

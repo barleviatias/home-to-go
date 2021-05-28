@@ -49,7 +49,7 @@ onUpdateUser = () => {
 
     return (
         
-      <main className="user-details">
+      <main className="user-details page">
         <img src={imgUrl} alt=""/>
         <h1>hey {firstName[0]}</h1>
         <h1>Your Details</h1>

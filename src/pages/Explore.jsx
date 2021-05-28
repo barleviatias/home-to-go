@@ -5,7 +5,7 @@ import {StayFilter} from '../cmps/explore/StayFilter'
 export function Explore({ stays }) {
 
   return (
-    <main className="explore-container">
+    <main className="explore-container page">
       <span>{stays.length}+ stays</span>
     <h1>Find Places to stay</h1>
     <StayFilter/>

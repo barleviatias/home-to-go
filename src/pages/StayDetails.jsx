@@ -54,7 +54,7 @@ export class StayDetails extends Component {
     const { loc, capacity, desc, amenities, price, stayType, propertyType, reviews, name, host } = stay
 
     return (
-      <main className="stay-details-container">
+      <main className="stay-details-container page">
 
         <section className="stay-details-header">
           <h1>{name}</h1>

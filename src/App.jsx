@@ -8,7 +8,7 @@ import { Home } from './pages/Home';
 import { Header } from './cmps/Header';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadStays, loadTopRated ,loadNearby} from './store/actions/stayActions'
+import { loadStays, loadTopRated, loadNearby } from './store/actions/stayActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
 
@@ -41,7 +41,7 @@ class _App extends Component {
           <Route path='/explore' render={() => (<Explore stays={staysState.stays} />)} />
           <Route path='/stay' render={() => (<StayDetails />)} />
           <Route path='/user' render={() => (<UserDetails updateUser={updateUser} />)} />
-          <Route path='/' render={() => (<Home topRatedStays={staysState.topRatedStays} nearbayStays={staysState.nearbayStays} />)}  />
+          <Route path='/' render={() => (<Home topRatedStays={staysState.topRatedStays} nearbayStays={staysState.nearbayStays} />)} />
         </Switch>
       </Router>
     )

@@ -24,6 +24,31 @@
     }
 }
 
+
+@mixin header-mobile-layout {
+    @media (max-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+@mixin header-narrow-layout {
+    @media (min-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+@mixin header-normal-layout {
+    @media (min-width: $narrow-breakpoint) {
+        @content;
+    }
+}
+
+@mixin header-wide-layout {
+    @media (min-width: $normal-breakpoint) {
+        @content;
+    }
+}
+
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {
     position: relative;

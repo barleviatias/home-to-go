@@ -1,12 +1,14 @@
 
 
 
-export function Hero (){
+export function Hero() {
 
-    return(
-        <section className="main-hero">
-            <h2>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veritatis placeat corrupti nostrum ad quod doloremque.</h2>
-            <button>Action</button>
+    return (
+        <section className="main-hero full">
+            <div>
+                <h1>Introducing 100+ upgrades across our entire service</h1>
+                <button>learn what's new</button>
+            </div>
         </section>
     )
 }
