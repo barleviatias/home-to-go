@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { Link } from 'react-router-dom'
+import { DynamicModal } from '../app/DynamicModal'
 
 
 
@@ -7,32 +8,28 @@ export class MainFilter extends Component {
 
     state = {
         trip: {
-            guests: {
-                adults: 0,
-                kids: 0,
-                baby: 0
-            },
-            loc: {
-                address: '',
-            },
-            time: {
-                checkIn: '',
-                checkOut: ''
-            }
-        }
+            guests: { adults: 0, kids: 0 },
+            loc: { address: '' },
+            time: { checkIn: '', checkOut: '' }
+        },
+        modalType: ''
     }
 
     handleChange = (ev) => {
+
         ev.preventDefault()
-        const inputName = ev.target.name
-        let inputValue = ev.target.value;
-        if (ev.target.type === 'date') {
-            this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [inputName]: inputValue } } });
-        } else if (ev.target.id === 'guests') {
-            inputValue = +inputValue;
-            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [inputName]: +inputValue } } });
+
+        const { name, value, type } = ev.target
+
+        if (type === 'date') {
+            this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [name]: value } } });
         }
-        else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [inputName]: inputValue } } });
+
+        else if (type === 'number') {
+            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } });
+        }
+
+        else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
     onSearch = (ev) => {
@@ -40,11 +37,19 @@ export class MainFilter extends Component {
         this.props.onSearch(this.state.trip)
     }
 
-    render() {
+    toggleDynamicModal = (modalKey) => {
+        if (this.state.modalType === modalKey) this.setState({ modalType: '' })
+        else this.setState({ modalType: modalKey })
+    }
 
+    render() {
+        const { modalType } = this.state
+        console.log(modalType);
+        // const { guests } = this.state.trip
         const { address } = this.state.trip.loc;
         const { checkIn, checkOut } = this.state.trip.time;
-        // const { adult } = this.state.trip.guests;
+        const { kids, adults } = this.state.trip.guests;
+
         return (
             <section className="main-filter">
                 <form>
@@ -62,19 +67,27 @@ export class MainFilter extends Component {
                         <input type="date" value={checkOut} name="checkOut" id="check-out" placeholder="Add dates" onChange={this.handleChange} />
                     </label>
 
+                    <label onClick={() => { this.toggleDynamicModal('guests') }} className="guests" htmlFor="guests">
+                        <div>
+                            <span>Guests</span>
+                            <input value={kids + adults} id="guests" name="guests" placeholder="Add guests" />
+                        </div>
+                    </label>
 
-                    <label className="guests" htmlFor="guests">
+                    {modalType === 'guests' && <DynamicModal>
                         <div>
                             <span>Adults</span>
-                            <input type="number" id="guests" name="adults" min="0" placeholder="Ages 13 or above" onChange={this.handleChange} />
+                            <input type="number" name="adults" value={adults} min="0" placeholder="Ages 13 or above" onChange={this.handleChange} />
                         </div>
                         <div>
                             <span>kids</span>
-                            <input type="number" id="guests" name="kids" min="0" placeholder="Ages 2–12" onChange={this.handleChange} />
+                            <input type="number" name="kids" value={kids} min="0" placeholder="Ages 2–12" onChange={this.handleChange} />
                         </div>
-                    </label>
+                    </DynamicModal>}
+                    
                     <button onClick={this.onSearch}> <Link to="/explore">🔍</Link></button>
                 </form>
+
             </section>
         )
     }

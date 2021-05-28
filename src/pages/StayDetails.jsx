@@ -10,6 +10,14 @@ export class StayDetails extends Component {
 
   componentDidMount() {
     this.loadStay()
+    this.scrollUp()
+  }
+
+  scrollUp = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   loadStay = async () => {
