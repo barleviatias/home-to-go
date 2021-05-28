@@ -28,15 +28,16 @@ function loadDB() {
     }
 }
 
-function query(entityType, trip = { guests: { adults: 0, kids: 0, baby: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }) {
+function query(entityType , trip = { guests: { adults: 0, kids: 0}, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
     if (entityType === 'stay') entities = _filterByTripInfo(entities, trip)
     return Promise.resolve(entities)
 }
 
 function _filterByTripInfo(entities, { loc, guests }) {
+
     const address = loc.address.toUpperCase();
-    const capacity = guests.adults + guests.kids + guests.baby;
+    const capacity = guests.adults + guests.kids;
     var filteredEntities = entities.filter((entitie) => {
         return entitie.loc.address.toUpperCase().includes(address) && capacity <= entitie.capacity;
     })

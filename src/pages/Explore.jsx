@@ -12,6 +12,7 @@ export function Explore({ stays }) {
   }
 
   scrollUp()
+  
   return (
     <main className="explore-container page">
       <span>{stays.length}+ stays</span>

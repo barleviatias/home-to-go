@@ -27,7 +27,6 @@ class _App extends Component {
   }
   
 
-
   render() {
 
     const { stays, updateUser, trip, addTrip, loggedInUser, logout ,loadStays} = this.props
