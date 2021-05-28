@@ -58,8 +58,20 @@ async function add(stay) {
 }
 
 
-async function getTopRatedStays() {
-    var stays = await storageService.query('stay')
+
+// async function getTopRatedStays(stays) {
+//     stays = stays.map(stay => {
+//         stay.avgRate = _getRate(stay);
+//         return stay
+//     })
+//     stays.sort(function (a, b) {
+//         return b.avgRate - a.avgRate
+//     })
+//     return stays.slice(0, 4)
+//     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
+//     // return httpService.get(`stay${queryStr}`)
+// }
+function getTopRatedStays(stays) {
     stays = stays.map(stay => {
         stay.avgRate = _getRate(stay);
         return stay
@@ -67,8 +79,7 @@ async function getTopRatedStays() {
     stays.sort(function (a, b) {
         return b.avgRate - a.avgRate
     })
-    return Promise.resolve(stays.slice(0, 4))
-
+    return stays.slice(0, 4)
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`stay${queryStr}`)
 }
@@ -82,13 +93,11 @@ function _getRate(stay) {
     return sum / rates.length
 }
 
-async function getNearbyStays(location) {
-    var stays = await storageService.query('stay')
+function getNearbyStays(stays, location) {
     stays = stays.filter(stay => {
         return stay.loc.address.toUpperCase().includes(location.toUpperCase())
     })
-    return Promise.resolve(stays.slice(0, 4))
-
+    return stays.slice(0, 4)
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`stay${queryStr}`)
 }

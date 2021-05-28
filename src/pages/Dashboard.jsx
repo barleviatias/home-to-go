@@ -1,5 +1,9 @@
 import { Component } from 'react';
 import { DashHeader } from '../cmps/dashboard/DashHeader'
+import { MyPlaces } from '../cmps/dashboard/MyPlaces'
+import { FinanceStatistic } from '../cmps/dashboard/FinanceStatistic'
+import { RateStatistic } from '../cmps/dashboard/RateStatistic'
+
 
 export class Dashboard extends Component {
 
@@ -11,10 +15,19 @@ export class Dashboard extends Component {
         this.props.updateUser({ ...this.props.loggedInUser, isHost: true })
     }
 
+    onSelectAction = (ev) => {
+        const action = ev.target.value;
+        this.setState({ action })
+    }
+
     render() {
+        const { action } = this.state
         return (
             <main className="page">
-                <DashHeader />
+                <DashHeader onSelectAction={this.onSelectAction} />
+                {(action === '' || action === 'my places') && <MyPlaces />}
+                { action === 'finance stat' && <FinanceStatistic />}
+                { action === 'rate stat' && <RateStatistic />}
             </main>
         )
     }

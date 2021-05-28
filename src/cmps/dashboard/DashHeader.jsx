@@ -1,12 +1,12 @@
 
-export function DashHeader (){
+export function DashHeader ({onSelectAction}){
 
     return (
         <div className="dash-nav-container">
-            <button value="add stay">Add Stay</button>
-            <button value="rate stat">Rates Statistic</button>
-            <button value="finance stat">Financial Statistic</button>
-            <button value="my places">My Places</button>
+            <button value="add stay" onClick={onSelectAction}>Add Stay</button>
+            <button value="rate stat" onClick={onSelectAction}>Rates Statistic</button>
+            <button value="finance stat" onClick={onSelectAction}>Financial Statistic</button>
+            <button value="my places" onClick={onSelectAction}>My Places</button>
         </div>
     )
 }

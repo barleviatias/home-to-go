@@ -63,3 +63,15 @@ export function loadNearby(location) {
     }
   }
 } 
+
+export function loadHostStays(hostId) {
+  return async dispatch => {
+    try {
+      const stays = await stayService.getHostStays(hostId)
+      dispatch({ type: 'SET_HOST_STAYS', stays })
+
+    } catch (err) {
+      console.log('StayActions: err in loadHostStays', err)
+    }
+  }
+} 

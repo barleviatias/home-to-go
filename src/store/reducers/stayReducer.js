@@ -1,15 +1,18 @@
 const initialState = {
   stays: [],
-  topRatedStays: [],
-  nearbayStays: []
+  // topRatedStays: [],
+  // nearbayStays: [],
+  // loggedHostStays:[]
 }
 
 export function stayReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_TOP_RATED':
-      return { ...state, topRatedStays: action.stays }
+      return { ...state, stays: action.stays }
+    case 'SET_HOST_STAYS':
+      return { ...state, stays: action.stays }
     case 'SET_NEARBY':
-      return { ...state, nearbayStays: action.stays }
+      return { ...state, stays: action.stays }
     case 'SET_STAYS':
       return { ...state, stays: action.stays }
     case 'ADD_STAY':
