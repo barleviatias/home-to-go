@@ -1,6 +1,6 @@
 import { Component } from "react";
 import { Link } from 'react-router-dom'
-import { DateRange } from './DateRange'
+
 
 
 export class MainFilter extends Component {
@@ -44,7 +44,7 @@ export class MainFilter extends Component {
 
         const { address } = this.state.trip.loc;
         const { checkIn, checkOut } = this.state.trip.time;
-        const { adult } = this.state.trip.guests;
+        // const { adult } = this.state.trip.guests;
         return (
             <section className="main-filter">
                 <form>
@@ -52,9 +52,6 @@ export class MainFilter extends Component {
                         <span>Location</span>
                         <input name="address" value={address} id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
                     </label>
-
-
-                    {/* <DateRange /> */}
 
                     <label htmlFor="check-in">
                         <span>Check in</span>

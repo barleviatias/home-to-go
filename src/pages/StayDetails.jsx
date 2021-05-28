@@ -1,4 +1,3 @@
-import { lighten } from "@material-ui/core";
 import { Component } from "react";
 import { stayService } from "../services/stay-service";
 
@@ -92,7 +91,7 @@ export class StayDetails extends Component {
                 <i className="fas fa-home"></i>
                 <div>
                   <h3>{stayType}</h3>
-                  <h4>{stayType === 'entire place' ? "You\'ll have the place to yourself." : "You\'ll have a private room to yourself."}</h4>
+                  <h4>{stayType === 'entire place' ? "You'll have the place to yourself." : "You'll have a private room to yourself."}</h4>
                 </div>
               </div>
               <div>

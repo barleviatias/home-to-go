@@ -17,7 +17,7 @@ export class Header extends React.Component {
     }
 
     render() {
-        const { trip, addTrip, onSearch, loggedInUser, logout } = this.props
+        const { onSearch, loggedInUser, logout } = this.props
 
         const { isUserMenu } = this.state
 

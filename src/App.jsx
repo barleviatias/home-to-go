@@ -30,7 +30,7 @@ class _App extends Component {
 
   render() {
 
-    const { staysState, orders, updateUser, trip, addTrip, loggedInUser, logout } = this.props
+    const { staysState, updateUser, trip, addTrip, loggedInUser, logout } = this.props
 
     return (
       <Router>

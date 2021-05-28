@@ -41,7 +41,7 @@ onUpdateUser = () => {
     const currUser = this.state.user
     
     if (!currUser) return <h1>loading...</h1>
-    const {fullname,username,email,id,imgUrl}=currUser
+    const {fullname,username,email,imgUrl}=currUser
     const firstName=fullname.split(' ')
     const isEditMode=this.state.isEditMode
     console.log(isEditMode);
