@@ -16,20 +16,14 @@ export class MainFilter extends Component {
     }
 
     handleChange = (ev) => {
-
-        ev.preventDefault()
-
+        if (ev.timeStamp) ev.preventDefault()
         const { name, value, type } = ev.target
-
         if (type === 'date') {
             this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [name]: value } } });
-        }
-
-        else if (type === 'number') {
+        } else if (type === 'number') {
+            if (value < 0) return
             this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } });
-        }
-
-        else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
+        } else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
     onSearch = (ev) => {
@@ -44,8 +38,6 @@ export class MainFilter extends Component {
 
     render() {
         const { modalType } = this.state
-        console.log(modalType);
-        // const { guests } = this.state.trip
         const { address } = this.state.trip.loc;
         const { checkIn, checkOut } = this.state.trip.time;
         const { kids, adults } = this.state.trip.guests;
@@ -75,16 +67,31 @@ export class MainFilter extends Component {
                     </label>
 
                     {modalType === 'guests' && <DynamicModal>
-                        <div>
-                            <span>Adults</span>
-                            <input type="number" name="adults" value={adults} min="0" placeholder="Ages 13 or above" onChange={this.handleChange} />
+                        <div className="modal-label">
+                            <div>
+                                <span>Adults</span>
+                                <span>Ages 13 or above</span>
+                            </div>
+                            <div>
+                                <button type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults + 1) } }) }}>+</button>
+                                <span>{adults}</span>
+                                <button type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults - 1) } }) }}>-</button>
+                            </div>
                         </div>
-                        <div>
-                            <span>kids</span>
-                            <input type="number" name="kids" value={kids} min="0" placeholder="Ages 2–12" onChange={this.handleChange} />
+                        <div className="modal-label">
+                            <div>
+                                <span>Kids</span>
+                                <span>Ages 2–12</span>
+                            </div>
+                            <div>
+                                <button type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids + 1) } }) }}>+</button>
+                                <span>{kids}</span>
+                                <button type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids - 1) } }) }}>-</button>
+                            </div>
                         </div>
+
                     </DynamicModal>}
-                    
+
                     <button onClick={this.onSearch}> <Link to="/explore">🔍</Link></button>
                 </form>
 
