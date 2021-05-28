@@ -25,7 +25,7 @@ class _App extends Component {
     this.props.addTrip(trip);
     this.props.loadStays(trip);
   }
-
+  
 
 
   render() {

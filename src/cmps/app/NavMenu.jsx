@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 
 
-export function NavMenu({ logout }) {
+export function NavMenu({ logout , toggleUserMenu }) {
 
         let sessionUser = sessionStorage.getItem('loggedinUser');
         sessionUser = JSON.parse(sessionUser);
 
-        return (<section className="user-menu">{!sessionUser && <div>
+        return (<section className="user-menu" onClick={toggleUserMenu}>{!sessionUser && <div>
                 <div>
                         <Link to="/login">log in</Link>
                         <Link to="/login">sign up</Link>

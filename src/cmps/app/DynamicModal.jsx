@@ -1,4 +1,4 @@
-import { Children, Component } from "react";
+import {  Component } from "react";
 
 
 export class DynamicModal extends Component {

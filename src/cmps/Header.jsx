@@ -42,7 +42,7 @@ export class Header extends React.Component {
                         </button>
                     </nav>
 
-                    {isUserMenu && <NavMenu logout={logout} />}
+                    {isUserMenu && <NavMenu logout={logout} toggleUserMenu={this.toggleUserMenu} />}
                 </section>
                 
             </header>

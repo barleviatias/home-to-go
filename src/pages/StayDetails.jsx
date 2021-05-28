@@ -63,7 +63,7 @@ export class StayDetails extends Component {
     const elReviews = []
 
     for (const ctg in reviewCtgMap) {
-      elReviews.push(<div className="ctg-statistics"><h3>{ctg}</h3> <span>{reviewCtgMap[ctg]}</span></div>)
+      elReviews.push(<div key={Math.random()} className="ctg-statistics"><h3>{ctg}</h3> <span>{reviewCtgMap[ctg]}</span></div>)
     }
 
     return elReviews
@@ -114,7 +114,7 @@ export class StayDetails extends Component {
         </section>
 
         <div className="stay-gallery">
-          {stay.imgUrls.map(imgUrl => <img src={imgUrl} alt="stay-gallery-preview-img" />)}
+          {stay.imgUrls.map(imgUrl => <img src={imgUrl} alt="stay-gallery-preview-img" key={imgUrl} />)}
         </div>
 
         <section className="stay-info-container">
@@ -145,14 +145,14 @@ export class StayDetails extends Component {
                 </div>
               </div>
               <div>
-                <i class="fas fa-medal"></i>
+                <i className="fas fa-medal"></i>
                 <div>
                   <h3>{host.fullname} is a Superhost</h3>
                   <h4>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</h4>
                 </div>
               </div>
               <div>
-                <i class="fas fa-bookmark"></i>
+                <i className="fas fa-bookmark"></i>
                 <div>
                   <h3>Wifi</h3>
                   <h4>Guests often search for this popular amenity</h4>
@@ -165,7 +165,7 @@ export class StayDetails extends Component {
             <div className="amenities-list">
               <h2>Amenities</h2>
               <ul>
-                {amenities.map(amenity => { return <li key="amenity"><span>{this.getAmenityIcon(amenity)}</span><span>{amenity}</span></li> })}
+                {amenities.map(amenity => { return <li key={amenity}><span>{this.getAmenityIcon(amenity)}</span><span>{amenity}</span></li> })}
               </ul>
             </div>
           </div>
