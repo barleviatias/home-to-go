@@ -7,17 +7,17 @@ import { Hero } from '../cmps/home/Hero'
 export class Home extends Component {
 
   render() {
-
+    const { loggedInUser, topRatedStays, nearbayStays } = this.props
     return (
 
       <main>
         <Hero />
         <h2>Our Top Rated</h2>
-        {this.props.topRatedStays && <FilterGallery stays={this.props.topRatedStays} />}
+        {topRatedStays && <FilterGallery stays={topRatedStays} />}
         <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
         <h2>Explore nearby</h2>
-        <FilterGallery stays={this.props.nearbayStays} />
-        <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} />
+        <FilterGallery stays={nearbayStays} />
+        <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} loggedInUser={loggedInUser} />
       </main>
 
     )

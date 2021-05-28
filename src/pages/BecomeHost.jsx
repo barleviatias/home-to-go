@@ -17,7 +17,7 @@ export function BecomeHost({ loggedInUser }) {
                     <h1>Hosting makes us</h1>
                     <h1 className="logo">Home<img src={Logo} alt="logo" />Go</h1>
                 </div>
-                <button className="host-btn"><Link to={(loggedInUser)? "/":"/login"}>Try hosting</Link></button>
+                <button className="host-btn"><Link to={(loggedInUser)? `/host/${loggedInUser._id}`:"/login"}>Try hosting</Link></button>
             </section>
         </main>
     )

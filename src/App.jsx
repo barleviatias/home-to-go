@@ -39,13 +39,13 @@ class _App extends Component {
         <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
-          <Route path='/host:userId' component={Dashboard} />
+          <Route path='/host/:userId' render={() => (<Dashboard loggedInUser={loggedInUser} updateUser={updateUser}/>)}/>
           <Route path='/host' render={() => (<BecomeHost loggedInUser={loggedInUser}/>)}  />
           <Route path='/stay/:stayId' component={StayDetails} />
           <Route path='/explore' render={() => (<Explore stays={staysState.stays} />)} />
           <Route path='/stay' render={() => (<StayDetails />)} />
           <Route path='/user' render={() => (<UserDetails updateUser={updateUser} />)} />
-          <Route path='/' render={() => (<Home topRatedStays={staysState.topRatedStays} nearbayStays={staysState.nearbayStays} />)} />
+          <Route path='/' render={() => (<Home topRatedStays={staysState.topRatedStays} nearbayStays={staysState.nearbayStays} loggedInUser={loggedInUser} />)} />
         </Switch>
       </Router>
     )

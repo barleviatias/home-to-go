@@ -34,6 +34,7 @@ async function logout() {
 	// return await httpService.post('auth/logout')
 }
 async function update(user) {
+	return _saveLocalUser(user);
     return storageService.put('user', user)
     // return await httpService.put(`stay/${stay._id}`, stay)
     // Handle case in which admin updates other stay's details
