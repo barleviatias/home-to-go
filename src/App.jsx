@@ -6,6 +6,8 @@ import { Explore } from './pages/Explore';
 import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
 import { Header } from './cmps/Header';
+import {Dashboard} from './pages/Dashboard';
+import {BecomeHost} from './pages/BecomeHost';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays, loadTopRated, loadNearby } from './store/actions/stayActions'
@@ -37,6 +39,8 @@ class _App extends Component {
         <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
+          <Route path='/host:userId' component={Dashboard} />
+          <Route path='/host' render={() => (<BecomeHost loggedInUser={loggedInUser}/>)}  />
           <Route path='/stay/:stayId' component={StayDetails} />
           <Route path='/explore' render={() => (<Explore stays={staysState.stays} />)} />
           <Route path='/stay' render={() => (<StayDetails />)} />
