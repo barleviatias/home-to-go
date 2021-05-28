@@ -19,6 +19,7 @@
         
         h1{
             font-size: 2rem;
+            text-transform: capitalize;
             width: 50%;
             color: $clr-light;
         }
@@ -27,6 +28,7 @@
             font-size: 14px;
             font-weight: 600;
             letter-spacing: 0.5px;
+            text-transform: capitalize;
             padding: 10px 30px;
             border: none;
             border-radius: 8px;

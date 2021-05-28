@@ -1,14 +1,23 @@
 // Colors
 
-$clr-brand: #FF5A5F;
+$clr-brand: #ff5a5f;
 $clr-dark: #484848;
 $clr-light: #ffffff;
 $clr-gray: #767676;
-$clr-green: #00A699;
-$clr-orange: #FC642D;
+$clr-green: #00a699;
+$clr-orange: #fc642d;
 
 // Breakpoints
 $mobile-breakpoint: 460px;
 $narrow-breakpoint: 720px;
 $normal-breakpoint: 960px;
 $wide-breakpoint: 1400px;
+
+//Font Size
+$fs12: rem(12px);
+$fs14: rem(14px);
+$fs18: rem(18px);
+$fs20: rem(20px);
+$fs24: rem(24px);
+$fs28: rem(28px);
+$fs30: rem(30px);

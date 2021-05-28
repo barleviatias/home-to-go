@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { stayService } from "../services/stay-service";
+import { ReviewList } from '../cmps/stay-details/ReviewList';
 
 export class StayDetails extends Component {
 
@@ -17,13 +18,47 @@ export class StayDetails extends Component {
     this.setState({ stay })
   }
 
-  getRate = () => {
+  getTotalRate = () => {
     const rates = this.state.stay.reviews.map(review => review.avgRate)
     const sum = rates.reduce((acc, rate) => {
       acc += rate
       return acc
     }, 0)
     return sum / rates.length
+  }
+
+  getStayReviewStatistics = () => {
+    const { reviews } = this.state.stay
+    const num = reviews.length
+
+    if (!reviews) return
+
+    const reviewCtgMap = {
+      "Cleanliness": 0,
+      "Accuracy": 0,
+      "Communication": 0,
+      "Location": 0,
+      "Check-in": 0,
+      "Accessibility": 0
+    }
+
+    reviews.forEach(review => {
+      for (const key in review.category) {
+        reviewCtgMap[key] += review.category[key]
+      }
+    })
+
+    for (const ctg in reviewCtgMap) {
+      reviewCtgMap[ctg] = +(reviewCtgMap[ctg] / num).toFixed(1)
+    }
+
+    const elReviews = []
+
+    for (const ctg in reviewCtgMap) {
+      elReviews.push(<div className="ctg-statistics"><h3>{ctg}</h3> <span>{reviewCtgMap[ctg]}</span></div>)
+    }
+
+    return elReviews
   }
 
   getAmenityIcon(amenity) {
@@ -59,7 +94,7 @@ export class StayDetails extends Component {
           <h1>{name}</h1>
           <div className="stay-short-info">
             <div>
-              <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getRate()}<p>( {reviews.length} reviews )</p></span>
+              <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate().toFixed(1)}<p>( {reviews.length} reviews )</p></span>
               <span>•</span>
               <p>{loc.address}</p>
             </div>
@@ -125,14 +160,13 @@ export class StayDetails extends Component {
                 {amenities.map(amenity => { return <li key="amenity"><span>{this.getAmenityIcon(amenity)}</span><span>{amenity}</span></li> })}
               </ul>
             </div>
-
           </div>
 
-          <div className="stay-details-botton-right">
+          <div className="order-form-container">
             <div className="order-form">
               <div className="order-form-header">
                 <p><span className="order-price">${price}</span><span> / night</span></p>
-                <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getRate()}<p>( {reviews.length} reviews )</p></span>
+                <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate()}<p>( {reviews.length} reviews )</p></span>
               </div>
 
               <form>
@@ -157,6 +191,16 @@ export class StayDetails extends Component {
             <span className="report-listing-btn"><i className="fab fa-font-awesome-flag"></i><p>Report this listing</p></span>
           </div>
 
+        </section>
+
+        <section className="stay-review-container">
+          <div className="stay-review-header">
+            <h2>{<span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate().toFixed(1)}<p>( {reviews.length} reviews )</p></span>}</h2>
+            <div className="stay-review-ststistics">
+              {this.getStayReviewStatistics().map(elCtgRate => elCtgRate)}
+            </div>
+          </div>
+          <ReviewList reviews={reviews} />
         </section>
       </main>
     );

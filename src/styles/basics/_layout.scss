@@ -33,7 +33,7 @@ main {
     }
     
     &.page{
-        margin: 12vh auto;
+        margin: 11vh auto;
     }
 }
 
@@ -62,5 +62,9 @@ main {
             minmax(2rem, 1fr)
             minmax(auto, $wide-breakpoint)
             minmax(2rem, 1fr);
+    }
+
+    > * {
+        grid-column: 2;
     }
 }
