@@ -29,7 +29,7 @@ class _StayEdit extends Component {
             ],
             amenities :{
 
-                "TV":false,
+                "TV":true,
                 "Wifi":false,
                 "Air-conditioning":false,
                 "Smoking allowed":false,
@@ -77,10 +77,13 @@ class _StayEdit extends Component {
 
 
     handleChange = ({ target }) => {
-        let { name, value, checked } = target
+        let { name, value, checked ,unChecked } = target
         // const { stay } = this.state
         value = name === 'price' ? +value : value
-        value = name === 'amenities' ? checked : value
+        value = name === 'amenities' ? checked : unChecked
+        // value = name === 'amenities' ? checked : !checked
+        // value = name === 'amenities' ? !checked : value
+        // value = name === 'amenities' ? !checked : value
         this.setState({ stay: { ...this.state.stay, amenities: {...this.state.stay.amenities, [name]: value}} } )
     }
 
@@ -100,12 +103,12 @@ class _StayEdit extends Component {
             <h3>stay name: <input type="text" name="name" autoComplete="off" onChange={this.handleChange} value={stay.name} /></h3>
             <h3>price: <input type="number" name="price" autoComplete="off" onChange={this.handleChange} value={stay.price} /></h3>
             <h3>description: <input type="text" name="desc" autoComplete="off" onChange={this.handleChange} value={stay.desc} /></h3>
-            <input type="checkbox"  name="TV" value="TV" checked={stay.amenities.TV}/>
+            <input type="checkbox"  name="TV" value="TV" checked={stay.amenities.TV} onChange={this.handleChange}/>
             <label for="vehicle1"> TV</label>
-            <input type="checkbox"  name="Wifi" value="Wifi" checked={stay.amenities.Wifi}/>
+            <input type="checkbox"  name="Wifi" value="Wifi" checked={stay.amenities.Wifi}onChange={this.handleChange}/>
             <label for="vehicle2">Wifi</label>
-            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"/>
-            <label for="vehicle3"> I have a boat</label>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Air-conditioning" checked={stay.amenities.Air_conditioning}onChange={this.handleChange}/>
+            <label for="vehicle3">Air-conditioning </label>
                 <button className="primary-btn">Save</button>
             </form>
         </div>)
