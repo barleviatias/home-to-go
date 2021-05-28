@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { stayService } from '../services/stay-service'
+import { stayService } from '../../services/stay-service'
 import { addStay } from '../../store/actions/stayActions'
 import { TextField, Switch, FormControlLabel } from '@material-ui/core'
 // import { makeStyles } from '@material-ui/core/styles';
@@ -27,14 +27,16 @@ class _StayEdit extends Component {
                     userId: "u109"
                 }
             ],
-            amenities: [
-                "TV",
-                "Wifi",
-                "Air-conditioning",
-                "Smoking allowed",
-                "Pets allowed",
-                "Cooking basics"
-            ],
+            amenities :{
+
+                "TV":false,
+                "Wifi":false,
+                "Air-conditioning":false,
+                "Smoking allowed":false,
+                "Pets allowed":false,
+                "Cooking basics":false
+            }
+            ,
             stayType: "entire place",
             propertyType: "loft",
             host: {
@@ -64,6 +66,7 @@ class _StayEdit extends Component {
 
 
     loadStay() {
+        if(!this.props.match||!this.props.match.params)return 
         const { stayId } = this.props.match.params
         if (stayId) {
             stayService.getById(stayId).then((stay) => {
@@ -75,10 +78,10 @@ class _StayEdit extends Component {
 
     handleChange = ({ target }) => {
         let { name, value, checked } = target
-        const { stay } = this.state
+        // const { stay } = this.state
         value = name === 'price' ? +value : value
-        value = name === 'inStock' ? checked : value
-        this.setState({ stay: { ...stay, [name]: value } })
+        value = name === 'amenities' ? checked : value
+        this.setState({ stay: { ...this.state.stay, amenities: {...this.state.stay.amenities, [name]: value}} } )
     }
 
     onSaveStay = (ev) => {
@@ -94,47 +97,15 @@ class _StayEdit extends Component {
         return (<div className="stay-edit full container flex column align-center">
             <h1>{stay._id ? 'Edit stay' : 'Add new stay'}</h1>
             <form onSubmit={this.onSaveStay} className="flex column align-center" >
-                <TextField
-                    name="name"
-                    variant="outlined"
-                    value={stay.name}
-                    label="Name"
-                    color="primary"
-                    onChange={this.handleChange}
-                />
-                <TextField
-                    id="imgUrls"
-                    name="imgUrls"
-                    variant="outlined"
-                    label="imgUrls"
-                    type="text"
-                    InputProps={{ inputProps: { min: 1, max: 1000 } }}
-                    InputLabelProps={{ shrink: true }}
-                    onChange={this.handleChange}
-                />
-                <TextField
-                    select
-                    name="type"
-                    label="Select type"
-                    value={stay.type}
-                    SelectProps={{ native: true }}
-                    variant="outlined"
-                    onChange={this.handleChange}
-                >
-                    <option value="Toddles">Toddles</option>
-                    <option value="Educational">Educational</option>
-                    <option value="Adult">Adult</option>
-                    <option value="Funny">Funny</option>
-                </TextField>
-          
-                <FormControlLabel
-                    control={<Switch
-                        checked={stay.inStock}
-                        name="inStock"
-                        color="primary"
-                        value={stay.inStock}
-                        onChange={this.handleChange}
-                    />} label="In Stock" />
+            <h3>stay name: <input type="text" name="name" autoComplete="off" onChange={this.handleChange} value={stay.name} /></h3>
+            <h3>price: <input type="number" name="price" autoComplete="off" onChange={this.handleChange} value={stay.price} /></h3>
+            <h3>description: <input type="text" name="desc" autoComplete="off" onChange={this.handleChange} value={stay.desc} /></h3>
+            <input type="checkbox"  name="TV" value="TV" checked={stay.amenities.TV}/>
+            <label for="vehicle1"> TV</label>
+            <input type="checkbox"  name="Wifi" value="Wifi" checked={stay.amenities.Wifi}/>
+            <label for="vehicle2">Wifi</label>
+            <input type="checkbox" id="vehicle3" name="vehicle3" value="Boat"/>
+            <label for="vehicle3"> I have a boat</label>
                 <button className="primary-btn">Save</button>
             </form>
         </div>)
