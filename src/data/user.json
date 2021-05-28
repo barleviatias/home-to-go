@@ -1,6 +1,6 @@
 [
     {
-        "_id":"u101",
+        "_id":"u100",
         "fullname": "Bar Levi Atias",
         "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg",
         "isHost": false,
@@ -37,6 +37,19 @@
             "orders": [],
             "msgs": []
         }
+    },
+    {
+        "_id":"u101",
+        "fullname": "Mor Levi",
+        "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg",
+        "isHost": true,
+        "email": "mor@gmail.com",
+        "username": "morl",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
     }
- 
+    
 ]

@@ -22,10 +22,11 @@ export class Dashboard extends Component {
 
     render() {
         const { action } = this.state
+        const {loggedInUser} = this.props
         return (
             <main className="page">
                 <DashHeader onSelectAction={this.onSelectAction} />
-                {(action === '' || action === 'my places') && <MyPlaces />}
+                {(action === '' || action === 'my places') && <MyPlaces loggedInUser={loggedInUser}/>}
                 { action === 'finance stat' && <FinanceStatistic />}
                 { action === 'rate stat' && <RateStatistic />}
             </main>

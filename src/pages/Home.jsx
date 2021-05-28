@@ -14,16 +14,15 @@ export class Home extends Component {
   componentDidMount() {
     this.loadRated();
     this.loadNearby();
-    this.setState({ nearbayStays: stayService.getNearbyStays(this.props.stays, 'portugal') })
   }
 
-  loadRated = async () => {
-    const topRated = await stayService.getTopRatedStays(this.props.stays);
+  loadRated = async() => {
+    const topRated = await stayService.getTopRatedStays();
     this.setState({ topRatedStays: topRated })
   }
 
   loadNearby = async () => {
-    const nearby = await stayService.getNearbyStays(this.props.stays, 'portugal');
+    const nearby = await stayService.getNearbyStays( 'portugal');
     this.setState({ nearbayStays: nearby })
   }
 
@@ -31,6 +30,7 @@ export class Home extends Component {
   render() {
     const { loggedInUser } = this.props
     const { topRatedStays, nearbayStays } = this.state
+
     return (
 
       <main>
@@ -42,7 +42,6 @@ export class Home extends Component {
         <FilterGallery stays={nearbayStays} />
         <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} loggedInUser={loggedInUser} />
       </main>
-
     )
   }
 }

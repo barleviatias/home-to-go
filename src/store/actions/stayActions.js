@@ -40,30 +40,6 @@ export function removeStay(stayId) {
   }
 }
 
-export function loadTopRated() {
-  return async dispatch => {
-    try {
-      const stays = await stayService.getTopRatedStays()
-      dispatch({ type: 'SET_TOP_RATED', stays })
-
-    } catch (err) {
-      console.log('StayActions: err in getTopRated', err)
-    }
-  }
-}
-
-export function loadNearby(location) {
-  return async dispatch => {
-    try {
-      const stays = await stayService.getNearbyStays(location)
-      dispatch({ type: 'SET_NEARBY', stays })
-
-    } catch (err) {
-      console.log('StayActions: err in getNearbyStays', err)
-    }
-  }
-} 
-
 export function loadHostStays(hostId) {
   return async dispatch => {
     try {

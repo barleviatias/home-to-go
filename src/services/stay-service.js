@@ -12,7 +12,8 @@ export const stayService = {
     update,
     add,
     getTopRatedStays,
-    getNearbyStays
+    getNearbyStays,
+    getHostStays
     // getStayImage,
     // getPriceData,
     // getDateData
@@ -71,7 +72,8 @@ async function add(stay) {
 //     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 //     // return httpService.get(`stay${queryStr}`)
 // }
-function getTopRatedStays(stays) {
+async function getTopRatedStays() {
+    var stays = await storageService.query('stay')
     stays = stays.map(stay => {
         stay.avgRate = _getRate(stay);
         return stay
@@ -93,11 +95,26 @@ function _getRate(stay) {
     return sum / rates.length
 }
 
-function getNearbyStays(stays, location) {
+async function getNearbyStays(location) {
+    var stays = await storageService.query('stay')
     stays = stays.filter(stay => {
         return stay.loc.address.toUpperCase().includes(location.toUpperCase())
     })
     return stays.slice(0, 4)
+    // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
+    // return httpService.get(`stay${queryStr}`)
+}
+
+async function getHostStays(userId) {
+    var stays = await storageService.query('stay')
+    stays = stays.filter(stay => {
+        return stay.host._id === userId
+    })
+    return stays
+    // stays = stays.filter(stay => {
+    //     return stay.loc.address.toUpperCase().includes(location.toUpperCase())
+    // })
+    // return stays.slice(0, 4)
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`stay${queryStr}`)
 }

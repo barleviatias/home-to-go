@@ -10,7 +10,7 @@ import { Dashboard } from './pages/Dashboard';
 import { BecomeHost } from './pages/BecomeHost';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadStays, loadTopRated, loadNearby, loadHostStays } from './store/actions/stayActions'
+import { loadStays } from './store/actions/stayActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
 
@@ -19,8 +19,6 @@ class _App extends Component {
   componentDidMount() {
     this.props.loadStays()
     this.props.loadUsers()
-    // this.props.loadTopRated();
-    // this.props.loadNearby('Portugal');
   }
 
   onSearch = (trip) => {
@@ -32,7 +30,7 @@ class _App extends Component {
 
   render() {
 
-    const { stays, updateUser, trip, addTrip, loggedInUser, logout } = this.props
+    const { stays, updateUser, trip, addTrip, loggedInUser, logout ,loadStays} = this.props
 
     return (
       <Router>
@@ -45,7 +43,7 @@ class _App extends Component {
           <Route path='/explore' render={() => (<Explore stays={stays} />)} />
           <Route path='/stay' render={() => (<StayDetails />)} />
           <Route path='/user' render={() => (<UserDetails updateUser={updateUser} />)} />
-          <Route path='/' render={() => (<Home stays={stays} loggedInUser={loggedInUser} />)} />
+          <Route path='/' render={() => (<Home stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
           {/* <Route path='/' render={() => (<Home topRatedStays={stays} nearbayStays={stays} loggedInUser={loggedInUser} />)} /> */}
         </Switch>
       </Router>
@@ -72,10 +70,7 @@ const mapDispatchToProps = {
   updateUser,
   loadUsers,
   loadTrip,
-  logout,
-  loadTopRated,
-  loadNearby,
-  loadHostStays
+  logout
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
