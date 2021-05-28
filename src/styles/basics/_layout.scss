@@ -13,6 +13,10 @@ main {
         }
     }
 
+    &.page {
+        margin: 11vh auto;
+    }
+
     @include for-narrow-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
@@ -31,12 +35,7 @@ main {
             minmax(auto, $wide-breakpoint)
             minmax(2rem, 1fr);
     }
-    
-    &.page{
-        margin: 11vh auto;
-    }
 }
-
 
 .main-header {
     display: grid;

@@ -71,14 +71,14 @@ class _LoginSignup extends Component {
 
 	doSignup = async (ev) => {
 		ev.preventDefault();
-		const { username, password, fullname ,email} = this.state.signupCred;
-		if (!username || !password || !fullname|| !email) {
+		const { username, password, fullname, email } = this.state.signupCred;
+		if (!username || !password || !fullname || !email) {
 			return this.setState({ msg: 'All inputs are required' });
 		}
-		const signupCreds = { username, password, fullname ,email };
+		const signupCreds = { username, password, fullname, email };
 		this.props.signup(signupCreds);
 		this.setState(
-			{ signupCred: { username: '', password: '', fullname: '' ,email:''} },
+			{ signupCred: { username: '', password: '', fullname: '', email: '' } },
 			this.props.history.push('/')
 		);
 	};
@@ -96,55 +96,65 @@ class _LoginSignup extends Component {
 	render() {
 		let signupSection = (
 			<form className="login-form" onSubmit={this.doSignup}>
-				<h2>Sign Up</h2>
-				<input
-					type="text"
-					name="fullname"
-					value={this.state.signupCred.fullname}
-					onChange={this.signupHandleChange}
-					placeholder="Full name"
-					autoComplete="fullname"
-				/>
-				<input
-					name="password"
-					type="password"
-					value={this.state.signupCred.password}
-					onChange={this.signupHandleChange}
-					placeholder="Password"
-					autoComplete="current-password"
-				/>
-				<input
-					type="text"
-					name="username"
-					value={this.state.signupCred.username}
-					onChange={this.signupHandleChange}
-					placeholder="Username"
-					autoComplete="username"
-				/>
-				<input
-					type="text"
-					name="email"
-					value={this.state.signupCred.email}
-					onChange={this.signupHandleChange}
-					placeholder="email"
-					autoComplete="email"
-				/>
-				<button className="signup-btn" type="submit">
-					sign up
-				</button>
-				<button
-					type="button"
-					className="toggle-form-btn"
-					onClick={this.toggleFormType}
-				>
-					{' '}
+				<div className="login-form-header">
+					<h2>Sign Up</h2>
+				</div>
+				<div className="login-form-body">
+					<h1>Welcome to Home and go</h1>
+
+					<input
+						type="text"
+						name="fullname"
+						value={this.state.signupCred.fullname}
+						onChange={this.signupHandleChange}
+						placeholder="Full name"
+						autoComplete="fullname"
+					/>
+					<input
+						name="password"
+						type="password"
+						value={this.state.signupCred.password}
+						onChange={this.signupHandleChange}
+						placeholder="Password"
+						autoComplete="current-password"
+					/>
+					<input
+						type="text"
+						name="username"
+						value={this.state.signupCred.username}
+						onChange={this.signupHandleChange}
+						placeholder="Username"
+						autoComplete="username"
+					/>
+					<input
+						type="text"
+						name="email"
+						value={this.state.signupCred.email}
+						onChange={this.signupHandleChange}
+						placeholder="email"
+						autoComplete="email"
+					/>
+					<button className="login-btn" type="submit">
+						sign up
+					</button>
+					<div className="login-actions-btn">
+						<button
+							type="button"
+							className="toggle-form-btn"
+							onClick={this.toggleFormType}>
+							{' '}
 					I already have an account
-				</button>
+					</button>
+					</div>
+				</div>
 			</form>
 		);
 		let loginSection = (
 			<form className="login-form" onSubmit={this.doLogin}>
-				<h2>Login</h2>
+				<div className="login-form-header">
+
+					<h2>Log in</h2>
+				</div>
 
 				{/* <select
           name="username"
@@ -155,41 +165,47 @@ class _LoginSignup extends Component {
           {this.props.users && this.props.users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
         </select> */}
 
-				<input
-					type="text"
-					name="username"
-					autoComplete="off"
-					value={this.state.loginCred.username}
-					onChange={this.loginHandleChange}
-					placeholder="Username"
-				/>
-				<input
-					type="password"
-					name="password"
-					autoComplete="off"
-					value={this.state.loginCred.password}
-					onChange={this.loginHandleChange}
-					placeholder="Password"
-				/>
-				<button type="submit" className="login-btn">
-					submit
+				<div className="login-form-body">
+
+					<h1>Welcome back </h1>
+
+					<input
+						type="text"
+						name="username"
+						autoComplete="off"
+						value={this.state.loginCred.username}
+						onChange={this.loginHandleChange}
+						placeholder="Username"
+					/>
+					<input
+						type="password"
+						name="password"
+						autoComplete="off"
+						value={this.state.loginCred.password}
+						onChange={this.loginHandleChange}
+						placeholder="Password"
+					/>
+					<button type="submit" className="login-btn">
+						submit
 				</button>
-				<button
-					type="button"
-					className="toggle-form-btn"
-					onClick={this.toggleFormType}
-				>
-					New user?
-				</button>
-				<button
-					type="button"
-					className="forgot-password-btn"
-					onClick={() => {
-						alert('Tough Luck');
-					}}
-				>
-					Forgot Password?
-				</button>
+					<div className="login-actions-btn">
+						<button
+							type="button"
+							className="toggle-form-btn"
+							onClick={this.toggleFormType}
+						>
+							New user?
+						</button>
+						<button
+							type="button"
+							className="forgot-password-btn"
+							onClick={() => {
+								alert('Tough Luck');
+							}}>
+							Forgot Password?
+							</button>
+					</div>
+				</div>
 			</form>
 		);
 
@@ -201,7 +217,7 @@ class _LoginSignup extends Component {
 				{/* <h2> Login / Signup </h2> */}
 				<p>{this.state.msg}</p>
 				{loggedInUser && <button onClick={this.props.logout}>logged out</button>}
-				
+
 				<section className="login-forms-container">
 					{!loggedInUser && formType === 'login' && loginSection}
 					{!loggedInUser && formType === 'signup' && signupSection}
