@@ -9,7 +9,7 @@ export class MainFilter extends Component {
 
     state = {
         trip: {
-            guests: { adults: 0, kids: 0 },
+            guests: { adults: 1, kids: 0 },
             loc: { address: '' },
             time: { checkIn: '', checkOut: '' }
         },
@@ -35,6 +35,7 @@ export class MainFilter extends Component {
     onSearch = (ev) => {
         ev.preventDefault();
         this.props.onSearch(this.state.trip)
+        this.setState({modalType: ''})
     }
 
     toggleDynamicModal = (modalKey) => {
@@ -91,7 +92,6 @@ export class MainFilter extends Component {
                             <span>Guests</span>
                             <input value={kids + adults} id="guests" name="guests" placeholder="Add guests" />
                         </div>
-
                     </label>
 
                     {modalType === 'guests' && <DynamicModal>

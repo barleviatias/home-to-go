@@ -1,5 +1,82 @@
 .dynamic-modal {
 
+    .book-guest-modal{
+        position: absolute;
+        // bottom: 0%;
+        // right:0px;
+        // transform: translateY(96%) translate(130%);
+
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+
+        color: $clr-dark;
+        background-color: white;
+        border-radius: 15px;
+
+        width: 400px;
+        font-size: 16px;
+        text-transform: capitalize;
+        box-shadow: 0 3px 8px 0px #0000002e;
+
+        .modal-label {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            gap: 10px;
+            padding: 20px;
+
+            &:not(:last-of-type) {
+                border-bottom: 1px solid rgb(199, 199, 199);
+            }
+
+            div {
+                display: flex;
+            }
+
+            span {
+                text-align: center;
+            }
+
+            div:first-of-type {
+                flex-direction: column;
+                align-items: flex-start;
+
+                span:first-of-type {
+                    font-weight: 600;
+                    font-size: rem(12px);
+                    color: rgb(20, 20, 20);
+                }
+            }
+            div:last-of-type {
+                flex-direction: row;
+                align-items: center;
+                gap: 10px;
+
+                span {
+                    font-size: rem(18px);
+                    width: 20px;
+                }
+
+                button {
+                    margin: 0 0;
+                    padding: 0 0;
+                    color: $clr-dark;
+                    font-size: rem(18px);
+                    border: 1px solid $clr-gray;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: transparent;
+                    border-radius: 50%;
+                    height: 40px;
+                    width: 40px;
+                }
+            }
+        }
+    }
+
 
     .filter-loc-modal {
         position: absolute;
@@ -69,12 +146,10 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        gap: 20px;
 
         color: $clr-dark;
         background-color: white;
         border-radius: 15px;
-        padding: 20px;
 
         width: 400px;
         font-size: 16px;
@@ -87,7 +162,7 @@
             justify-content: space-between;
             width: 100%;
             gap: 10px;
-            padding-bottom: 20px;
+            padding: 20px;
 
             &:not(:last-of-type) {
                 border-bottom: 1px solid rgb(199, 199, 199);

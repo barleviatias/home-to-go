@@ -128,9 +128,6 @@
                 }
             }
 
-            // .description {
-            // }
-
             .amenities-list {
                 ul {
                     list-style: none;
@@ -227,7 +224,7 @@
                     }
 
                     .book-stay-btn {
-                        padding: 12px;
+                        padding: 18px;
                         margin: 15px 0px;
                         width: 100%;
                         border-radius: 10px;
@@ -235,6 +232,28 @@
                         color: white;
                         font-size: 16px;
                         font-weight: 600;
+                    }
+
+                    .book-info{
+                        display: flex;
+                        flex-direction: column;
+                        gap: 10px;
+                        width: 100%;
+
+                        h4{
+                            font-size: rem(14px);
+                            font-weight: unset;
+                            text-align: center;
+                        }
+
+                        h3{
+                            font-size: rem(16px);
+                            font-weight: unset;
+                            display: flex;
+                            justify-content: space-between;
+                            width: 100%;
+                        }
+
                     }
                 }
             }

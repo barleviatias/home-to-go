@@ -10,7 +10,7 @@ export const userService = {
 	// getUsers,
 	// remove,
 	update,
-	// getLoggedinUser,
+	// getLoggedinUser
 };
 
 window.userService = userService;
