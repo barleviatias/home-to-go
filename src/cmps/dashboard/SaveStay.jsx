@@ -56,10 +56,11 @@ class _StayEdit extends Component {
 	};
 
 	componentDidMount() {
+		if (this.props.stay) this.setState({ stay: this.props.stay })
 		this.loadStay();
 	}
 	componentDidUpdate(prevProps) {
-	console.log(this.state);
+		console.log(this.state);
 	}
 
 	loadStay() {
@@ -71,10 +72,10 @@ class _StayEdit extends Component {
 			});
 		}
 	}
-    onUploadImg =(imgState,position)=>{
-        console.log(imgState.imgUrl);
-        this.setState({ stay: { ...this.state.stay,imgUrls: [...this.state.stay.imgUrls,imgState.imgUrl] } })
-    }
+	onUploadImg = (imgState, position) => {
+		console.log(imgState.imgUrl);
+		this.setState({ stay: { ...this.state.stay, imgUrls: [...this.state.stay.imgUrls, imgState.imgUrl] } })
+	}
 	handleChange = ({ target }) => {
 		console.log(target.value);
 		// console.log( target.checked);
@@ -100,7 +101,7 @@ class _StayEdit extends Component {
 		const { stay } = this.state;
 		this.props.addStay(stay);
 		this.props.onSelectAction(ev);
-        this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been added</h3></span>)
+		this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been added</h3></span>)
 	};
 
 	render() {
@@ -165,68 +166,68 @@ class _StayEdit extends Component {
 							<option value="appartment room">appartment</option>
 						</select>
 					</h3>
-                    <div>
+					<div>
 
-					<input
-						type="checkbox"
-						name="TV"
-						id="amenities"
-						value={stay.amenities.TV}
-						onChange={this.handleChange}
-                        />
-					<label for="TV"> TV</label>
-					<input
-						type="checkbox"
-						name="Wifi"
-						id="amenities"
-						value={stay.amenities.Wifi}
-						onChange={this.handleChange}
-                        />
-					<label for="Wifi">Wifi</label>
-					<input
-						type="checkbox"
-						name="AC"
-						id="amenities"
-						value={stay.amenities.AC}
-						onChange={this.handleChange}
-					/>
-					<label for="AC">AC </label>
-					<input
-						type="checkbox"
-						name="Smoking_allowed"
-						id="amenities"
-						value={stay.amenities.Smoking_allowed}
-						onChange={this.handleChange}
-                        />
-					<label for="AC">Smoking_allowed </label>
-					<input
-						type="checkbox"
-						name="Pets_allowed"
-						id="amenities"
-						value={stay.amenities.Pets_allowed}
-						onChange={this.handleChange}
-                        />
-					<label for="AC">Pets_allowed </label>
-					<input
-						type="checkbox"
-						name="Cooking_basics"
-						id="amenities"
-						value={stay.amenities.Cooking_basics}
-						onChange={this.handleChange}
-                        />
-					<label for="AC">Cooking_basics </label>
-					<h1>Uploading to cloudinary YAAY!</h1>
-					{/* <label>
+						<input
+							type="checkbox"
+							name="TV"
+							id="amenities"
+							value={stay.amenities.TV}
+							onChange={this.handleChange}
+						/>
+						<label for="TV"> TV</label>
+						<input
+							type="checkbox"
+							name="Wifi"
+							id="amenities"
+							value={stay.amenities.Wifi}
+							onChange={this.handleChange}
+						/>
+						<label for="Wifi">Wifi</label>
+						<input
+							type="checkbox"
+							name="AC"
+							id="amenities"
+							value={stay.amenities.AC}
+							onChange={this.handleChange}
+						/>
+						<label for="AC">AC </label>
+						<input
+							type="checkbox"
+							name="Smoking_allowed"
+							id="amenities"
+							value={stay.amenities.Smoking_allowed}
+							onChange={this.handleChange}
+						/>
+						<label for="AC">Smoking_allowed </label>
+						<input
+							type="checkbox"
+							name="Pets_allowed"
+							id="amenities"
+							value={stay.amenities.Pets_allowed}
+							onChange={this.handleChange}
+						/>
+						<label for="AC">Pets_allowed </label>
+						<input
+							type="checkbox"
+							name="Cooking_basics"
+							id="amenities"
+							value={stay.amenities.Cooking_basics}
+							onChange={this.handleChange}
+						/>
+						<label for="AC">Cooking_basics </label>
+						<h1>Uploading to cloudinary YAAY!</h1>
+						{/* <label>
 						{' '}
 						Upload your image to cloudinary!
 						<input onchange={uploadImg(event)} type="file" />
 					</label> */}
-                    </div>
-                    <Upload onUploadImg={this.onUploadImg}/>
-                    <Upload onUploadImg={this.onUploadImg}/>
-                    <Upload onUploadImg={this.onUploadImg}/>
-                    <Upload onUploadImg={this.onUploadImg}/>
-                    <Upload onUploadImg={this.onUploadImg}/>
+					</div>
+					<Upload onUploadImg={this.onUploadImg} />
+					<Upload onUploadImg={this.onUploadImg} />
+					<Upload onUploadImg={this.onUploadImg} />
+					<Upload onUploadImg={this.onUploadImg} />
+					<Upload onUploadImg={this.onUploadImg} />
 					<button className="primary-btn">Save</button>
 				</form>
 			</div>

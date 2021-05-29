@@ -72,13 +72,17 @@ import { stayService } from '../../services/stay-service.js'
 
 
 
-export function MyPlaces({ stays, removeStay, toggleMsgModal }) {
+export function MyPlaces({ stays, removeStay, toggleMsgModal ,onSelectedEditStay }) {
 
 
     async function onRrmoveStays(stayId) {
         console.log(stayId);
         await removeStay(stayId)
         toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been deleted</h3></span>)
+    }
+
+    function onEditStay(stay) {
+        onSelectedEditStay(stay)
     }
 
     if (!stays) return <h3>Loading....</h3>
@@ -105,7 +109,7 @@ export function MyPlaces({ stays, removeStay, toggleMsgModal }) {
                                 <td>{stay.price}</td>
                                 <td>{stay.loc.address}</td>
                                 <td>
-                                    <button >Edit</button>
+                                    <button onClick={() => onEditStay(stay)} >Edit</button>
                                     <button onClick={() => onRrmoveStays(stay._id)}>Remove</button>
                                 </td>
                             </tr>
