@@ -11,16 +11,11 @@ export class Orders extends Component {
     }
     componentDidMount() {
         this.setState({ loggedInUser: this.props.loggedInUser }, () => {
-            this.loadOrders()
+            this.props.loadOrders({id:'u105',type:'user'})
         })
 
     }
 
-    loadOrders = async () => {
-        const orders =await this.props.loadOrders({id:'u105ord',type:'user'})
-        // const orders =await this.props.loadOrders({id:this.state.loggedInUser._id,type:'user'})
-        console.log(orders);
-    }
 
     render() {
 

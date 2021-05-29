@@ -21,9 +21,11 @@ export const orderService = {
 window.orderService = orderService
 
 async function query(user = { id: null, type: 'all' }) {
+    // debugger
+    console.log(user);
     var orders = await storageService.query('order')
-    console.log(orders);
     orders = _filterByUser(user, orders);
+    console.log(orders);
     return orders;
 
 
@@ -39,6 +41,7 @@ function _filterByUser(user, orders) {
     }
     else if (user.type === 'user') {
         return orders.filter(order => {
+           console.log(order.user._id === user.id);
             return order.user._id === user.id;
         })
     }

@@ -3,11 +3,11 @@ import { userService } from '../../services/user-service'
 
 
 export function loadOrders(user) {
+  console.log(user);
   return async dispatch => {
     try {
       const orders = await orderService.query(user)
       dispatch({ type: 'SET_ORDERS', orders })
-
     } catch (err) {
       console.log('OrderActions: err in loadOrders', err)
     }

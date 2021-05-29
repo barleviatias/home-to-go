@@ -27,7 +27,6 @@ class _App extends Component {
   componentDidMount() {
     this.props.loadStays()
     this.props.loadUsers()
-    this.props.loadOrders()
   }
 
   onSearch = (trip) => {
