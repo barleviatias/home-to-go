@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { stayService } from '../../services/stay-service';
 // import { uploadImg } from '../../services/cloudinary-service';
-import { addStay } from '../../store/actions/stayActions';
+import { addStay ,updateStay } from '../../store/actions/stayActions';
 import { Upload } from '../Upload';
 // import { TextField, Switch, FormControlLabel } from '@material-ui/core';
 // import { makeStyles } from '@material-ui/core/styles';
@@ -56,8 +56,27 @@ class _StayEdit extends Component {
 	};
 
 	componentDidMount() {
-		if (this.props.stay) this.setState({ stay: this.props.stay })
-		this.loadStay();
+		if (this.props.stay) {
+            console.log(this.props.stay);
+            
+            const currAmenities = {};
+            this.props.stay.amenities.forEach((amenitie)=>{
+                var str = amenitie;
+                var res = str.replace(' ', '_');
+                // currAmenities.push(res);
+                currAmenities[res]=true
+            })
+            
+            this.setState({
+                stay: {
+                    ...this.props.stay,
+					amenities: currAmenities
+				},
+			});
+        }else{
+            this.loadStay();
+        }
+
 	}
 	componentDidUpdate(prevProps) {
 		console.log(this.state);
@@ -99,9 +118,15 @@ class _StayEdit extends Component {
 		ev.target.value = 'my places';
 		// console.log(e);
 		const { stay } = this.state;
-		this.props.addStay(stay);
+        if(stay._id){
+            this.props.updateStay(stay);
+            this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been updated</h3></span>)
+        }
+        else{
+            this.props.addStay(stay);
+            this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been added</h3></span>)
+        }
 		this.props.onSelectAction(ev);
-		this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been added</h3></span>)
 	};
 
 	render() {
@@ -173,6 +198,7 @@ class _StayEdit extends Component {
 							name="TV"
 							id="amenities"
 							value={stay.amenities.TV}
+                            checked={stay.amenities.TV}
 							onChange={this.handleChange}
 						/>
 						<label for="TV"> TV</label>
@@ -181,14 +207,16 @@ class _StayEdit extends Component {
 							name="Wifi"
 							id="amenities"
 							value={stay.amenities.Wifi}
+                            checked={stay.amenities.Wifi}
 							onChange={this.handleChange}
 						/>
 						<label for="Wifi">Wifi</label>
 						<input
 							type="checkbox"
-							name="AC"
+							name="Air_conditioning"
 							id="amenities"
-							value={stay.amenities.AC}
+							value={stay.amenities.Air_conditioning}
+                            checked={stay.amenities.Air_conditioning}
 							onChange={this.handleChange}
 						/>
 						<label for="AC">AC </label>
@@ -197,6 +225,7 @@ class _StayEdit extends Component {
 							name="Smoking_allowed"
 							id="amenities"
 							value={stay.amenities.Smoking_allowed}
+                            checked={stay.amenities.Smoking_allowed}
 							onChange={this.handleChange}
 						/>
 						<label for="AC">Smoking_allowed </label>
@@ -205,6 +234,7 @@ class _StayEdit extends Component {
 							name="Pets_allowed"
 							id="amenities"
 							value={stay.amenities.Pets_allowed}
+                            checked={stay.amenities.Pets_allowed}
 							onChange={this.handleChange}
 						/>
 						<label for="AC">Pets_allowed </label>
@@ -213,6 +243,7 @@ class _StayEdit extends Component {
 							name="Cooking_basics"
 							id="amenities"
 							value={stay.amenities.Cooking_basics}
+                            checked={stay.amenities.Cooking_basics}
 							onChange={this.handleChange}
 						/>
 						<label for="AC">Cooking_basics </label>
@@ -242,7 +273,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-	addStay,
+	addStay,updateStay
 };
 
 export const StayEdit = connect(mapStateToProps, mapDispatchToProps)(_StayEdit);

@@ -43,6 +43,35 @@ function remove(stayId) {
 }
 
 async function update(stay) {
+    // const currStay = {
+	// 	name: stay.name,
+	// 	imgUrls: stay.imgUrls,
+	// 	price: stay.price,
+	// 	desc: stay.desc,
+	// 	capacity: 8,
+	// 	favorites: [
+	// 		{
+	// 			userId: 'u109',
+	// 		},
+	// 	],
+	// 	amenities: getAmeneties(stay.amenities),
+	// 	stayType: 'entire place',
+	// 	propertyType: 'loft',
+	// 	host: {
+	// 		_id: 'u101',
+	// 		fullname: 'Mor Levi',
+	// 		imgUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
+	// 	},
+	// 	loc: {
+	// 		country: 'France',
+	// 		countryCode: 'PT',
+	// 		address: 'Paris, France',
+	// 		lat: -8.61308,
+	// 		lng: 41.1413,
+	// 	},
+	// 	reviews: [],
+	// };
+    stay.amenities=getAmeneties( stay.amenities)
 	return storageService.put('stay', stay);
 	// return await httpService.put(`stay/${stay._id}`, stay)
 	// Handle case in which admin updates other stay's details

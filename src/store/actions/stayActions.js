@@ -26,6 +26,18 @@ export function addStay(stay) {
     }
   }
 }
+export function updateStay(stay) {
+  return async dispatch => {
+    try {
+      const updatedStay = await stayService.update(stay)
+      dispatch({ type: 'UPDATE_STAY', stay: updatedStay })
+
+      
+    } catch (err) {
+      console.log('StayActions: err in update Stay', err)
+    }
+  }
+}
 
 export function removeStay(stayId) {
   console.log('id frome action' , stayId);
