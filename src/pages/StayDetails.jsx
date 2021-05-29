@@ -2,7 +2,8 @@ import { Component } from "react";
 import { stayService } from "../services/stay-service";
 import { ReviewList } from '../cmps/stay-details/ReviewList';
 import { BookStay } from "../cmps/stay-details/BookStay";
-
+// import GoogleMapReact from 'google-map-react';
+import {GoogleMap} from '../cmps/GoogleMap';
 export class StayDetails extends Component {
 
   state = {
@@ -93,7 +94,7 @@ export class StayDetails extends Component {
   render() {
     const { stay } = this.state
     const {loggedInUser , toggleMsgModal} = this.props
-
+    // const AnyReactComponent = ({ text }) => <div>{text}</div>;
     if (!stay) return <h1>loading...</h1>
     const { loc, capacity, desc, amenities, stayType, propertyType, reviews, name, host } = stay
 
@@ -184,6 +185,9 @@ export class StayDetails extends Component {
             </div>
           </div>
           <ReviewList reviews={reviews} />
+        </section>
+        <section >
+        <GoogleMap pos={loc}/>
         </section>
       </main>
     );

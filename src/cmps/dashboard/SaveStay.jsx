@@ -14,14 +14,8 @@ class _StayEdit extends Component {
 	state = {
 		stay: {
 			name: '',
-			imgUrls: [
-				'https://a0.muscache.com/im/pictures/bd67daca-84a4-44e9-952d-11162ba76242.jpg?im_w=1200',
-				'https://a0.muscache.com/im/pictures/533919e9-d77c-4dfc-94a5-3b71d6c41792.jpg?im_w=720',
-				'https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/179b4e72-c3ed-4198-b274-bbc4c67276f2.jpeg?im_w=720',
-				'https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/efaab6c2-f21a-40aa-a32a-a37b08711af4.jpeg?im_w=720',
-				'https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/e5a8c40e-f26b-45fb-84c2-55845256e963.jpeg?im_w=720',
-			],
-			price: 80.0,
+			imgUrls: [],
+			price: "",
 			desc: 'Fantastic duplex apartment with three bedrooms, located in the historic area of Paris',
 			capacity: 8,
 			// favorites: [
