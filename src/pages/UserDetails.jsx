@@ -41,7 +41,7 @@ onUpdateUser = () => {
     const currUser = this.state.user
     
     if (!currUser) return <h1>loading...</h1>
-    const {fullname,username,email,imgUrl}=currUser
+    const {fullname,username,email,imgUrl,password}=currUser
     const firstName=fullname.split(' ')
     const isEditMode=this.state.isEditMode
     console.log(isEditMode);
@@ -57,12 +57,14 @@ onUpdateUser = () => {
         <p>full name: {fullname}</p>
         <p>username: {username}</p>
         <p>email: {email}</p>
+        <p>password: ******</p>
         <button onClick={this.toggleEditMode}>Edit</button>
               </div>}
         {isEditMode && <div>
             <h3>full name: <input type="text" name="fullname" autoComplete="off" onChange={this.handleChange} value={fullname} /></h3>
             <h3>username: <input type="text" name="username" autoComplete="off" onChange={this.handleChange} value={username} /></h3>
             <h3>email: <input type="text" name="email" autoComplete="off" onChange={this.handleChange} value={email} /></h3>
+            <h3>password: <input type="password" name="password" autoComplete="off" onChange={this.handleChange} value={password} /></h3>
         <button onClick={this.onUpdateUser}>save</button>
             </div>}
             <NavMenu/>
