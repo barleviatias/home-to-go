@@ -20,7 +20,12 @@ class _BookStay extends Component {
     }
 
     componentDidMount() {
-        const trip = tripService.query()
+        var trip = tripService.query()
+        if (!trip) trip = {
+            guests: { adults: 0, kids: 0 },
+            loc: { address: '' },
+            time: { checkIn: '', checkOut: '' }
+        }
         this.setState({ trip, isAvailable: false })
     }
 
@@ -55,6 +60,7 @@ class _BookStay extends Component {
 
         trip.totalPrice = ((trip.guests.kids + trip.guests.adults) * stay.price) * this.getTripTime()
         this.props.addOrder(trip, stay, loggedInUser)
+
         this.setState({
             trip: {
                 guests: { adults: 0, kids: 0 },
@@ -62,7 +68,7 @@ class _BookStay extends Component {
                 time: { checkIn: '', checkOut: '' }
             },
             isAvailable: false
-        })
+        } , ()=>{this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your order has sent to the host</h3></span>)})
     }
 
     toggleErrModal = (msg, url, linkTxt) => {
