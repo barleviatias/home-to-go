@@ -31,12 +31,12 @@ export class _Dashboard extends Component {
 
     render() {
         const { action,loggedInUser } = this.state
-        const { removeStay, stays ,loadHostStays} = this.props
+        const { removeStay, stays ,toggleMsgModal} = this.props
         console.log(stays);
         return (
             <main className="page">
                 <DashHeader onSelectAction={this.onSelectAction} />
-                {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} />}
+                {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal}/>}
                 { action === 'finance stat' && <FinanceStatistic />}
                 { action === 'rate stat' && <RateStatistic />}
                 { action === 'add stay' && <StayEdit />}
