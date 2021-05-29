@@ -18,7 +18,8 @@ import { DynamicModal } from './cmps/app/DynamicModal';
 class _App extends Component {
 
   state = {
-    userMsg: ''
+    userMsg: '',
+    isUserMsg: false
   }
 
   componentDidMount() {
@@ -32,17 +33,20 @@ class _App extends Component {
   }
 
   toggleMsgModal = (msg) => {
-    this.setState({ userMsg: msg })
+    this.setState({ userMsg: msg , isUserMsg: true })
+    setTimeout(() => {
+      this.setState({ isUserMsg: false })
+    }, 3000);
     setTimeout(() => {
       this.setState({ userMsg: '' })
-    }, 3000);
+    }, 6000);
   }
 
 
   render() {
 
     const { stays, updateUser, trip, addTrip, loggedInUser, logout, loadStays } = this.props
-    const { userMsg } = this.state
+    const { userMsg , isUserMsg } = this.state
 
     return (
       <Router>
@@ -56,11 +60,11 @@ class _App extends Component {
           <Route path='/user' render={(props) => (<UserDetails {...props} updateUser={updateUser} />)} />
           <Route path='/' render={(props) => (<Home {...props} stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
         </Switch>
-        {userMsg && <DynamicModal >
-          <section className="user-msg">
+         <DynamicModal >
+          <section className={`user-msg ${isUserMsg && 'on'} `}>
             {userMsg}
           </section>
-        </DynamicModal>}
+        </DynamicModal>
       </Router>
     )
   }
