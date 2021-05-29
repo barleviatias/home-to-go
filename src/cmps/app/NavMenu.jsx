@@ -22,7 +22,7 @@ export function NavMenu({ logout , toggleUserMenu }) {
                 {sessionUser && <div>
                         <Link to="/msg">Messages</Link>
                         <Link to="/notif">Notifications</Link>
-                        <Link to="/trips">Trips</Link>
+                        <Link to="/orders">Orders</Link>
                         <Link to="/whis">Whis list</Link>
                         <Link to="/host">Host your home</Link>
                         <Link to="/user">account</Link>

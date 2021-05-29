@@ -7,10 +7,12 @@ import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
 import { Header } from './cmps/Header';
 import { Dashboard } from './pages/Dashboard';
+import { Orders } from './pages/Orders';
 import { BecomeHost } from './pages/BecomeHost';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays,removeStay,loadHostStays } from './store/actions/stayActions'
+import { loadOrders } from './store/actions/orderActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
 import { DynamicModal } from './cmps/app/DynamicModal';
@@ -24,6 +26,7 @@ class _App extends Component {
   componentDidMount() {
     this.props.loadStays()
     this.props.loadUsers()
+    this.props.loadOrders()
   }
 
   onSearch = (trip) => {
@@ -41,7 +44,7 @@ class _App extends Component {
 
   render() {
 
-    const { stays, updateUser, trip, addTrip, loggedInUser, logout, loadStays } = this.props
+    const { stays, orders,updateUser, trip, addTrip, loggedInUser, logout, loadStays,loadOrders } = this.props
     const { userMsg } = this.state
 
     return (
@@ -49,6 +52,7 @@ class _App extends Component {
         <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
+          <Route path='/orders' render={(props) => (<Orders {...props} loadOrders={loadOrders} orders={orders} loggedInUser={loggedInUser} />)} />
           <Route path='/host/:userId' render={(props) => (<Dashboard {...props} loggedInUser={loggedInUser} updateUser={updateUser} toggleMsgModal={this.toggleMsgModal}/>)} />
           <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
           <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} toggleMsgModal={this.toggleMsgModal} />)} />
@@ -71,8 +75,7 @@ class _App extends Component {
 const mapStateToProps = (state) => {
   return {
     stays: state.stayModule.stays,
-    // orders: state.ordersModule.order,
-    // users: state.usersModule.user
+    orders: state.orderModule.orders,
     trip: state.tripModule.trip,
     users: state.userModule.users,
     loggedInUser: state.userModule.loggedInUser
@@ -87,7 +90,8 @@ const mapDispatchToProps = {
   loadTrip,
   logout,
   removeStay,
-  loadHostStays
+  loadHostStays,
+  loadOrders
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

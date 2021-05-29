@@ -2,10 +2,10 @@ import { orderService } from '../../services/order-service'
 import { userService } from '../../services/user-service'
 
 
-export function loadOrders() {
+export function loadOrders(user) {
   return async dispatch => {
     try {
-      const orders = await orderService.query()
+      const orders = await orderService.query(user)
       dispatch({ type: 'SET_ORDERS', orders })
 
     } catch (err) {
