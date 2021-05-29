@@ -15,13 +15,14 @@ export function loadOrders() {
 }
 
 export function addOrder(order) {
+  console.log('action:' ,order);
   return async dispatch => {
     try {
       const addedOrder = await orderService.add(order)
       dispatch({ type: 'ADD_ORDER', order: addedOrder })
 
-      const score = await userService.increaseScore()
-      dispatch({ type: 'SET_SCORE', score })
+      // const score = await userService.increaseScore()
+      // dispatch({ type: 'SET_SCORE', score })
       
     } catch (err) {
       console.log('OrderActions: err in addOrder', err)

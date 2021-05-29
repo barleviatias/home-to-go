@@ -1,8 +1,9 @@
 import { Component } from "react";
 import { tripService } from '../../services/trip-service'
-import { orderService } from '../../services/order-service'
+import { addOrder } from '../../store/actions/orderActions'
 import { DynamicModal } from '../app/DynamicModal'
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 
 class _BookStay extends Component {
@@ -14,7 +15,8 @@ class _BookStay extends Component {
             time: { checkIn: '', checkOut: '' }
         },
         modalType: '',
-        isAvailable: false
+        isAvailable: false,
+        isErrModal: null
     }
 
     componentDidMount() {
@@ -43,29 +45,40 @@ class _BookStay extends Component {
     }
 
     onReserveTrip = async () => {
-        const totalPrice = ((this.state.trip.guests.kids + this.state.trip.guests.adults) * this.props.stay.price) * this.getTime()
-        const order = await orderService.add(this.state.trip, this.props.stay, totalPrice, this.props.loggedInUser)
-        const trip = tripService.remove()
+        const { trip } = this.state
+        const { stay, loggedInUser } = this.props
+
+        if (!loggedInUser) {
+            this.toggleErrModal('You must log in frist', '/login', 'Login')
+            return
+        }
+
+        trip.totalPrice = ((trip.guests.kids + trip.guests.adults) * stay.price) * this.getTripTime()
+        this.props.addOrder(trip, stay, loggedInUser)
         this.setState({
             trip: {
                 guests: { adults: 0, kids: 0 },
                 loc: { address: '' },
                 time: { checkIn: '', checkOut: '' }
             },
-             isAvailable: false
+            isAvailable: false
         })
     }
 
-    getTime = () => {
+    toggleErrModal = (msg, url, linkTxt) => {
+        const isErrModal = (!this.state.isErrModal) ? { msg, url, linkTxt } : null
+        this.setState({ isErrModal })
+    }
+
+    getTripTime = () => {
         const diff = new Date(this.state.trip.time.checkOut).getTime() - new Date(this.state.trip.time.checkIn).getTime();
-        return diff/1000/60/60/24
+        return diff / 1000 / 60 / 60 / 24
     }
 
     render() {
-
         const { stay, getTotalRate } = this.props
+        const { trip, modalType, isAvailable, isErrModal } = this.state
         const { reviews, price } = stay
-        const { trip, modalType, isAvailable } = this.state
         const { kids, adults } = trip.guests;
 
 
@@ -123,13 +136,17 @@ class _BookStay extends Component {
                         {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}
                         {isAvailable && <div className="book-info">
                             <h4>You won't be charged yet</h4>
-                            <h3><span>${price} X {this.getTime()} night{this.getTime() > 1 && 's'}</span> <span>${((trip.guests.kids + trip.guests.adults) * price) * this.getTime()}</span></h3>
-                            <h3><span>Cleaning fee</span> <span>${(6 * this.getTime())}</span></h3>
-                            <h3><span>Service fee</span> <span>${(17 * this.getTime())}</span></h3>
+                            <h3><span>${price} X {this.getTripTime()} night{this.getTripTime() > 1 && 's'}</span> <span>${((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime()}</span></h3>
+                            <h3><span>Cleaning fee</span> <span>${(6 * this.getTripTime())}</span></h3>
+                            <h3><span>Service fee</span> <span>${(17 * this.getTripTime())}</span></h3>
                         </div>}
                     </form>
                 </div>
                 <span className="report-listing-btn"><i className="fab fa-font-awesome-flag"></i><p>Report this listing</p></span>
+                {isErrModal && <DynamicModal>
+                    <h2>{isErrModal.msg}</h2>
+                    <Link to={isErrModal.url}>{isErrModal.linkTxt}</Link>
+                </DynamicModal>}
             </section>
         )
     }
@@ -142,6 +159,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
+    addOrder,
 
 }
 

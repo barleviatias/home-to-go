@@ -1,5 +1,6 @@
 import { storageService } from './asyncStorageService'
 import {userService} from '../services/user-service'
+import {tripService} from '../services/trip-service'
 import {utilService} from '../services/util-service'
 
 // import axios from 'axios'
@@ -45,7 +46,7 @@ async function update(order) {
     // if (getLoggedinOrder()._id === order._id) _saveLocalOrder(order)
 }
 
-async function add(trip, stay , totalPrice , loggedInUser) {
+async function add(trip, stay , loggedInUser) {
     const order = {
         _id: utilService.makeId(),
         createdAt: Date.now(),
@@ -55,9 +56,10 @@ async function add(trip, stay , totalPrice , loggedInUser) {
         host: stay.host,
         status: 'pending',
         stay: {_id: stay._id , name: stay.name , price: stay.price},
-        totalPrice,
+        totalPrice: trip.totalPrice,
         user: loggedInUser
     }
+    tripService.remove()
     return storageService.post('order', order)
 
     // order.imgUrl = await getOrderImage(order.name)

@@ -1,5 +1,6 @@
 // import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { tripService } from '../services/trip-service'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
@@ -60,10 +61,8 @@ class _LoginSignup extends Component {
 		const userCreds = { username, password };
 		try {
 			this.props.login(userCreds);
-			this.setState(
-				{ loginCred: { username: '', password: '' } },
-				this.props.history.push('/')
-			);
+			this.setState({ loginCred: { username: '', password: '' } },this.props.history.go(-1)
+			)
 		} catch (err) {
 			this.setState({ msg: 'Login failed, try again.' });
 		}
@@ -79,7 +78,7 @@ class _LoginSignup extends Component {
 		this.props.signup(signupCreds);
 		this.setState(
 			{ signupCred: { username: '', password: '', fullname: '', email: '' } },
-			this.props.history.push('/')
+			this.props.history.go(-1)
 		);
 	};
 
