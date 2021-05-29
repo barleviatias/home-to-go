@@ -41,7 +41,7 @@ export class _Dashboard extends Component {
         const { removeStay, stays, toggleMsgModal } = this.props
         console.log(selsctedEditStay);
         return (
-            <main className="page">
+            <main className="dashboard-container page">
                 <DashHeader onSelectAction={this.onSelectAction} />
                 {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} />}
                 { action === 'finance stat' && <FinanceStatistic />}

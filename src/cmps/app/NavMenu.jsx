@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 
-export function NavMenu({ logout , toggleUserMenu }) {
+export function NavMenu({ logout, toggleUserMenu }) {
 
         let sessionUser = sessionStorage.getItem('loggedinUser');
         sessionUser = JSON.parse(sessionUser);
@@ -15,19 +15,23 @@ export function NavMenu({ logout , toggleUserMenu }) {
                         <Link to="/host">Host your home</Link>
                         <Link to="/about">about</Link>
                         <Link to="/help">help</Link>
-                        <Link to="/explore">explore</Link>
+                        {/* <Link to="/explore">explore</Link> */}
 
                 </div>
         </div>}
                 {sessionUser && <div>
-                        <Link to="/msg">Messages</Link>
-                        <Link to="/notif">Notifications</Link>
-                        <Link to="/orders">Orders</Link>
-                        <Link to="/whis">Whis list</Link>
-                        <Link to="/host">Host your home</Link>
-                        <Link to="/user">account</Link>
-                        <Link to="/help">help</Link>
-                        <button onClick={() => { logout() }} ><Link to="/">logout</Link></button>
+                        <div>
+                                <Link to="/msg">Messages</Link>
+                                <Link to="/notif">Notifications</Link>
+                                <Link to="/orders">Orders</Link>
+                                <Link to="/whis">Whis list</Link>
+                                <Link to="/host">Host your home</Link>
+                        </div>
+                        <div>
+                                <Link to="/user">account</Link>
+                                <Link to="/help">help</Link>
+                                <Link onClick={() => { logout() }} to="/">logout</Link>
+                        </div>
                 </div>}
         </section>)
 }

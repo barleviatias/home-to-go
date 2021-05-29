@@ -41,13 +41,14 @@
                 width: 100%;
                 border: 1px solid rgb(153, 153, 153);
 
-                &.check-in-lable {
+
+                &.check-in {
                     border-top-left-radius: 10px;
                     border-bottom-color: rgba(255, 255, 255, 0);
                     border-right-color: rgba(255, 255, 255, 0);
                 }
 
-                &.check-out-lable {
+                &.check-out {
                     border-top-right-radius: 10px;
                     border-bottom-color: rgba(255, 255, 255, 0);
                 }

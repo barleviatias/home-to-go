@@ -20,7 +20,7 @@ class _StayEdit extends Component {
 				Pets_allowed: false,
 				Cooking_basics: false,
 			},
-			stayType: '',
+			stayType: 'entire place',
 			propertyType: '',
 			host: {
 				_id: this.props.loggedInUser._id,
@@ -28,11 +28,11 @@ class _StayEdit extends Component {
 				imgUrl: this.props.loggedInUser.imgUrl,
 			},
 			loc: {
-				country: 'France',
-				countryCode: 'PT',
-				address: 'Paris, France',
-				lat: -8.61308,
-				lng: 41.1413,
+				country: '',
+				countryCode: '',
+				address: '',
+				lat: 0,
+				lng: 0,
 			},
 			reviews: [],
 		},
@@ -82,7 +82,16 @@ class _StayEdit extends Component {
 					amenities: { ...this.state.stay.amenities, [name]: checked },
 				},
 			});
-		} else {
+		} 
+		else if (name === 'address') {
+			this.setState({
+				stay: {
+					...this.state.stay,
+					loc: { ...this.state.stay.loc, [name]: value },
+				},
+			});
+		} 
+		else {
 			this.setState({ stay: { ...this.state.stay, [name]: value } });
 		}
 	}
@@ -108,7 +117,7 @@ class _StayEdit extends Component {
 
 		return (
 			<section className="stay-edit-container">
-				<h1>{stay._id ? 'Edit stay' : 'Add new stay'}</h1>
+				{/* <h1>{stay._id ? 'Edit stay' : 'Add new stay'}</h1> */}
 				<form className="stay-edit-form" onSubmit={this.onSaveStay} >
 					<section className="stay-edit-header">
 						<h1>
@@ -137,18 +146,18 @@ class _StayEdit extends Component {
 								</p>
 							</div>
 							<div>
-								<button><p><i className="fas fa-external-link-alt"></i>share</p></button>
-								<button className="stay-save-btn"><p><i className="far fa-heart"></i>save</p></button>
+								<button type="button" ><p><i className="fas fa-external-link-alt"></i>share</p></button>
+								<button type="button" className="stay-save-btn"><p><i className="far fa-heart"></i>save</p></button>
 							</div>
 						</div>
 					</section>
 
 					<div className="stay-gallery">
-						<Upload onUploadImg={this.onUploadImg} />
-						<Upload onUploadImg={this.onUploadImg} />
-						<Upload onUploadImg={this.onUploadImg} />
-						<Upload onUploadImg={this.onUploadImg} />
-						<Upload onUploadImg={this.onUploadImg} />
+						<Upload userImgUrl={stay.imgUrls[0]} onUploadImg={this.onUploadImg} />
+						<Upload userImgUrl={stay.imgUrls[1]} onUploadImg={this.onUploadImg} />
+						<Upload userImgUrl={stay.imgUrls[2]} onUploadImg={this.onUploadImg} />
+						<Upload userImgUrl={stay.imgUrls[3]} onUploadImg={this.onUploadImg} />
+						<Upload userImgUrl={stay.imgUrls[4]} onUploadImg={this.onUploadImg} />
 					</div>
 
 					<section className="stay-edit-info-container">
@@ -309,7 +318,7 @@ class _StayEdit extends Component {
 							</h3>
 						</div>
 					</section>
-					<button type="submit" className="primary-btn">Save</button>
+					<button type="submit" className="stay-edit-save-btn">Save</button>
 				</form>
 			</section>
 		)

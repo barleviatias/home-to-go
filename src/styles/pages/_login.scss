@@ -16,7 +16,7 @@
                 text-align: center;
                 border-bottom: 1px solid rgb(219, 219, 219);
                 width: 100%;
-                padding: 15px 200px;
+                padding: 15px 20px;
 
                 h2 {
                     font-size: rem(16px);
@@ -73,6 +73,7 @@
                     button {
                         font-weight: 600;
                         font-size: rem(14px);
+                        color: $clr-dark;
                     }
                 }
             }

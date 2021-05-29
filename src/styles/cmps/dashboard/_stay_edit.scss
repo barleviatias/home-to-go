@@ -65,9 +65,10 @@
                 align-items: center;
                 height: 100%;
                 width: 100%;
-                color: white;
-                text-shadow: 0 0 5px #00000091 ;
+                color: rgb(53, 53, 53);
                 background-color: rgb(228, 228, 228);
+                font-size: rem(16px);
+                font-weight: 600;
                 background-size: cover;
                 background-repeat: no-repeat;
 
@@ -76,12 +77,14 @@
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
+                    position: relative;
+                    top: 20px;
                     
                     .img-upload-btn{
                         opacity: 0%;
                         width: 100%;
                         height: 100%;
-                        z-index: 5;
+                        z-index: 1;
                         position: relative;
                         bottom: 30px;
                         cursor: pointer;
@@ -186,6 +189,7 @@
                         span {
                             padding: 5px 0px;
                             display: flex;
+                            align-items: center;
                             gap: 20px;
                         }
                     }
@@ -216,6 +220,15 @@
             color: rgb(53, 53, 53);
         }
     }
+    .stay-edit-save-btn{
+            background-color: $clr-brand;
+            padding: 7px 40px;
+            border-radius: 5px;
+            color: white;
+            font-size: rem(14px);
+            font-weight: 600;
+            margin-top: 20px;
+    }
 }
 
 input {
@@ -234,8 +247,9 @@ select {
 
 textarea{
     resize: none;
-    width: 20vw;
+    width: 100%;
     height: 20vh;
     border: 1px solid rgb(182, 182, 182);
     border-radius: 5px;
+    margin: 20px 0px;
 }
