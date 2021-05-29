@@ -3,7 +3,6 @@ import { userService } from '../../services/user-service'
 
 
 export function loadOrders(user) {
-  console.log(user);
   return async dispatch => {
     try {
       const orders = await orderService.query(user)
@@ -15,7 +14,6 @@ export function loadOrders(user) {
 }
 
 export function addOrder(trip ,stay, loggedInUser) {
-  console.log('action:' ,trip);
   return async dispatch => {
     try {
       const addedOrder = await orderService.add(trip, stay, loggedInUser)
