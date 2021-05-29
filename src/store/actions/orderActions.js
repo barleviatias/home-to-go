@@ -14,11 +14,11 @@ export function loadOrders() {
   }
 }
 
-export function addOrder(order) {
-  console.log('action:' ,order);
+export function addOrder(trip ,stay, loggedInUser) {
+  console.log('action:' ,trip);
   return async dispatch => {
     try {
-      const addedOrder = await orderService.add(order)
+      const addedOrder = await orderService.add(trip, stay, loggedInUser)
       dispatch({ type: 'ADD_ORDER', order: addedOrder })
 
       // const score = await userService.increaseScore()

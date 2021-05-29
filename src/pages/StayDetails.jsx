@@ -92,7 +92,7 @@ export class StayDetails extends Component {
 
   render() {
     const { stay } = this.state
-    const {loggedInUser} = this.props
+    const {loggedInUser , toggleMsgModal} = this.props
 
     if (!stay) return <h1>loading...</h1>
     const { loc, capacity, desc, amenities, stayType, propertyType, reviews, name, host } = stay
@@ -172,7 +172,7 @@ export class StayDetails extends Component {
             </div>
           </div>
 
-          <BookStay stay={stay} getTotalRate={this.getTotalRate} loggedInUser={loggedInUser}/>
+          <BookStay stay={stay} getTotalRate={this.getTotalRate} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal}/>
 
         </section>
 

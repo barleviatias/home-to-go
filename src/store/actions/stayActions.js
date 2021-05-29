@@ -28,6 +28,7 @@ export function addStay(stay) {
 }
 
 export function removeStay(stayId) {
+  console.log('id frome action' , stayId);
   return async dispatch => {
     try {
       await stayService.remove(stayId)
