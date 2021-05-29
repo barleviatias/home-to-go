@@ -111,10 +111,7 @@ async function getHostStays(userId) {
         return stay.host._id === userId
     })
     return stays
-    // stays = stays.filter(stay => {
-    //     return stay.loc.address.toUpperCase().includes(location.toUpperCase())
-    // })
-    // return stays.slice(0, 4)
+   
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`stay${queryStr}`)
 }

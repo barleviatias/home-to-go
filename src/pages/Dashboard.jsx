@@ -5,15 +5,23 @@ import { FinanceStatistic } from '../cmps/dashboard/FinanceStatistic'
 import { RateStatistic } from '../cmps/dashboard/RateStatistic'
 import { StayEdit } from '../cmps/dashboard/SaveStay'
 
+import { connect } from 'react-redux';
 
-export class Dashboard extends Component {
+import { loadHostStays,removeStay } from '../store/actions/stayActions'
+
+
+export class _Dashboard extends Component {
 
     state = {
-        action: ''
+        action: '',
+        loggedInUser: null
     }
 
     componentDidMount() {
-        this.props.updateUser({ ...this.props.loggedInUser, isHost: true })
+        this.setState({ loggedInUser: { ...this.props.loggedInUser, isHost: true } }, () => {
+            this.props.updateUser(this.state.loggedInUser)
+            this.props.loadHostStays(this.state.loggedInUser._id);
+        })
     }
 
     onSelectAction = (ev) => {
@@ -22,12 +30,13 @@ export class Dashboard extends Component {
     }
 
     render() {
-        const { action } = this.state
-        const {loggedInUser} = this.props
+        const { action,loggedInUser } = this.state
+        const { removeStay, stays ,loadHostStays} = this.props
+        console.log(stays);
         return (
             <main className="page">
                 <DashHeader onSelectAction={this.onSelectAction} />
-                {(action === '' || action === 'my places') && <MyPlaces loggedInUser={loggedInUser}/>}
+                {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} />}
                 { action === 'finance stat' && <FinanceStatistic />}
                 { action === 'rate stat' && <RateStatistic />}
                 { action === 'add stay' && <StayEdit />}
@@ -35,3 +44,16 @@ export class Dashboard extends Component {
         )
     }
 }
+
+const mapStateToProps = (state) => {
+    return {
+        stays: state.stayModule.stays,
+    }
+}
+
+const mapDispatchToProps = {
+    loadHostStays,
+    removeStay
+}
+
+export const Dashboard = connect(mapStateToProps, mapDispatchToProps)(_Dashboard)
