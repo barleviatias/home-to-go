@@ -1,5 +1,5 @@
 import { stayService } from '../../services/stay-service'
-import { userService } from '../../services/user-service'
+// import { userService } from '../../services/user-service'
 
 
 export function loadStays(trip) {

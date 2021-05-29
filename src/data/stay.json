@@ -23,7 +23,7 @@
             "Air conditioning",
             "Smoking allowed",
             "Pets allowed",
-            "Cooking basics"
+            "Cookingbasics"
         ],
         "stayType": "entire place",
         "propertyType": "loft",
@@ -36,8 +36,8 @@
             "country": "France",
             "countryCode": "PT",
             "address": "Paris, France",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat":41.1413 ,
+            "lng":-8.61308
         },
         "reviews": [
             {
@@ -189,8 +189,8 @@
             "country": "Portugal",
             "countryCode": "PT",
             "address": "Porto, Portugal",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat": 32.10,
+            "lng": 34.79
         },
         "reviews": [
             {
@@ -305,8 +305,8 @@
             "country": "Portugal",
             "countryCode": "PT",
             "address": "Porto, Portugal",
-            "lat": -8.61308,
-            "lng": 41.1413
+            "lat": 41.15,
+            "lng": -8.62
         },
         "reviews": [
             {
