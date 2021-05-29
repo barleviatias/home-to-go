@@ -1,34 +1,17 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { stayService } from '../../services/stay-service';
-// import { uploadImg } from '../../services/cloudinary-service';
-import { addStay ,updateStay } from '../../store/actions/stayActions';
+import { addStay, updateStay } from '../../store/actions/stayActions';
 import { Upload } from '../Upload';
-// import { TextField, Switch, FormControlLabel } from '@material-ui/core';
-// import { makeStyles } from '@material-ui/core/styles';
-// import Button from '@material-ui/core/Button';
-// import IconButton from '@material-ui/core/IconButton';
 
-// import PhotoCamera from '@material-ui/icons/PhotoCamera';
 class _StayEdit extends Component {
 	state = {
 		stay: {
 			name: '',
-			imgUrls: [
-				'https://a0.muscache.com/im/pictures/bd67daca-84a4-44e9-952d-11162ba76242.jpg?im_w=1200',
-				'https://a0.muscache.com/im/pictures/533919e9-d77c-4dfc-94a5-3b71d6c41792.jpg?im_w=720',
-				'https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/179b4e72-c3ed-4198-b274-bbc4c67276f2.jpeg?im_w=720',
-				'https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/efaab6c2-f21a-40aa-a32a-a37b08711af4.jpeg?im_w=720',
-				'https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/e5a8c40e-f26b-45fb-84c2-55845256e963.jpeg?im_w=720',
-			],
-			price: 80.0,
-			desc: 'Fantastic duplex apartment with three bedrooms, located in the historic area of Paris',
+			imgUrls: [],
+			price: 0,
+			desc: '',
 			capacity: 8,
-			// favorites: [
-			//     {
-			//         userId: "u109"
-			//     }
-			// ],
 			amenities: {
 				TV: true,
 				Wifi: false,
@@ -57,29 +40,22 @@ class _StayEdit extends Component {
 
 	componentDidMount() {
 		if (this.props.stay) {
-            console.log(this.props.stay);
-            
-            const currAmenities = {};
-            this.props.stay.amenities.forEach((amenitie)=>{
-                var str = amenitie;
-                var res = str.replace(' ', '_');
-                // currAmenities.push(res);
-                currAmenities[res]=true
-            })
-            
-            this.setState({
-                stay: {
-                    ...this.props.stay,
+			const currAmenities = {}
+			this.props.stay.amenities.forEach((amenitie) => {
+				var str = amenitie;
+				var res = str.replace(' ', '_');
+				currAmenities[res] = true
+			})
+
+			this.setState({
+				stay: {
+					...this.props.stay,
 					amenities: currAmenities
 				},
 			});
-        }else{
-            this.loadStay();
-        }
-
-	}
-	componentDidUpdate(prevProps) {
-		console.log(this.state);
+		} else {
+			this.loadStay();
+		}
 	}
 
 	loadStay() {
@@ -91,13 +67,12 @@ class _StayEdit extends Component {
 			});
 		}
 	}
+
 	onUploadImg = (imgState, position) => {
-		console.log(imgState.imgUrl);
 		this.setState({ stay: { ...this.state.stay, imgUrls: [...this.state.stay.imgUrls, imgState.imgUrl] } })
 	}
+
 	handleChange = ({ target }) => {
-		console.log(target.value);
-		// console.log( target.checked);
 		let { name, value, id, checked } = target;
 		value = name === 'price' ? +value : value;
 		if (id === 'amenities') {
@@ -110,159 +85,234 @@ class _StayEdit extends Component {
 		} else {
 			this.setState({ stay: { ...this.state.stay, [name]: value } });
 		}
-		console.log(this.state.stay);
-	};
+	}
 
 	onSaveStay = (ev) => {
 		ev.preventDefault();
 		ev.target.value = 'my places';
-		// console.log(e);
 		const { stay } = this.state;
-        if(stay._id){
-            this.props.updateStay(stay);
-            this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been updated</h3></span>)
-        }
-        else{
-            this.props.addStay(stay);
-            this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been added</h3></span>)
-        }
+		if (stay._id) {
+			this.props.updateStay(stay);
+			this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been updated</h3></span>)
+		}
+		else {
+			this.props.addStay(stay);
+			this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been added</h3></span>)
+		}
 		this.props.onSelectAction(ev);
 	};
 
 	render() {
 		const { stay } = this.state;
 		if (!stay) return ''; // LOADER
-		return (
-			<div className="stay-edit full container flex column align-center">
-				<h1>{stay._id ? 'Edit stay' : 'Add new stay'}</h1>
-				<form onSubmit={this.onSaveStay} className="flex column align-center">
-					<h3>
-						stay name:{' '}
-						<input
-							type="text"
-							name="name"
-							autoComplete="off"
-							onChange={this.handleChange}
-							value={stay.name}
-						/>
-					</h3>
-					<h3>
-						price:{' '}
-						<input
-							type="number"
-							name="price"
-							autoComplete="off"
-							onChange={this.handleChange}
-							value={stay.price}
-						/>
-					</h3>
-					<h3>
-						description:{' '}
-						<input
-							type="text"
-							name="desc"
-							autoComplete="off"
-							onChange={this.handleChange}
-							value={stay.desc}
-						/>
-					</h3>
-					<h3>
-						capacity:{' '}
-						<input
-							type="number"
-							name="capacity"
-							autoComplete="off"
-							onChange={this.handleChange}
-							value={stay.capacity}
-						/>
-					</h3>
-					<h3>
-						stayType:{' '}
-						<select name="stayType" onChange={this.handleChange}>
-							<option value="entire place">entire place</option>
-							<option value="private room">private room</option>
-						</select>
-					</h3>
-					<h3>
-						propertyType:{' '}
-						<select name="propertyType" onChange={this.handleChange}>
-							<option value="loft">loft</option>
-							<option value="villa">villa</option>
-							<option value="appartment room">appartment</option>
-						</select>
-					</h3>
-					<div>
 
-						<input
-							type="checkbox"
-							name="TV"
-							id="amenities"
-							value={stay.amenities.TV}
-                            checked={stay.amenities.TV}
-							onChange={this.handleChange}
-						/>
-						<label for="TV"> TV</label>
-						<input
-							type="checkbox"
-							name="Wifi"
-							id="amenities"
-							value={stay.amenities.Wifi}
-                            checked={stay.amenities.Wifi}
-							onChange={this.handleChange}
-						/>
-						<label for="Wifi">Wifi</label>
-						<input
-							type="checkbox"
-							name="Air_conditioning"
-							id="amenities"
-							value={stay.amenities.Air_conditioning}
-                            checked={stay.amenities.Air_conditioning}
-							onChange={this.handleChange}
-						/>
-						<label for="AC">AC </label>
-						<input
-							type="checkbox"
-							name="Smoking_allowed"
-							id="amenities"
-							value={stay.amenities.Smoking_allowed}
-                            checked={stay.amenities.Smoking_allowed}
-							onChange={this.handleChange}
-						/>
-						<label for="AC">Smoking_allowed </label>
-						<input
-							type="checkbox"
-							name="Pets_allowed"
-							id="amenities"
-							value={stay.amenities.Pets_allowed}
-                            checked={stay.amenities.Pets_allowed}
-							onChange={this.handleChange}
-						/>
-						<label for="AC">Pets_allowed </label>
-						<input
-							type="checkbox"
-							name="Cooking_basics"
-							id="amenities"
-							value={stay.amenities.Cooking_basics}
-                            checked={stay.amenities.Cooking_basics}
-							onChange={this.handleChange}
-						/>
-						<label for="AC">Cooking_basics </label>
-						<h1>Uploading to cloudinary YAAY!</h1>
-						{/* <label>
-						{' '}
-						Upload your image to cloudinary!
-						<input onchange={uploadImg(event)} type="file" />
-					</label> */}
+		return (
+			<section className="stay-edit-container">
+				<h1>{stay._id ? 'Edit stay' : 'Add new stay'}</h1>
+				<form className="stay-edit-form" onSubmit={this.onSaveStay} >
+					<section className="stay-edit-header">
+						<h1>
+							stay name:
+							<input
+								type="text"
+								name="name"
+								autoComplete="off"
+								onChange={this.handleChange}
+								value={stay.name}
+							/>
+						</h1>
+						<div className="stay-edit-short-info">
+							<div>
+								<span className="stay-rate-display"><i className="fas fa-star"></i><div className="rate-placeholder"></div></span>
+								<span>•</span>
+								<p>
+									Address:
+									<input
+										type="text"
+										name="address"
+										autoComplete="off"
+										onChange={this.handleChange}
+										value={stay.loc.address}
+									/>
+								</p>
+							</div>
+							<div>
+								<button><p><i className="fas fa-external-link-alt"></i>share</p></button>
+								<button className="stay-save-btn"><p><i className="far fa-heart"></i>save</p></button>
+							</div>
+						</div>
+					</section>
+
+					<div className="stay-gallery">
+						<Upload onUploadImg={this.onUploadImg} />
+						<Upload onUploadImg={this.onUploadImg} />
+						<Upload onUploadImg={this.onUploadImg} />
+						<Upload onUploadImg={this.onUploadImg} />
+						<Upload onUploadImg={this.onUploadImg} />
 					</div>
-					<Upload onUploadImg={this.onUploadImg} />
-					<Upload onUploadImg={this.onUploadImg} />
-					<Upload onUploadImg={this.onUploadImg} />
-					<Upload onUploadImg={this.onUploadImg} />
-					<Upload onUploadImg={this.onUploadImg} />
-					<button className="primary-btn">Save</button>
+
+					<section className="stay-edit-info-container">
+						<div className="stay-edit-long-info">
+							<div className="stay-long-info-header">
+								<div className="stay-long-info-header-txt">
+									<span>
+										capacity:
+										<input
+											type="number"
+											name="capacity"
+											autoComplete="off"
+											onChange={this.handleChange}
+											value={stay.capacity}
+										/>
+									  •
+											stayType:
+										<select name="stayType" onChange={this.handleChange}>
+											<option value="entire place">entire place</option>
+											<option value="private room">private room</option>
+										</select>
+									 •
+											propertyType:
+										<select name="propertyType" onChange={this.handleChange}>
+											<option value="loft">loft</option>
+											<option value="villa">villa</option>
+											<option value="appartment room">appartment</option>
+										</select>
+
+									</span>
+								</div>
+								<img src={stay.host.imgUrl} alt="avatar" />
+							</div>
+
+							<div className="stay-feature-container">
+								<div>
+									<i className="fas fa-home"></i>
+									<div>
+										<h3>{stay.stayType}</h3>
+										<h4>{stay.stayType === 'entire place' ? "You'll have the place to yourself." : "You'll have a private room to yourself."}</h4>
+									</div>
+								</div>
+								<div>
+									<i className="fas fa-book-open"></i>
+									<div>
+										<h3>House rules</h3>
+										<h4>This place isn’t suitable for children under 12 and the host doesn’t allow pets.</h4>
+									</div>
+								</div>
+								<div>
+									<i className="fas fa-medal"></i>
+									<div>
+										<h3>{stay.host.fullname} is a Superhost</h3>
+										<h4>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</h4>
+									</div>
+								</div>
+								<div>
+									<i className="fas fa-bookmark"></i>
+									<div>
+										<h3>Wifi</h3>
+										<h4>Guests often search for this popular amenity</h4>
+									</div>
+								</div>
+							</div>
+
+							<span className="description">
+							<h2>description</h2>
+								<textarea
+									type="text"
+									name="desc"
+									autoComplete="off"
+									onChange={this.handleChange}
+									value={stay.desc}
+								/>
+							</span>
+							<div className="amenities-list">
+								<h2>Amenities</h2>
+								<div>
+									<span>
+										<input
+											type="checkbox"
+											name="TV"
+											id="amenities"
+											value={stay.amenities.TV}
+											checked={stay.amenities.TV}
+											onChange={this.handleChange}
+										/>
+										<label for="TV"> TV</label>
+									</span>
+									<span>
+										<input
+											type="checkbox"
+											name="Wifi"
+											id="amenities"
+											value={stay.amenities.Wifi}
+											checked={stay.amenities.Wifi}
+											onChange={this.handleChange}
+										/>
+										<label for="Wifi">Wifi</label>
+									</span>
+									<span>
+										<input
+											type="checkbox"
+											name="Air_conditioning"
+											id="amenities"
+											value={stay.amenities.Air_conditioning}
+											checked={stay.amenities.Air_conditioning}
+											onChange={this.handleChange}
+										/>
+										<label for="AC">AC </label>
+									</span>
+									<span>
+										<input
+											type="checkbox"
+											name="Smoking_allowed"
+											id="amenities"
+											value={stay.amenities.Smoking_allowed}
+											checked={stay.amenities.Smoking_allowed}
+											onChange={this.handleChange}
+										/>
+										<label for="AC">Smoking_allowed </label>
+									</span>
+									<span>
+										<input
+											type="checkbox"
+											name="Pets_allowed"
+											id="amenities"
+											value={stay.amenities.Pets_allowed}
+											checked={stay.amenities.Pets_allowed}
+											onChange={this.handleChange}
+										/>
+										<label for="AC">Pets_allowed </label>
+									</span>
+									<span>
+										<input
+											type="checkbox"
+											name="Cooking_basics"
+											id="amenities"
+											value={stay.amenities.Cooking_basics}
+											checked={stay.amenities.Cooking_basics}
+											onChange={this.handleChange}
+										/>
+										<label for="AC">Cooking_basics </label>
+									</span>
+								</div>
+							</div>
+						</div>
+						<div className="order-form-container">
+							<h3 >
+								price:{' '}
+								<input
+									type="number"
+									name="price"
+									autoComplete="off"
+									onChange={this.handleChange}
+									value={stay.price}
+								/> / night
+							</h3>
+						</div>
+					</section>
+					<button type="submit" className="primary-btn">Save</button>
 				</form>
-			</div>
-		);
+			</section>
+		)
 	}
 }
 
@@ -273,7 +323,7 @@ function mapStateToProps(state) {
 }
 
 const mapDispatchToProps = {
-	addStay,updateStay
+	addStay, updateStay
 };
 
 export const StayEdit = connect(mapStateToProps, mapDispatchToProps)(_StayEdit);

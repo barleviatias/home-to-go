@@ -35,7 +35,7 @@ export class MainFilter extends Component {
     onSearch = (ev) => {
         ev.preventDefault();
         this.props.onSearch(this.state.trip)
-        this.setState({modalType: ''})
+        this.setState({ modalType: '' })
     }
 
     toggleDynamicModal = (modalKey) => {
@@ -120,7 +120,8 @@ export class MainFilter extends Component {
                             </div>
                         </section>
                     </DynamicModal>}
-                    <button onClick={this.onSearch}> <Link to="/explore">🔍</Link></button>
+                    <button onClick={this.onSearch}> <Link to="/explore"><i className="fas fa-search"></i>
+                    </Link></button>
                 </form>
 
             </section>
