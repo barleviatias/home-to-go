@@ -20,8 +20,6 @@ export function addStay(stay) {
       const addedStay = await stayService.add(stay)
       dispatch({ type: 'ADD_STAY', stay: addedStay })
 
-      const score = await userService.increaseScore()
-      dispatch({ type: 'SET_SCORE', score })
       
     } catch (err) {
       console.log('StayActions: err in addStay', err)

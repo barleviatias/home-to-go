@@ -22,27 +22,27 @@ class _StayEdit extends Component {
             price: 80.00,
             desc: "Fantastic duplex apartment with three bedrooms, located in the historic area of Paris",
             capacity: 8,
-            favorites: [
-                {
-                    userId: "u109"
-                }
-            ],
+            // favorites: [
+            //     {
+            //         userId: "u109"
+            //     }
+            // ],
             amenities :{
 
                 "TV":true,
                 "Wifi":false,
-                "Air-conditioning":false,
-                "Smoking allowed":false,
-                "Pets allowed":false,
-                "Cooking basics":false
+                "Air_conditioning":false,
+                "Smoking_allowed":false,
+                "Pets_allowed":false,
+                "Cooking_basics":false
             }
             ,
             stayType: "entire place",
             propertyType: "loft",
             host: {
-                "_id": "u101",
-                "fullname": "Mor Levi",
-                "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg"
+                _id:this.props.loggedInUser._id,
+                fullname:this.props.loggedInUser.fullname,
+                imgUrl:this.props.loggedInUser.imgUrl
             },
             loc: {
                 "country": "France",
@@ -51,6 +51,7 @@ class _StayEdit extends Component {
                 "lat": -8.61308,
                 "lng": 41.1413
             },
+            reviews: []
         }
     }
 
@@ -59,9 +60,9 @@ class _StayEdit extends Component {
         this.loadStay()
     }
     componentDidUpdate(prevProps) {
-        if (prevProps.stays !== this.props.stays) {
-            this.props.history.push('/stay')
-        }
+        // if (prevProps.stays !== this.props.stays) {
+        //     this.props.onSelectAction('my places')
+        // }
     }
 
 
@@ -77,20 +78,26 @@ class _StayEdit extends Component {
 
 
     handleChange = ({ target }) => {
-        let { name, value, checked ,unChecked } = target
-        // const { stay } = this.state
-        value = name === 'price' ? +value : value
-        value = name === 'amenities' ? checked : unChecked
-        // value = name === 'amenities' ? checked : !checked
-        // value = name === 'amenities' ? !checked : value
-        // value = name === 'amenities' ? !checked : value
-        this.setState({ stay: { ...this.state.stay, amenities: {...this.state.stay.amenities, [name]: value}} } )
+        console.log( target.value);
+        // console.log( target.checked);
+        let { name, value ,id , checked} = target
+        value = (name === 'price') ? +value : value
+        if(id==='amenities'){
+            this.setState({ stay: { ...this.state.stay, amenities: {...this.state.stay.amenities, [name]: checked}} } )
+           
+        }else{
+            this.setState({ stay: { ...this.state.stay, [name]: value } })   
+        } 
+        console.log(this.state.stay);
     }
 
     onSaveStay = (ev) => {
         ev.preventDefault()
+        ev.target.value="my places"
+        // console.log(e);
         const { stay } = this.state
         this.props.addStay(stay)
+        this.props.onSelectAction(ev)
     }
 
 
@@ -103,13 +110,29 @@ class _StayEdit extends Component {
             <h3>stay name: <input type="text" name="name" autoComplete="off" onChange={this.handleChange} value={stay.name} /></h3>
             <h3>price: <input type="number" name="price" autoComplete="off" onChange={this.handleChange} value={stay.price} /></h3>
             <h3>description: <input type="text" name="desc" autoComplete="off" onChange={this.handleChange} value={stay.desc} /></h3>
-            <input type="checkbox"  name="TV" value="TV" checked={stay.amenities.TV} onChange={this.handleChange}/>
-            <label for="vehicle1"> TV</label>
-            <input type="checkbox"  name="Wifi" value="Wifi" checked={stay.amenities.Wifi}onChange={this.handleChange}/>
-            <label for="vehicle2">Wifi</label>
-            <input type="checkbox" id="vehicle3" name="vehicle3" value="Air-conditioning" checked={stay.amenities.Air_conditioning}onChange={this.handleChange}/>
-            <label for="vehicle3">Air-conditioning </label>
-                <button className="primary-btn">Save</button>
+            <h3>capacity: <input type="number" name="capacity" autoComplete="off" onChange={this.handleChange} value={stay.capacity} /></h3>
+            <h3>stayType: <select name="stayType" onChange={this.handleChange}>
+                <option value="entire place">entire place</option>
+                <option value="private room">private room</option>
+            </select></h3>
+            <h3>propertyType:  <select name="propertyType" onChange={this.handleChange}>
+                <option value="loft">loft</option>
+                <option value="villa">villa</option>
+                <option value="appartment room">appartment</option>
+            </select></h3>
+            <input type="checkbox"  name="TV" id="amenities" value={stay.amenities.TV}   onChange={this.handleChange}/>
+            <label for="TV"> TV</label>
+            <input type="checkbox"  name="Wifi" id="amenities"  value={stay.amenities.Wifi} onChange={this.handleChange}/>
+            <label for="Wifi">Wifi</label>
+            <input type="checkbox"  name="AC" id="amenities"  value={stay.amenities.AC}  onChange={this.handleChange}/>
+            <label for="AC">AC </label>
+            <input type="checkbox"  name="Smoking_allowed" id="amenities"  value={stay.amenities.Smoking_allowed}  onChange={this.handleChange}/>
+            <label for="AC">Smoking_allowed </label>
+            <input type="checkbox"  name="Pets_allowed" id="amenities"  value={stay.amenities.Pets_allowed}  onChange={this.handleChange}/>
+            <label for="AC">Pets_allowed </label>
+            <input type="checkbox"  name="Cooking_basics" id="amenities"  value={stay.amenities.Cooking_basics}  onChange={this.handleChange}/>
+            <label for="AC">Cooking_basics </label>
+                <button  className="primary-btn">Save</button>
             </form>
         </div>)
     }

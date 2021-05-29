@@ -30,7 +30,7 @@ export class Dashboard extends Component {
                 {(action === '' || action === 'my places') && <MyPlaces loggedInUser={loggedInUser}/>}
                 { action === 'finance stat' && <FinanceStatistic />}
                 { action === 'rate stat' && <RateStatistic />}
-                { action === 'add stay' && <StayEdit />}
+                { action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} />}
             </main>
         )
     }

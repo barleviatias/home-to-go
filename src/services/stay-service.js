@@ -50,7 +50,44 @@ async function update(stay) {
 }
 
 async function add(stay) {
-    return storageService.put('stay', stay)
+
+    const currStay ={
+        "name": stay.name,
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/bd67daca-84a4-44e9-952d-11162ba76242.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/533919e9-d77c-4dfc-94a5-3b71d6c41792.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/179b4e72-c3ed-4198-b274-bbc4c67276f2.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/efaab6c2-f21a-40aa-a32a-a37b08711af4.jpeg?im_w=720",
+            "https://a0.muscache.com/im/pictures/miso/Hosting-4869137/original/e5a8c40e-f26b-45fb-84c2-55845256e963.jpeg?im_w=720"
+        ],
+        "price": stay.price,
+        "desc": stay.desc,
+        "capacity": 8,
+        "favorites": [
+            {
+                "userId": "u109"
+            }
+        ],
+        "amenities": getAmeneties(stay.amenities)
+        ,
+        "stayType": "entire place",
+        "propertyType": "loft",
+        "host": {
+            "_id": "u101",
+            "fullname": "Mor Levi",
+            "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg"
+        },
+        "loc": {
+            "country": "France",
+            "countryCode": "PT",
+            "address": "Paris, France",
+            "lat": -8.61308,
+            "lng": 41.1413
+        },
+        "reviews": []
+            }
+    
+    return storageService.post('stay', currStay)
     // stay.imgUrl = await getStayImage(stay.name)
     // stay.msgs = []
     // return await httpService.post(`stay`, stay)
@@ -119,7 +156,16 @@ async function getHostStays(userId) {
     // return httpService.get(`stay${queryStr}`)
 }
 
-
+function getAmeneties(amenities){
+    const currAmenities=[]
+    for (const key in amenities){
+        if (amenities[key]){
+            currAmenities.push(key)
+        }
+    } 
+    console.log('currAmenities',currAmenities);
+    return currAmenities
+}
 
 
 
