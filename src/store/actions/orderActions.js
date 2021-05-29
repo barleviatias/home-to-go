@@ -7,7 +7,6 @@ export function loadOrders(user) {
     try {
       const orders = await orderService.query(user)
       dispatch({ type: 'SET_ORDERS', orders })
-
     } catch (err) {
       console.log('OrderActions: err in loadOrders', err)
     }
@@ -15,7 +14,6 @@ export function loadOrders(user) {
 }
 
 export function addOrder(trip ,stay, loggedInUser) {
-  console.log('action:' ,trip);
   return async dispatch => {
     try {
       const addedOrder = await orderService.add(trip, stay, loggedInUser)

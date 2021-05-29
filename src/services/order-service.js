@@ -11,7 +11,7 @@ import { utilService } from '../services/util-service'
 export const orderService = {
     query,
     // getById,
-    // remove,
+    remove,
     // update,
     add,
     getHostOrders,
@@ -22,10 +22,8 @@ window.orderService = orderService
 
 async function query(user = { id: null, type: 'all' }) {
     var orders = await storageService.query('order')
-    console.log(orders);
     orders = _filterByUser(user, orders);
     return orders;
-
 
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
     // return httpService.get(`order${queryStr}`)
@@ -87,6 +85,11 @@ async function getUserOrders(userId) {
     return orders
 }
 
+function remove(orderId) {
+    return storageService.remove('order', orderId)
+
+    // return httpService.delete(`order/${orderId}`)
+}
 
 
 
@@ -104,12 +107,6 @@ async function getUserOrders(userId) {
 //     return storageService.get('order', orderId)
 
 //     // return httpService.get(`order/${orderId}`)
-// }
-
-// function remove(orderId) {
-//     return storageService.remove('order', orderId)
-
-//     // return httpService.delete(`order/${orderId}`)
 // }
 
 // async function update(order) {

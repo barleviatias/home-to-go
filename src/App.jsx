@@ -12,7 +12,7 @@ import { BecomeHost } from './pages/BecomeHost';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays,removeStay,loadHostStays } from './store/actions/stayActions'
-import { loadOrders } from './store/actions/orderActions'
+import { loadOrders,removeOrder } from './store/actions/orderActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
 import { DynamicModal } from './cmps/app/DynamicModal';
@@ -27,7 +27,6 @@ class _App extends Component {
   componentDidMount() {
     this.props.loadStays()
     this.props.loadUsers()
-    this.props.loadOrders()
   }
 
   onSearch = (trip) => {
@@ -48,7 +47,7 @@ class _App extends Component {
 
   render() {
 
-    const { stays, orders,updateUser, trip, addTrip, loggedInUser, logout, loadStays,loadOrders } = this.props
+    const { stays, orders,updateUser, trip, addTrip, loggedInUser, logout, loadStays,loadOrders,removeOrder } = this.props
     const { userMsg , isUserMsg } = this.state
 
     return (
@@ -56,7 +55,7 @@ class _App extends Component {
         <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
-          <Route path='/orders' render={(props) => (<Orders {...props} loadOrders={loadOrders} orders={orders} loggedInUser={loggedInUser} />)} />
+          <Route path='/orders' render={(props) => (<Orders {...props} loadOrders={loadOrders} orders={orders} loggedInUser={loggedInUser} removeOrder={removeOrder} toggleMsgModal={this.toggleMsgModal}/>)} />
           <Route path='/host/:userId' render={(props) => (<Dashboard {...props} loggedInUser={loggedInUser} updateUser={updateUser} toggleMsgModal={this.toggleMsgModal}/>)} />
           <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
           <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} toggleMsgModal={this.toggleMsgModal} />)} />
@@ -95,7 +94,8 @@ const mapDispatchToProps = {
   logout,
   removeStay,
   loadHostStays,
-  loadOrders
+  loadOrders,
+  removeOrder
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

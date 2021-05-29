@@ -26,13 +26,26 @@
         }
     },
     {
-        "_id":"u103",
+        "_id":"u104",
         "fullname": "Ofek Vaknin",
         "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg",
         "isHost": false,
         "email": "ofek@gmail.com",
         "username": "ofekva",
         "password": "secret",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u103",
+        "fullname": "Jack Daniel",
+        "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg",
+        "isHost": false,
+        "email": "Jack@gmail.com",
+        "username": "ja",
+        "password": "1111",
         "notifications": {
             "orders": [],
             "msgs": []

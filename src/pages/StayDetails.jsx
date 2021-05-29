@@ -34,7 +34,7 @@ export class StayDetails extends Component {
       acc += rate
       return acc
     }, 0)
-    return sum / rates.length
+    return (sum / rates.length).toFixed(1)
   }
 
   getStayReviewStatistics = () => {
@@ -105,7 +105,7 @@ export class StayDetails extends Component {
           <h1>{name}</h1>
           <div className="stay-short-info">
             <div>
-              <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate().toFixed(1)}<p>( {reviews.length} reviews )</p></span>
+              <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate()}<p>( {reviews.length} reviews )</p></span>
               <span>•</span>
               <p>{loc.address}</p>
             </div>
@@ -129,7 +129,7 @@ export class StayDetails extends Component {
                 <h2>{`${propertyType} hosted by ${host.fullname}`}</h2>
                 <span>{capacity} guests • {stayType} • {propertyType}</span>
               </div>
-              <img src={host.imgUrl} alt="" />
+              <img src={host.imgUrl} alt="avatar" />
             </div>
 
             <div className="stay-feature-container">
@@ -179,7 +179,7 @@ export class StayDetails extends Component {
 
         <section className="stay-review-container">
           <div className="stay-review-header">
-            <h2>{<span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate().toFixed(1)}<p>( {reviews.length} reviews )</p></span>}</h2>
+            <h2>{<span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate()}<p>( {reviews.length} reviews )</p></span>}</h2>
             <div className="stay-review-ststistics">
               {this.getStayReviewStatistics().map(elCtgRate => elCtgRate)}
             </div>
