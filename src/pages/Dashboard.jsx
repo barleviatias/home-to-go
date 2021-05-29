@@ -39,7 +39,7 @@ export class _Dashboard extends Component {
                 {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal}/>}
                 { action === 'finance stat' && <FinanceStatistic />}
                 { action === 'rate stat' && <RateStatistic />}
-                { action === 'add stay' && <StayEdit />}
+                { action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal}/>}
             </main>
         )
     }

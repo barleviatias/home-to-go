@@ -15,8 +15,7 @@ class _BookStay extends Component {
             time: { checkIn: '', checkOut: '' }
         },
         modalType: '',
-        isAvailable: false,
-        isErrModal: null
+        isAvailable: false
     }
 
     componentDidMount() {
@@ -46,6 +45,18 @@ class _BookStay extends Component {
     }
 
     toggleAvailability = () => {
+        const { guests, time } = this.state.trip
+
+        if (guests.adults + guests.kids < 1) {
+            this.props.toggleMsgModal(<span><i className="fas fa-exclamation"></i><h2>Please enter guest number</h2></span>)
+            return
+        }
+
+        if (!time.checkIn || !time.checkOut) {
+            this.props.toggleMsgModal(<span><i className="fas fa-exclamation"></i><h2>Please enter trip dates</h2></span>)
+            return
+        }
+
         this.setState({ isAvailable: !this.state.isAvailable })
     }
 
@@ -54,7 +65,7 @@ class _BookStay extends Component {
         const { stay, loggedInUser } = this.props
 
         if (!loggedInUser) {
-            this.toggleErrModal('You must log in frist', '/login', 'Login')
+            this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link></span>)
             return
         }
 
@@ -68,12 +79,8 @@ class _BookStay extends Component {
                 time: { checkIn: '', checkOut: '' }
             },
             isAvailable: false
-        } , ()=>{this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your order has sent to the host</h3></span>)})
-    }
-
-    toggleErrModal = (msg, url, linkTxt) => {
-        const isErrModal = (!this.state.isErrModal) ? { msg, url, linkTxt } : null
-        this.setState({ isErrModal })
+        })
+        this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your order has sent to the host</h3></span>)
     }
 
     getTripTime = () => {
@@ -83,7 +90,7 @@ class _BookStay extends Component {
 
     render() {
         const { stay, getTotalRate } = this.props
-        const { trip, modalType, isAvailable, isErrModal } = this.state
+        const { trip, modalType, isAvailable } = this.state
         const { reviews, price } = stay
         const { kids, adults } = trip.guests;
 
@@ -100,11 +107,11 @@ class _BookStay extends Component {
                         <div className="order-form-date-picker">
                             <label className="check-in">
                                 <span>Check in</span>
-                                <input name="check-in" value={trip.time.checkIn} type="date" placeholder="Add dates" onChange={this.handleChange} />
+                                <input name="checkIn" value={trip.time.checkIn} type="date" placeholder="Add dates" onChange={this.handleChange} />
                             </label>
                             <label className="check-out" >
                                 <span>Check out</span>
-                                <input name="check-out" value={trip.time.checkOut} type="date" placeholder="Add dates" onChange={this.handleChange} />
+                                <input name="checkOut" value={trip.time.checkOut} type="date" placeholder="Add dates" onChange={this.handleChange} />
                             </label>
                         </div>
 
@@ -149,10 +156,6 @@ class _BookStay extends Component {
                     </form>
                 </div>
                 <span className="report-listing-btn"><i className="fab fa-font-awesome-flag"></i><p>Report this listing</p></span>
-                {isErrModal && <DynamicModal>
-                    <h2>{isErrModal.msg}</h2>
-                    <Link to={isErrModal.url}>{isErrModal.linkTxt}</Link>
-                </DynamicModal>}
             </section>
         )
     }
