@@ -1,0 +1,139 @@
+.stay-details-container {
+    .stay-details-header {
+        .stay-short-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 13px;
+            text-transform: capitalize;
+            font-family: airbnb-regular;
+            letter-spacing: -0.3px;
+
+            .stay-short-info-rate {
+                display: flex;
+                align-items: center;
+            }
+
+            p {
+                text-decoration: underline;
+                color: rgb(82, 82, 82);
+            }
+
+            > div:first-of-type {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .stay-save-btn:hover {
+                .fa-heart {
+                    color: rgb(255, 56, 92);
+                }
+            }
+        }
+    }
+
+    .stay-info-container {
+        display: flex;
+        gap: 100px;
+
+        .stay-long-info {
+            flex: 2;
+            display: flex;
+            flex-direction: column;
+
+            > *:not(:last-child) {
+                padding: 20px 0px;
+                border-bottom: 1px solid rgb(221, 221, 221);
+            }
+
+            .stay-long-info-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                text-transform: capitalize;
+
+                img {
+                    object-fit: contain;
+                    height: 60px;
+                    width: 60px;
+                    border-radius: 50%;
+                }
+
+                > span:first-of-type {
+                    border-bottom: 1px solid #00000029;
+                }
+            }
+
+            .stay-feature-container {
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+
+                > div {
+                    display: flex;
+                    align-items: center;
+                    gap: 20px;
+
+                    i {
+                        font-size: 20px;
+                        color: rgb(44, 44, 44);
+                    }
+
+                    div {
+                        display: flex;
+                        flex-direction: column;
+
+                        h3 {
+                            font-weight: 600;
+                            color: rgb(44, 44, 44);
+                        }
+
+                        h4 {
+                            font-weight: 100;
+                            color: rgb(87, 87, 87);
+                        }
+                    }
+                }
+            }
+
+            .amenities-list {
+                ul {
+                    list-style: none;
+                    padding: 0px;
+
+                    li {
+                        padding: 5px 0px;
+                        display: flex;
+                        gap: 20px;
+                    }
+                }
+            }
+        }
+    }
+
+    .stay-rate-display {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .fas,
+    .far {
+        font-size: 0.8rem;
+        padding-inline-end: 5px;
+    }
+
+    .fa-star {
+        color: rgb(255, 56, 92);
+        padding-bottom: 3px;
+    }
+
+    .fa-heart {
+        color: rgb(53, 53, 53);
+    }
+
+    .fa-external-link-alt {
+        color: rgb(53, 53, 53);
+    }
+}

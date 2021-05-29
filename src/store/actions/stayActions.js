@@ -6,7 +6,6 @@ export function loadStays(trip) {
   return async dispatch => {
     try {
       const stays = await stayService.query(trip)
-      console.log(stays);
       dispatch({ type: 'SET_STAYS', stays })
 
     } catch (err) {

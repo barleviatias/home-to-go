@@ -1,6 +1,5 @@
 
 
-
 export function Hero() {
 
     return (

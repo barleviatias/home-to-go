@@ -26,7 +26,6 @@ window.stayService = stayService
 // stayService.signup({fullname: 'Muki G', stayname: 'muki', password:'123', score: 100})
 
 function query(trip) {
-    console.log(trip);
     return storageService.query('stay', trip)
 
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`

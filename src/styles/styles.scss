@@ -1,31 +1,34 @@
 // Setup
-@import "setup/variables.scss";
-@import "setup/functions.scss";
-@import "setup/mixins.scss";
-@import "setup/typography.scss";
+@import "setup/variables";
+@import "setup/functions";
+@import "setup/mixins";
+@import "setup/typography";
 
 // Basics
-@import "basics/helpers.scss";
-@import "basics/layout.scss";
-@import "basics/base.scss";
-@import "basics/buttons.scss";
+@import "basics/helpers";
+@import "basics/layout";
+@import "basics/base";
+@import "basics/buttons";
 
 // Components
-@import "components/main-header.scss";
-@import "components/main-filter";
-@import "components/banner";
-@import "components/filter-gallery.scss";
-@import "components/stay-list.scss";
-@import "components/stay-preview.scss";
-@import "components/stay-filter";
-@import "components/hero.scss";
-@import "components/nav-menu.scss";
-@import "components/dynamic-modal";
+@import "cmps/app/main-header";
+@import "cmps/app/main-filter";
+@import "cmps/app/user-menu";
+@import "cmps/app/dynamic-modal";
+@import "cmps/home/hero";
+@import "cmps/home/banner";
+@import "cmps/home/filter-gallery";
+@import "cmps/explore/stay-filter";
+@import "cmps/explore/stay-list";
+@import "cmps/explore/stay-preview";
+@import "cmps/stay-details/stay-gallery";
+@import "cmps/stay-details/stay-reviews";
+@import "cmps/stay-details/book-stay";
 
 
-//views
-@import "views/home-page.scss";
-@import "views/stay_details";
-@import "views/user-details";
-@import "views/_becom-host-page";
-@import "views/login";
+//pages
+@import "pages/home-page";
+@import "pages/stay_details";
+@import "pages/user-details";
+@import "pages/_becom-host-page";
+@import "pages/login";
