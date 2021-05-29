@@ -13,8 +13,13 @@ import { connect } from 'react-redux';
 import { loadStays } from './store/actions/stayActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
+import { DynamicModal } from './cmps/app/DynamicModal';
 
 class _App extends Component {
+
+  state = {
+    userMsg: ''
+  }
 
   componentDidMount() {
     this.props.loadStays()
@@ -26,23 +31,36 @@ class _App extends Component {
     this.props.loadStays(trip);
   }
 
+  toggleMsgModal = (msg) => {
+    this.setState({ userMsg: msg })
+    setTimeout(() => {
+      this.setState({ userMsg: '' })
+    }, 3000);
+  }
+
 
   render() {
 
     const { stays, updateUser, trip, addTrip, loggedInUser, logout, loadStays } = this.props
+    const { userMsg } = this.state
 
     return (
       <Router>
         <Header trip={trip} addTrip={addTrip} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
-          <Route path='/host/:userId' render={() => (<Dashboard loggedInUser={loggedInUser} updateUser={updateUser} />)} />
-          <Route path='/host' render={() => (<BecomeHost loggedInUser={loggedInUser} />)} />
-          <Route path='/stay/:stayId' component={StayDetails}/>
-          <Route path='/explore' render={() => (<Explore stays={stays} />)} />
-          <Route path='/user' render={() => (<UserDetails updateUser={updateUser} />)} />
-          <Route path='/' render={() => (<Home stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
+          <Route path='/host/:userId' render={(props) => (<Dashboard {...props} loggedInUser={loggedInUser} updateUser={updateUser} />)} />
+          <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
+          <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} toggleMsgModal={this.toggleMsgModal} />)} />
+          <Route path='/explore' render={(props) => (<Explore {...props} stays={stays} />)} />
+          <Route path='/user' render={(props) => (<UserDetails {...props} updateUser={updateUser} />)} />
+          <Route path='/' render={(props) => (<Home {...props} stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
         </Switch>
+        {userMsg && <DynamicModal >
+          <section className="user-msg">
+            {userMsg}
+          </section>
+        </DynamicModal>}
       </Router>
     )
   }
