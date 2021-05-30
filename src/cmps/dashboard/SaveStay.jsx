@@ -9,9 +9,9 @@ class _StayEdit extends Component {
 		stay: {
 			name: '',
 			imgUrls: [],
-			price: 0,
+			price: '',
 			desc: '',
-			capacity: 8,
+			capacity: '',
 			amenities: {
 				TV: true,
 				Wifi: false,
@@ -20,7 +20,7 @@ class _StayEdit extends Component {
 				Pets_allowed: false,
 				Cooking_basics: false,
 			},
-			stayType: 'entire place',
+			stayType: '',
 			propertyType: '',
 			host: {
 				_id: this.props.loggedInUser._id,
@@ -39,9 +39,9 @@ class _StayEdit extends Component {
 	};
 
 	componentDidMount() {
-		if (this.props.stay) {
+		if (this.props.stayEdit) {
 			const currAmenities = {}
-			this.props.stay.amenities.forEach((amenitie) => {
+			this.props.stayEdit.amenities.forEach((amenitie) => {
 				var str = amenitie;
 				var res = str.replace(' ', '_');
 				currAmenities[res] = true
@@ -49,7 +49,7 @@ class _StayEdit extends Component {
 
 			this.setState({
 				stay: {
-					...this.props.stay,
+					...this.props.stayEdit,
 					amenities: currAmenities
 				},
 			});
@@ -69,6 +69,8 @@ class _StayEdit extends Component {
 	}
 
 	onUploadImg = (imgState, position) => {
+		const imgUrls=this.state.stay.imgUrls
+		imgUrls[position]=imgState.imgUrl
 		this.setState({ stay: { ...this.state.stay, imgUrls: [...this.state.stay.imgUrls, imgState.imgUrl] } })
 	}
 
@@ -113,8 +115,8 @@ class _StayEdit extends Component {
 
 	render() {
 		const { stay } = this.state;
+		if (this.props.stayEdit &&!stay.imgUrls[0]) return ''
 		if (!stay) return ''; // LOADER
-
 		return (
 			<section className="stay-edit-container">
 				{/* <h1>{stay._id ? 'Edit stay' : 'Add new stay'}</h1> */}
@@ -153,11 +155,11 @@ class _StayEdit extends Component {
 					</section>
 
 					<div className="stay-gallery">
-						<Upload userImgUrl={stay.imgUrls[0]} onUploadImg={this.onUploadImg} />
-						<Upload userImgUrl={stay.imgUrls[1]} onUploadImg={this.onUploadImg} />
-						<Upload userImgUrl={stay.imgUrls[2]} onUploadImg={this.onUploadImg} />
-						<Upload userImgUrl={stay.imgUrls[3]} onUploadImg={this.onUploadImg} />
-						<Upload userImgUrl={stay.imgUrls[4]} onUploadImg={this.onUploadImg} />
+						<Upload userImgUrl={stay.imgUrls[0]} onUploadImg={this.onUploadImg} position={0} />
+						<Upload userImgUrl={stay.imgUrls[1]} onUploadImg={this.onUploadImg}position={1} />
+						<Upload userImgUrl={stay.imgUrls[2]} onUploadImg={this.onUploadImg} position={2}/>
+						<Upload userImgUrl={stay.imgUrls[3]} onUploadImg={this.onUploadImg} position={3}/>
+						<Upload userImgUrl={stay.imgUrls[4]} onUploadImg={this.onUploadImg}position={4} />
 					</div>
 
 					<section className="stay-edit-info-container">
@@ -181,7 +183,8 @@ class _StayEdit extends Component {
 										</select>
 									 •
 											propertyType:
-										<select name="propertyType" onChange={this.handleChange}>
+										<select name="propertyType" onChange={this.handleChange} value={stay.propertyType}>
+											{/* <option value="">choice type</option> */}
 											<option value="loft">loft</option>
 											<option value="villa">villa</option>
 											<option value="appartment room">appartment</option>

@@ -17,7 +17,7 @@ export class Upload extends Component {
   uploadImg = async (ev) => {
     this.setState({ isUploading: true })
     const { secure_url, height, width } = await cloudinaryService.uploadImg(ev)
-    this.setState({ isUploading: false, imgUrl: secure_url, height, width }, () => { this.props.onUploadImg(this.state) })
+    this.setState({ isUploading: false, imgUrl: secure_url, height, width }, () => { this.props.onUploadImg(this.state,this.props.position) })
   }
   get uploadMsg() {
     const { imgUrl, isUploading } = this.state
@@ -25,8 +25,11 @@ export class Upload extends Component {
     return isUploading ? 'Uploading....' : 'Upload Image'
   }
   render() {
-    const { imgUrl } = this.state
 
+
+
+
+    const { imgUrl } = this.state
     const previewStyle = {
       backgroundImage: `url(${imgUrl})`,
 
