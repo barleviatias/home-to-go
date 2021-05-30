@@ -25,7 +25,7 @@ class _GoogleMap extends Component {
                 <Map
                 className="map"
                     google={this.props.google}
-                    zoom={12}
+                    zoom={14}
                     initialCenter={{
                         lat: this.state.lat,
                         lng: this.state.lng

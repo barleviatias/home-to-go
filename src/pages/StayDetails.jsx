@@ -2,7 +2,7 @@ import { Component } from "react";
 import { stayService } from "../services/stay-service";
 import { ReviewList } from '../cmps/stay-details/ReviewList';
 import { BookStay } from "../cmps/stay-details/BookStay";
-import { GoogleMap } from '../cmps/GoogleMap';
+import { GoogleMap } from '../cmps/stay-details/GoogleMap';
 export class StayDetails extends Component {
 
   state = {

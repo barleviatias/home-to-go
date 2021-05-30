@@ -32,7 +32,6 @@ export class Home extends Component {
     const { topRatedStays, nearbayStays } = this.state
 
     return (
-
       <main className="home-page">
         <Hero />
         <h1>Explore nearby</h1>

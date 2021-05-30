@@ -115,9 +115,9 @@ class _BookStay extends Component {
                             </label>
                         </div>
 
-                        <label className="guests-lable" onClick={() => { this.toggleDynamicModal('guests') }} >
+                        <label className="guests-lable" >
                             <span>Guests</span>
-                            <input name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
+                            <input onClick={() => { this.toggleDynamicModal('guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
                             {modalType === 'guests' && <DynamicModal>
                                 <section className="book-guest-modal">
                                     <div className="modal-label">

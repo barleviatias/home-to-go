@@ -65,6 +65,10 @@ export class MainFilter extends Component {
         this.setState({ topRatedStays: topRated })
     }
 
+    handleGuestChang=()=>{
+        
+    }
+
     render() {
         const { modalType, topRatedStays } = this.state
         const { address } = this.state.trip.loc;
@@ -74,9 +78,9 @@ export class MainFilter extends Component {
         return (
             <section className="main-filter">
                 <form>
-                    <label onClick={() => { this.toggleDynamicModal('loc') }} htmlFor="location">
+                    <label>
                         <span>Location</span>
-                        <input name="address" value={address} autoComplete="off" id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
+                        <input onClick={() => { this.toggleDynamicModal('loc') }} name="address" value={address} autoComplete="off" id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
                     </label>
 
                     {modalType === 'loc' && <DynamicModal>
@@ -104,10 +108,10 @@ export class MainFilter extends Component {
                         <input type="date" value={checkOut} name="checkOut" id="check-out" placeholder="Add dates" onChange={this.handleChange} />
                     </label>
 
-                    <label onClick={() => { this.toggleDynamicModal('guests') }} className="guests" htmlFor="guests">
+                    <label className="guests" htmlFor="guests">
                         <div>
                             <span>Guests</span>
-                            <input value={kids + adults} id="guests" name="guests" placeholder="Add guests" />
+                            <input onClick={() => { this.toggleDynamicModal('guests') }} value={kids + adults} id="guests" name="guests" placeholder="Add guests" onChange={this.handleGuestChang} />
                         </div>
                     </label>
 
