@@ -34,8 +34,8 @@ export function updateUser(user) {
   return async dispatch => {
     try {
       const updatedUser = await userService.update(user)
+      console.log(updatedUser);
       dispatch({ type: 'UPDATE_USER', user: updatedUser })
-
     } catch (err) {
       console.log('UserActions: err in updateUser', err)
     }
@@ -45,7 +45,6 @@ export function login(userCreds) {
   return async dispatch => {
     try {
       const user = await userService.login(userCreds)
-      console.log(user);
       dispatch({ type: 'SET_USER', user })
     } catch (err) {
       console.log('UserActions: err in login', err)

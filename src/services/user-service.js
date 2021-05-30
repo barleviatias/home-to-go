@@ -1,4 +1,5 @@
 import { storageService } from './asyncStorageService';
+import { utilService } from './util-service';
 // import { httpService } from './http.service.js';
 
 
@@ -24,6 +25,8 @@ async function login(userCred) {
 }
 
 async function signup(userCred) {
+	userCred.isHost = false
+	userCred.imgUrl = `https://randomuser.me/api/portraits/men/${utilService.getRandomIntInclusive(0,100)}.jpg`
 	const user = await storageService.post('user', userCred);
 	// const user = await httpService.post('auth/signup', userCred)
 	return _saveLocalUser(user);
@@ -34,7 +37,7 @@ async function logout() {
 	// return await httpService.post('auth/logout')
 }
 async function update(user) {
-	// return _saveLocalUser(user);
+	_saveLocalUser(user);
     return storageService.put('user', user)
     // return await httpService.put(`stay/${stay._id}`, stay)
     // Handle case in which admin updates other stay's details

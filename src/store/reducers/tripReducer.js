@@ -1,5 +1,8 @@
+let localInitialState = { guests: { adults: 1, kids: 0, baby: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }
+if (localStorage.trip) localInitialState = JSON.parse(localStorage.trip)
+
 const initialState = {
-  trip: { guests: { adults: 0, kids: 0, baby: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }
+  trip: localInitialState
 }
 
 export function tripReducer(state = initialState, action = {}) {

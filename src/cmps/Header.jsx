@@ -17,7 +17,7 @@ export class Header extends React.Component {
     }
 
     render() {
-        const { onSearch, loggedInUser, logout } = this.props
+        const { onSearch, loggedInUser, logout, trip } = this.props
         const { isUserMenu } = this.state
         const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
 
@@ -25,7 +25,7 @@ export class Header extends React.Component {
             <header className="main-header">
                 <section>
                     <NavLink to="/"><h1 className="logo">Home<img src={Logo} alt="logo" />Go</h1></NavLink>
-                    <MainFilter onSearch={onSearch} />
+                    <MainFilter trip={trip} onSearch={onSearch} />
 
                     <nav>
                         <button onClick={this.toggleUserMenu} className="user-menu-btn">
@@ -34,7 +34,7 @@ export class Header extends React.Component {
                         </button>
                     </nav>
 
-                    {isUserMenu && <NavMenu logout={logout} toggleUserMenu={this.toggleUserMenu} />}
+                    {isUserMenu && <NavMenu logout={logout} loggedInUser={loggedInUser} toggleUserMenu={this.toggleUserMenu} />}
                 </section>
 
             </header>

@@ -15,7 +15,7 @@ function remove() {
     return save(STORAGE_KEY, null)
 }
 
-async function add(trip) {
+function add(trip) {
     return save(STORAGE_KEY, trip)
 }
 
@@ -29,6 +29,7 @@ function load(key) {
 
 function save(key, val) {
     localStorage[key] = JSON.stringify(val);
+    return val
 }
 
 export const storageService = {

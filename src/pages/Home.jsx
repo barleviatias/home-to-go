@@ -33,13 +33,13 @@ export class Home extends Component {
 
     return (
 
-      <main>
+      <main className="home-page">
         <Hero />
-        <h2>Our Top Rated</h2>
-        <FilterGallery stays={topRatedStays} />
-        <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
-        <h2>Explore nearby</h2>
+        <h1>Explore nearby</h1>
         <FilterGallery stays={nearbayStays} />
+        <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
+        <h1>Our Top Rated</h1>
+        <FilterGallery stays={topRatedStays} />
         <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} loggedInUser={loggedInUser} />
       </main>
     )

@@ -19,6 +19,23 @@ export class MainFilter extends Component {
 
     componentDidMount() {
         this.loadRated();
+        this.loadTrip()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.trip !== this.props.trip) {
+            this.loadTrip()
+        }
+    }
+
+    loadTrip = () => {
+        var trip = this.props.trip
+        if (!trip) trip = {
+            guests: { adults: 1, kids: 0 },
+            loc: { address: '' },
+            time: { checkIn: '', checkOut: '' }
+        }
+        this.setState({ trip })
     }
 
     handleChange = (ev) => {

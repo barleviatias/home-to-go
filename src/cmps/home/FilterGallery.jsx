@@ -6,7 +6,7 @@ export function FilterGallery({ stays }) {
             {stays.map(stay => {
                 return <Link to={`/stay/${stay._id}`} key={stay._id}>
                     <img src={`${stay.imgUrls[0]}`} alt={stay.name} />
-                    <h5>{stay.name}</h5>
+                    <h3>{stay.name}</h3>
                 </Link>
             })}
         </section>

@@ -1,5 +1,4 @@
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
-
 import { StayDetails } from './pages/StayDetails';
 import { UserDetails } from './pages/UserDetails';
 import { Explore } from './pages/Explore';
@@ -58,7 +57,7 @@ class _App extends Component {
           <Route path='/orders' render={(props) => (<Orders {...props} loadOrders={loadOrders} orders={orders} loggedInUser={loggedInUser} removeOrder={removeOrder} toggleMsgModal={this.toggleMsgModal}/>)} />
           <Route path='/host/:userId' render={(props) => (<Dashboard {...props} loggedInUser={loggedInUser} updateUser={updateUser} toggleMsgModal={this.toggleMsgModal}/>)} />
           <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
-          <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} toggleMsgModal={this.toggleMsgModal} />)} />
+          <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} onSearch={this.onSearch} toggleMsgModal={this.toggleMsgModal} />)} />
           <Route path='/explore' render={(props) => (<Explore {...props} stays={stays} />)} />
           <Route path='/user' render={(props) => (<UserDetails {...props} updateUser={updateUser} />)} />
           <Route path='/' render={(props) => (<Home {...props} stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
