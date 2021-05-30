@@ -63,6 +63,97 @@
             "orders": [],
             "msgs": []
         }
+    },
+    {
+        "_id":"u1023",
+        "fullname": "Tong Pi",
+        "imgUrl": "https://randomuser.me/api/portraits/men/7.jpg",
+        "isHost": true,
+        "email": "tong@gmail.com",
+        "username": "tong",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u15223",
+        "fullname": "Chong Si",
+        "imgUrl": "https://randomuser.me/api/portraits/men/2.jpg",
+        "isHost": true,
+        "email": "chong@gmail.com",
+        "username": "chong",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u15843",
+        "fullname": "Lan Mai",
+        "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg",
+        "isHost": false,
+        "email": "lan@gmail.com",
+        "username": "lan",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u15156",
+        "fullname": "Sir Fu",
+        "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg",
+        "isHost": false,
+        "email": "sir@gmail.com",
+        "username": "sir",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u18166",
+        "fullname": "Bu Pen",
+        "imgUrl": "https://randomuser.me/api/portraits/men/6.jpg",
+        "isHost": false,
+        "email": "bu@gmail.com",
+        "username": "bu",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u15613",
+        "fullname": "Joni Sha",
+        "imgUrl": "https://randomuser.me/api/portraits/men/8.jpg",
+        "isHost": true,
+        "email": "joni@gmail.com",
+        "username": "joni",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u1223",
+        "fullname": "Pivan Silver",
+        "imgUrl": "https://randomuser.me/api/portraits/men/19.jpg",
+        "isHost": true,
+        "email": "piv@gmail.com",
+        "username": "pivan",
+        "password": "1111",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
     }
     
 ]

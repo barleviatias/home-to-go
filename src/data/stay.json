@@ -887,5 +887,916 @@
                 }
             }
         ]
+    },
+    {
+        "_id": "10234655676",
+        "name": "Home Sweet Studio",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/fea24950-af47-4733-a5fb-4ac1fdd2996d.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/1c387b66-ef04-4d9a-9782-0d960ec5e614.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/8bfcc163-c681-4a00-a53b-da22128134d4.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/d950f619-a612-4044-8202-195b99d15a81.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/bcfef839-f4cb-45ba-90d1-7723f29dbef0.jpg?im_w=720"
+        ],
+        "price": 320.00,
+        "desc": "We combine the luxury , comfort and space of a home, to enjoy with friends & family. Our brand is committed to delivering high-end service, memorable design and culturally vibrant experiences. We will inspire our guests with local knowledge and resources that will make their stay personal, unique and meaningful. Staying with us means peace of mind ; hassle free travels and the satisfaction of fully equipped home",
+        "capacity": 5,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Free parking ",
+            "Bathtub"
+        ],
+        "stayType": "entire place",
+        "propertyType": "studio",
+        "host": {
+            "_id": "u1111",
+            "fullname": "Dvir Halevi",
+            "imgUrl": "https://randomuser.me/api/portraits/men/11.jpg"
+        },
+        "loc": {
+            "country": "Israel",
+            "countryCode": "IL",
+            "address": "Tel Aviv-Yafo, Israel",
+            "lat":32.072364 ,
+            "lng":34.766284
+        },
+        "reviews": [
+            {
+                "id": "r102812",
+                "txt": "The stay was just perfect, the staff was kind and attentive and willing to assist with any request, the Hotel itself (the apartment) was the most beautiful I have ever seen, it's huge, spacious, with tone of natural light and is equipped with everything you'll ever need. ",
+                "avgRate": 5,
+                "category": {
+                    "Cleanliness": 5,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u198265",
+                    "fullname": "Jonatan Choen",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/18.jpg",
+                    "time": 1616280724238
+                }
+            },
+            {
+                "id": "u103ord",
+                "txt": "This place is amazing! You can't get any more central than that. Super lux huge apartment. Balcony and facilities are superb! The building is managed by hosts that are there and cater to your every need",
+                "avgRate": 4.3,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u103376",
+                    "fullname": "Michael Daniel",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg",
+                    "time": 1616280724238
+                }
+            },
+            {
+                "id": "u104253",
+                "txt": "Wonderful place, wonderful people, will absolutely stay again!",
+                "avgRate": 4.6,
+                "category": {
+                    "Cleanliness": 5,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u13404",
+                    "fullname": "Joshua Ben David",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/14.jpg",
+                    "time": 1616280724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10234655677",
+        "name": "On the water",
+        "imgUrls": [
+          "https://a0.muscache.com/im/pictures/1015e401-1ee6-40f7-bac5-5633fb8fa76d.jpg?im_w=1200",
+          "https://a0.muscache.com/im/pictures/ef28def8-67d4-448f-9c09-a48dfeed484c.jpg?im_w=720",
+          "https://a0.muscache.com/im/pictures/127b04d9-5455-454c-b2c9-0d3e1ab0d3e2.jpg?im_w=720",
+          "https://a0.muscache.com/im/pictures/14d429ac-721b-4c75-b4ce-a022fb7490a0.jpg?im_w=720",
+          "https://a0.muscache.com/im/pictures/4e8f7d82-0437-435c-baa3-3b83f15e87e5.jpg?im_w=720"
+        ],
+        "price": 225.00,
+        "desc":"Professionnally managed, this brand new and modern 3 Bedroom serviced apartment is the ideal place for couples, families and business travelers looking for a cosy, clean, modern and central place with high standards. floor 9. The apartment is in front of the beach. Located on the SEA.",
+        "capacity": 6,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Bathtub"
+        ],
+        "stayType": "entire place",
+        "propertyType": "studio",
+        "host": {
+            "_id": "u106",
+            "fullname": "Tony Alfonso",
+            "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg"
+        },
+        "loc": {
+            "country": "Israel",
+            "countryCode": "IL",
+            "address": "Tel Aviv-Yafo, Israel",
+            "lat":32.075319 ,
+            "lng":34.765914
+        },
+        "reviews": [
+            {
+                "id": "r1023212",
+                "txt": "Great location, big roomy apartment in a brand new building, mini market, coffee shop, Italian restaurant and bar across the street, in room laundry, parking in building, easy access to major highways, and it is near the train station. And the hosts are kind and very attentive. Will stay there again.",
+                "avgRate": 4.3,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 3,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u105",
+                    "fullname": "Brad Cohen",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/9.jpg",
+                    "time": 1616280724238
+                }
+            },
+            {
+                "id": "u103ord",
+                "txt": "Отличная квартира, новый ремонт, стильный дизайн, великолепный вид из окна, чистота и удобное местоположения в развивающемся районе Герцлии. Для отдыха и деловых поездок. Хозяин всегда на связи и оперативно отвечал. Спасибо за гостеприимство!",
+                "avgRate": 4.3,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u1021376",
+                    "fullname": "Sveta Silva",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/7.jpg",
+                    "time": 1616280724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "10234655677",
+        "name": "Penthouse  Sea view",
+        "imgUrls": [
+         "https://a0.muscache.com/im/pictures/14e035a0-4754-49e6-8d70-54742e9b50cc.jpg?im_w=1200",
+         "https://a0.muscache.com/im/pictures/b7511bb8-cfc8-4ca0-bbc0-c87e0105ee69.jpg?im_w=720",
+         "https://a0.muscache.com/im/pictures/ab3bd435-0063-4bd8-b7c0-8bf6faae64a4.jpg?im_w=720",
+         "https://a0.muscache.com/im/pictures/123e43d9-1730-47d5-b4ee-362052c1956c.jpg?im_w=720",
+         "https://a0.muscache.com/im/pictures/786474a3-a40b-49f2-92c7-d4d42c35bf96.jpg?im_w=720"
+        ],
+        "price": 325.00,
+        "desc":"מיקום מושלם! הירקון/ירמיהו.חדר מאסטר ענק! ועוד חדר שינה קטן.דופלקס פנטהאוז מדהים במיוחד.",
+        "capacity": 6,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Private pool"
+        ],
+        "stayType": "entire place",
+        "propertyType": "Penthouse",
+        "host": {
+            "_id": "u110",
+            "fullname": "Gil Levi",
+            "imgUrl": "https://randomuser.me/api/portraits/men/6.jpg"
+        },
+        "loc": {
+            "country": "Israel",
+            "countryCode": "IL",
+            "address": "Tel Aviv-Yafo, Israel",
+            "lat":32.071959 ,
+            "lng":34.764660
+        },
+        "reviews": [
+        ]
+    },
+    {
+        "_id": "102315235676",
+        "name": "ONE OF A KIND",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/ae881858-dd4c-477a-9595-d607d6271586.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/89c2fdc3-258c-4293-85be-1a7cba886395.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/67b8da47-bfec-4d17-898c-d2ef0e83a523.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/af692f05-831f-4a73-b1a1-d982854bbdf9.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/b9beeafc-23ab-47f8-96b0-9b28d18701bd.jpg?im_w=720"
+        ],
+        "price": 180.00,
+        "desc": "On the fifth and sixth floor of a new building on Frishman street, this duplex penthouse offers you the best place to be in Tel-Aviv. Getting in, on the lower floor of that stunning flat, you will find the bedrooms including 2 with ensuite bathroom and a guest toilet, in addition a large leaving and a sunny balcony. On the second floor, you will find the kitchen, the dining area, and the roof top terrace. The roof top terrace is a piece by himself. Indeed totally furnished with a large dining table (up to 10 guests), an outdoor leaving room with sofa and a Jacuzzi. (hot tub) facing the ocean, the all surrounded by a spectacular vegetation.",
+        "capacity": 8,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Free parking ",
+            "Bathtub"
+        ],
+        "stayType": "entire place",
+        "propertyType": "Penthouse",
+        "host": {
+            "_id": "u1111",
+            "fullname": "Dvir Halevi",
+            "imgUrl": "https://randomuser.me/api/portraits/men/11.jpg"
+        },
+        "loc": {
+            "country": "Israel",
+            "countryCode": "IL",
+            "address": "Tel Aviv-Yafo, Israel",
+            "lat": 32.075358,
+            "lng": 34.772078
+        },
+        "reviews": [
+            {
+                "id": "r102812",
+                "txt": "Very good location minutes from the beach. House is furnished to a high standard, very clean with well equipped kitchen. Washer & dryer on premises. Amazing roof terrace with jacuzzi and BBQ and partial sea view. Host checked in regularly to ensure everything went well. Two downsides: 1) there are three bedrooms and the two showers are in two of the bedrooms. So people in 3rd bedroom have to go into other peoples rooms to shower (there is a hallway toilet however) and 2) the third bedroom has no windows. If you don’t think those things will bother you I can highly recommend it!",
+                "avgRate": 4,
+                "category": {
+                    "Cleanliness": 3,
+                    "Accuracy": 4,
+                    "Communication":2,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u112",
+                    "fullname": "Zoey Gadot",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg",
+                    "time": 1616280724238
+                }
+            },
+            {
+                "id": "r21542",
+                "txt": "I‘ve seen many places in Tel Aviv. This is the Nr. 1 Hot. Hot. Hot.",
+                "avgRate": 4.3,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u111",
+                    "fullname": "Harry David",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/10.jpg",
+                    "time": 1616280724238
+                }
+            },
+            {
+                "id": "r273643",
+                "txt": "Wonderful place, wonderful people, will absolutely stay again!",
+                "avgRate": 4.6,
+                "category": {
+                    "Cleanliness": 5,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u110",
+                    "fullname": "Gil Levi",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/15.jpg",
+                    "time": 1616280724238
+                }
+            },
+            {
+                "id": "r154256",
+                "txt": "Très belle appartement spacieux et confortable conforme aux photos .L’appartement est très bien situé. Nous avons passé un excellent séjour à TLV . Notre hôte a été très réactif à nos différents demandes. Merci",
+                "avgRate": 4.4,
+                "category": {
+                    "Cleanliness": 5,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 4,
+                    "Check-in": 3,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u108",
+                    "fullname": "Stacy Rozee",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/15.jpg",
+                    "time": 1616280724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "152485461",
+        "name": "MIN FRM MTR",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/2dd0d71d-a8d8-4160-a9f4-2fb02ce2c4bc.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/3751a516-ccd2-4dc0-b461-553253f5d478.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/09adbce3-3ff3-4c83-ac9f-b228f0831e2d.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/7c54f0d2-e4e1-4376-ae90-1afdfdf8998f.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/fed9e1c1-370e-449f-a901-9f77379bee72.jpg?im_w=720"
+        ],
+        "price": 97.00,
+        "desc": "This is THE APARTMENT you are looking for if you are looking for a chic and stylish yet super convenient 1 bedroom apartment at the heart of Central.My space is uniquely positioned to be in the midst of Lan Kwai Fong while retaining the serenity needed for a good night sleep",
+        "capacity": 4,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Microwave",
+            "Hair dryer"
+        ],
+        "stayType": "entire place",
+        "propertyType": "Penthouse",
+        "host": {
+            "_id": "u1023",
+            "fullname": "Tong Pi",
+            "imgUrl": "https://randomuser.me/api/portraits/men/7.jpg"
+        },
+        "loc": {
+            "country": "Hong Kong",
+            "countryCode": "HK",
+            "address": "Hong Kong",
+            "lat": 22.296406,
+            "lng": 114.175817
+        },
+        "reviews": [
+            {
+                "id": "r1015643",
+                "txt": "The host canceled this reservation 3 days before arrival. This is an automated posting.",
+                "avgRate": 3.6,
+                "category": {
+                    "Cleanliness": 3,
+                    "Accuracy": 4,
+                    "Communication": 2,
+                    "Location": 5,
+                    "Check-in": 3,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u1223",
+                    "fullname": "Pivan Silver",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/19.jpg",
+                    "time": 1616283724238
+                }
+            },
+            {
+                "id": "r125438",
+                "txt": "Great apartment, small but great use of space. Really great shower. Nespresso coffee maker (I like coffee) but you'll need to bring your own coffee pods. Very comfortable bed. Great neighborhood, great location, interesting, close to everything, in the heart of Central district, lots of restaurants, but is noisy late at night --great, if you're into a loud bar scene. It's a 5-floor walk-up and no lift, but the apartment is worth it. Very good value. Get good directions --unless you know your way around it can be difficult to find and the building's not well-marked.",
+                "avgRate": 4.1,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u103",
+                    "fullname": "Jack Daniel",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg",
+                    "time": 1616280724238
+                }
+            },
+            {
+                "id": "r273643",
+                "txt": "Wonderful place, wonderful people, will absolutely stay again!",
+                "avgRate": 4.6,
+                "category": {
+                    "Cleanliness": 5,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u110",
+                    "fullname": "Gil Levi",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/15.jpg",
+                    "time": 1616280724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "15648653",
+        "name": " luxurious pad",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/7d12e35d-2085-44c2-bde1-68b55481421e.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/20cc3e41-d75f-4a01-87bb-89be787edc36.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/5ff4e009-79fa-41ee-b100-dac6a91c6b2e.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/cd7bc145-e172-48c4-8f59-2284f24b5227.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/e4c16e18-3b81-48c3-afc8-eec06d776bd3.jpg?im_w=720"
+        ],
+        "price": 105.00,
+        "desc": "My apartment is a perfect hideout for relaxation and located in Cheung Sha Wan, 1 stop away from Lai Chi Kok. with 1 bdrm, 1 sofabed. It's spacious for single traveller / couple and include private balcony. Featuring urban and artistic design in home setting.Just 5 mins walk to Cheung Sha Wan station, perfect for business/traveler.",
+        "capacity": 3,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Microwave",
+            "Hair dryer"
+        ],
+        "stayType": "private room",
+        "propertyType": "appartment",
+        "host": {
+            "_id": "u15223",
+            "fullname": "Chong Si",
+            "imgUrl": "https://randomuser.me/api/portraits/men/2.jpg"
+        },
+        "loc": {
+            "country": "Hong Kong",
+            "countryCode": "HK",
+            "address": "Hong Kong",
+            "lat": 22.293899,
+            "lng": 114.173532
+        },
+        "reviews": [
+            {
+                "id": "r1421651",
+                "txt": "Great place to spend quarantine because of the balcony, the size of the appartement and the fully equipped kitchen. The flat was not as clean as I'd expect in this price range.",
+                "avgRate": 3.6,
+                "category": {
+                    "Cleanliness": 3,
+                    "Accuracy": 4,
+                    "Communication": 2,
+                    "Location": 5,
+                    "Check-in": 3,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u1223",
+                    "fullname": "Pivan Silver",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/19.jpg",
+                    "time": 1616275724238
+                }
+            },
+            {
+                "id": "r4189641",
+                "txt": "Great house and pleasant experience!",
+                "avgRate": 4.1,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u104",
+                    "fullname": "Ofek Vaknin",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg",
+                    "time": 1617580724238
+                }
+            },
+            {
+                "id": "r2751653",
+                "txt": "The house of Hp is quite and clean for staying. You can go to everywhere by MTR. The house is suitable for family and bussiness travel.",
+                "avgRate": 4.6,
+                "category": {
+                    "Cleanliness": 5,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15843",
+                    "fullname": "Lan Mai",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg",
+                    "time": 1616280724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "156416113",
+        "name": "Luxe Homey",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/fb60f772-472a-441c-b3be-27cdc15eb636.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/32f99a95-7646-4134-b540-458c49c4a5c0.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/83a0bd06-7582-4994-8c0b-dc1223c23b4e.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/f11b6f72-d32e-4200-ac94-498dad2ff4d2.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/519efac2-393a-4896-b2a0-4e842068e25a.jpg?im_w=720"
+        ],
+        "price": 128.00,
+        "desc": "My spacious two bedroom apartment greets you with a warm, clean and homey stay with hotel-like amenities including a large swimming pool, lounge areas and high-quality gym in the apartment building.My home is the perfect place to come back to after exploring the busy streets of Hong Kong giving ample space for a family or group of friends. Unique urban design and artistic interiors creates for a perfect home hideout for relaxation after exploring the busy streets of Hong kong or a long-day's work.",
+        "capacity": 4,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Microwave",
+            "Hair dryer"
+        ],
+        "stayType": "private room",
+        "propertyType": "appartment",
+        "host": {
+            "_id": "u15223",
+            "fullname": "Chong Si",
+            "imgUrl": "https://randomuser.me/api/portraits/men/2.jpg"
+        },
+        "loc": {
+            "country": "Hong Kong",
+            "countryCode": "HK",
+            "address": "Hong Kong",
+            "lat": 22.286590,
+            "lng": 114.150734
+        },
+        "reviews": [
+            {
+                "id": "r1651351",
+                "txt": "Excellent location in Kowloon with views of Victoria harbour and 5 mins walk from the MTR.",
+                "avgRate": 3.6,
+                "category": {
+                    "Cleanliness": 3,
+                    "Accuracy": 4,
+                    "Communication": 2,
+                    "Location": 5,
+                    "Check-in": 3,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15843",
+                    "fullname": "Lan Mai",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg",
+                    "time": 1616275724238
+                }
+            },
+            {
+                "id": "r421561",
+                "txt": "Localisation idéale et belle résidence avec conciergerie très serviable.",
+                "avgRate": 4.1,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u18166",
+                    "fullname": "Bu Pen",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/6.jpg",
+                    "time": 1617584724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "15611513",
+        "name": "Skytrain Asoke",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/22e6c493-7ab4-4f49-9de6-a168e3dcd617.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/998b3199-1ab9-48e2-b681-0f4844bdbc45.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/faaa51f8-6af5-49b3-ba85-46c8d8fc9e31.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/eacbaf18-be71-47e9-8d29-ea4a25710a83.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/e8494c9c-d5cd-49b0-b01d-9d0f5f4de9e3.jpg?im_w=720"
+        ],
+        "price": 128.00,
+        "desc": "Maitria Hotel Sukhumvit 18 is tucked away in the shade of lush tropical greenery. Catch a ride on the BTS Skytrain or MRT subway, just 650 meters away and soak-up all the essential sights and scenes Bangkok has on show. Our urban lifestyle guru Maitria Hosts will be your living, breathing city guidebook to all the must-see hotspots.",
+        "capacity": 3,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Microwave",
+            "Hair dryer"
+        ],
+        "stayType": "private room",
+        "propertyType": "hotel",
+        "host": {
+            "_id": "u15613",
+            "fullname": "Joni Sha",
+            "imgUrl": "https://randomuser.me/api/portraits/men/8.jpg"
+        },
+        "loc": {
+            "country": "Thailand",
+            "countryCode": "TH",
+            "address": "Bangkok, Thailand",
+            "lat": 13.704745,
+            "lng": 100.507103
+        },
+        "reviews": [
+            {
+                "id": "r161211",
+                "txt": "good value for money",
+                "avgRate": 3.6,
+                "category": {
+                    "Cleanliness": 3,
+                    "Accuracy": 4,
+                    "Communication": 2,
+                    "Location": 5,
+                    "Check-in": 3,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15843",
+                    "fullname": "Lan Mai",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg",
+                    "time": 1616275724238
+                }
+            },
+            {
+                "id": "r615561",
+                "txt": "Localisation idéale et belle résidence avec conciergerie très serviable.",
+                "avgRate": 4.1,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u18166",
+                    "fullname": "Bu Pen",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/6.jpg",
+                    "time": 1617584724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "115631513",
+        "name": "Citadines Sukhumvit",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/099b455b-00c2-406b-9270-e6fe18280774.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/aaf15d78-ae3c-4c7d-9ae3-b3c5d19e22f4.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/73a006eb-7f29-44ed-8e54-e703829f49ce.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/0ec217e5-9133-4a98-a0d5-7709599f5ef7.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/d0604876-4064-443f-bcda-3b9e3457b87f.jpg?im_w=720"
+        ],
+        "price": 85.00,
+        "desc": "Our beautifully designed and fully-equipped Villa bring the exceptional service of a world-class hotel into the private and personal surroundings of a luxury home in the heart of Bangkok",
+        "capacity": 12,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Microwave",
+            "Hair dryer"
+        ],
+        "stayType": "entire place",
+        "propertyType": "hotel",
+        "host": {
+            "_id": "u1023",
+            "fullname": "Tong Pi",
+            "imgUrl": "https://randomuser.me/api/portraits/men/7.jpg"
+        },
+        "loc": {
+            "country": "Thailand",
+            "countryCode": "TH",
+            "address": "Bangkok, Thailand",
+            "lat": 13.703845,
+            "lng": 100.500739
+        },
+        "reviews": [
+            {
+                "id": "r151611",
+                "txt": "The hotel reception staff were very professional and helpful and I would consider staying here again if I were in vicinity and in need of a room.",
+                "avgRate": 4.5,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 6,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15223",
+                    "fullname": "Chong Si",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/2.jpg",
+                    "time": 1616275844238
+                }
+            },
+            {
+                "id": "r152121611",
+                "txt": "The listing is wonderful in a great location! I always stay at Maitria for my business trip. Super comfortable bed and very convenience to get around in Bangkok.",
+                "avgRate": 4.5,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15843",
+                    "fullname": "Lan Mai",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg",
+                    "time": 161622144238
+                }
+            },
+            {
+                "id": "r6916561",
+                "txt": "good location and facilities. I think there is reasonable:)",
+                "avgRate": 4.1,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u18166",
+                    "fullname": "Bu Pen",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/6.jpg",
+                    "time": 1617584724238
+                }
+            }
+        ]
+    },
+    {
+        "_id": "79165319",
+        "name": "resort pool villa",
+        "imgUrls": [
+            "https://a0.muscache.com/im/pictures/85cc80bf-5786-4fdb-913b-e9ad7a7eedd5.jpg?im_w=1200",
+            "https://a0.muscache.com/im/pictures/5c43159b-ba29-4062-85cb-5731ceba3686.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/36f8a38c-647f-4e60-8a93-7ef086fff3cf.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/763214a7-6f72-4da4-9849-b48358612447.jpg?im_w=720",
+            "https://a0.muscache.com/im/pictures/71a27a39-09c0-4df0-a69a-84f35e96f39a.jpg?im_w=720"
+        ],
+        "price": 113.00,
+        "desc": "The Private pool villa in center of BANGKOK ! At the Center of Modern Conveniences & Entertainment is now come true for your vacation.",
+        "capacity": 10,
+        "favorites": [],
+        "amenities": [
+            "TV",
+            "Wifi",
+            "Air conditioning",
+            "Smoking allowed",
+            "Kitchen",
+            "Microwave",
+            "Hair dryer",
+            "Private pool"
+        ],
+        "stayType": "entire place",
+        "propertyType": "villa",
+        "host": {
+            "_id": "u15613",
+            "fullname": "Joni Sha",
+            "imgUrl": "https://randomuser.me/api/portraits/men/8.jpg"
+        },
+        "loc": {
+            "country": "Thailand",
+            "countryCode": "TH",
+            "address": "Bangkok, Thailand",
+            "lat": 13.706137,
+            "lng": 100.495842
+        },
+        "reviews": [
+            {
+                "id": "r181351",
+                "txt": "The host canceled this reservation 6 days before arrival. This is an automated posting.",
+                "avgRate": 4.5,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15223",
+                    "fullname": "Chong Si",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/2.jpg",
+                    "time": 1616275844238
+                }
+            },
+            {
+                "id": "r15865151",
+                "txt": "Great place to stay if you want some peace and tranquility in the center of the city. Host is very hospitable and quick to respond to any needs. We were provided with airport pickup",
+                "avgRate": 4.5,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15843",
+                    "fullname": "Lan Mai",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/17.jpg",
+                    "time": 161622144238
+                }
+            },
+            {
+                "id": "r1586187",
+                "txt": "完美的房子,一流的服务,感受到处处的细节,客户体验度非常高｡非常适合全家度假的房子｡",
+                "avgRate": 4.5,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u15156",
+                    "fullname": "Sir Fu",
+                    "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg",
+                    "time": 161622144238
+                }
+            },
+            {
+                "id": "r98617",
+                "txt": "It's really nice place in bangkok. I havn't seen what kind of this house in (Website hidden by Airbnb) design as resort style but located at midtown.",
+                "avgRate": 4.5,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 5,
+                    "Communication": 5,
+                    "Location": 5,
+                    "Check-in": 5,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u1223",
+                    "fullname": "Pivan Silver",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/19.jpg",
+                    "time": 161622144238
+                }
+            },
+            {
+                "id": "r69861261",
+                "txt": "Great place for relaxing and staying in Bangkok. Silence yet luxury in the most hectic area, Eakamai 22. We really love the big pool and bathtub here was so cosy.",
+                "avgRate": 4.1,
+                "category": {
+                    "Cleanliness": 4,
+                    "Accuracy": 4,
+                    "Communication": 4,
+                    "Location": 4,
+                    "Check-in": 4,
+                    "Accessibility": 5
+                },
+                "user": {
+                    "_id": "u18166",
+                    "fullname": "Bu Pen",
+                    "imgUrl": "https://randomuser.me/api/portraits/men/6.jpg",
+                    "time": 1617584724238
+                }
+            }
+        ]
     }
 ]
