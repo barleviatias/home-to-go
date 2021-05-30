@@ -3,7 +3,7 @@ import { StayFilter } from '../cmps/explore/StayFilter'
 
 
 export function Explore({ stays }) {
-
+  
   function scrollUp() {
     window.scroll({
       top: 0,

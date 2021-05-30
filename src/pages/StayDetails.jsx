@@ -26,7 +26,19 @@ export class StayDetails extends Component {
     const stay = await stayService.getById(stayId)
     this.setState({ stay })
   }
-
+  onAddToWishList=()=>{
+    console.log('whishList');
+    const user=this.props.loggedInUser
+    if(user.wishlist)
+    {
+      const wish=user.wishlist.find((wish)=>wish===this.state.stay._id)
+      if(wish!==this.state.stay._id)
+      user.wishlist.push(this.state.stay._id)
+    }else{
+      user.wishlist=[this.state.stay._id]
+    }
+    this.props.updateUser(user)
+  }
   getTotalRate = () => {
     const rates = this.state.stay.reviews.map(review => review.avgRate)
     const sum = rates.reduce((acc, rate) => {
@@ -108,7 +120,7 @@ export class StayDetails extends Component {
             </div>
             <div>
               <button><p><i className="fas fa-external-link-alt"></i>share</p></button>
-              <button className="stay-save-btn"><p><i className="far fa-heart"></i>save</p></button>
+              <button onClick={this.onAddToWishList} className="stay-save-btn"><p><i className="far fa-heart"></i>save</p></button>
             </div>
           </div>
         </section>

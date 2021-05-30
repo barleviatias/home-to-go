@@ -14,6 +14,7 @@ export const stayService = {
 	getTopRatedStays,
 	getNearbyStays,
 	getHostStays,
+	getUserWishlist
 	// getStayImage,
 	// getPriceData,
 	// getDateData
@@ -167,6 +168,19 @@ async function getHostStays(userId) {
 		return stay.host._id === userId;
 	});
 	return stays;
+
+	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
+	// return httpService.get(`stay${queryStr}`)
+}
+
+async function getUserWishlist(user) {
+	console.log(user);
+	var stays = await storageService.query('stay',null,user);
+	return stays;
+	// user.wishlist.map()
+	// stays = stays.filter((stay) => {
+	// 	return stay._id === stayId;
+	// });
 
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 	// return httpService.get(`stay${queryStr}`)
