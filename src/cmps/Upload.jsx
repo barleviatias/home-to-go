@@ -11,13 +11,15 @@ export class Upload extends Component {
 
   componentDidMount() {
     const { userImgUrl } = this.props
+    console.log('props',this.props);
     if (userImgUrl) this.setState({ imgUrl: userImgUrl })
+    console.log('cmp did mount',this.state);
   }
 
   uploadImg = async (ev) => {
     this.setState({ isUploading: true })
     const { secure_url, height, width } = await cloudinaryService.uploadImg(ev)
-    this.setState({ isUploading: false, imgUrl: secure_url, height, width }, () => { this.props.onUploadImg(this.state) })
+    this.setState({ isUploading: false, imgUrl: secure_url, height, width }, () => { this.props.onUploadImg(this.state,this.props.position) })
   }
   get uploadMsg() {
     const { imgUrl, isUploading } = this.state
@@ -25,8 +27,13 @@ export class Upload extends Component {
     return isUploading ? 'Uploading....' : 'Upload Image'
   }
   render() {
-    const { imgUrl } = this.state
 
+
+
+
+    console.log('state',this.state);
+    const { imgUrl } = this.state
+    console.log('imgurl',imgUrl);
     const previewStyle = {
       backgroundImage: `url(${imgUrl})`,
 

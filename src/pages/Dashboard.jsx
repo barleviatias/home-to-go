@@ -29,7 +29,7 @@ export class _Dashboard extends Component {
 
     onSelectedEditStay = (stay) => {
         this.setState({ selsctedEditStay: stay }, () => {
-            this.setState({ action: 'add stay' })
+            this.setState({ action: 'edit stay' })
         })
     }
 
@@ -42,7 +42,8 @@ export class _Dashboard extends Component {
                 {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} />}
                 { action === 'finance stat' && <FinanceStatistic />}
                 { action === 'rate stat' && <RateStatistic />}
-                { action === 'add stay' && <StayEdit stay={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                { action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                { action === 'add stay' && <StayEdit  onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
             </main>
         )
     }
