@@ -34,7 +34,6 @@ export function updateUser(user) {
   return async dispatch => {
     try {
       const updatedUser = await userService.update(user)
-      console.log(updatedUser);
       dispatch({ type: 'UPDATE_USER', user: updatedUser })
     } catch (err) {
       console.log('UserActions: err in updateUser', err)

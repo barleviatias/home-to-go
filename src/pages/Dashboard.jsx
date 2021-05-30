@@ -18,8 +18,16 @@ export class _Dashboard extends Component {
     componentDidMount() {
         this.setState({ loggedInUser: { ...this.props.loggedInUser, isHost: true } }, () => {
             this.props.updateUser(this.state.loggedInUser)
-            this.props.loadHostStays(this.state.loggedInUser._id);
+            this.loadHostStays()
         })
+    }
+
+    loadHostStays = async () => {
+        await this.props.loadHostStays(this.state.loggedInUser._id);
+        if (this.props.stays.length === 0) {
+            this.setState({ action: 'add stay' })
+        }
+
     }
 
     onSelectAction = (ev) => {

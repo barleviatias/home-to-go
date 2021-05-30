@@ -5,7 +5,6 @@ export function MyPlaces({ stays, removeStay, toggleMsgModal ,onSelectedEditStay
 
 
     async function onRrmoveStays(stayId) {
-        console.log(stayId);
         await removeStay(stayId)
         toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been deleted</h3></span>)
     }

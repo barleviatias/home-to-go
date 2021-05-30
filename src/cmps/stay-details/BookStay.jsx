@@ -34,6 +34,9 @@ class _BookStay extends Component {
             this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [name]: value } } });
         } else if (type === 'number') {
             if (value < 0) return
+            const sumGuest = this.state.trip.guests.adults + this.state.trip.guests.kids;
+            const isLess = (this.state.trip.guests[name] < value) ? true : false
+            if (sumGuest === this.props.stay.capacity && isLess) return
             this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } });
         } else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
