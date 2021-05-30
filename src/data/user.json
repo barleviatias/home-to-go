@@ -3,10 +3,10 @@
         "_id":"u100",
         "fullname": "Bar Levi Atias",
         "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg",
-        "isHost": false,
+        "isHost": true,
         "email": "bar@gmail.com",
-        "username": "barlevi",
-        "password": "secret",
+        "username": "bar",
+        "password": "bar1",
         "notifications": {
             "orders": [],
             "msgs": []
@@ -16,10 +16,10 @@
         "_id":"u102",
         "fullname": "Eli Moyal",
         "imgUrl": "https://randomuser.me/api/portraits/men/2.jpg",
-        "isHost": false,
+        "isHost": true,
         "email": "eli@gmail.com",
-        "username": "elim",
-        "password": "secret",
+        "username": "eli",
+        "password": "eli1",
         "notifications": {
             "orders": [],
             "msgs": []
@@ -29,10 +29,10 @@
         "_id":"u104",
         "fullname": "Ofek Vaknin",
         "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg",
-        "isHost": false,
+        "isHost": true,
         "email": "ofek@gmail.com",
-        "username": "ofekva",
-        "password": "secret",
+        "username": "ofek",
+        "password": "ofek1",
         "notifications": {
             "orders": [],
             "msgs": []
@@ -41,11 +41,11 @@
     {
         "_id":"u103",
         "fullname": "Jack Daniel",
-        "imgUrl": "https://randomuser.me/api/portraits/men/3.jpg",
+        "imgUrl": "https://randomuser.me/api/portraits/men/4.jpg",
         "isHost": false,
         "email": "Jack@gmail.com",
-        "username": "ja",
-        "password": "1111",
+        "username": "jack",
+        "password": "jack1",
         "notifications": {
             "orders": [],
             "msgs": []
@@ -54,11 +54,141 @@
     {
         "_id":"u101",
         "fullname": "Mor Levi",
-        "imgUrl": "https://randomuser.me/api/portraits/men/1.jpg",
+        "imgUrl": "https://randomuser.me/api/portraits/men/5.jpg",
         "isHost": true,
         "email": "mor@gmail.com",
-        "username": "morl",
-        "password": "1111",
+        "username": "mor",
+        "password": "mor1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u105",
+        "fullname": "Brad Cohen",
+        "imgUrl": "https://randomuser.me/api/portraits/men/6.jpg",
+        "isHost": false,
+        "email": "Brad@gmail.com",
+        "username": "brad",
+        "password": "brad1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u106",
+        "fullname": "Tony Alfonso",
+        "imgUrl": "https://randomuser.me/api/portraits/men/7.jpg",
+        "isHost": true,
+        "email": "tony@gmail.com",
+        "username": "tony",
+        "password": "tony1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u107",
+        "fullname": "Mark Paralta",
+        "imgUrl": "https://randomuser.me/api/portraits/men/8.jpg",
+        "isHost": false,
+        "email": "Jack@gmail.com",
+        "username": "mark",
+        "password": "mark1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u108",
+        "fullname": "Stacy Rozee",
+        "imgUrl": "https://randomuser.me/api/portraits/women/9.jpg",
+        "isHost": false,
+        "email": "stacy@gmail.com",
+        "username": "stacy",
+        "password": "stacy1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u109",
+        "fullname": "Chang Ba",
+        "imgUrl": "https://randomuser.me/api/portraits/men/10.jpg",
+        "isHost": false,
+        "email": "chang@gmail.com",
+        "username": "chang",
+        "password": "chang1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u110",
+        "fullname": "Gil Levi",
+        "imgUrl": "https://randomuser.me/api/portraits/women/11.jpg",
+        "isHost": false,
+        "email": "gil@gmail.com",
+        "username": "gil",
+        "password": "gil1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u111",
+        "fullname": "Harry David",
+        "imgUrl": "https://randomuser.me/api/portraits/men/12.jpg",
+        "isHost": false,
+        "email": "hary@gmail.com",
+        "username": "hary",
+        "password": "hary1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u112",
+        "fullname": "Zoey Gadot",
+        "imgUrl": "https://randomuser.me/api/portraits/women/13.jpg",
+        "isHost": false,
+        "email": "zoey@gmail.com",
+        "username": "zoey",
+        "password": "zoey1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u113",
+        "fullname": "Tom Holland",
+        "imgUrl": "https://randomuser.me/api/portraits/men/14.jpg",
+        "isHost": false,
+        "email": "tom@gmail.com",
+        "username": "hary",
+        "password": "hary1",
+        "notifications": {
+            "orders": [],
+            "msgs": []
+        }
+    },
+    {
+        "_id":"u114",
+        "fullname": "Klara Gutman",
+        "imgUrl": "https://randomuser.me/api/portraits/women/15.jpg",
+        "isHost": false,
+        "email": "klara@gmail.com",
+        "username": "klara",
+        "password": "klara",
         "notifications": {
             "orders": [],
             "msgs": []
@@ -155,5 +285,4 @@
             "msgs": []
         }
     }
-    
 ]

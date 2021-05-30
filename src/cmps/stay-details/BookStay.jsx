@@ -1,5 +1,4 @@
 import { Component } from "react";
-import { tripService } from '../../services/trip-service'
 import { addOrder } from '../../store/actions/orderActions'
 import { DynamicModal } from '../app/DynamicModal'
 import { connect } from "react-redux";
@@ -19,7 +18,7 @@ class _BookStay extends Component {
     }
 
     componentDidMount() {
-        var trip = tripService.query()
+        var trip = this.props.trip
         if (!trip) trip = {
             guests: { adults: 0, kids: 0 },
             loc: { address: '' },
@@ -57,7 +56,8 @@ class _BookStay extends Component {
             return
         }
 
-        this.setState({ isAvailable: !this.state.isAvailable })
+
+        this.setState({ isAvailable: !this.state.isAvailable }, () => { this.props.onSearch(this.state.trip) })
     }
 
     onReserveTrip = async () => {
@@ -163,13 +163,13 @@ class _BookStay extends Component {
 
 const mapStateToProps = (state) => {
     return {
-        loggedInUser: state.userModule.loggedInUser
+        loggedInUser: state.userModule.loggedInUser,
+        trip: state.tripModule.trip
     }
 }
 
 const mapDispatchToProps = {
     addOrder,
-
 }
 
 export const BookStay = connect(mapStateToProps, mapDispatchToProps)(_BookStay)

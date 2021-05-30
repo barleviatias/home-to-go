@@ -1,17 +1,11 @@
 .home-page {
-    position: relative;
-    background-color: #fff;
-    margin: 15vh 0px 0px;
-    padding: 0%;
-    width: 100%;
-    height: 85vh;
 
-    img {
-        margin: 0%;
-        padding: 0%;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: 0px 10vh;
+
+    h1{
+        font-size: rem(28px);
+        font-weight: 600;
+        color: black;
     }
+
+
 }

@@ -1,12 +1,11 @@
 import { Link } from 'react-router-dom';
 
 
-export function NavMenu({ logout, toggleUserMenu }) {
+export function NavMenu({ logout, toggleUserMenu , loggedInUser }) {
 
-        let sessionUser = sessionStorage.getItem('loggedinUser');
-        sessionUser = JSON.parse(sessionUser);
+        console.log(loggedInUser);
 
-        return (<section className="user-menu" onClick={toggleUserMenu}>{!sessionUser && <div>
+        return (<section className="user-menu" onClick={toggleUserMenu}>{!loggedInUser && <div>
                 <div>
                         <Link to="/login">log in</Link>
                         <Link to="/login">sign up</Link>
@@ -15,17 +14,16 @@ export function NavMenu({ logout, toggleUserMenu }) {
                         <Link to="/host">Host your home</Link>
                         <Link to="/about">about</Link>
                         <Link to="/help">help</Link>
-                        {/* <Link to="/explore">explore</Link> */}
-
                 </div>
         </div>}
-                {sessionUser && <div>
+                {loggedInUser && <div>
                         <div>
                                 <Link to="/msg">Messages</Link>
                                 <Link to="/notif">Notifications</Link>
                                 <Link to="/orders">Orders</Link>
-                                <Link to="/whis">Whis list</Link>
-                                <Link to="/host">Host your home</Link>
+                                <Link to="/wish">wish list</Link>
+                               { loggedInUser.isHost && <Link to={`/host/${loggedInUser._id}`}>Dashboard</Link>}
+                               { !loggedInUser.isHost && <Link to="/host">Host your home</Link>}
                         </div>
                         <div>
                                 <Link to="/user">account</Link>

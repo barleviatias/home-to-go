@@ -2,8 +2,7 @@ import { Component } from "react";
 import { stayService } from "../services/stay-service";
 import { ReviewList } from '../cmps/stay-details/ReviewList';
 import { BookStay } from "../cmps/stay-details/BookStay";
-// import GoogleMapReact from 'google-map-react';
-import {GoogleMap} from '../cmps/GoogleMap';
+import { GoogleMap } from '../cmps/GoogleMap';
 export class StayDetails extends Component {
 
   state = {
@@ -93,14 +92,12 @@ export class StayDetails extends Component {
 
   render() {
     const { stay } = this.state
-    const {loggedInUser , toggleMsgModal} = this.props
-    // const AnyReactComponent = ({ text }) => <div>{text}</div>;
+    const { loggedInUser, toggleMsgModal, onSearch } = this.props
     if (!stay) return <h1>loading...</h1>
     const { loc, capacity, desc, amenities, stayType, propertyType, reviews, name, host } = stay
 
     return (
       <main className="stay-details-container page">
-
         <section className="stay-details-header">
           <h1>{name}</h1>
           <div className="stay-short-info">
@@ -115,15 +112,11 @@ export class StayDetails extends Component {
             </div>
           </div>
         </section>
-
         <div className="stay-gallery">
           {stay.imgUrls.map(imgUrl => <img src={imgUrl} alt="stay-gallery-preview-img" key={imgUrl} />)}
         </div>
-
         <section className="stay-info-container">
-
           <div className="stay-long-info">
-
             <div className="stay-long-info-header">
               <div>
                 <h2>{`${propertyType} hosted by ${host.fullname}`}</h2>
@@ -131,7 +124,6 @@ export class StayDetails extends Component {
               </div>
               <img src={host.imgUrl} alt="avatar" />
             </div>
-
             <div className="stay-feature-container">
               <div>
                 <i className="fas fa-home"></i>
@@ -162,9 +154,7 @@ export class StayDetails extends Component {
                 </div>
               </div>
             </div>
-
             <span className="description">{desc}</span>
-
             <div className="amenities-list">
               <h2>Amenities</h2>
               <ul>
@@ -172,24 +162,22 @@ export class StayDetails extends Component {
               </ul>
             </div>
           </div>
-
-          <BookStay stay={stay} getTotalRate={this.getTotalRate} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal}/>
-
+          <BookStay stay={stay} getTotalRate={this.getTotalRate} onSearch={onSearch} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />
         </section>
-
         <section className="stay-review-container">
           <div className="stay-review-header">
-            <h2>{<span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate()}<p>( {reviews.length} reviews )</p></span>}</h2>
+            <h2>{<span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate() } <p> ( {reviews.length} reviews )</p></span>}</h2>
             <div className="stay-review-ststistics">
               {this.getStayReviewStatistics().map(elCtgRate => elCtgRate)}
             </div>
           </div>
           <ReviewList reviews={reviews} />
         </section>
-        <section >
-        <GoogleMap pos={loc}/>
+        <section className="stay-details-map" >
+        <h2>Location</h2>
+          <GoogleMap pos={loc} />
         </section>
       </main>
-    );
+    )
   }
 }

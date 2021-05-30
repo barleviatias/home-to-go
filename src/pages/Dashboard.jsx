@@ -4,11 +4,8 @@ import { MyPlaces } from '../cmps/dashboard/MyPlaces'
 import { FinanceStatistic } from '../cmps/dashboard/FinanceStatistic'
 import { RateStatistic } from '../cmps/dashboard/RateStatistic'
 import { StayEdit } from '../cmps/dashboard/SaveStay'
-
 import { connect } from 'react-redux';
-
 import { loadHostStays, removeStay } from '../store/actions/stayActions'
-
 
 export class _Dashboard extends Component {
 
@@ -39,7 +36,6 @@ export class _Dashboard extends Component {
     render() {
         const { action, loggedInUser, selsctedEditStay } = this.state
         const { removeStay, stays, toggleMsgModal } = this.props
-        console.log(selsctedEditStay);
         return (
             <main className="dashboard-container page">
                 <DashHeader onSelectAction={this.onSelectAction} />
