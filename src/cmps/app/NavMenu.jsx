@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom';
 
 export function NavMenu({ logout, toggleUserMenu , loggedInUser }) {
 
-        console.log(loggedInUser);
-
         return (<section className="user-menu" onClick={toggleUserMenu}>{!loggedInUser && <div>
                 <div>
                         <Link to="/login">log in</Link>

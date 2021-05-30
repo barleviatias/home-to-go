@@ -18,8 +18,16 @@ export class _Dashboard extends Component {
     componentDidMount() {
         this.setState({ loggedInUser: { ...this.props.loggedInUser, isHost: true } }, () => {
             this.props.updateUser(this.state.loggedInUser)
-            this.props.loadHostStays(this.state.loggedInUser._id);
+            this.loadHostStays()
         })
+    }
+
+    loadHostStays = async () => {
+        await this.props.loadHostStays(this.state.loggedInUser._id);
+        if (this.props.stays.length === 0) {
+            this.setState({ action: 'add stay' })
+        }
+
     }
 
     onSelectAction = (ev) => {
@@ -29,7 +37,7 @@ export class _Dashboard extends Component {
 
     onSelectedEditStay = (stay) => {
         this.setState({ selsctedEditStay: stay }, () => {
-            this.setState({ action: 'add stay' })
+            this.setState({ action: 'edit stay' })
         })
     }
 
@@ -42,7 +50,8 @@ export class _Dashboard extends Component {
                 {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} />}
                 { action === 'finance stat' && <FinanceStatistic />}
                 { action === 'rate stat' && <RateStatistic />}
-                { action === 'add stay' && <StayEdit stay={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                { action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                { action === 'add stay' && <StayEdit  onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
             </main>
         )
     }
