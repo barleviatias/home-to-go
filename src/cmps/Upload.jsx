@@ -11,9 +11,7 @@ export class Upload extends Component {
 
   componentDidMount() {
     const { userImgUrl } = this.props
-    console.log('props',this.props);
     if (userImgUrl) this.setState({ imgUrl: userImgUrl })
-    console.log('cmp did mount',this.state);
   }
 
   uploadImg = async (ev) => {
@@ -31,9 +29,7 @@ export class Upload extends Component {
 
 
 
-    console.log('state',this.state);
     const { imgUrl } = this.state
-    console.log('imgurl',imgUrl);
     const previewStyle = {
       backgroundImage: `url(${imgUrl})`,
 
