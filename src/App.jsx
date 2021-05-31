@@ -83,7 +83,7 @@ class _App extends Component {
           <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
           <Route path='/wishlist' render={(props) => (<Wishlist {...props} stays={stays} loadWishlist={loadWishlist} loggedInUser={loggedInUser} />)} />
           <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} onSearch={this.onSearch} loggedInUser={loggedInUser} toggleMsgModal={this.toggleMsgModal} openDynamicModal={this.openDynamicModal} modalType={modalType} updateUser={updateUser} setModalContent={this.setModalContent} />)} />
-          <Route path='/explore' render={(props) => (<Explore {...props} trip={trip} stays={stays} updateUser={updateUser}  loggedInUser={loggedInUser} />)} />
+          <Route path='/explore' render={(props) => (<Explore {...props} trip={trip} loadStays={loadStays} stays={stays} updateUser={updateUser}  loggedInUser={loggedInUser} />)} />
           <Route path='/user' render={(props) => (<UserDetails {...props} updateUser={updateUser} />)} />
           <Route path='/' render={(props) => (<Home {...props} onSearch={this.onSearch} stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
         </Switch>

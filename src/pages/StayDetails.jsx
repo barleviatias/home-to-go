@@ -27,27 +27,34 @@ export class StayDetails extends Component {
     const { stayId } = this.props.match.params
     const stay = await stayService.getById(stayId)
     this.setState({ stay })
-    this.setWishList()
+    if(this.props.loggedInUser){
+        // user.wishlist=[this.state.stay._id]
+        this.setWishList()
+    }
   }
   setWishList=()=>{
     const user=this.props.loggedInUser
+    if(!user.wishlist)return
     console.log(this.state.stay._id);
-    const match=user.wishlist.findIndex((wish)=>wish===this.state.stay._id)
-
+    const match=user.wishlist.findIndex((wishId)=>wishId===this.state.stay._id)
     if(match!==-1){
       this.setState({...this.state,toggleWish:true})
     }
   }
   onAddToWishList=()=>{
     const user=this.props.loggedInUser
+    if(!user){
+      console.log('not log in');
+      return
+    } 
     if(user.wishlist)
     {
-      const wish=user.wishlist.find((wish)=>wish===this.state.stay._id)
-      if(wish!==this.state.stay._id){
+      const wishId=user.wishlist.find((wish)=>wish===this.state.stay._id)
+      if(!wishId){
         this.setState({...this.state,toggleWish:true})
         user.wishlist.push(this.state.stay._id)
       }else{
-        let idx=user.wishlist.findIndex((wishidx)=>wishidx===wish)
+        let idx=user.wishlist.findIndex((wishidx)=>wishidx===wishId)
         console.log(idx);
         this.setState({...this.state,toggleWish:false})
         user.wishlist.splice(idx,1)
