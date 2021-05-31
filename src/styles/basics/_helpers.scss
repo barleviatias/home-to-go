@@ -38,3 +38,17 @@
 .portrait-ratio {
     @include aspect-ratio(9, 16);
 }
+
+
+//Screen
+
+.screen{
+    position: absolute;
+    z-index: 1;
+    background-color: red;
+    top: 0px;
+    bottom: 0px;
+    left: 0px;
+    right: 0px;
+    
+}
