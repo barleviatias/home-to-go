@@ -6,12 +6,14 @@ import { GoogleMap } from '../cmps/stay-details/GoogleMap';
 export class StayDetails extends Component {
 
   state = {
-    stay: null
+    stay: null,
+    toggleWish:""
   }
 
   componentDidMount() {
     this.loadStay()
     this.scrollUp()
+    // this.setWishList()
   }
 
   scrollUp = () => {
@@ -25,18 +27,35 @@ export class StayDetails extends Component {
     const { stayId } = this.props.match.params
     const stay = await stayService.getById(stayId)
     this.setState({ stay })
+    this.setWishList()
+  }
+  setWishList=()=>{
+    const user=this.props.loggedInUser
+    console.log(this.state.stay._id);
+    const match=user.wishlist.findIndex((wish)=>wish===this.state.stay._id)
+
+    if(match!==-1){
+      this.setState({...this.state,toggleWish:true})
+    }
   }
   onAddToWishList=()=>{
-    console.log('whishList');
     const user=this.props.loggedInUser
     if(user.wishlist)
     {
       const wish=user.wishlist.find((wish)=>wish===this.state.stay._id)
-      if(wish!==this.state.stay._id)
-      user.wishlist.push(this.state.stay._id)
+      if(wish!==this.state.stay._id){
+        this.setState({...this.state,toggleWish:true})
+        user.wishlist.push(this.state.stay._id)
+      }else{
+        let idx=user.wishlist.findIndex((wishidx)=>wishidx===wish)
+        console.log(idx);
+        this.setState({...this.state,toggleWish:false})
+        user.wishlist.splice(idx,1)
+      }
     }else{
       user.wishlist=[this.state.stay._id]
     }
+    console.log(this.state.toggleWish);
     this.props.updateUser(user)
   }
   getTotalRate = () => {
@@ -106,6 +125,7 @@ export class StayDetails extends Component {
     const { stay } = this.state
     const { loggedInUser, toggleMsgModal, onSearch } = this.props
     if (!stay) return <h1>loading...</h1>
+    const {toggleWish}=this.state
     const { loc, capacity, desc, amenities, stayType, propertyType, reviews, name, host } = stay
 
     return (
@@ -120,7 +140,7 @@ export class StayDetails extends Component {
             </div>
             <div>
               <button><p><i className="fas fa-external-link-alt"></i>share</p></button>
-              <button onClick={this.onAddToWishList} className="stay-save-btn"><p><i className="far fa-heart"></i>save</p></button>
+              <button onClick={this.onAddToWishList} className="stay-save-btn"><p><i className={toggleWish?"fas fa-heart":"far fa-heart"}></i>save</p></button>
             </div>
           </div>
         </section>
