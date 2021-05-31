@@ -5,6 +5,7 @@ import { Explore } from './pages/Explore';
 import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
 import { Header } from './cmps/Header';
+import { Footer } from './cmps/Footer';
 import { Dashboard } from './pages/Dashboard';
 import { Orders } from './pages/Orders';
 import { BecomeHost } from './pages/BecomeHost';
@@ -49,9 +50,9 @@ class _App extends Component {
     }, 6000);
   }
 
-  setModalContent = (dynamicModal , modalType) => {
-    console.log('setModalContent: ', dynamicModal , modalType);
-    this.setState({ dynamicModal , modalType})
+  setModalContent = (dynamicModal, modalType) => {
+    console.log('setModalContent: ', dynamicModal, modalType);
+    this.setState({ dynamicModal, modalType })
   }
 
   closeDynamicModal = (ev) => {
@@ -63,7 +64,7 @@ class _App extends Component {
   }
 
   openDynamicModal = (modalType) => {
-    console.log('open: ' , modalType);
+    console.log('open: ', modalType);
     this.setState({ modalType }, () => { window.addEventListener('click', this.closeDynamicModal, true) })
   }
 
@@ -85,6 +86,7 @@ class _App extends Component {
           <Route path='/user' render={(props) => (<UserDetails {...props} updateUser={updateUser} />)} />
           <Route path='/' render={(props) => (<Home {...props} onSearch={this.onSearch} stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
         </Switch>
+        <Footer />
 
         <DynamicModal openDynamicModal={this.openDynamicModal} modalPosition={dynamicModal.modalPosition} modalType={modalType}>
           {dynamicModal.modalContent}
