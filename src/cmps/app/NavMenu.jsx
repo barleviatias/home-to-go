@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 
 
-export function NavMenu({ logout, toggleUserMenu , loggedInUser }) {
+export function NavMenu({ logout, toggleUserMenu, loggedInUser }) {
 
         return (<section className="user-menu" onClick={toggleUserMenu}>{!loggedInUser && <div>
                 <div>
@@ -26,7 +26,7 @@ export function NavMenu({ logout, toggleUserMenu , loggedInUser }) {
                         <div>
                                 <Link to="/user">account</Link>
                                 <Link to="/help">help</Link>
-                                <Link onClick={() => { logout() }} to="/">logout</Link>
+                                <Link to="/"> <button onClick={() => { logout() }}>logout</button> </Link>
                         </div>
                 </div>}
         </section>)

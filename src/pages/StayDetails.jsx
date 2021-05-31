@@ -64,6 +64,7 @@ export class StayDetails extends Component {
       acc += rate
       return acc
     }, 0)
+    if (sum === 0) return 'new'
     return (sum / rates.length).toFixed(1)
   }
 
@@ -123,7 +124,7 @@ export class StayDetails extends Component {
 
   render() {
     const { stay } = this.state
-    const { loggedInUser, toggleMsgModal, onSearch } = this.props
+    const { loggedInUser, toggleMsgModal, onSearch, openDynamicModal ,modalType, setModalContent } = this.props
     if (!stay) return <h1>loading...</h1>
     const {toggleWish}=this.state
     const { loc, capacity, desc, amenities, stayType, propertyType, reviews, name, host } = stay
@@ -134,7 +135,7 @@ export class StayDetails extends Component {
           <h1>{name}</h1>
           <div className="stay-short-info">
             <div>
-              <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate()}<p>( {reviews.length} reviews )</p></span>
+              <span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate()} <p> ( {reviews.length} reviews )</p></span>
               <span>•</span>
               <p>{loc.address}</p>
             </div>
@@ -145,7 +146,11 @@ export class StayDetails extends Component {
           </div>
         </section>
         <div className="stay-gallery">
-          {stay.imgUrls.map(imgUrl => <img src={imgUrl} alt="stay-gallery-preview-img" key={imgUrl} />)}
+          {stay.imgUrls.map((imgUrl, idx) => {
+            if (idx < 5) {
+              return <img src={imgUrl} alt="stay-gallery-preview-img" key={imgUrl} />
+            }
+          })}
         </div>
         <section className="stay-info-container">
           <div className="stay-long-info">
@@ -194,11 +199,11 @@ export class StayDetails extends Component {
               </ul>
             </div>
           </div>
-          <BookStay stay={stay} getTotalRate={this.getTotalRate} onSearch={onSearch} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />
+          <BookStay stay={stay} getTotalRate={this.getTotalRate} onSearch={onSearch} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} openDynamicModal={openDynamicModal} modalType={modalType} setModalContent={setModalContent} />
         </section>
         <section className="stay-review-container">
           <div className="stay-review-header">
-            <h2>{<span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate() } <p> ( {reviews.length} reviews )</p></span>}</h2>
+            <h2>{<span className="stay-rate-display"><i className="fas fa-star"></i>{this.getTotalRate()} <p> ( {reviews.length} reviews )</p></span>}</h2>
             <div className="stay-review-ststistics">
               {this.getStayReviewStatistics().map(elCtgRate => elCtgRate)}
             </div>
@@ -206,7 +211,7 @@ export class StayDetails extends Component {
           <ReviewList reviews={reviews} />
         </section>
         <section className="stay-details-map" >
-        <h2>Location</h2>
+          <h2>Location</h2>
           <GoogleMap pos={loc} />
         </section>
       </main>

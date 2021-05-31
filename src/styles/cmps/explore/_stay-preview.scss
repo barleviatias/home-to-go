@@ -1,9 +1,52 @@
-.stay-preview{
+.stay-preview {
+    .stay-preview-img {
+        @include aspect-ratio(1, 1);
+    }
 
-
-    img{
-        border-radius: 20px;
-        height: 250px;
+    img {
+        border-radius: 10px;
         object-fit: cover;
+    }
+
+    .stay-preview-info {
+        display: flex;
+        flex-direction: column;
+        font-size: rem(13px);
+        width: 100%;
+
+        .stay-preview-header {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            gap: 5px;
+            width: 100%;
+
+            .stay-preview-header-txt {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .stay-preview-header-rate {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+            }
+
+            .fa-star {
+                color: $clr-brand;
+            }
+        }
+
+        h3 {
+            font-size: rem(13px);
+            font-weight: 100;
+        }
+
+        .stay-price {
+            font-family: airbnb-regular, sans-serif;
+            color: $clr-black;
+        }
     }
 }

@@ -3,6 +3,7 @@ import { FilterGallery } from '../cmps/home/FilterGallery'
 import { Banner } from '../cmps/home/Banner'
 import { Hero } from '../cmps/home/Hero'
 import { stayService } from '../services/stay-service.js'
+import {FilterCities} from '../cmps/home/FilterCities'
 
 
 export class Home extends Component {
@@ -16,25 +17,26 @@ export class Home extends Component {
     this.loadNearby();
   }
 
-  loadRated = async() => {
+  loadRated = async () => {
     const topRated = await stayService.getTopRatedStays();
     this.setState({ topRatedStays: topRated })
   }
 
   loadNearby = async () => {
-    const nearby = await stayService.getNearbyStays( 'Israel');
+    const nearby = await stayService.getNearbyStays('Israel');
     this.setState({ nearbayStays: nearby })
   }
 
 
   render() {
-    const { loggedInUser } = this.props
+    const { loggedInUser ,onSearch} = this.props
     const { topRatedStays, nearbayStays } = this.state
 
     return (
       <main className="home-page">
         <Hero />
         <h1>Explore nearby</h1>
+        <FilterCities onSearch={onSearch} />
         <FilterGallery stays={nearbayStays} />
         <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
         <h1>Our Top Rated</h1>
