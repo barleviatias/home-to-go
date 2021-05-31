@@ -14,15 +14,15 @@ loadDB()
 
 function loadDB() {
     var userDB = JSON.parse(localStorage.getItem('user')) || []
-    var stayDB = JSON.parse(localStorage.getItem('stay')) || []
+    // var stayDB ;
     var orderDB = JSON.parse(localStorage.getItem('order')) || []
 
     if (!userDB || !userDB.length) {
         _save('user', user)
     }
-    if (!stayDB || !stayDB.length) {
-        _save('stay', stay)
-    }
+    // if (!stayDB || !stayDB.length) {
+    //     _save('stay', stay)
+    // }
     if (!orderDB || !orderDB.length) {
         _save('order', order)
     }
