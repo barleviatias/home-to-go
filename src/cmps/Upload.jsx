@@ -25,10 +25,7 @@ export class Upload extends Component {
     return isUploading ? 'Uploading....' : 'Upload Image'
   }
   render() {
-
-
-
-
+    
     const { imgUrl } = this.state
     const previewStyle = {
       backgroundImage: `url(${imgUrl})`,

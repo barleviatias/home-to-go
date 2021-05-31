@@ -62,3 +62,15 @@ export function loadHostStays(hostId) {
     }
   }
 } 
+export function loadWishlist(user) {
+  console.log("action",user);
+  return async dispatch => {
+    try {
+      const stays = await stayService.getUserWishlist(user)
+      dispatch({ type: 'SET_WISH_STAYS', stays })
+
+    } catch (err) {
+      console.log('StayActions: err in loadHostStays', err)
+    }
+  }
+} 

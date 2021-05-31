@@ -2,6 +2,7 @@ import { HashRouter as Router, Route, Switch } from 'react-router-dom'
 import { StayDetails } from './pages/StayDetails';
 import { UserDetails } from './pages/UserDetails';
 import { Explore } from './pages/Explore';
+import { Wishlist } from './pages/Whislist';
 import { LoginSignup } from './pages/LoginSignup';
 import { Home } from './pages/Home';
 import { Header } from './cmps/Header';
@@ -11,8 +12,8 @@ import { Orders } from './pages/Orders';
 import { BecomeHost } from './pages/BecomeHost';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadStays, removeStay, loadHostStays } from './store/actions/stayActions'
-import { loadOrders, removeOrder } from './store/actions/orderActions'
+import { loadStays,removeStay,loadHostStays,loadWishlist } from './store/actions/stayActions'
+import { loadOrders,removeOrder } from './store/actions/orderActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
 import { DynamicModal } from './cmps/app/DynamicModal';
@@ -70,8 +71,8 @@ class _App extends Component {
 
   render() {
 
-    const { stays, orders, updateUser, trip, addTrip, loggedInUser, logout, loadStays, loadOrders, removeOrder } = this.props
-    const { userMsg, isUserMsg, modalType, dynamicModal } = this.state
+    const { stays, orders,updateUser, trip, addTrip, loggedInUser, logout, loadStays,loadOrders,removeOrder ,loadWishlist } = this.props
+    const { userMsg , isUserMsg, modalType,dynamicModal } = this.state
 
     return (
       <Router>
@@ -81,8 +82,9 @@ class _App extends Component {
           <Route path='/orders' render={(props) => (<Orders {...props} loadOrders={loadOrders} orders={orders} loggedInUser={loggedInUser} removeOrder={removeOrder} toggleMsgModal={this.toggleMsgModal} />)} />
           <Route path='/host/:userId' render={(props) => (<Dashboard {...props} loggedInUser={loggedInUser} updateUser={updateUser} toggleMsgModal={this.toggleMsgModal} />)} />
           <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
-          <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} onSearch={this.onSearch} toggleMsgModal={this.toggleMsgModal} openDynamicModal={this.openDynamicModal} modalType={modalType} setModalContent={this.setModalContent} />)} />
-          <Route path='/explore' render={(props) => (<Explore {...props} trip={trip} stays={stays} />)} />
+          <Route path='/wishlist' render={(props) => (<Wishlist {...props} stays={stays} loadWishlist={loadWishlist} loggedInUser={loggedInUser} />)} />
+          <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} onSearch={this.onSearch} loggedInUser={loggedInUser} toggleMsgModal={this.toggleMsgModal} openDynamicModal={this.openDynamicModal} modalType={modalType} updateUser={updateUser} setModalContent={this.setModalContent} />)} />
+          <Route path='/explore' render={(props) => (<Explore {...props} trip={trip} loadStays={loadStays} stays={stays} updateUser={updateUser}  loggedInUser={loggedInUser} />)} />
           <Route path='/user' render={(props) => (<UserDetails {...props} updateUser={updateUser} />)} />
           <Route path='/' render={(props) => (<Home {...props} onSearch={this.onSearch} stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
         </Switch>
@@ -124,7 +126,8 @@ const mapDispatchToProps = {
   removeStay,
   loadHostStays,
   loadOrders,
-  removeOrder
+  removeOrder,
+  loadWishlist
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)

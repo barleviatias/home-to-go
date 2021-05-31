@@ -6,8 +6,14 @@
     }
 }
 
-@mixin for-narrow-layout {
+@mixin for-tablet-layout {
     @media (min-width: $mobile-breakpoint) {
+        @content;
+    }
+}
+
+@mixin for-narrow-layout {
+    @media (min-width: $tablet-breakpoint) {
         @content;
     }
 }
@@ -18,36 +24,54 @@
     }
 }
 
+@mixin for-large-layout {
+    @media (min-width: $normal-breakpoint) {
+        @content;
+    }
+}
+
 @mixin for-wide-layout {
-    @media (min-width: $normal-breakpoint) {
+    @media (min-width: $large-breakpoint) {
         @content;
     }
 }
 
 
-@mixin header-mobile-layout {
-    @media (max-width: $mobile-breakpoint) {
-        @content;
-    }
-}
+// @mixin header-mobile-layout {
+//     @media (max-width: $mobile-breakpoint) {
+//         @content;
+//     }
+// }
 
-@mixin header-narrow-layout {
-    @media (min-width: $mobile-breakpoint) {
-        @content;
-    }
-}
+// @mixin header-tablet-layout {
+//     @media (min-width: $mobile-breakpoint) {
+//         @content;
+//     }
+// }
 
-@mixin header-normal-layout {
-    @media (min-width: $narrow-breakpoint) {
-        @content;
-    }
-}
+// @mixin header-narrow-layout {
+//     @media (min-width: $tablet-breakpoint) {
+//         @content;
+//     }
+// }
 
-@mixin header-wide-layout {
-    @media (min-width: $normal-breakpoint) {
-        @content;
-    }
-}
+// @mixin header-normal-layout {
+//     @media (min-width: $narrow-breakpoint) {
+//         @content;
+//     }
+// }
+
+// @mixin header-large-layout {
+//     @media (min-width: $normal-breakpoint) {
+//         @content;
+//     }
+// }
+
+// @mixin header-wide-layout {
+//     @media (min-width: $large-breakpoint) {
+//         @content;
+//     }
+// }
 
 /* Media  Mixins */
 @mixin aspect-ratio($width, $height) {

@@ -17,10 +17,16 @@ main {
         margin: 14vh auto;
     }
 
+    @include for-tablet-layout {
+        grid-template-columns:
+            minmax(2rem, 1fr)
+            minmax(auto, $mobile-breakpoint)
+            minmax(2rem, 1fr);
+    }
     @include for-narrow-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $narrow-breakpoint)
+            minmax(auto, $tablet-breakpoint)
             minmax(2rem, 1fr);
     }
     @include for-normal-layout {
@@ -29,41 +35,18 @@ main {
             minmax(auto, $narrow-breakpoint)
             minmax(2rem, 1fr);
     }
-    @include for-wide-layout {
+    @include for-large-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
             minmax(auto, $normal-breakpoint)
             minmax(2rem, 1fr);
     }
+    @include for-wide-layout {
+        grid-template-columns:
+            minmax(2rem, 1fr)
+            minmax(auto, $large-breakpoint)
+            minmax(2rem, 1fr);
+    }
 }
 
-.main-header {
-    display: grid;
-    grid-template-columns:
-        minmax(2rem, 1fr)
-        minmax(auto, $normal-breakpoint)
-        minmax(2rem, 1fr);
 
-    @include header-narrow-layout {
-        grid-template-columns:
-            minmax(2rem, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(2rem, 1fr);
-    }
-    @include header-normal-layout {
-        grid-template-columns:
-            minmax(2rem, 1fr)
-            minmax(auto, $narrow-breakpoint)
-            minmax(2rem, 1fr);
-    }
-    @include header-wide-layout {
-        grid-template-columns:
-            minmax(2rem, 1fr)
-            minmax(auto, $wide-breakpoint)
-            minmax(2rem, 1fr);
-    }
-
-    > * {
-        grid-column: 2;
-    }
-}

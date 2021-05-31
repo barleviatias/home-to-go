@@ -13,7 +13,6 @@ export class MainFilter extends Component {
             loc: { address: '' },
             time: { checkIn: '', checkOut: '' }
         },
-        // modalType: '',
         topRatedStays: [],
         dynamicModal: {
             modalContent: '',
@@ -24,7 +23,6 @@ export class MainFilter extends Component {
     componentDidMount() {
         this.loadRated()
         this.loadTrip()
-        // this.setState({ modalType: this.props.modalType })
     }
 
     componentDidUpdate(prevProps, prevState) {
@@ -141,8 +139,8 @@ export class MainFilter extends Component {
 
 
         return (
-            <section className="main-filter">
-                {isFullHeader && <form className="max-filter">
+            <section className="main-filter-container">
+           <form className={isFullHeader ? "max-filter" : "filter-close"}>
                     <label>
                         <span>Location</span>
                         <input onClick={() => { this.onSetModal('loc') }} name="address" value={address} autoComplete="off" id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
@@ -166,14 +164,14 @@ export class MainFilter extends Component {
 
                     <button onClick={this.onSearch}> <Link to="/explore"><i className="fas fa-search"></i>
                     </Link></button>
-                </form>}
+                </form>
 
-                {!isFullHeader && <form className="min-filter" onClick={openFullHeader} >
+               <form className={!isFullHeader ? "min-filter" : "filter-close"} onClick={openFullHeader} >
                     <span>Start your search</span>
                     <button onClick={this.onSearch}>
                         <Link to="/explore"><i className="fas fa-search"></i> </Link>
                     </button>
-                </form>}
+                </form>
             </section>
         )
     }

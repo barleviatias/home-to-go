@@ -11,10 +11,16 @@
     background-repeat: no-repeat;
     margin-bottom: 20px;
 
-    @include for-narrow-layout {
+    @include for-tablet-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
             minmax(auto, $mobile-breakpoint)
+            minmax(2rem, 1fr);
+    }
+    @include for-narrow-layout {
+        grid-template-columns:
+            minmax(2rem, 1fr)
+            minmax(auto, $tablet-breakpoint)
             minmax(2rem, 1fr);
     }
     @include for-normal-layout {
@@ -23,10 +29,16 @@
             minmax(auto, $narrow-breakpoint)
             minmax(2rem, 1fr);
     }
+    @include for-large-layout {
+        grid-template-columns:
+            minmax(2rem, 1fr)
+            minmax(auto, $normal-breakpoint)
+            minmax(2rem, 1fr);
+    }
     @include for-wide-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $wide-breakpoint)
+            minmax(auto, $large-breakpoint)
             minmax(2rem, 1fr);
     }
 

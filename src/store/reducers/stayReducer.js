@@ -6,6 +6,8 @@ export function stayReducer(state = initialState, action = {}) {
   switch (action.type) {
     case 'SET_HOST_STAYS':
       return { ...state, stays: action.stays }
+    case 'SET_WISH_STAYS':
+      return { ...state, stays: action.stays }
     case 'SET_STAYS':
       return { ...state, stays: action.stays }
     case 'ADD_STAY':
