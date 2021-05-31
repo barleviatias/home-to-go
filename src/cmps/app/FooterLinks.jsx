@@ -16,7 +16,7 @@ export function FooterLinks() {
         <section className="footer-links-container">
             <div>
                 <h3>Top Rated</h3>
-                <Link  to="/explore" value={} onClick={() => { onSelectLink('Bangkok') }}>name</Link>
+                <Link  to="/explore" onClick={() => { onSelectLink('Bangkok') }}>name</Link>
                 <Link>name</Link>
                 <Link>name</Link>
                 <Link>name</Link>
