@@ -10,6 +10,7 @@
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.1",
     "chart.js": "^3.3.0",
+    "country-flag-icons": "^1.2.10",
     "date-fns": "^2.21.3",
     "formik": "^2.2.7",
     "google-map-react": "^2.1.9",
