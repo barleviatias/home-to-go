@@ -14,13 +14,13 @@ main {
     }
 
     &.page {
-        margin: 11vh auto;
+        margin: 14vh auto;
     }
 
     @include for-narrow-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $mobile-breakpoint)
+            minmax(auto, $narrow-breakpoint)
             minmax(2rem, 1fr);
     }
     @include for-normal-layout {
@@ -32,7 +32,7 @@ main {
     @include for-wide-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $wide-breakpoint)
+            minmax(auto, $normal-breakpoint)
             minmax(2rem, 1fr);
     }
 }

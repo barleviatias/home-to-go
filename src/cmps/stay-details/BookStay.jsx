@@ -13,7 +13,7 @@ class _BookStay extends Component {
             loc: { address: '' },
             time: { checkIn: '', checkOut: '' }
         },
-        modalType: '',
+        // modalType: '',
         isAvailable: false
     }
 
@@ -27,6 +27,70 @@ class _BookStay extends Component {
         this.setState({ trip, isAvailable: false })
     }
 
+    componentDidUpdate(prevProps) {
+        if (prevProps.modalType !== this.props.modalType) {
+            this.onSetModal(this.props.modalType)
+        }
+    }
+
+
+    onSetModal = (modalKey ) => {
+
+        const dynamicModal = {}
+        switch (modalKey) {
+
+            case 'guests':
+                const { kids, adults } = this.state.trip.guests;
+                dynamicModal.modalContent = (<section className="book-guest-modal">
+                    <div className="modal-label">
+                        <div>
+                            <span>Adults</span>
+                            <span>Ages 13 or above</span>
+                        </div>
+                        <div>
+                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults - 1) } }) }}>-</button>
+                            <span>{adults}</span>
+                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults + 1) } }) }}>+</button>
+                        </div>
+                    </div>
+                    <div className="modal-label">
+                        <div>
+                            <span>Kids</span>
+                            <span>Ages 2–12</span>
+                        </div>
+                        <div>
+                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids - 1) } }) }}>-</button>
+                            <span>{kids}</span>
+                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids + 1) } }) }}>+</button>
+                        </div>
+                    </div>
+                </section>)
+                dynamicModal.modalPosition = { top: '10px', left: '10px', height: '400px', width: '200px' }
+                break;
+            case '':
+                dynamicModal.modalContent = ''
+                dynamicModal.modalPosition = { top: 0, left: 0, height: 0, width: 0 }
+                break;
+
+            default:
+                break;
+        }
+        this.props.setModalContent(dynamicModal, modalKey)
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     handleChange = (ev) => {
         if (ev.timeStamp) ev.preventDefault()
         const { name, value, type } = ev.target
@@ -37,13 +101,8 @@ class _BookStay extends Component {
             const sumGuest = this.state.trip.guests.adults + this.state.trip.guests.kids;
             const isLess = (this.state.trip.guests[name] < value) ? true : false
             if (sumGuest === this.props.stay.capacity && isLess) return
-            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } });
+            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } }, () => { this.onSetModal('guests') });
         } else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
-    }
-
-    toggleDynamicModal = (modalKey) => {
-        if (this.state.modalType === modalKey) this.setState({ modalType: '' })
-        else this.setState({ modalType: modalKey })
     }
 
     toggleAvailability = () => {
@@ -93,10 +152,8 @@ class _BookStay extends Component {
 
     render() {
         const { stay, getTotalRate } = this.props
-        const { trip, modalType, isAvailable } = this.state
+        const { trip, isAvailable } = this.state
         const { reviews, price } = stay
-        const { kids, adults } = trip.guests;
-
 
         return (
             <section className="order-form-container">
@@ -120,33 +177,7 @@ class _BookStay extends Component {
 
                         <label className="guests-lable" >
                             <span>Guests</span>
-                            <input onClick={() => { this.toggleDynamicModal('guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
-                            {modalType === 'guests' && <DynamicModal>
-                                <section className="book-guest-modal">
-                                    <div className="modal-label">
-                                        <div>
-                                            <span>Adults</span>
-                                            <span>Ages 13 or above</span>
-                                        </div>
-                                        <div>
-                                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults - 1) } }) }}>-</button>
-                                            <span>{adults}</span>
-                                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults + 1) } }) }}>+</button>
-                                        </div>
-                                    </div>
-                                    <div className="modal-label">
-                                        <div>
-                                            <span>Kids</span>
-                                            <span>Ages 2–12</span>
-                                        </div>
-                                        <div>
-                                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids - 1) } }) }}>-</button>
-                                            <span>{kids}</span>
-                                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids + 1) } }) }}>+</button>
-                                        </div>
-                                    </div>
-                                </section>
-                            </DynamicModal>}
+                            <input onClick={() => { this.onSetModal( 'guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
                         </label>
                         {!isAvailable && <button type="button" className="book-stay-btn" onClick={this.toggleAvailability}>Check availability</button>}
                         {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}

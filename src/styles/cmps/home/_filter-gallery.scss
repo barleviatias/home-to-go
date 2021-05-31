@@ -1,23 +1,23 @@
-.filter-gallery{
+.filter-gallery {
     display: flex;
     gap: 15px;
-    height: 250px;
     margin-top: 20px;
     margin-bottom: 100px;
 
-    a{
+    a {
         flex: 1;
-    }
-    
-    img{
-        object-fit: cover;
-        border-radius: 10px;
-        height: 100%;
-        width: 100%;
-    }
+        width: 1fr;
+        height: 1fr;
 
-    h3{
-        color: $clr-black;
-    }
+        img {
+            object-fit: cover;
+            border-radius: 10px;
+            height: 100%;
+            width: 100%;
+        }
 
+        h3 {
+            color: $clr-black;
+        }
+    }
 }
