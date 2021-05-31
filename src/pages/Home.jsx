@@ -35,8 +35,9 @@ export class Home extends Component {
     return (
       <main className="home-page">
         <Hero />
-        <h1>Explore nearby</h1>
+        <h1>Popular destinations</h1>
         <FilterCities onSearch={onSearch} />
+        <h1>Explore nearby</h1>
         <FilterGallery stays={nearbayStays} />
         <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
         <h1>Our Top Rated</h1>

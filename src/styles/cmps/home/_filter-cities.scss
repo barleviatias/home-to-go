@@ -1,0 +1,55 @@
+.top-cities-gallery {
+    margin-top: 20px;
+    margin-bottom: 40px;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(100px, 1fr));
+    gap: 20px;
+
+    .top-cities-card {
+        display: flex;
+        grid-column: unset;
+        align-items: center;
+        gap: 15px;
+
+        img {
+            object-fit: cover;
+            border-radius: 10px;
+            height: 70px;
+            width: 70px;
+        }
+
+        .city-details-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            font-family: airbnb-regular, sans-serif;
+
+            h3 {
+                font-size: rem(14px);
+            }
+            
+            .city-details {
+                display: flex;
+                align-items: center;
+             
+                width: 100%;
+
+                svg{
+                    height: 15px;
+                    width: 30px;
+                }
+                
+                h4 {
+                    font-size: rem(13px);
+                    font-family: airbnb-book, sans-serif;
+                }
+
+            }
+        }
+
+        // h3 {
+        //     color: $clr-black;
+        // }
+    }
+}
