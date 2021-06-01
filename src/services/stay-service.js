@@ -82,7 +82,7 @@ async function add(stay) {
 // }
 
 async function getTopRatedStays() {
-	return await httpService.get(`stay`, {loc: {address: ''} , guests: 1})
+	return await httpService.get(`stay`)
 		// var stays = await storageService.query('stay');
 	// 	stays = stays.map((stay) => {
 	// 		stay.avgRate = _getRate(stay);
