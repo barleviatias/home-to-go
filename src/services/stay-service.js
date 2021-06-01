@@ -27,13 +27,15 @@ window.stayService = stayService;
 // stayService.signup({fullname: 'Muki G', stayname: 'muki', password:'123', score: 100})
 
 function query(trip) {
-	return httpService.get(`stay`)
+	// const newTrip={...trip,guests:trip.guests.kids+trip.guests.adults}
+	console.log('http trip',trip);
+	return httpService.get(`stay`,trip)
 	// return storageService.query('stay', trip);
 
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 	// return httpService.get(`stay${queryStr}`)
 
-``
+
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 }
 
@@ -80,8 +82,8 @@ async function add(stay) {
 // }
 
 async function getTopRatedStays() {
-	return httpService.get(`stay`)
-	// 	var stays = await storageService.query('stay');
+	return await httpService.get(`stay`, {loc: {address: ''} , guests: 1})
+		// var stays = await storageService.query('stay');
 	// 	stays = stays.map((stay) => {
 	// 		stay.avgRate = _getRate(stay);
 	// 		return stay;
@@ -103,7 +105,8 @@ function _getRate(stay) {
 }
 
 async function getNearbyStays(location) {
-	return httpService.get(`stay`)
+	console.log('getNearbyStays');
+	return await httpService.get(`stay`, {loc: {address: location} , guests: 1})
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.loc.address.toUpperCase().includes(location.toUpperCase());
@@ -114,7 +117,7 @@ async function getNearbyStays(location) {
 }
 
 async function getHostStays(userId) {
-	return httpService.get(`stay`)
+	return await httpService.get(`stay`)
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.host._id === userId;

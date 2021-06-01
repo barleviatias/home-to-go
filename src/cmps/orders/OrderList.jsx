@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export function OrderList({orders, getDaysToCancelOrder, onCancelOrder}) {
+export function OrderList({ orders, getDaysToCancelOrder, onCancelOrder }) {
 
     return (
         <tbody>
