@@ -107,9 +107,7 @@ class _App extends Component {
       loadStays,
       loadOrders,
       removeOrder,
-      loadWishlist,
-      loadOrders,
-      orders
+      loadWishlist
     } = this.props;
     const { userMsg, isUserMsg, modalType, dynamicModal } = this.state;
 
