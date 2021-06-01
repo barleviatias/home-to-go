@@ -14,7 +14,7 @@ export const stayService = {
 	getTopRatedStays,
 	getNearbyStays,
 	getHostStays,
-	getUserWishlist
+	getUserWishlist,
 	// getStayImage,
 	// getPriceData,
 	// getDateData
@@ -152,3 +152,4 @@ function convertAmenetiesToArray(amenities) {
 	console.log('currAmenities', currAmenities);
 	return currAmenities;
 }
+
