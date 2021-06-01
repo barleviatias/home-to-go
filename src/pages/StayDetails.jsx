@@ -33,7 +33,6 @@ export class StayDetails extends Component {
   setWishList=()=>{
     const user=this.props.loggedInUser
     if(!user.wishlist)return
-    console.log(this.state.stay._id);
     const match=user.wishlist.findIndex((wishId)=>wishId===this.state.stay._id)
     if(match!==-1){
       this.setState({...this.state,toggleWish:true})

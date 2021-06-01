@@ -63,7 +63,7 @@ export function loadHostStays(hostId) {
   }
 } 
 export function loadWishlist(user) {
-  console.log("action",user);
+  console.log("user from loadWishlist",user);
   return async dispatch => {
     try {
       const stays = await stayService.getUserWishlist(user)

@@ -35,7 +35,6 @@ export class MainFilter extends Component {
     }
 
     onSetModal = (event, modalKey) => {
-        console.log('main filter');
         const clickPos = event.target.getBoundingClientRect()
         this.setState({
             dynamicModal: {

@@ -28,8 +28,7 @@ window.stayService = stayService;
 
 function query(trip) {
 	// const newTrip={...trip,guests:trip.guests.kids+trip.guests.adults}
-	console.log('http trip',trip);
-	return httpService.get(`stay`,trip)
+	return httpService.get(`stay`, trip)
 	// return storageService.query('stay', trip);
 
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
@@ -81,10 +80,10 @@ async function add(stay) {
 //     // return httpService.get(`stay${queryStr}`)
 // }
 
-async function getTopRatedStays(trip = {loc: {address : ''} , guests: {adults : 1 , kids: 0}}) {
-	
+async function getTopRatedStays(trip = { loc: { address: '' }, guests: { adults: 1, kids: 0 } }) {
+
 	return await httpService.get(`stay`, trip)
-		// var stays = await storageService.query('stay');
+	// var stays = await storageService.query('stay');
 	// 	stays = stays.map((stay) => {
 	// 		stay.avgRate = _getRate(stay);
 	// 		return stay;
@@ -106,8 +105,7 @@ function _getRate(stay) {
 }
 
 async function getNearbyStays(location) {
-	console.log('getNearbyStays');
-	return await httpService.get(`stay`, {loc: {address: location} , guests: {adults : 1 , kids: 0}})
+	return await httpService.get(`stay`, { loc: { address: location }, guests: { adults: 1, kids: 0 } })
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.loc.address.toUpperCase().includes(location.toUpperCase());
@@ -118,7 +116,7 @@ async function getNearbyStays(location) {
 }
 
 async function getHostStays(userId) {
-	return await httpService.get(`stay`, {loc: {address: ''} , guests: {adults : 1 , kids: 0}})
+	return await httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 } })
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.host._id === userId;
@@ -130,7 +128,7 @@ async function getHostStays(userId) {
 }
 
 async function getUserWishlist(user) {
-	return httpService.get(`stay`, {loc: {address: ''} , guests: {adults : 1 , kids: 0}})
+	return httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'wishlist', user })
 	// var stays = await storageService.query('stay',null,user);
 	// return stays;
 	// user.wishlist.map()
