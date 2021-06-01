@@ -9,7 +9,6 @@ export class RateStatistic extends Component {
     }
 
     updateSelectedStay = (stay) => {
-        console.log(stay);
         this.setState({ stay })
     }
 
@@ -17,11 +16,14 @@ export class RateStatistic extends Component {
         const { stays } = this.props
         const { stay } = this.state
         return (
-            < div >
-                <HostStaysMenu stays={stays} updateSelectedStay={this.updateSelectedStay} />
-                {stay && <h3>Selected stay: {stay.name}</h3>}
-                <RatePieChart stay={stay} />
-            </div >
+            <section className="dash-rate-statistics-container">
+                {stay && <h3>{stay.name}</h3>}
+                {!stay && <h3>Rate statistics</h3>}
+                <div className="dash-rate-statistics">
+                    <HostStaysMenu stays={stays} updateSelectedStay={this.updateSelectedStay} />
+                    {stay && <RatePieChart stay={stay} />}
+                </div>
+            </section>
 
         )
     }

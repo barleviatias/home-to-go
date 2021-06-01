@@ -1,4 +1,4 @@
-import { storageService } from './asyncStorageService';
+// import { storageService } from './asyncStorageService';
 import { httpService } from './http.service'
 
 // import axios from 'axios'
@@ -33,7 +33,7 @@ function query(trip) {
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 	// return httpService.get(`stay${queryStr}`)
 
-
+``
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 }
 

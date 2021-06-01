@@ -2,8 +2,14 @@ import { Doughnut } from 'react-chartjs-2';
 
 export function RatePieChart({ stay }) {
 
-    function getRateData(stay) {
 
+
+    function getRateData() {
+        var chartData = stay.reviews.reduce((acc, review) => {
+            acc[Math.floor(review.avgRate) - 1]++
+            return acc
+        }, [0, 0, 0, 0, 0])
+        return chartData;
     }
 
     const data = {
@@ -11,7 +17,7 @@ export function RatePieChart({ stay }) {
         datasets: [
             {
                 label: '# of Votes',
-                data: [2.3, 4.7, 3.7, 1.2, 5],
+                data: getRateData(),
                 backgroundColor: [
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(54, 162, 235, 0.2)',
@@ -33,7 +39,7 @@ export function RatePieChart({ stay }) {
 
 
     return (
-        <div>
+        <div className="rate-chart">
             <Doughnut data={data} />
         </div>
     )

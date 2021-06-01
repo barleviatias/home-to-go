@@ -4,9 +4,11 @@
     .dash-main-container {
         display: flex;
 
+
         .dash-nav-container {
             padding-top: 60px;
-            position: relative;
+            position: sticky;
+            top: 12vh;
             display: flex;
             flex: 1;
             flex-direction: column;
@@ -48,7 +50,6 @@
                 }
             }
         }
-
         .dash-info-container {
             flex: 4;
         }
