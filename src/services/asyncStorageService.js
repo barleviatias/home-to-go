@@ -10,23 +10,23 @@ export const storageService = {
     remove
 }
 
-loadDB()
+// loadDB()
 
-function loadDB() {
-    // var userDB = JSON.parse(localStorage.getItem('user')) || []
-    // var stayDB ;
-    // var orderDB = JSON.parse(localStorage.getItem('order')) || []
+// function loadDB() {
+//     // var userDB = JSON.parse(localStorage.getItem('user')) || []
+//     // var stayDB ;
+//     // var orderDB = JSON.parse(localStorage.getItem('order')) || []
 
-    // if (!userDB || !userDB.length) {
-    //     _save('user', user)
-    // }
-    // if (!stayDB || !stayDB.length) {
-    //     _save('stay', stay)
-    // }
-    // if (!orderDB || !orderDB.length) {
-    //     _save('order', order)
-    // }
-}
+//     // if (!userDB || !userDB.length) {
+//     //     _save('user', user)
+//     // }
+//     // if (!stayDB || !stayDB.length) {
+//     //     _save('stay', stay)
+//     // }
+//     // if (!orderDB || !orderDB.length) {
+//     //     _save('order', order)
+//     // }
+// }
 
 function query(entityType , trip = { guests: { adults: 0, kids: 0}, loc: { address: '' }, time: { checkIn: '', checkOut: '' } },user=null) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []

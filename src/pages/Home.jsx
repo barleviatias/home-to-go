@@ -23,7 +23,7 @@ export class Home extends Component {
   }
 
   loadNearby = async () => {
-    const nearby = await stayService.getNearbyStays('Israel');
+    const nearby = await stayService.getNearbyStays('portugal');
     this.setState({ nearbayStays: nearby })
   }
 
