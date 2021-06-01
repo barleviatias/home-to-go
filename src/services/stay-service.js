@@ -81,8 +81,9 @@ async function add(stay) {
 //     // return httpService.get(`stay${queryStr}`)
 // }
 
-async function getTopRatedStays() {
-	return await httpService.get(`stay`)
+async function getTopRatedStays(trip = {loc: {address : ''} , guests: {adults : 1 , kids: 0}}) {
+	
+	return await httpService.get(`stay`, trip)
 		// var stays = await storageService.query('stay');
 	// 	stays = stays.map((stay) => {
 	// 		stay.avgRate = _getRate(stay);
@@ -106,7 +107,7 @@ function _getRate(stay) {
 
 async function getNearbyStays(location) {
 	console.log('getNearbyStays');
-	return await httpService.get(`stay`, {loc: {address: location} , guests: 1})
+	return await httpService.get(`stay`, {loc: {address: location} , guests: {adults : 1 , kids: 0}})
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.loc.address.toUpperCase().includes(location.toUpperCase());
@@ -117,7 +118,7 @@ async function getNearbyStays(location) {
 }
 
 async function getHostStays(userId) {
-	return await httpService.get(`stay`)
+	return await httpService.get(`stay`, {loc: {address: ''} , guests: {adults : 1 , kids: 0}})
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.host._id === userId;
@@ -129,7 +130,7 @@ async function getHostStays(userId) {
 }
 
 async function getUserWishlist(user) {
-	return httpService.get(`stay`)
+	return httpService.get(`stay`, {loc: {address: ''} , guests: {adults : 1 , kids: 0}})
 	// var stays = await storageService.query('stay',null,user);
 	// return stays;
 	// user.wishlist.map()

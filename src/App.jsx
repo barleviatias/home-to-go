@@ -45,12 +45,6 @@ class _App extends Component {
   //   time: { checkIn: '', checkOut: '' }
 
   onSearch = (trip) => {
-    trip = {
-      guests: trip.guests.adults + trip.guests.kids,
-      loc: trip.loc,
-      time: trip.time,
-    };
-
     this.props.addTrip(trip);
     this.props.loadStays(trip);
   };
@@ -217,7 +211,7 @@ class _App extends Component {
         </Switch>
         {/* <Footer /> */}
 
-				<DynamicModal
+        <DynamicModal
           openDynamicModal={this.openDynamicModal}
           modalPosition={dynamicModal.modalPosition}
           modalType={modalType}
