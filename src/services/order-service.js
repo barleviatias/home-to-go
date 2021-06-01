@@ -1,18 +1,14 @@
 import { storageService } from './asyncStorageService'
-import { userService } from '../services/user-service'
 import { tripService } from '../services/trip-service'
 import { utilService } from '../services/util-service'
 
 // import axios from 'axios'
 // import { httpService } from './http.service'
-// const SCORE_FOR_REVIEW = 10
 // const IMG_API_KEY = '20031048-f5c2a8cb9ae058a58da123891'
 
 export const orderService = {
     query,
-    // getById,
     remove,
-    // update,
     add,
     getHostOrders,
     getUserOrders
@@ -43,8 +39,6 @@ function _filterByUser(user, orders) {
     else return orders;
 }
 
-
-
 async function add(trip, stay, loggedInUser) {
     const order = {
         _id: utilService.makeId(),
@@ -68,7 +62,6 @@ async function add(trip, stay, loggedInUser) {
     // if (getLoggedinOrder()._id === order._id) _saveLocalOrder(order)
 }
 
-
 async function getHostOrders(userId) {
     var orders = await storageService.query('order')
     orders = orders.filter(order => {
@@ -90,9 +83,6 @@ function remove(orderId) {
 
     // return httpService.delete(`order/${orderId}`)
 }
-
-
-
 
 // SERVICE TO BACKEND
 

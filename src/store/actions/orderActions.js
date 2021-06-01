@@ -1,6 +1,4 @@
 import { orderService } from '../../services/order-service'
-import { userService } from '../../services/user-service'
-
 
 export function loadOrders(user) {
   return async dispatch => {
@@ -18,9 +16,6 @@ export function addOrder(trip ,stay, loggedInUser) {
     try {
       const addedOrder = await orderService.add(trip, stay, loggedInUser)
       dispatch({ type: 'ADD_ORDER', order: addedOrder })
-
-      // const score = await userService.increaseScore()
-      // dispatch({ type: 'SET_SCORE', score })
       
     } catch (err) {
       console.log('OrderActions: err in addOrder', err)

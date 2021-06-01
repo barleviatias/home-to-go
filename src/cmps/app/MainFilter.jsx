@@ -1,6 +1,5 @@
 import { Component } from "react";
 import { Link } from 'react-router-dom'
-import { DynamicModal } from '../app/DynamicModal'
 import { stayService } from '../../services/stay-service'
 
 
@@ -16,7 +15,7 @@ export class MainFilter extends Component {
         topRatedStays: [],
         dynamicModal: {
             modalContent: '',
-            modalPosition: { top: 0, right: 0, bottom: 0, left: 0, height: 0, width: 0 }
+            modalPosition: { top: 0, left: 0, height: 0 }
         }
     }
 
@@ -25,24 +24,37 @@ export class MainFilter extends Component {
         this.loadTrip()
     }
 
-    componentDidUpdate(prevProps, prevState) {
+    componentDidUpdate(prevProps) {
         if (prevProps.trip !== this.props.trip) {
             this.loadTrip()
         }
 
         if (prevProps.modalType !== this.props.modalType) {
-            this.onSetModal(this.props.modalType)
+            this.openModal(this.props.modalType)
         }
     }
 
-    onSetModal = (modalKey) => {
+    onSetModal = (event, modalKey) => {
+        console.log('main filter');
+        const clickPos = event.target.getBoundingClientRect()
+        this.setState({
+            dynamicModal: {
+                ...this.state.dynamicModal,
+                modalPosition: clickPos
+            }
+        }, () => { this.openModal(modalKey) })
+    }
+
+    openModal = (modalKey) => {
         const dynamicModal = {}
+        const { top, left, height } = this.state.dynamicModal.modalPosition
         switch (modalKey) {
             case 'loc':
-                dynamicModal.modalContent = (<section className="filter-loc-modal">
+                dynamicModal.modalContent = (<section className="dynamic-modal-child filter-loc-modal">
                     {this.state.topRatedStays.map(stay => {
                         return (
                             <div onClick={() => {
+                                console.log('hi');
                                 this.handleChange({ target: { name: "address", type: "search", value: stay.loc.address } })
                             }} key={stay._id} className="modal-label">
                                 <img src={stay.imgUrls[0]} alt="stay" />
@@ -51,11 +63,12 @@ export class MainFilter extends Component {
                         )
                     })}
                 </section>)
-                dynamicModal.modalPosition = { top: '10px', left: '10px', height: '400px', width: '200px' }
+                dynamicModal.modalPosition = { top: (top + 35), left : (left - 20)}
                 break;
+
             case 'guests':
                 const { kids, adults } = this.state.trip.guests;
-                dynamicModal.modalContent = (<section className="filter-guest-modal">
+                dynamicModal.modalContent = (<section className="dynamic-modal-child filter-guest-modal">
                     <div className="modal-label">
                         <div>
                             <span>Adults</span>
@@ -79,11 +92,12 @@ export class MainFilter extends Component {
                         </div>
                     </div>
                 </section>)
-                dynamicModal.modalPosition = { top: '10px', left: '10px', height: '400px', width: '200px' }
+                dynamicModal.modalPosition = { top: (top + 35), left: (left - 20) }
                 break;
+
             case '':
                 dynamicModal.modalContent = ''
-                dynamicModal.modalPosition = { top: 0, left: 0, height: 0, width: 0 }
+                dynamicModal.modalPosition = { top: 0, left: 0, height: 0 }
                 break;
 
             default:
@@ -104,20 +118,21 @@ export class MainFilter extends Component {
     }
 
     handleChange = (ev) => {
+        console.log('handleChange');
         if (ev.timeStamp) ev.preventDefault()
         const { name, value, type } = ev.target
         if (type === 'date') {
             this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [name]: value } } });
         } else if (type === 'number') {
             if (value < 0) return
-            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } }, () => { this.onSetModal('guests') });
+            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } }, () => { this.openModal('guests') });
         } else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
     onSearch = (ev) => {
         ev.preventDefault();
         this.props.onSearch(this.state.trip)
-        this.onSetModal('')
+        this.onSetModal(ev, '')
     }
 
     loadRated = async () => {
@@ -130,7 +145,6 @@ export class MainFilter extends Component {
     }
 
 
-
     render() {
         const { isFullHeader, openFullHeader } = this.props
         const { address } = this.state.trip.loc;
@@ -140,10 +154,10 @@ export class MainFilter extends Component {
 
         return (
             <section className="main-filter-container">
-           <form className={isFullHeader ? "max-filter" : "filter-close"}>
+                <form className={isFullHeader ? "max-filter" : "filter-close"}>
                     <label>
                         <span>Location</span>
-                        <input onClick={() => { this.onSetModal('loc') }} name="address" value={address} autoComplete="off" id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
+                        <input onClick={(event) => this.onSetModal(event, 'loc')} name="address" value={address} autoComplete="off" id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
                     </label>
 
                     <label htmlFor="check-in">
@@ -158,7 +172,7 @@ export class MainFilter extends Component {
                     <label className="guests" htmlFor="guests">
                         <div>
                             <span>Guests</span>
-                            <input onClick={() => { this.onSetModal('guests') }} value={kids + adults} id="guests" name="guests" placeholder="Add guests" onChange={this.handleGuestChang} />
+                            <input onClick={(event) => { this.onSetModal(event, 'guests') }} value={kids + adults + '  guests'} id="guests" name="guests" placeholder="Add guests" onChange={this.handleGuestChang} />
                         </div>
                     </label>
 
@@ -166,7 +180,7 @@ export class MainFilter extends Component {
                     </Link></button>
                 </form>
 
-               <form className={!isFullHeader ? "min-filter" : "filter-close"} onClick={openFullHeader} >
+                <form className={!isFullHeader ? "min-filter" : "filter-close"} onClick={openFullHeader} >
                     <span>Start your search</span>
                     <button onClick={this.onSearch}>
                         <Link to="/explore"><i className="fas fa-search"></i> </Link>

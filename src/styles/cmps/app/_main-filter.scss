@@ -70,11 +70,21 @@
                 font-size: 14px;
                 line-height: 15px;
                 height: 15px;
-                width: 120px;
                 outline: none;
                 background-color: transparent;
                 cursor: pointer;
                 color: $clr-gray;
+
+                &::-webkit-calendar-picker-indicator {
+                    position: relative;
+                    width: 15%;
+                    height: 100%;
+                    margin: 0;
+                    padding: 0;
+                    padding-right: 10px;
+                    cursor: pointer;
+                   
+                  }
             }
 
             &:not(:last-of-type)::after {

@@ -1,9 +1,7 @@
-import { Component } from "react";
+import { Component  } from "react";
 import { addOrder } from '../../store/actions/orderActions'
-import { DynamicModal } from '../app/DynamicModal'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-
 
 class _BookStay extends Component {
 
@@ -13,33 +11,45 @@ class _BookStay extends Component {
             loc: { address: '' },
             time: { checkIn: '', checkOut: '' }
         },
-        // modalType: '',
-        isAvailable: false
+        isAvailable: false,
+        dynamicModal: {
+            modalContent: '',
+            modalPosition: {}
+        }
     }
-
+    
     componentDidMount() {
-        var trip = this.props.trip
-        if (!trip) trip = {
+        const trip = this.props.trip || {
             guests: { adults: 0, kids: 0 },
             loc: { address: '' },
             time: { checkIn: '', checkOut: '' }
         }
+    
         this.setState({ trip, isAvailable: false })
     }
 
     componentDidUpdate(prevProps) {
         if (prevProps.modalType !== this.props.modalType) {
-            this.onSetModal(this.props.modalType)
+            this.openModal(this.props.modalType)
         }
     }
 
+    onSetModal = (event, modalKey) => {
+        const clickPos = event.target.getBoundingClientRect()
+        console.log(clickPos);
+        this.setState({
+            dynamicModal: {
+                ...this.state.dynamicModal,
+                modalPosition: clickPos
+            }
+        }, () => { this.openModal(modalKey) })
+    }
 
-    onSetModal = (modalKey ) => {
-
+    openModal = (modalKey) => {
         const dynamicModal = {}
+        const { top, left, height, x, y } = this.state.dynamicModal.modalPosition
         switch (modalKey) {
-
-            case 'guests':
+            case 'book-guests':
                 const { kids, adults } = this.state.trip.guests;
                 dynamicModal.modalContent = (<section className="book-guest-modal">
                     <div className="modal-label">
@@ -65,7 +75,7 @@ class _BookStay extends Component {
                         </div>
                     </div>
                 </section>)
-                dynamicModal.modalPosition = { top: '10px', left: '10px', height: '400px', width: '200px' }
+                dynamicModal.modalPosition = { top: 940, left: left - 26 }
                 break;
             case '':
                 dynamicModal.modalContent = ''
@@ -76,20 +86,8 @@ class _BookStay extends Component {
                 break;
         }
         this.props.setModalContent(dynamicModal, modalKey)
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     handleChange = (ev) => {
         if (ev.timeStamp) ev.preventDefault()
@@ -101,7 +99,7 @@ class _BookStay extends Component {
             const sumGuest = this.state.trip.guests.adults + this.state.trip.guests.kids;
             const isLess = (this.state.trip.guests[name] < value) ? true : false
             if (sumGuest === this.props.stay.capacity && isLess) return
-            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } }, () => { this.onSetModal('guests') });
+            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } }, () => { this.openModal('book-guests') });
         } else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
@@ -157,6 +155,7 @@ class _BookStay extends Component {
 
         return (
             <section className="order-form-container">
+                <div className="order-form-sticky">
                 <div className="order-form">
                     <div className="order-form-header">
                         <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span><span> / night</span></p>
@@ -177,7 +176,7 @@ class _BookStay extends Component {
 
                         <label className="guests-lable" >
                             <span>Guests</span>
-                            <input onClick={() => { this.onSetModal( 'guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
+                            <input onClick={(event) => { this.onSetModal(event, 'book-guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
                         </label>
                         {!isAvailable && <button type="button" className="book-stay-btn" onClick={this.toggleAvailability}>Check availability</button>}
                         {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}
@@ -190,6 +189,7 @@ class _BookStay extends Component {
                     </form>
                 </div>
                 <span className="report-listing-btn"><i className="fab fa-font-awesome-flag"></i><p>Report this listing</p></span>
+                </div>
             </section>
         )
     }

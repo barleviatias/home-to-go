@@ -1,5 +1,5 @@
-.user-menu{
-    display:flex;
+.user-menu {
+    display: flex;
     flex-direction: column;
     background-color: white;
     border-radius: 15px;
@@ -13,29 +13,30 @@
     text-transform: capitalize;
     box-shadow: 0 3px 8px 0px #0000002e;
 
-
-    >* div:not(:last-child){
+    > * div:not(:last-child) {
         border-bottom: 1px solid rgb(221, 221, 221);
     }
 
-    a{
+    a {
         height: 100%;
         padding: 12px 20px;
-        color: rgb(31, 31, 31) ;
-     
+        color: rgb(31, 31, 31);
     }
 
-    a:hover{
+    button{
+        padding: 0 0;
+        color: rgb(31, 31, 31);
+        font-weight: 100;
+        font-family: airbnb-book, sans-serif;
+        font-size: inherit;
+    }
+
+    a:hover {
         background-color: rgb(236, 236, 236);
-         }
-
-
-    
-
+    }
 
     div {
-        display:flex;
+        display: flex;
         flex-direction: column;
-       
     }
 }

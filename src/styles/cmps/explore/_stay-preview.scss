@@ -1,52 +1,73 @@
-.stay-preview {
-    .stay-preview-img {
-        @include aspect-ratio(1, 1);
-    }
+.stay-preview-container {
+    position: relative;
 
-    img {
-        border-radius: 10px;
-        object-fit: cover;
-    }
+    .stay-preview {
+        .stay-preview-img {
+            @include aspect-ratio(1, 1);
+        }
 
-    .stay-preview-info {
-        display: flex;
-        flex-direction: column;
-        font-size: rem(13px);
-        width: 100%;
+        img {
+            border-radius: 10px;
+            object-fit: cover;
+        }
 
-        .stay-preview-header {
+        .stay-preview-info {
             display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            align-items: center;
-            gap: 5px;
+            flex-direction: column;
+            font-size: rem(13px);
             width: 100%;
 
-            .stay-preview-header-txt {
+            .stay-preview-header {
                 display: flex;
+                flex-direction: row;
+                justify-content: space-between;
                 align-items: center;
                 gap: 5px;
+                width: 100%;
+
+                .stay-preview-header-txt {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                .stay-preview-header-rate {
+                    display: flex;
+                    align-items: center;
+                    gap: 5px;
+                }
+
+                .fa-star {
+                    color: $clr-brand;
+                }
             }
 
-            .stay-preview-header-rate {
-                display: flex;
-                align-items: center;
-                gap: 5px;
+            h3 {
+                font-size: rem(13px);
+                font-weight: 100;
             }
 
-            .fa-star {
+            .stay-price {
+                font-family: airbnb-regular, sans-serif;
+                color: $clr-black;
+            }
+        }
+    }
+    .stay-preview-save-btn {
+        position: absolute;
+        top: 15px;
+        right: 15px;
+
+        .fa-heart{
+            font-size: rem(20px);
+
+            &:hover{
                 color: $clr-brand;
             }
-        }
 
-        h3 {
-            font-size: rem(13px);
-            font-weight: 100;
-        }
-
-        .stay-price {
-            font-family: airbnb-regular, sans-serif;
-            color: $clr-black;
+            &.fas{
+                color: $clr-brand;
+            }
         }
     }
 }
