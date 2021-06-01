@@ -13,7 +13,6 @@ export class StayDetails extends Component {
   componentDidMount() {
     this.loadStay()
     this.scrollUp()
-    // this.setWishList()
   }
 
   scrollUp = () => {
@@ -28,7 +27,6 @@ export class StayDetails extends Component {
     const stay = await stayService.getById(stayId)
     this.setState({ stay })
     if(this.props.loggedInUser){
-        // user.wishlist=[this.state.stay._id]
         this.setWishList()
     }
   }
@@ -41,6 +39,7 @@ export class StayDetails extends Component {
       this.setState({...this.state,toggleWish:true})
     }
   }
+  
   onAddToWishList=()=>{
     const user=this.props.loggedInUser
     if(!user){
@@ -65,6 +64,7 @@ export class StayDetails extends Component {
     console.log(this.state.toggleWish);
     this.props.updateUser(user)
   }
+
   getTotalRate = () => {
     const rates = this.state.stay.reviews.map(review => review.avgRate)
     const sum = rates.reduce((acc, rate) => {

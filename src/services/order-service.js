@@ -1,5 +1,4 @@
 import { storageService } from './asyncStorageService'
-import { userService } from '../services/user-service'
 import { tripService } from '../services/trip-service'
 import { utilService } from '../services/util-service'
 
@@ -10,9 +9,7 @@ import { httpService } from './http.service'
 
 export const orderService = {
     query,
-    // getById,
     remove,
-    // update,
     add,
     getHostOrders,
     getUserOrders
@@ -44,8 +41,6 @@ function _filterByUser(user, orders) {
     else return orders;
 }
 
-
-
 async function add(trip, stay, loggedInUser) {
     const order = {
         _id: utilService.makeId(),
@@ -69,7 +64,6 @@ async function add(trip, stay, loggedInUser) {
     // if (getLoggedinOrder()._id === order._id) _saveLocalOrder(order)
 }
 
-
 async function getHostOrders(userId) {
     var orders = query('order',{id:userId ,type:'host'})
     orders = orders.filter(order => {
@@ -91,9 +85,6 @@ function remove(orderId) {
 
     return httpService.delete(`order/${orderId}`)
 }
-
-
-
 
 // SERVICE TO BACKEND
 

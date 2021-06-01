@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { DashHeader } from '../cmps/dashboard/DashHeader'
-import { MyPlaces } from '../cmps/dashboard/MyPlaces'
+import { MyStays } from '../cmps/dashboard/MyStays'
 import { FinanceStatistic } from '../cmps/dashboard/FinanceStatistic'
 import { RateStatistic } from '../cmps/dashboard/RateStatistic'
 import { StayEdit } from '../cmps/dashboard/SaveStay'
@@ -27,7 +27,6 @@ export class _Dashboard extends Component {
         if (this.props.stays.length === 0) {
             this.setState({ action: 'add stay' })
         }
-
     }
 
     onSelectAction = (ev) => {
@@ -45,13 +44,17 @@ export class _Dashboard extends Component {
         const { action, loggedInUser, selsctedEditStay } = this.state
         const { removeStay, stays, toggleMsgModal } = this.props
         return (
-            <main className="dashboard-container page">
-                <DashHeader onSelectAction={this.onSelectAction} />
-                {(action === '' || action === 'my places') && <MyPlaces stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} />}
-                { action === 'finance stat' && <FinanceStatistic />}
-                { action === 'rate stat' && <RateStatistic stays={stays}/>}
-                { action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
-                { action === 'add stay' && <StayEdit  onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+            <main className="dashboard-container">
+                <section className="dash-main-container">
+                    <DashHeader onSelectAction={this.onSelectAction} />
+                    <section className="dash-info-container">
+                        {(action === '' || action === 'my Stays') && <MyStays stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} />}
+                        {action === 'finance stat' && <FinanceStatistic />}
+                        {action === 'rate stat' && <RateStatistic stays={stays} />}
+                        {action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                        {action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                    </section>
+                </section>
             </main>
         )
     }

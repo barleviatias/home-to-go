@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom'
-import Flags from 'country-flag-icons/react/3x2'
 
 export function FilterCities({ onSearch }) {
 
@@ -19,7 +18,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>Hong Kong</h3>
                     <div className="city-details">
-                        <Flags.CN title="China" className="..." />
                         <h4>China</h4>
                     </div>
                 </div>
@@ -29,7 +27,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>Bangkok</h3>
                     <div className="city-details">
-                        <Flags.TH title="Thailand" className="..." />
                         <h4>Thailand</h4>
                     </div>
                 </div>
@@ -39,7 +36,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>London</h3>
                     <div className="city-details">
-                        <Flags.GB title="England" className="..." />
                         <h4>England</h4>
                     </div>
                 </div>
@@ -49,7 +45,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>Paris</h3>
                     <div className="city-details">
-                        <Flags.FR title="France" className="..." />
                         <h4>France</h4>
                     </div>
                 </div>
@@ -59,7 +54,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>Dubai</h3>
                     <div className="city-details">
-                        <Flags.AE title="United Arab Emirates" className="..." />
                         <h4>United Arab Emirates</h4>
                     </div>
                 </div>
@@ -69,7 +63,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>New York</h3>
                     <div className="city-details">
-                        <Flags.US title="United States" className="..." />
                         <h4>United States</h4>
                     </div>
                 </div>
@@ -79,7 +72,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>Amsterdam</h3>
                     <div className="city-details">
-                        <Flags.NL title="Netherlands" className="..." />
                         <h4>Netherlands</h4>
                     </div>
                 </div>
@@ -89,7 +81,6 @@ export function FilterCities({ onSearch }) {
                 <div className="city-details-container">
                     <h3>Tel Aviv</h3>
                     <div className="city-details">
-                        <Flags.IL title="Israel" className="..." />
                         <h4>Israel</h4>
                     </div>
                 </div>

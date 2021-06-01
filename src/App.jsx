@@ -12,8 +12,8 @@ import { Orders } from './pages/Orders';
 import { BecomeHost } from './pages/BecomeHost';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import { loadStays,removeStay,loadHostStays,loadWishlist } from './store/actions/stayActions'
-import { loadOrders,removeOrder } from './store/actions/orderActions'
+import { loadStays, removeStay, loadHostStays, loadWishlist } from './store/actions/stayActions'
+import { loadOrders, removeOrder } from './store/actions/orderActions'
 import { addTrip, loadTrip } from './store/actions/tripActions'
 import { updateUser, loadUsers, logout } from './store/actions/userActions'
 import { DynamicModal } from './cmps/app/DynamicModal';
@@ -52,31 +52,43 @@ class _App extends Component {
   }
 
   setModalContent = (dynamicModal, modalType) => {
-    console.log('setModalContent: ', dynamicModal, modalType);
+    console.log('setModalContent');
     this.setState({ dynamicModal, modalType })
   }
 
   closeDynamicModal = (ev) => {
-    console.log('close:', ev);
-    if (!ev.target.closest(".dynamic-modal") && ev.target !== "button") {
-      console.log(ev.target);
-      this.setState({ modalType: '' }, () => { window.removeEventListener('click', this.closeDynamicModal, true) })
+    if (ev.type === 'scroll') {
+      this.setState({ modalType: '' }, () => {
+        window.removeEventListener('click', this.closeDynamicModal, true)
+        window.removeEventListener('scroll', this.closeDynamicModal, true)
+      })
+      return
     }
+    console.log('closeDynamicModal');
+    if (ev.target.closest('.dynamic-modal')) return
+    if (ev.target.nodeName === "BUTTON") return
+    this.setState({ modalType: '' }, () => {
+      window.removeEventListener('click', this.closeDynamicModal, true)
+      window.removeEventListener('scroll', this.closeDynamicModal, true)
+    })
   }
 
   openDynamicModal = (modalType) => {
-    console.log('open: ', modalType);
-    this.setState({ modalType }, () => { window.addEventListener('click', this.closeDynamicModal, true) })
+    console.log('openDynamicModal');
+    this.setState({ modalType }, () => {
+      window.addEventListener('click', this.closeDynamicModal, true)
+      window.addEventListener('scroll', this.closeDynamicModal, true)
+    })
   }
 
   render() {
 
-    const { stays, orders,updateUser, trip, addTrip, loggedInUser, logout, loadStays,loadOrders,removeOrder ,loadWishlist } = this.props
-    const { userMsg , isUserMsg, modalType,dynamicModal } = this.state
+    const { stays, orders, updateUser, trip, addTrip, loggedInUser, logout, loadStays, loadOrders, removeOrder, loadWishlist } = this.props
+    const { userMsg, isUserMsg, modalType, dynamicModal } = this.state
 
     return (
       <Router>
-        <Header trip={trip} addTrip={addTrip} modalType={modalType} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} openDynamicModal={this.openDynamicModal} setModalContent={this.setModalContent} />
+        <Header trip={trip} addTrip={addTrip} modalType={modalType} onSearch={this.onSearch} loggedInUser={loggedInUser} logout={logout} openDynamicModal={this.openDynamicModal} closeDynamicModal={this.closeDynamicModal} setModalContent={this.setModalContent} />
         <Switch>
           <Route path='/login' component={LoginSignup} />
           <Route path='/orders' render={(props) => (<Orders {...props} loadOrders={loadOrders} orders={orders} loggedInUser={loggedInUser} removeOrder={removeOrder} toggleMsgModal={this.toggleMsgModal} />)} />
@@ -84,11 +96,11 @@ class _App extends Component {
           <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
           <Route path='/wishlist' render={(props) => (<Wishlist {...props} stays={stays} loadWishlist={loadWishlist} loggedInUser={loggedInUser} />)} />
           <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} onSearch={this.onSearch} loggedInUser={loggedInUser} toggleMsgModal={this.toggleMsgModal} openDynamicModal={this.openDynamicModal} modalType={modalType} updateUser={updateUser} setModalContent={this.setModalContent} />)} />
-          <Route path='/explore' render={(props) => (<Explore {...props} trip={trip} loadStays={loadStays} stays={stays} updateUser={updateUser}  loggedInUser={loggedInUser} />)} />
+          <Route path='/explore' render={(props) => (<Explore {...props} trip={trip} loadStays={loadStays} stays={stays} updateUser={updateUser} loggedInUser={loggedInUser} />)} />
           <Route path='/user' render={(props) => (<UserDetails {...props} updateUser={updateUser} />)} />
           <Route path='/' render={(props) => (<Home {...props} onSearch={this.onSearch} stays={stays} loggedInUser={loggedInUser} loadStays={loadStays} />)} />
         </Switch>
-        <Footer />
+        {/* <Footer /> */}
 
         <DynamicModal openDynamicModal={this.openDynamicModal} modalPosition={dynamicModal.modalPosition} modalType={modalType}>
           {dynamicModal.modalContent}
@@ -103,8 +115,6 @@ class _App extends Component {
     )
   }
 }
-
-// component={Home}
 
 const mapStateToProps = (state) => {
   return {
@@ -131,5 +141,3 @@ const mapDispatchToProps = {
 }
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App)
-
-// 

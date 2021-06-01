@@ -1,63 +1,69 @@
 .order-form-container {
     flex: 1;
 
-    .order-form {
-        border: 1px solid rgb(204, 204, 204);
-        border-radius: 15px;
-        padding: 20px 20px;
-        box-shadow: 0 6px 16px -2px #d8d8d8;
 
-        .order-form-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding-bottom: 20px;
+    .order-form-sticky{
+        margin: 20px 0px;
+        position: sticky;
+        top: 120px;
 
-            .order-price {
-                font-weight: 700;
+        .order-form {
+            border: 1px solid rgb(204, 204, 204);
+            border-radius: 15px;
+            padding: 20px 20px;
+            box-shadow: 0 6px 16px -2px #d8d8d8;
+            
+            .order-form-header {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding-bottom: 20px;
+                
+                .order-price {
+                    font-weight: 700;
+                }
             }
-        }
-
-        .order-form-date-picker {
-            display: flex;
-            align-items: center;
-            gap: 0px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-
-            label {
-                position: relative;
+            
+            .order-form-date-picker {
+                display: flex;
+                align-items: center;
+                gap: 0px;
+            }
+            
+            form {
                 display: flex;
                 flex-direction: column;
-                gap: 5px;
-                align-items: flex-start;
-                height: 100%;
-                padding: 10px 5px;
-                cursor: pointer;
-                width: 100%;
-                border: 1px solid rgb(153, 153, 153);
-
-                &.check-in {
-                    border-top-left-radius: 10px;
-                    border-bottom-color: rgba(255, 255, 255, 0);
-                    border-right-color: rgba(255, 255, 255, 0);
-                }
-
-                &.check-out {
+                align-items: center;
+                
+                label {
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                    align-items: flex-start;
+                    height: 100%;
+                    padding: 10px 5px;
+                    cursor: pointer;
+                    width: 100%;
+                    border: 1px solid rgb(153, 153, 153);
+                    
+                    &.check-in {
+                        border-top-left-radius: 10px;
+                        border-bottom-color: rgba(255, 255, 255, 0);
+                        border-right-color: rgba(255, 255, 255, 0);
+                    }
+                    
+                    &.check-out {
                     border-top-right-radius: 10px;
                     border-bottom-color: rgba(255, 255, 255, 0);
                 }
-
+                
                 &.guests-lable {
                     border-bottom-left-radius: 10px;
                     border-bottom-right-radius: 10px;
                     max-height: 60px;
                 }
-
+                
                 span {
                     color: black;
                     text-transform: uppercase;
@@ -65,7 +71,7 @@
                     font-weight: 600;
                     cursor: pointer;
                 }
-
+                
                 input {
                     font-size: 14px;
                     border: none;
@@ -79,7 +85,7 @@
                     text-align: center;
                 }
             }
-
+            
             .book-stay-btn {
                 padding: 18px;
                 margin: 15px 0px;
@@ -90,19 +96,19 @@
                 font-size: 16px;
                 font-weight: 600;
             }
-
+            
             .book-info {
                 display: flex;
                 flex-direction: column;
                 gap: 10px;
                 width: 100%;
-
+                
                 h4 {
                     font-size: rem(14px);
                     font-weight: unset;
                     text-align: center;
                 }
-
+                
                 h3 {
                     font-size: rem(16px);
                     font-weight: unset;
@@ -113,7 +119,7 @@
             }
         }
     }
-
+    
     .report-listing-btn {
         display: flex;
         align-items: center;
@@ -124,4 +130,5 @@
         width: 100%;
         margin-top: 20px;
     }
+}
 }

@@ -15,13 +15,13 @@ export function Footer() {
                     <Link>Become a host</Link>
                 </label>
                 <label>
-                    <i class="fas fa-globe"></i>
+                    <i className="fas fa-globe"></i>
                     <span>English (US)</span>
                     <span>$ US</span>
                     <div>
-                        <i class="fab fa-facebook-f"></i>
-                        <i class="fab fa-twitter"></i>
-                        <i class="fab fa-instagram"></i>
+                        <i className="fab fa-facebook-f"></i>
+                        <i className="fab fa-twitter"></i>
+                        <i className="fab fa-instagram"></i>
                     </div>
                 </label>
             </section>

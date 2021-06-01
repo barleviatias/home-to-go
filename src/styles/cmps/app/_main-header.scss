@@ -64,16 +64,13 @@
             display: flex;
             justify-content: flex-start;
             align-items: center;
-            gap: 10px;
+            gap: 1px;
+            font-family: airbnb-bold , sans-serif;
+            font-size: rem(20px);
+            
 
-            img {
-                height: 40px;
-                width: 30px;
-                object-fit: contain;
-            }
-
-            h1 {
-                font-size: 24px;
+            .fa-airbnb {
+                font-size: 36px;
             }
         }
 
