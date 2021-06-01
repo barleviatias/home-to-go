@@ -28,7 +28,6 @@ window.stayService = stayService;
 
 function query(trip) {
 	// const newTrip={...trip,guests:trip.guests.kids+trip.guests.adults}
-	console.log('http trip',trip);
 	return httpService.get(`stay`,trip)
 	// return storageService.query('stay', trip);
 
@@ -106,7 +105,6 @@ function _getRate(stay) {
 }
 
 async function getNearbyStays(location) {
-	console.log('getNearbyStays');
 	return await httpService.get(`stay`, {loc: {address: location} , guests: {adults : 1 , kids: 0}})
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
@@ -151,6 +149,5 @@ function convertAmenetiesToArray(amenities) {
 			currAmenities.push(res);
 		}
 	}
-	console.log('currAmenities', currAmenities);
 	return currAmenities;
 }

@@ -45,7 +45,6 @@ export class _Dashboard extends Component {
     render() {
         const { action, loggedInUser, selsctedEditStay, } = this.state
         const { removeStay, stays, toggleMsgModal,orders } = this.props
-        console.log(orders);
         return (
             <main className="dashboard-container">
                 <section className="dash-main-container">

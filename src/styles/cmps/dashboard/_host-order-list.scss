@@ -1,0 +1,36 @@
+.host-order-container {
+    width: 100%;
+    .host-order-list {
+        .host-order-list-table {
+            width: 100%;
+            border-spacing: 0px 2px;
+            text-align: center;
+
+            thead {
+                tr {
+                    th {
+                        padding: 10px 20px;
+                        font-family: airbnb-bold, sans-serif;
+                    }
+                }
+            }
+
+            tbody {
+                tr {
+                    td {
+                        padding: 10px 20px;
+                        border-top: 1px solid rgb(223, 223, 223);
+         
+                        &:first-of-type {
+                            font-family: airbnb-regular, sans-serif;
+                        }
+                    }
+                    &:hover {
+                        box-shadow: 0 2px 9px 1px #d8d8d8;
+                        padding: 11px 20px;
+                    }
+                }
+            }
+        }
+    }
+}

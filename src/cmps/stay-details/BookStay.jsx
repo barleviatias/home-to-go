@@ -1,4 +1,4 @@
-import { Component  } from "react";
+import { Component } from "react";
 import { addOrder } from '../../store/actions/orderActions'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
@@ -17,14 +17,13 @@ class _BookStay extends Component {
             modalPosition: {}
         }
     }
-    
+
     componentDidMount() {
         const trip = this.props.trip || {
             guests: { adults: 0, kids: 0 },
             loc: { address: '' },
             time: { checkIn: '', checkOut: '' }
         }
-    
         this.setState({ trip, isAvailable: false })
     }
 
@@ -36,7 +35,6 @@ class _BookStay extends Component {
 
     onSetModal = (event, modalKey) => {
         const clickPos = event.target.getBoundingClientRect()
-        console.log(clickPos);
         this.setState({
             dynamicModal: {
                 ...this.state.dynamicModal,
@@ -156,39 +154,39 @@ class _BookStay extends Component {
         return (
             <section className="order-form-container">
                 <div className="order-form-sticky">
-                <div className="order-form">
-                    <div className="order-form-header">
-                        <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span><span> / night</span></p>
-                        <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p>( {reviews.length} reviews )</p></span>
-                    </div>
-
-                    <form>
-                        <div className="order-form-date-picker">
-                            <label className="check-in">
-                                <span>Check in</span>
-                                <input name="checkIn" value={trip.time.checkIn} type="date" placeholder="Add dates" onChange={this.handleChange} />
-                            </label>
-                            <label className="check-out" >
-                                <span>Check out</span>
-                                <input name="checkOut" value={trip.time.checkOut} type="date" placeholder="Add dates" onChange={this.handleChange} />
-                            </label>
+                    <div className="order-form">
+                        <div className="order-form-header">
+                            <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span><span> / night</span></p>
+                            <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p>( {reviews.length} reviews )</p></span>
                         </div>
 
-                        <label className="guests-lable" >
-                            <span>Guests</span>
-                            <input onClick={(event) => { this.onSetModal(event, 'book-guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
-                        </label>
-                        {!isAvailable && <button type="button" className="book-stay-btn" onClick={this.toggleAvailability}>Check availability</button>}
-                        {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}
-                        {isAvailable && <div className="book-info">
-                            <h4>You won't be charged yet</h4>
-                            <h3><span>${price} X {this.getTripTime()} night{this.getTripTime() > 1 && 's'}</span> <span>${((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime()}</span></h3>
-                            <h3><span>Cleaning fee</span> <span>${(6 * this.getTripTime())}</span></h3>
-                            <h3><span>Service fee</span> <span>${(17 * this.getTripTime())}</span></h3>
-                        </div>}
-                    </form>
-                </div>
-                <span className="report-listing-btn"><i className="fab fa-font-awesome-flag"></i><p>Report this listing</p></span>
+                        <form>
+                            <div className="order-form-date-picker">
+                                <label className="check-in">
+                                    <span>Check in</span>
+                                    <input name="checkIn" value={trip.time.checkIn} type="date" placeholder="Add dates" onChange={this.handleChange} />
+                                </label>
+                                <label className="check-out" >
+                                    <span>Check out</span>
+                                    <input name="checkOut" value={trip.time.checkOut} type="date" placeholder="Add dates" onChange={this.handleChange} />
+                                </label>
+                            </div>
+
+                            <label className="guests-lable" >
+                                <span>Guests</span>
+                                <input onClick={(event) => { this.onSetModal(event, 'book-guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" />
+                            </label>
+                            {!isAvailable && <button type="button" className="book-stay-btn" onClick={this.toggleAvailability}>Check availability</button>}
+                            {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}
+                            {isAvailable && <div className="book-info">
+                                <h4>You won't be charged yet</h4>
+                                <h3><span>${price} X {this.getTripTime()} night{this.getTripTime() > 1 && 's'}</span> <span>${((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime()}</span></h3>
+                                <h3><span>Cleaning fee</span> <span>${(6 * this.getTripTime())}</span></h3>
+                                <h3><span>Service fee</span> <span>${(17 * this.getTripTime())}</span></h3>
+                            </div>}
+                        </form>
+                    </div>
+                    <span className="report-listing-btn"><i className="fab fa-font-awesome-flag"></i><p>Report this listing</p></span>
                 </div>
             </section>
         )

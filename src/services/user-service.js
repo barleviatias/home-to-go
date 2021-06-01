@@ -18,7 +18,6 @@ window.userService = userService;
 
 async function login(userCred) {
 	const user = await httpService.post('auth/login', userCred)
-	console.log(user);
 	if (user) return _saveLocalUser(user)
 
 

@@ -10,7 +10,6 @@ export class UserDetails extends Component {
 
   componentDidMount() {
     this.loadUser()
-    console.log(this.state);
   }
 
   loadUser = async () => {
@@ -18,7 +17,6 @@ export class UserDetails extends Component {
     sessionUser = JSON.parse(sessionUser)
     const user = await userService.getById(sessionUser._id)
     this.setState({ user })
-    console.log(user.fullname);
   }
   handleChange = ({ target }) => {
     const { name } = target
@@ -33,18 +31,14 @@ onUpdateUser = () => {
 
   toggleEditMode = () => {
     this.setState({ isEditMode: !this.state.isEditMode })
-    console.log(this.state);
 }
   render() {
-    console.log(this.state);
-
     const currUser = this.state.user
     
     if (!currUser) return <h1>loading...</h1>
     const {fullname,username,email,imgUrl,password}=currUser
     const firstName=fullname.split(' ')
     const isEditMode=this.state.isEditMode
-    console.log(isEditMode);
     // const { capacity, summary, price, stayType, name, host } = stay;
 
     return (

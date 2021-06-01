@@ -39,10 +39,6 @@ class _App extends Component {
     this.props.loadStays();
     this.props.loadUsers();
   }
-  // {
-  //   guests: { adults: 1, kids: 0 },
-  //   loc: { address: '' },
-  //   time: { checkIn: '', checkOut: '' }
 
   onSearch = (trip) => {
     this.props.addTrip(trip);
@@ -60,7 +56,6 @@ class _App extends Component {
   };
 
   setModalContent = (dynamicModal, modalType) => {
-    console.log('setModalContent');
     this.setState({ dynamicModal, modalType });
   };
 
@@ -72,7 +67,6 @@ class _App extends Component {
       });
       return;
     }
-    console.log('closeDynamicModal');
     if (ev.target.closest('.dynamic-modal')) return;
     if (ev.target.nodeName === 'BUTTON') return;
     this.setState({ modalType: '' }, () => {
@@ -82,7 +76,6 @@ class _App extends Component {
   };
 
   openDynamicModal = (modalType) => {
-    console.log('openDynamicModal');
     this.setState({ modalType }, () => {
       window.addEventListener('click', this.closeDynamicModal, true);
       window.addEventListener('scroll', this.closeDynamicModal, true);
@@ -187,6 +180,9 @@ class _App extends Component {
                 stays={stays}
                 updateUser={updateUser}
                 loggedInUser={loggedInUser}
+                openDynamicModal={this.openDynamicModal}
+                closeDynamicModal={this.closeDynamicModal}
+                setModalContent={this.setModalContent}
               />
             )}
           />

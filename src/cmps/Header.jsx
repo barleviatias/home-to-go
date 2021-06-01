@@ -16,14 +16,12 @@ export class Header extends React.Component {
     }
 
     closeFullHeader = (ev) => {
-        console.log('closeFullHeader');
         if (ev.target.closest(".main-filter-container")) return
         if (ev.target.closest(".dynamic-modal-child")) return
         this.setState({ isFullHeader: false }, () => { window.removeEventListener('click', this.closeFullHeader, true) })
     }
 
     openFullHeader = () => {
-        console.log('openFullHeader');
         this.setState({ isFullHeader: true }, () => { window.addEventListener('click', this.closeFullHeader, true) })
     }
 

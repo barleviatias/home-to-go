@@ -28,16 +28,15 @@ export const storageService = {
 //     // }
 // }
 
-function query(entityType , trip = { guests: { adults: 0, kids: 0}, loc: { address: '' }, time: { checkIn: '', checkOut: '' } },user=null) {
+function query(entityType, trip = { guests: { adults: 0, kids: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }, user = null) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
-    if (entityType === 'stay'){
-        if(user && user._id ){
-            console.log('jet');
-            entities= _filterByWhishList(entities,user.wishlist)
-        }else{
+    if (entityType === 'stay') {
+        if (user && user._id) {
+            entities = _filterByWhishList(entities, user.wishlist)
+        } else {
             entities = _filterByTripInfo(entities, trip)
         }
-    } 
+    }
     // if (entityType === 'wishlist') entities = _filterByWhishList(entities, trip)
     return Promise.resolve(entities)
 }
@@ -53,13 +52,12 @@ function _filterByTripInfo(entities, { loc, guests }) {
 }
 function _filterByWhishList(entities, wishlist) {
 
-   return wishlist.map((entityId)=>{
-         return entities.find((entitie) => {
-            return entitie._id===entityId
+    return wishlist.map((entityId) => {
+        return entities.find((entitie) => {
+            return entitie._id === entityId
         })
     }
     )
-    // console.log(wish)
 }
 
 function get(entityType, entityId) {

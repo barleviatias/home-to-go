@@ -33,7 +33,6 @@ export class StayDetails extends Component {
   setWishList=()=>{
     const user=this.props.loggedInUser
     if(!user.wishlist)return
-    console.log(this.state.stay._id);
     const match=user.wishlist.findIndex((wishId)=>wishId===this.state.stay._id)
     if(match!==-1){
       this.setState({...this.state,toggleWish:true})
@@ -43,7 +42,6 @@ export class StayDetails extends Component {
   onAddToWishList=()=>{
     const user=this.props.loggedInUser
     if(!user){
-      console.log('not log in');
       return
     } 
     if(user.wishlist)
@@ -54,14 +52,12 @@ export class StayDetails extends Component {
         user.wishlist.push(this.state.stay._id)
       }else{
         let idx=user.wishlist.findIndex((wishidx)=>wishidx===wishId)
-        console.log(idx);
         this.setState({...this.state,toggleWish:false})
         user.wishlist.splice(idx,1)
       }
     }else{
       user.wishlist=[this.state.stay._id]
     }
-    console.log(this.state.toggleWish);
     this.props.updateUser(user)
   }
 

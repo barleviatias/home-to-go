@@ -35,7 +35,6 @@ export class MainFilter extends Component {
     }
 
     onSetModal = (event, modalKey) => {
-        console.log('main filter');
         const clickPos = event.target.getBoundingClientRect()
         this.setState({
             dynamicModal: {
@@ -54,7 +53,6 @@ export class MainFilter extends Component {
                     {this.state.topRatedStays.map(stay => {
                         return (
                             <div onClick={() => {
-                                console.log('hi');
                                 this.handleChange({ target: { name: "address", type: "search", value: stay.loc.address } })
                             }} key={stay._id} className="modal-label">
                                 <img src={stay.imgUrls[0]} alt="stay" />
@@ -118,7 +116,6 @@ export class MainFilter extends Component {
     }
 
     handleChange = (ev) => {
-        console.log('handleChange');
         if (ev.timeStamp) ev.preventDefault()
         const { name, value, type } = ev.target
         if (type === 'date') {

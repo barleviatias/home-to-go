@@ -12,7 +12,6 @@ export function StayPreview({ stay, loggedInUser, updateUser }) {
         return (sum / rates.length).toFixed(1)
     }
     function toggleWish(stayId) {
-        console.log(stayId);
         if (!loggedInUser) return false
         if (!loggedInUser.wishlist) loggedInUser.wishlist = [stayId]
         else {

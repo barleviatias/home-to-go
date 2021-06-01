@@ -20,7 +20,6 @@ export class Wishlist extends Component {
     
     this.scrollUp()
     const {stays}=this.props
-    console.log(stays);
     return (
       <main className="explore-container page">
       <span>{stays.length}+ stays</span>

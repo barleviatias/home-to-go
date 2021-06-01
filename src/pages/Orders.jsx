@@ -23,7 +23,6 @@ export class Orders extends Component {
 
     onCancelOrder = async (stay) => {
         var daysToTrip = this.getTimeBeforeTrip(stay.startDate);
-        console.log(daysToTrip);
         if (daysToTrip >= 14) {
             await this.props.removeOrder(stay._id)
             this.setState({ orders: this.props.orders })

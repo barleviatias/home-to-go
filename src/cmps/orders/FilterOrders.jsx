@@ -15,9 +15,7 @@ export class FilterOrders extends Component {
     handleChange = (ev) => {
         var field = ev.target.name;
         var input = ev.target.value
-        console.log(input);
         this.setState({ filterBy: { ...this.state.filterBy, [field]: input } }, () => {
-            console.log(this.state);
         });
     }
 

@@ -6,18 +6,12 @@ export class DynamicModal extends Component {
 
     componentDidUpdate(prevProps) {
             if (prevProps.modalType !== this.props.modalType && this.props.modalType !== '') {
-                console.log(prevProps.modalType);
-
-                console.log('openDynamicModal: ', this.props.openDynamicModal);
-                console.log('modalType: ', this.props.modalType);
                 this.props.openDynamicModal(this.props.modalType)
             }
     }
 
     render() {
-
         const { modalPosition } = this.props
-
         if (!modalPosition || !modalPosition.top || !modalPosition.left ) return ''
 
         

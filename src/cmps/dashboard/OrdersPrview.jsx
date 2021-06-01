@@ -5,6 +5,7 @@ export function OrdersPrview({ order }) {
             <td>{order.user.fullname}</td>
             <td>{order.startDate}</td>
             <td>{order.endtDate}</td>
+            <td>{order.status}</td>
             <td>$ {order.totalPrice}</td>
             <td>
                 <button><i class="fas fa-check"></i></button>

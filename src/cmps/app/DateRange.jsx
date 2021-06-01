@@ -7,7 +7,6 @@ import { DateRangePicker } from 'react-date-range';
 
 export class DateRange extends Component {
   handleSelect(ranges) {
-    console.log(ranges);
     // {
     //   selection: {
     //     startDate: [native Date Object],
