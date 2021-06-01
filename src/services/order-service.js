@@ -4,7 +4,7 @@ import { tripService } from '../services/trip-service'
 import { utilService } from '../services/util-service'
 
 // import axios from 'axios'
-// import { httpService } from './http.service'
+import { httpService } from './http.service'
 // const SCORE_FOR_REVIEW = 10
 // const IMG_API_KEY = '20031048-f5c2a8cb9ae058a58da123891'
 
@@ -21,8 +21,9 @@ export const orderService = {
 window.orderService = orderService
 
 async function query(user = { id: null, type: 'all' }) {
-    var orders = await storageService.query('order')
-    orders = _filterByUser(user, orders);
+    // var orders = await storageService.query('order')
+    let orders= await httpService.get(`order`)
+     orders = _filterByUser(user, orders);
     return orders;
 
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
@@ -59,18 +60,18 @@ async function add(trip, stay, loggedInUser) {
         user: loggedInUser
     }
     tripService.remove()
-    return storageService.post('order', order)
+    // return storageService.post('order', order)
 
     // order.imgUrl = await getOrderImage(order.name)
     // order.msgs = []
-    // return await httpService.post(`order`, order)
+    return await httpService.post(`order`, order)
     // Handle case in which admin updates other order's details
     // if (getLoggedinOrder()._id === order._id) _saveLocalOrder(order)
 }
 
 
 async function getHostOrders(userId) {
-    var orders = await storageService.query('order')
+    var orders = query('order',{id:userId ,type:'host'})
     orders = orders.filter(order => {
         return order.host._id === userId
     })
@@ -78,7 +79,7 @@ async function getHostOrders(userId) {
 }
 
 async function getUserOrders(userId) {
-    var orders = await storageService.query('order')
+    var orders =query('order',{id:userId ,type:'user'})
     orders = orders.filter(order => {
         return order.host._id === userId
     })
@@ -86,9 +87,9 @@ async function getUserOrders(userId) {
 }
 
 function remove(orderId) {
-    return storageService.remove('order', orderId)
+    // return storageService.remove('order', orderId)
 
-    // return httpService.delete(`order/${orderId}`)
+    return httpService.delete(`order/${orderId}`)
 }
 
 

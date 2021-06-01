@@ -1,6 +1,6 @@
 import user from '../data/user.json'
-import stay from '../data/stay.json'
-import order from '../data/order.json'
+// import stay from '../data/stay.json'
+// import order from '../data/order.json'
 
 export const storageService = {
     query,
@@ -15,7 +15,7 @@ loadDB()
 function loadDB() {
     var userDB = JSON.parse(localStorage.getItem('user')) || []
     // var stayDB ;
-    var orderDB = JSON.parse(localStorage.getItem('order')) || []
+    // var orderDB = JSON.parse(localStorage.getItem('order')) || []
 
     if (!userDB || !userDB.length) {
         _save('user', user)
@@ -23,9 +23,9 @@ function loadDB() {
     // if (!stayDB || !stayDB.length) {
     //     _save('stay', stay)
     // }
-    if (!orderDB || !orderDB.length) {
-        _save('order', order)
-    }
+    // if (!orderDB || !orderDB.length) {
+    //     _save('order', order)
+    // }
 }
 
 function query(entityType , trip = { guests: { adults: 0, kids: 0}, loc: { address: '' }, time: { checkIn: '', checkOut: '' } },user=null) {
