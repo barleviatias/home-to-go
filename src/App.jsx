@@ -16,7 +16,7 @@ import {
   loadStays,
   removeStay,
   loadHostStays,
-  loadWishlist,
+  loadWishlist,updateStay
 } from './store/actions/stayActions';
 import { loadOrders, removeOrder } from './store/actions/orderActions';
 import { addTrip, loadTrip } from './store/actions/tripActions';
@@ -94,7 +94,8 @@ class _App extends Component {
       loadStays,
       loadOrders,
       removeOrder,
-      loadWishlist
+      loadWishlist,
+      updateStay
     } = this.props;
     const { userMsg, isUserMsg, modalType, dynamicModal } = this.state;
 
@@ -165,6 +166,7 @@ class _App extends Component {
                 toggleMsgModal={this.toggleMsgModal}
                 openDynamicModal={this.openDynamicModal}
                 modalType={modalType}
+                updateStay={updateStay}
                 updateUser={updateUser}
                 setModalContent={this.setModalContent}
               />
@@ -247,6 +249,7 @@ const mapDispatchToProps = {
   loadOrders,
   removeOrder,
   loadWishlist,
+  updateStay
 };
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App);
