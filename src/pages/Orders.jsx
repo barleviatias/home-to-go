@@ -17,7 +17,7 @@ export class Orders extends Component {
     }
 
     loadOrders = async () => {
-        await this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'user', filterBy: {} })
+        await this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'user' })
         this.setState({ orders: this.props.orders })
     }
 

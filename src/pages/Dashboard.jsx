@@ -4,6 +4,7 @@ import { MyStays } from '../cmps/dashboard/MyStays'
 import { FinanceStatistic } from '../cmps/dashboard/FinanceStatistic'
 import { RateStatistic } from '../cmps/dashboard/RateStatistic'
 import { StayEdit } from '../cmps/dashboard/SaveStay'
+import {HostOrders} from '../cmps/dashboard/HostOrders'
 import { connect } from 'react-redux';
 import { loadHostStays, removeStay } from '../store/actions/stayActions'
 
@@ -19,6 +20,7 @@ export class _Dashboard extends Component {
         this.setState({ loggedInUser: { ...this.props.loggedInUser, isHost: true } }, () => {
             this.props.updateUser(this.state.loggedInUser)
             this.loadHostStays()
+            this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'host' })
         })
     }
 
@@ -41,8 +43,9 @@ export class _Dashboard extends Component {
     }
 
     render() {
-        const { action, loggedInUser, selsctedEditStay } = this.state
-        const { removeStay, stays, toggleMsgModal } = this.props
+        const { action, loggedInUser, selsctedEditStay, } = this.state
+        const { removeStay, stays, toggleMsgModal,orders } = this.props
+        console.log(orders);
         return (
             <main className="dashboard-container">
                 <section className="dash-main-container">
@@ -53,6 +56,7 @@ export class _Dashboard extends Component {
                         {action === 'rate stat' && <RateStatistic stays={stays} />}
                         {action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
                         {action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                        {action === 'orders' && <HostOrders  loggedInUser={loggedInUser} orders={orders}  />}
                     </section>
                 </section>
             </main>
