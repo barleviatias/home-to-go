@@ -1,7 +1,7 @@
 import { storageService } from './asyncStorageService';
+import { httpService } from './http.service'
 
 // import axios from 'axios'
-// import { httpService } from './http.service'
 // const SCORE_FOR_REVIEW = 10
 // const IMG_API_KEY = '20031048-f5c2a8cb9ae058a58da123891'
 
@@ -27,92 +27,41 @@ window.stayService = stayService;
 // stayService.signup({fullname: 'Muki G', stayname: 'muki', password:'123', score: 100})
 
 function query(trip) {
-	return storageService.query('stay', trip);
+	return httpService.get(`stay`)
+	// return storageService.query('stay', trip);
 
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 	// return httpService.get(`stay${queryStr}`)
+
+
+	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 }
 
 function getById(stayId) {
-	return storageService.get('stay', stayId);
-	// return httpService.get(`stay/${stayId}`)
+	// return storageService.get('stay', stayId);
+	return httpService.get(`stay/${stayId}`)
 }
 
 function remove(stayId) {
-	return storageService.remove('stay', stayId);
-	// return httpService.delete(`stay/${stayId}`)
+	// return storageService.remove('stay', stayId);
+	return httpService.delete(`stay/${stayId}`)
 }
 
 async function update(stay) {
-    // const currStay = {
-	// 	name: stay.name,
-	// 	imgUrls: stay.imgUrls,
-	// 	price: stay.price,
-	// 	desc: stay.desc,
-	// 	capacity: 8,
-	// 	favorites: [
-	// 		{
-	// 			userId: 'u109',
-	// 		},
-	// 	],
-	// 	amenities: getAmeneties(stay.amenities),
-	// 	stayType: 'entire place',
-	// 	propertyType: 'loft',
-	// 	host: {
-	// 		_id: 'u101',
-	// 		fullname: 'Mor Levi',
-	// 		imgUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
-	// 	},
-	// 	loc: {
-	// 		country: 'France',
-	// 		countryCode: 'PT',
-	// 		address: 'Paris, France',
-	// 		lat: -8.61308,
-	// 		lng: 41.1413,
-	// 	},
-	// 	reviews: [],
-	// };
-    stay.amenities=getAmeneties( stay.amenities)
-	return storageService.put('stay', stay);
+	stay.amenities = convertAmenetiesToArray(stay.amenities)
+	return await httpService.put(`stay/${stay._id}`, stay)
 	// return await httpService.put(`stay/${stay._id}`, stay)
 	// Handle case in which admin updates other stay's details
 	// if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
 }
 
 async function add(stay) {
-	const currStay = {
-		name: stay.name,
-		imgUrls: stay.imgUrls,
-		price: stay.price,
-		desc: stay.desc,
-		capacity: 8,
-		favorites: [
-			{
-				userId: 'u109',
-			},
-		],
-		amenities: getAmeneties(stay.amenities),
-		stayType: 'entire place',
-		propertyType: 'loft',
-		host: {
-			_id: 'u101',
-			fullname: 'Mor Levi',
-			imgUrl: 'https://randomuser.me/api/portraits/men/1.jpg',
-		},
-		loc: {
-			country: 'France',
-			countryCode: 'PT',
-			address: 'Paris, France',
-			lat: -8.61308,
-			lng: 41.1413,
-		},
-		reviews: [],
-	};
+	stay.amenities = convertAmenetiesToArray(stay.amenities)
+	return await httpService.post(`stay`, stay)
 
-	return storageService.post('stay', currStay);
+	// return storageService.post('stay', currStay);
 	// stay.imgUrl = await getStayImage(stay.name)
 	// stay.msgs = []
-	// return await httpService.post(`stay`, stay)
 	// Handle case in which admin updates other stay's details
 	// if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
 }
@@ -129,18 +78,19 @@ async function add(stay) {
 //     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 //     // return httpService.get(`stay${queryStr}`)
 // }
+
 async function getTopRatedStays() {
-	var stays = await storageService.query('stay');
-	stays = stays.map((stay) => {
-		stay.avgRate = _getRate(stay);
-		return stay;
-	});
-	stays.sort(function (a, b) {
-		return b.avgRate - a.avgRate;
-	});
-	return stays.slice(0, 4);
+	return httpService.get(`stay`)
+	// 	var stays = await storageService.query('stay');
+	// 	stays = stays.map((stay) => {
+	// 		stay.avgRate = _getRate(stay);
+	// 		return stay;
+	// 	});
+	// 	stays.sort(function (a, b) {
+	// 		return b.avgRate - a.avgRate;
+	// 	});
+	// 	return stays.slice(0, 4);
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
-	// return httpService.get(`stay${queryStr}`)
 }
 
 function _getRate(stay) {
@@ -153,30 +103,32 @@ function _getRate(stay) {
 }
 
 async function getNearbyStays(location) {
-	var stays = await storageService.query('stay');
-	stays = stays.filter((stay) => {
-		return stay.loc.address.toUpperCase().includes(location.toUpperCase());
-	});
-	return stays.slice(0, 4);
+	return httpService.get(`stay`)
+	// var stays = await storageService.query('stay');
+	// stays = stays.filter((stay) => {
+	// 	return stay.loc.address.toUpperCase().includes(location.toUpperCase());
+	// });
+	// return stays.slice(0, 4);
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 	// return httpService.get(`stay${queryStr}`)
 }
 
 async function getHostStays(userId) {
-	var stays = await storageService.query('stay');
-	stays = stays.filter((stay) => {
-		return stay.host._id === userId;
-	});
-	return stays;
+	return httpService.get(`stay`)
+	// var stays = await storageService.query('stay');
+	// stays = stays.filter((stay) => {
+	// 	return stay.host._id === userId;
+	// });
+	// return stays;
 
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 	// return httpService.get(`stay${queryStr}`)
 }
 
 async function getUserWishlist(user) {
-	console.log(user);
-	var stays = await storageService.query('stay',null,user);
-	return stays;
+	return httpService.get(`stay`)
+	// var stays = await storageService.query('stay',null,user);
+	// return stays;
 	// user.wishlist.map()
 	// stays = stays.filter((stay) => {
 	// 	return stay._id === stayId;
@@ -186,7 +138,7 @@ async function getUserWishlist(user) {
 	// return httpService.get(`stay${queryStr}`)
 }
 
-function getAmeneties(amenities) {
+function convertAmenetiesToArray(amenities) {
 	const currAmenities = [];
 	for (const key in amenities) {
 		if (amenities[key]) {
