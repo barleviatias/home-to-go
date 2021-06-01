@@ -13,13 +13,13 @@ export const storageService = {
 loadDB()
 
 function loadDB() {
-    var userDB = JSON.parse(localStorage.getItem('user')) || []
+    // var userDB = JSON.parse(localStorage.getItem('user')) || []
     // var stayDB ;
     // var orderDB = JSON.parse(localStorage.getItem('order')) || []
 
-    if (!userDB || !userDB.length) {
-        _save('user', user)
-    }
+    // if (!userDB || !userDB.length) {
+    //     _save('user', user)
+    // }
     // if (!stayDB || !stayDB.length) {
     //     _save('stay', stay)
     // }
