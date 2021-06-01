@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { Link } from 'react-router-dom'
 import { FilterOrders } from '../cmps/orders/FilterOrders'
+import { OrderList } from '../cmps/orders/OrderList';
 
 export class Orders extends Component {
 
@@ -9,6 +9,7 @@ export class Orders extends Component {
         loggedInUser: null,
         orders: [],
     }
+
     componentDidMount() {
         this.setState({ loggedInUser: this.props.loggedInUser }, () => {
             this.loadOrders();
@@ -63,26 +64,12 @@ export class Orders extends Component {
                             <th>Action</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        {orders.map(order => {
-                            return (
-                                <tr key={order._id}>
-                                    <td><Link to={`/stay/${order.stay._id}`}>{order.stay.name}</Link></td>
-                                    <td><Link to={`/stay/${order.stay._id}`}>{order.startDate}</Link></td>
-                                    <td><Link to={`/stay/${order.stay._id}`}>{order.endDate}</Link></td>
-                                    <td><Link to={`/stay/${order.stay._id}`}>$ {order.totalPrice}</Link></td>
-                                    <td><Link to={`/stay/${order.stay._id}`}>{order.host.fullname}</Link></td>
-                                    <td><Link to={`/stay/${order.stay._id}`}>{order.status}</Link></td>
-                                    <td><Link to={`/stay/${order.stay._id}`}>{this.getDaysToCancelOrder(order)}</Link></td>
-                                    <td>
-                                        <button onClick={() => this.onCancelOrder(order)}>Cancel Order</button>
-                                    </td>
-                                </tr>
-                            )
-                        })}
-                    </tbody>
+                    <OrderList
+                        orders={orders}
+                        getDaysToCancelOrder={this.getDaysToCancelOrder}
+                        onCancelOrder={this.onCancelOrder}
+                    />
                 </table>
-
             </main>
         )
     }

@@ -1,15 +1,19 @@
 
-export function HostStaysMenu({ stays,updateSelectedStay }) {
+export function HostStaysMenu({ stays, updateSelectedStay }) {
     return (
-        <div>
+        <section className="host-rate-card">
             {stays.map(stay => {
                 return (
                     <label key={stay._id} onClick={() => { updateSelectedStay(stay) }}>
-                        <h4>{stay.name}</h4>
-                        <h6>{`${stay.propertyType},${stay.capacity} Gursts, ${stay.loc.address}`}</h6>
+                        <img src={stay.imgUrls[0]} alt="stay-preview" />
+                        <div>
+                            <h4>{stay.name}</h4>
+                            <h6>{`${stay.loc.address}`}</h6>
+                            <h6>{`${stay.capacity} Guests`}</h6>
+                        </div>
                     </label>
                 )
             })}
-        </div>
+        </section>
     )
 }
