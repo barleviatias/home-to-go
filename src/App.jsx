@@ -92,7 +92,7 @@ class _App extends Component {
         <Switch>
           <Route path='/login' component={LoginSignup} />
           <Route path='/orders' render={(props) => (<Orders {...props} loadOrders={loadOrders} orders={orders} loggedInUser={loggedInUser} removeOrder={removeOrder} toggleMsgModal={this.toggleMsgModal} />)} />
-          <Route path='/host/:userId' render={(props) => (<Dashboard {...props} loggedInUser={loggedInUser} updateUser={updateUser} toggleMsgModal={this.toggleMsgModal} />)} />
+          <Route path='/host/:userId' render={(props) => (<Dashboard {...props} loggedInUser={loggedInUser} updateUser={updateUser} toggleMsgModal={this.toggleMsgModal} loadOrders={loadOrders} orders={orders} />)} />
           <Route path='/host' render={(props) => (<BecomeHost {...props} loggedInUser={loggedInUser} />)} />
           <Route path='/wishlist' render={(props) => (<Wishlist {...props} stays={stays} loadWishlist={loadWishlist} loggedInUser={loggedInUser} />)} />
           <Route path='/stay/:stayId' render={(props) => (<StayDetails {...props} onSearch={this.onSearch} loggedInUser={loggedInUser} toggleMsgModal={this.toggleMsgModal} openDynamicModal={this.openDynamicModal} modalType={modalType} updateUser={updateUser} setModalContent={this.setModalContent} />)} />

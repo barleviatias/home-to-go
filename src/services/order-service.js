@@ -18,9 +18,12 @@ export const orderService = {
 window.orderService = orderService
 
 async function query(user = { id: null, type: 'all' }) {
+
+
     // var orders = await storageService.query('order')
-    let orders= await httpService.get(`order`)
-     orders = _filterByUser(user, orders);
+    let orders= await httpService.get(`order`,user)
+    console.log('orders from front',orders);
+    //  orders = _filterByUser(user, orders);
     return orders;
 
     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`

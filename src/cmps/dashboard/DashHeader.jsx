@@ -7,6 +7,7 @@ export function DashHeader ({onSelectAction}){
             <button value="rate stat" onClick={onSelectAction}>Rates Statistic</button>
             <button value="finance stat" onClick={onSelectAction}>Financial Statistic</button>
             <button value="my Stays" onClick={onSelectAction}>My Stays</button>
+            <button value="orders" onClick={onSelectAction}>Orders</button>
         </div>
     )
 }
