@@ -17,12 +17,12 @@ export const orderService = {
 
 window.orderService = orderService
 
-async function query(user = { id: null, type: 'all' }) {
+async function query(user = { id: null, type: 'all', filterBy: { num: 1, name: 'ifek' } }) {
 
 
     // var orders = await storageService.query('order')
-    let orders= await httpService.get(`order`,user)
-    console.log('orders from front',orders);
+    let orders = await httpService.get(`order`, user)
+    console.log('orders from front', orders);
     //  orders = _filterByUser(user, orders);
     return orders;
 
@@ -68,7 +68,7 @@ async function add(trip, stay, loggedInUser) {
 }
 
 async function getHostOrders(userId) {
-    var orders = query('order',{id:userId ,type:'host'})
+    var orders = query('order', { id: userId, type: 'host' })
     orders = orders.filter(order => {
         return order.host._id === userId
     })
@@ -76,7 +76,7 @@ async function getHostOrders(userId) {
 }
 
 async function getUserOrders(userId) {
-    var orders =query('order',{id:userId ,type:'user'})
+    var orders = query('order', { id: userId, type: 'user' })
     orders = orders.filter(order => {
         return order.host._id === userId
     })
