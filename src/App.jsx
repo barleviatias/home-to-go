@@ -37,7 +37,7 @@ class _App extends Component {
 
   componentDidMount() {
     this.props.loadStays();
-    this.props.loadUsers();
+    // this.props.loadUsers();
   }
 
   onSearch = (trip) => {
@@ -111,6 +111,7 @@ class _App extends Component {
           openDynamicModal={this.openDynamicModal}
           closeDynamicModal={this.closeDynamicModal}
           setModalContent={this.setModalContent}
+          // loadStays={loadStays}
         />
         <Switch>
           <Route path="/login" component={LoginSignup} />
