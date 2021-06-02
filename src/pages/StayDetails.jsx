@@ -117,7 +117,15 @@ export class StayDetails extends Component {
 		for (const ctg in reviewCtgMap) {
 			elReviews.push(
 				<div key={Math.random()} className="ctg-statistics">
-					<h3>{ctg}</h3> <span>{reviewCtgMap[ctg]}</span>
+					<h3>{ctg}</h3>
+					<ReactStars
+							count={5}
+							value={reviewCtgMap[ctg]}
+							size={20}
+							isHalf={true}
+							edit={false}
+							activeColor="#ff385c"
+						/>
 				</div>
 			);
 		}
@@ -143,12 +151,14 @@ export class StayDetails extends Component {
 				return <i className="fab fa-airbnb"></i>;
 		}
 	}
+
 	addReview = (review) => {
-		const currStay = this.state.stay
-		currStay.reviews.push(review)
-		this.props.updateStay(currStay)
-		this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your Review has been added</h3></span>)
+		const { stay } = this.state
+		stay.reviews.push(review)
+		this.props.updateStay(stay)
+		this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your review has been saved</h3></span>)
 	}
+
 	render() {
 		const { stay } = this.state;
 		const {
@@ -263,7 +273,10 @@ export class StayDetails extends Component {
 								</div>
 							</div>
 						</div>
-						<span className="description">{desc}</span>
+						<div className="description">
+							<h2>Description</h2>
+							<span>{desc}</span>
+						</div>
 						<div className="amenities-list">
 							<h2>Amenities</h2>
 							<ul>
@@ -292,12 +305,10 @@ export class StayDetails extends Component {
 				<section className="stay-review-container">
 					<div className="stay-review-header">
 						<h2>
-							{
-								<span className="stay-rate-display">
-									<i className="fas fa-star"></i>
-									{this.getTotalRate()} <p> ( {reviews.length} reviews )</p>
-								</span>
-							}
+							<span className="stay-rate-display">
+								<i className="fas fa-star"></i>
+								{this.getTotalRate()} <p> ( {reviews.length} reviews )</p>
+							</span>
 						</h2>
 						<div className="stay-review-ststistics">
 							{this.getStayReviewStatistics().map((elCtgRate) => elCtgRate)}

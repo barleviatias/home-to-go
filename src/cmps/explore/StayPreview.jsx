@@ -11,6 +11,7 @@ export function StayPreview({ stay, loggedInUser, updateUser }) {
         if (sum === 0) return 'new'
         return (sum / rates.length).toFixed(1)
     }
+
     function toggleWish(stayId) {
         if (!loggedInUser) return false
         if (!loggedInUser.wishlist) loggedInUser.wishlist = [stayId]
@@ -23,6 +24,7 @@ export function StayPreview({ stay, loggedInUser, updateUser }) {
         }
         updateUser(loggedInUser)
     }
+
     function checkIsWish(stayId) {
         if (!loggedInUser || !loggedInUser.wishlist) return false
         const match = loggedInUser.wishlist.find((wishId) => wishId === stayId)
@@ -54,11 +56,11 @@ export function StayPreview({ stay, loggedInUser, updateUser }) {
                     <h3>{stay.name}</h3>
                     <h3><span className="stay-price">${stay.price}</span> / night</h3>
                 </div>
+            </Link>
             <button className="stay-preview-save-btn" onClick={() => { toggleWish(stay._id) }} >
                 {!checkIsWish(stay._id) && <i className="far fa-heart"></i>}
                 {checkIsWish(stay._id) && <i className="fas fa-heart"></i>}
             </button>
-            </Link>
         </section>
     )
 }

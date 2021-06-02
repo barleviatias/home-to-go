@@ -1,6 +1,7 @@
 import { Component } from "react";
 import { Link } from 'react-router-dom'
 import { stayService } from '../../services/stay-service'
+import { tripService } from '../../services/trip-service'
 
 
 
@@ -50,18 +51,21 @@ export class MainFilter extends Component {
         switch (modalKey) {
             case 'loc':
                 dynamicModal.modalContent = (<section className="dynamic-modal-child filter-loc-modal">
-                    {this.state.topRatedStays.map(stay => {
+                    {tripService.getTopCities().map(city => {
                         return (
                             <div onClick={() => {
-                                this.handleChange({ target: { name: "address", type: "search", value: stay.loc.address } })
-                            }} key={stay._id} className="modal-label">
-                                <img src={stay.imgUrls[0]} alt="stay" />
-                                <span>{stay.name}</span>
+                                this.handleChange({ target: { name: "address", type: "search", value: `${city.city}, ${city.state}` } })
+                            }} key={Math.random()} className="modal-label">
+                                <img src={city.imgUrl} alt="city" />
+                                <div>
+                                    <span>{city.city}</span>
+                                    <span>{city.state}</span>
+                                </div>
                             </div>
                         )
                     })}
                 </section>)
-                dynamicModal.modalPosition = { top: (top + 35), left : (left - 20)}
+                dynamicModal.modalPosition = { top: (top + 35), left: (left - 20) }
                 break;
 
             case 'guests':
