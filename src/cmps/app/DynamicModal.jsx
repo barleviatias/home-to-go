@@ -5,7 +5,7 @@ import { Component } from "react";
 export class DynamicModal extends Component {
 
     componentDidUpdate(prevProps) {
-            if (prevProps.modalType !== this.props.modalType && this.props.modalType !== '') {
+            if (prevProps.modalType !== this.props.modalType && this.props.modalType !== '') { 
                 this.props.openDynamicModal(this.props.modalType)
             }
     }

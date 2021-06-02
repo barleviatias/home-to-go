@@ -22,3 +22,5 @@ export function removeTrip() {
     dispatch({ type: 'REMOVE_TRIP' })
   }
 }
+
+

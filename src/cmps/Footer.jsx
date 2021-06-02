@@ -6,7 +6,7 @@ export function Footer({onSearch , topRatedStays , nearbayStays}) {
         <footer className="main-footer full">
 
             <section>
-                <FooterLinks onSearch={onSearch} topRatedStays={topRatedStays} nearbayStays={nearbayStays} />
+                <FooterLinks onSearch={onSearch} topRatedStays={topRatedStays} nearbayStays={nearbayStays}/>
 
                 <section className="footer-nav-container">
                     <div >

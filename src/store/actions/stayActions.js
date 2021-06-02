@@ -55,6 +55,7 @@ export function loadHostStays(hostId) {
   return async dispatch => {
     try {
       const stays = await stayService.getHostStays(hostId)
+      console.log('return stays from action ',stays);
       dispatch({ type: 'SET_HOST_STAYS', stays })
 
     } catch (err) {

@@ -57,15 +57,12 @@
         position: absolute;
         top: 15px;
         right: 15px;
+ 
 
-        .fa-heart{
+        .fa-heart {
             font-size: rem(20px);
 
-            &:hover{
-                color: $clr-brand;
-            }
-
-            &.fas{
+            &.fas {
                 color: $clr-brand;
             }
         }
