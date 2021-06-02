@@ -35,8 +35,8 @@ class _App extends Component {
   };
 
   componentDidMount() {
-    this.props.loadStays();
-    this.props.loadUsers();
+    // this.props.loadStays();
+    // this.props.loadUsers();
     this.loadRated();
     this.loadNearby();
   }
@@ -67,10 +67,12 @@ class _App extends Component {
   };
 
   setModalContent = (dynamicModal, modalType) => {
+    console.log('setModalContent',dynamicModal, modalType);
     this.setState({ dynamicModal, modalType });
   };
 
   closeDynamicModal = (ev) => {
+    // console.log('closeDynamicModal');
     if (ev.type === 'scroll') {
       this.setState({ modalType: '' }, () => {
         window.removeEventListener('click', this.closeDynamicModal, true);
@@ -90,6 +92,8 @@ class _App extends Component {
     this.setState({ modalType }, () => {
       window.addEventListener('click', this.closeDynamicModal, true);
       window.addEventListener('scroll', this.closeDynamicModal, true);
+      // console.log(this.state.modalType);
+      // console.log('openDynamicModal',modalType);
     });
   };
 
@@ -126,7 +130,7 @@ class _App extends Component {
           openDynamicModal={this.openDynamicModal}
           closeDynamicModal={this.closeDynamicModal}
           setModalContent={this.setModalContent}
-          // loadStays={loadStays}
+          loadStays={loadStays}
         />
         <Switch>
           <Route path="/login" render={(props)=> (<LoginSignup setFooterDisplay={this.setFooterDisplay}/>)} />
