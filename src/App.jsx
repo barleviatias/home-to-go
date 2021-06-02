@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
 import { stayService } from './services/stay-service'
 import { loadOrders, removeOrder } from './store/actions/orderActions';
-import { addTrip, loadTrip} from './store/actions/tripActions';
+import { addTrip, loadTrip } from './store/actions/tripActions';
 import { updateUser, loadUsers, logout } from './store/actions/userActions';
 import { DynamicModal } from './cmps/app/DynamicModal';
 import { UserMsg } from './cmps/app/UserMsg';
@@ -31,7 +31,8 @@ class _App extends Component {
     },
     topRatedStays: [],
     nearbayStays: [],
-    isFooterOn: true
+    isFooterOn: true,
+    isHomePage: true
   };
 
   componentDidMount() {
@@ -94,8 +95,13 @@ class _App extends Component {
   };
 
   setFooterDisplay = (isFooterOn) => {
-    this.setState({isFooterOn})
+    this.setState({ isFooterOn })
   }
+
+  setHomePage = (page) => {
+    this.setState({ isHomePage: page })
+  }
+
 
   render() {
     const {
@@ -112,7 +118,7 @@ class _App extends Component {
       loadWishlist,
       updateStay
     } = this.props;
-    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays , isFooterOn} = this.state;
+    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays, isFooterOn, isHomePage } = this.state;
 
     return (
       <Router>
@@ -126,10 +132,11 @@ class _App extends Component {
           openDynamicModal={this.openDynamicModal}
           closeDynamicModal={this.closeDynamicModal}
           setModalContent={this.setModalContent}
-          // loadStays={loadStays}
+          isHomePage={isHomePage}
+        // loadStays={loadStays}
         />
         <Switch>
-          <Route path="/login" render={(props)=> (<LoginSignup {...props} setFooterDisplay={this.setFooterDisplay}/>)} />
+          <Route path="/login" render={(props) => (<LoginSignup {...props} setFooterDisplay={this.setFooterDisplay} />)} />
           <Route
             path="/orders"
             render={(props) => (
@@ -160,10 +167,10 @@ class _App extends Component {
           <Route
             path="/host"
             render={(props) => (
-              <BecomeHost 
-              {...props} 
-              loggedInUser={loggedInUser} 
-              setFooterDisplay={this.setFooterDisplay}
+              <BecomeHost
+                {...props}
+                loggedInUser={loggedInUser}
+                setFooterDisplay={this.setFooterDisplay}
               />
             )}
           />
@@ -227,6 +234,7 @@ class _App extends Component {
                 loadStays={loadStays}
                 topRatedStays={topRatedStays}
                 nearbayStays={nearbayStays}
+                setHomePage={this.setHomePage}
               />
             )}
           />
