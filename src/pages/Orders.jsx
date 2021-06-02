@@ -1,5 +1,4 @@
 import { Component } from 'react';
-import { FilterOrders } from '../cmps/orders/FilterOrders'
 import { OrderList } from '../cmps/orders/OrderList';
 
 export class Orders extends Component {
@@ -8,12 +7,24 @@ export class Orders extends Component {
         sction: '',
         loggedInUser: null,
         orders: [],
+        filterBy: {
+            status: true,
+            price: true,
+            checkIn: true,
+            checkOut: true,
+            name: true
+        }
     }
 
     componentDidMount() {
         this.setState({ loggedInUser: this.props.loggedInUser }, () => {
             this.loadOrders();
         })
+        this.props.setFooterDisplay(false)
+    }
+
+    componentWillUnmount(){
+        this.props.setFooterDisplay(true) 
     }
 
     loadOrders = async () => {
@@ -44,21 +55,28 @@ export class Orders extends Component {
         return diff / 1000 / 60 / 60 / 24
     }
 
+    handleChange = (ev) => {
+        var {name , value} = ev.target
+        console.log('name: ' ,name , 'value: ', value );
+        this.setState({ filterBy: { ...this.state.filterBy, [name]: !this.state.filterBy[name] } }, () => {
+        });
+    }
+
     render() {
-        const { orders } = this.state;
+        const { orders ,filterBy} = this.state;
+        const { name, price , status , checkIn , checkOut} = filterBy
         return (
             <main className="user-order-container page">
-                <FilterOrders />
                 <section className="user-order-list">
                     <table className="user-order-list-table">
                         <thead>
                             <tr>
-                                <th>Stay name</th>
-                                <th>Check in</th>
-                                <th>Check out</th>
-                                <th>Price</th>
+                                <th> <button name="name" value={name} onClick={this.handleChange}>Stay name</button></th>
+                                <th><button name="checkIn" value={checkIn} onClick={this.handleChange}>Check in</button></th>
+                                <th>  <th><button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button></th></th>
+                                <th>  <button name="price" value={price} onClick={this.handleChange}>Price</button></th>
                                 <th>host</th>
-                                <th>Status</th>
+                                <th><button name="status" value={status} onClick={this.handleChange}>Status</button></th>
                                 <th>cancelation</th>
                                 <th>Actions</th>
                             </tr>
