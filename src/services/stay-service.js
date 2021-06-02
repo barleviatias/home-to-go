@@ -116,7 +116,6 @@ async function getNearbyStays(location) {
 }
 
 async function getHostStays(userId) {
-	console.log('hostId from service' ,userId);
 	return await httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'host', user: userId })
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
@@ -129,7 +128,6 @@ async function getHostStays(userId) {
 }
 
 async function getUserWishlist(user) {
-	console.log('user from front stay service', user);
 	return httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'wishlist', user })
 	// var stays = await storageService.query('stay',null,user);
 	// return stays;

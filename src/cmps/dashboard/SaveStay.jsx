@@ -23,7 +23,7 @@ class _StayEdit extends Component {
 			stayType: '',
 			propertyType: '',
 			host: {
-				_id: this.props.loggedInUser._id,
+				_id: (this.props.loggedInUser._id),
 				fullname: this.props.loggedInUser.fullname,
 				imgUrl: this.props.loggedInUser.imgUrl,
 			},
