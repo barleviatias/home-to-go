@@ -6,7 +6,7 @@ export function NavMenu({ logout, toggleUserMenu, loggedInUser }) {
         return (<section className="user-menu" onClick={toggleUserMenu}>{!loggedInUser && <div>
                 <div>
                         <Link to="/login">log in</Link>
-                        <Link to="/login">sign up</Link>
+                        {/* <Link to="/login">sign up</Link> */}
                 </div>
                 <div>
                         <Link to="/host">Host your home</Link>

@@ -105,7 +105,8 @@ function _getRate(stay) {
 }
 
 async function getNearbyStays(location) {
-	return await httpService.get(`stay`, { loc: { address: location }, guests: { adults: 1, kids: 0 } })
+	// return await httpService.get(`stay`, { loc: { address: location }, guests: { adults: 1, kids: 0 } })
+	return await httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'nearby', data: location })
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.loc.address.toUpperCase().includes(location.toUpperCase());
@@ -116,7 +117,7 @@ async function getNearbyStays(location) {
 }
 
 async function getHostStays(userId) {
-	return await httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'host', user: userId })
+	return await httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'host', data: userId })
 	// var stays = await storageService.query('stay');
 	// stays = stays.filter((stay) => {
 	// 	return stay.host._id === userId;
@@ -128,7 +129,7 @@ async function getHostStays(userId) {
 }
 
 async function getUserWishlist(user) {
-	return httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'wishlist', user })
+	return httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'wishlist', data: user })
 	// var stays = await storageService.query('stay',null,user);
 	// return stays;
 	// user.wishlist.map()
