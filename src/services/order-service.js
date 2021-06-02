@@ -22,7 +22,7 @@ async function query(user = { id: null, type: 'all', filterBy: { num: 1, name: '
 
     // var orders = await storageService.query('order')
     let orders = await httpService.get(`order`, user)
-    console.log('orders from front', orders);
+    // console.log('orders from front', orders);
     //  orders = _filterByUser(user, orders);
     return orders;
 

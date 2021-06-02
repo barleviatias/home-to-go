@@ -49,7 +49,7 @@ async function update(user) {
 	user = await httpService.put(`user/${user._id}`, user)
 	// Handle case in which admin updates other stay's details
 	if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
-
+	return user
 
 	// _saveLocalUser(user);
 	// return storageService.put('user', user)
@@ -70,6 +70,8 @@ function _saveLocalUser(user) {
 	sessionStorage.setItem('loggedinUser', JSON.stringify(user));
 	return user;
 }
+
+
 
 
 

@@ -126,6 +126,7 @@ class _App extends Component {
           openDynamicModal={this.openDynamicModal}
           closeDynamicModal={this.closeDynamicModal}
           setModalContent={this.setModalContent}
+          // loadStays={loadStays}
         />
         <Switch>
           <Route path="/login" render={(props)=> (<LoginSignup setFooterDisplay={this.setFooterDisplay}/>)} />
