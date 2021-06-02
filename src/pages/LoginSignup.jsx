@@ -29,7 +29,6 @@ class _LoginSignup extends Component {
 	};
 
 	componentDidMount() {
-		// this.props.loadUsers();
 		this.props.setFooterDisplay(false)
 	}
 

@@ -1,5 +1,6 @@
 import { Component } from "react";
 import { addOrder } from '../../store/actions/orderActions'
+import { login } from '../../store/actions/userActions'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -120,10 +121,10 @@ class _BookStay extends Component {
 
     onReserveTrip = async () => {
         const { trip } = this.state
-        const { stay, loggedInUser } = this.props
+        const { stay, loggedInUser , login } = this.props
 
         if (!loggedInUser) {
-            this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link></span>)
+            this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link><button className="demo-user-btn" onClick={()=>{login({ username: 'mor', password: '1111' })}}>Demo User</button></span>)
             return
         }
 
@@ -202,6 +203,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = {
     addOrder,
+    login
 }
 
 export const BookStay = connect(mapStateToProps, mapDispatchToProps)(_BookStay)

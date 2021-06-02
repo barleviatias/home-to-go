@@ -61,7 +61,7 @@ class _App extends Component {
     this.setState({ userMsg: msg, isUserMsg: true });
     setTimeout(() => {
       this.setState({ isUserMsg: false });
-    }, 3000);
+    }, 4000);
     setTimeout(() => {
       this.setState({ userMsg: '' });
     }, 6000);

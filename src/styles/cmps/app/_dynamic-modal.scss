@@ -1,15 +1,5 @@
 .dynamic-modal {
     position: absolute;
-    // z-index: 2;
-
-    // .modal-bg {
-    //     position: fixed;
-    //     top: 0;
-    //     left: 0;
-    //     height: 100%;
-    //     width: 100%;
-    //     background: black;
-    // }
 
     .book-guest-modal {
         display: flex;
@@ -17,8 +7,6 @@
         align-items: flex-start;
         position: sticky;
         top: 500px;
-
-       
 
         color: $clr-dark;
         background-color: white;
@@ -28,8 +16,6 @@
         font-size: 16px;
         text-transform: capitalize;
         box-shadow: 0 3px 8px 0px #0000002e;
-
-    
 
         .modal-label {
             display: flex;
@@ -91,9 +77,6 @@
 
     .filter-loc-modal {
         position: fixed;
-        // bottom: 0px;
-        // left: 100px;
-        // transform: translateY(96%) translate(20%);
         z-index: 5;
 
         display: flex;
@@ -118,16 +101,15 @@
             padding: 20px 0px 20px 20px;
             cursor: pointer;
 
-            >div{
+            > div {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
 
-                >span:first-child{
+                > span:first-child {
                     color: black;
                 }
             }
-  
 
             &:first-of-type {
                 border-top-left-radius: 15px;
@@ -161,14 +143,11 @@
 
     .filter-guest-modal {
         position: fixed;
-        // bottom: 0px;
-        // right: 50%;
-        // transform: translateY(96%) translate(130%);
         z-index: 6;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        
+
         color: $clr-dark;
         background-color: white;
         border-radius: 15px;
@@ -235,11 +214,8 @@
         }
     }
 
-    .stay-filter-modal{
+    .stay-filter-modal {
         position: fixed;
-        // bottom: 0px;
-        // left: 100px;
-        // transform: translateY(96%) translate(20%);
         z-index: 5;
 
         display: flex;
@@ -262,30 +238,29 @@
             width: 100%;
             cursor: pointer;
 
-            div{
+            div {
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 10px 20px;
 
-                &:not(:last-of-type){
+                &:not(:last-of-type) {
                     border-bottom: 1px solid rgb(216, 216, 216);
                 }
 
-                &:first-of-type{
+                &:first-of-type {
                     border-top-left-radius: 15px;
                     border-top-right-radius: 15px;
                 }
-                &:last-of-type{
+                &:last-of-type {
                     border-bottom-left-radius: 15px;
                     border-bottom-right-radius: 15px;
                 }
-                
+
                 &:hover {
                     background-color: rgb(236, 236, 236);
                 }
             }
-
         }
     }
 }

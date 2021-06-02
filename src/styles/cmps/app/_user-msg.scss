@@ -6,7 +6,7 @@
     padding: 30px;
     bottom: -200px;
     right: 5px;
-    width: 30%;
+    width: 40%;
     border-radius: 15px;
     box-shadow: 0 3px 8px 0px #0000006e;
     border: 1px solid rgb(199, 199, 199);
@@ -27,10 +27,10 @@
         }
 
         a {
-            margin: 0 0;
-            padding: 5px 15px;
+            margin: 0px 0px;
+            padding: 10px;
             color: $clr-brand;
-            font-size: rem(16px);
+            font-size: 16px;
             font-weight: 600;
             border: 1px solid $clr-brand;
             display: flex;
@@ -38,50 +38,28 @@
             justify-content: center;
             background-color: transparent;
             border-radius: 5px;
+            height: 100%;
+            line-height: 16px;
+        }
+        button {
+            margin: 0px 0px;
+            padding: 10px;
+            color: rgb(1, 143, 1);
+            font-size: 16px;
+            font-weight: 600;
+            border: 1px solid rgb(1, 143, 1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: transparent;
+            border-radius: 5px;
+            height: 100%;
+            line-height: 16px;
         }
     }
     transition: bottom 1s;
 
     &.on {
-        position: fixed;
-        background-color: $clr-light;
-        color: $clr-dark;
-        font-size: rem(18px);
-        padding: 30px;
         bottom: 5px;
-        right: 5px;
-        width: 30%;
-        border-radius: 15px;
-        box-shadow: 0 3px 8px 0px #0000006e;
-        border: 1px solid rgb(199, 199, 199);
-
-        span {
-            width: 100%;
-            display: flex;
-            flex-direction: row;
-            gap: 20px;
-            justify-content: center;
-            align-items: center;
-
-            i {
-                font-size: rem(22px);
-                &.fa-check-circle {
-                    color: rgb(57, 179, 57);
-                }
-            }
-            a {
-                margin: 0 0;
-                padding: 5px 15px;
-                color: $clr-brand;
-                font-size: rem(16px);
-                font-weight: 600;
-                border: 1px solid $clr-brand;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: transparent;
-                border-radius: 5px;
-            }
-        }
     }
 }
