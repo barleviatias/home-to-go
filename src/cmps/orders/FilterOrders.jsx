@@ -8,7 +8,6 @@ export class FilterOrders extends Component {
             price: true,
             startDate: true,
             name: true
-
         }
     }
 

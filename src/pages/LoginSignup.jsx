@@ -29,8 +29,13 @@ class _LoginSignup extends Component {
 	};
 
 	componentDidMount() {
-		// this.props.loadUsers();
+		this.props.loadUsers();
+		this.props.setFooterDisplay(false)
 	}
+
+	componentWillUnmount(){
+        this.props.setFooterDisplay(true) 
+    }
 
 	loginHandleChange = (ev) => {
 		const { name, value } = ev.target;

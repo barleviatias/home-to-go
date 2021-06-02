@@ -12,12 +12,8 @@ import { Orders } from './pages/Orders';
 import { BecomeHost } from './pages/BecomeHost';
 import { Component } from 'react';
 import { connect } from 'react-redux';
-import {
-  loadStays,
-  removeStay,
-  loadHostStays,
-  loadWishlist,updateStay
-} from './store/actions/stayActions';
+import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
+import { stayService } from './services/stay-service'
 import { loadOrders, removeOrder } from './store/actions/orderActions';
 import { addTrip, loadTrip } from './store/actions/tripActions';
 import { updateUser, loadUsers, logout } from './store/actions/userActions';
@@ -33,11 +29,26 @@ class _App extends Component {
       modalContent: '',
       modalPosition: { top: 0, left: 0, height: 0, width: 0 },
     },
+    topRatedStays: [],
+    nearbayStays: [],
+    isFooterOn: true
   };
 
   componentDidMount() {
     this.props.loadStays();
-    // this.props.loadUsers();
+    this.props.loadUsers();
+    this.loadRated();
+    this.loadNearby();
+  }
+
+  loadRated = async () => {
+    const topRatedStays = await stayService.getTopRatedStays();
+    this.setState({ topRatedStays })
+  }
+
+  loadNearby = async () => {
+    const nearbayStays = await stayService.getNearbyStays('portugal');
+    this.setState({ nearbayStays })
   }
 
   onSearch = (trip) => {
@@ -82,6 +93,10 @@ class _App extends Component {
     });
   };
 
+  setFooterDisplay = (isFooterOn) => {
+    this.setState({isFooterOn})
+  }
+
   render() {
     const {
       stays,
@@ -97,7 +112,7 @@ class _App extends Component {
       loadWishlist,
       updateStay
     } = this.props;
-    const { userMsg, isUserMsg, modalType, dynamicModal } = this.state;
+    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays , isFooterOn} = this.state;
 
     return (
       <Router>
@@ -114,7 +129,7 @@ class _App extends Component {
           // loadStays={loadStays}
         />
         <Switch>
-          <Route path="/login" component={LoginSignup} />
+          <Route path="/login" render={(props)=> (<LoginSignup setFooterDisplay={this.setFooterDisplay}/>)} />
           <Route
             path="/orders"
             render={(props) => (
@@ -125,6 +140,7 @@ class _App extends Component {
                 loggedInUser={loggedInUser}
                 removeOrder={removeOrder}
                 toggleMsgModal={this.toggleMsgModal}
+                setFooterDisplay={this.setFooterDisplay}
               />
             )}
           />
@@ -137,13 +153,18 @@ class _App extends Component {
                 updateUser={updateUser}
                 toggleMsgModal={this.toggleMsgModal}
                 loadOrders={loadOrders} orders={orders}
+                setFooterDisplay={this.setFooterDisplay}
               />
             )}
           />
           <Route
             path="/host"
             render={(props) => (
-              <BecomeHost {...props} loggedInUser={loggedInUser} />
+              <BecomeHost 
+              {...props} 
+              loggedInUser={loggedInUser} 
+              setFooterDisplay={this.setFooterDisplay}
+              />
             )}
           />
           <Route
@@ -204,11 +225,18 @@ class _App extends Component {
                 stays={stays}
                 loggedInUser={loggedInUser}
                 loadStays={loadStays}
+                topRatedStays={topRatedStays}
+                nearbayStays={nearbayStays}
               />
             )}
           />
         </Switch>
-        {/* <Footer /> */}
+        {isFooterOn && <Footer
+          onSearch={this.onSearch}
+          stays={stays}
+          topRatedStays={topRatedStays}
+          nearbayStays={nearbayStays}
+        />}
 
         <DynamicModal
           openDynamicModal={this.openDynamicModal}

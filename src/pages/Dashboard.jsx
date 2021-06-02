@@ -15,13 +15,18 @@ export class _Dashboard extends Component {
         loggedInUser: null,
         selsctedEditStay: null
     }
-
+ 
     componentDidMount() {
         this.setState({ loggedInUser: { ...this.props.loggedInUser, isHost: true } }, () => {
             this.props.updateUser(this.state.loggedInUser)
             this.loadHostStays()
             this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'host' })
         })
+        this.props.setFooterDisplay(false)
+    }
+
+    componentWillUnmount(){
+        this.props.setFooterDisplay(true) 
     }
 
     loadHostStays = async () => {
