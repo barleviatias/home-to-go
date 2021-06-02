@@ -9,11 +9,27 @@ export class Header extends React.Component {
 
     state = {
         isFullHeader: true,
-        isWindowTop: true
+        isWindowTop: true,
+        isHomePage: false
     }
 
-    componentDidMount(){
-        window.addEventListener('scroll' , this.getScrollPos, true )
+    componentDidMount() {
+        this.setCurrPage()
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.isHomePage !== this.props.isHomePage) this.setCurrPage()
+    }
+
+    setCurrPage() {
+        if (this.props.isHomePage) {
+            window.addEventListener('scroll', this.getScrollPos, true)
+            this.setState({ isHomePage: this.props.isHomePage , isFullHeader: true, isWindowTop: true})
+        }
+        else{
+            window.removeEventListener('scroll', this.getScrollPos, true)
+            this.setState({ isHomePage: this.props.isHomePage, isFullHeader: false , isWindowTop: false})
+        } 
     }
 
     explorAll = () => {
@@ -38,23 +54,23 @@ export class Header extends React.Component {
         this.setState({ isFullHeader: true }, () => { window.addEventListener('click', this.closeFullHeader, true) })
     }
 
-    getScrollPos=()=>{
-       const isWindowTop = (window.scrollY )
-       if (isWindowTop < 100){
-        this.setState({isWindowTop: true, isFullHeader: true})
-       }else{
-        this.setState({isWindowTop: false,  isFullHeader: false})
-       }
+    getScrollPos = () => {
+        const isWindowTop = (window.scrollY)
+        if (isWindowTop < 100) {
+            this.setState({ isWindowTop: true, isFullHeader: true })
+        } else {
+            this.setState({ isWindowTop: false, isFullHeader: false })
+        }
     }
 
 
     render() {
         const { onSearch, loggedInUser, logout, trip, openDynamicModal, modalType, setModalContent } = this.props
-        const { isFullHeader , isWindowTop} = this.state
+        const { isFullHeader, isWindowTop } = this.state
         const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
 
         return (
-            <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'top'}`}>
+            <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'}`}>
                 <section>
                     <NavLink to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
                     <nav>
