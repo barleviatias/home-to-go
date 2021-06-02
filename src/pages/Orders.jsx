@@ -17,13 +17,13 @@ export class Orders extends Component {
     }
 
     loadOrders = async () => {
-        await this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'user'})
+        await this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'user' })
         this.setState({ orders: this.props.orders })
     }
 
     onCancelOrder = async (stay) => {
         var daysToTrip = this.getTimeBeforeTrip(stay.startDate);
-        if (daysToTrip >= 14) {
+        if (daysToTrip >= 7) {
             await this.props.removeOrder(stay._id)
             this.setState({ orders: this.props.orders })
             this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your order has been canceled</h3></span>)
@@ -32,11 +32,11 @@ export class Orders extends Component {
 
     }
 
-    getDaysToCancelOrder = (stay) => {
+    getCancelationStatus = (stay) => {
         var daysToTrip = this.getTimeBeforeTrip(stay.startDate);
-        var daysToCancel = daysToTrip - 14;
-        if (daysToCancel > 0) return daysToCancel.toFixed(0)
-        else return "Can't cancel this order"
+        var daysToCancel = daysToTrip - 7;
+        if (daysToCancel > 0) return `Refundable in the next ${daysToCancel.toFixed(0)} days`
+        else return "Non-refundable"
     }
 
     getTimeBeforeTrip = (startDate) => {
@@ -47,28 +47,29 @@ export class Orders extends Component {
     render() {
         const { orders } = this.state;
         return (
-            <main className="page">
-                <h1>Orders</h1>
+            <main className="user-order-container page">
                 <FilterOrders />
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Stay name</th>
-                            <th>Start date</th>
-                            <th>End date</th>
-                            <th>Price</th>
-                            <th>host</th>
-                            <th>Status</th>
-                            <th>Day to cancel</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <OrderList
-                        orders={orders}
-                        getDaysToCancelOrder={this.getDaysToCancelOrder}
-                        onCancelOrder={this.onCancelOrder}
-                    />
-                </table>
+                <section className="user-order-list">
+                    <table className="user-order-list-table">
+                        <thead>
+                            <tr>
+                                <th>Stay name</th>
+                                <th>Check in</th>
+                                <th>Check out</th>
+                                <th>Price</th>
+                                <th>host</th>
+                                <th>Status</th>
+                                <th>cancelation</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <OrderList
+                            orders={orders}
+                            getCancelationStatus={this.getCancelationStatus}
+                            onCancelOrder={this.onCancelOrder}
+                        />
+                    </table>
+                </section>
             </main>
         )
     }

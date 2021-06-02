@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export function OrderList({ orders, getDaysToCancelOrder, onCancelOrder }) {
+export function OrderList({ orders, getCancelationStatus, onCancelOrder }) {
 
     return (
         <tbody>
@@ -13,9 +13,10 @@ export function OrderList({ orders, getDaysToCancelOrder, onCancelOrder }) {
                         <td><Link to={`/stay/${order.stay._id}`}>$ {order.totalPrice}</Link></td>
                         <td><Link to={`/stay/${order.stay._id}`}>{order.host.fullname}</Link></td>
                         <td><Link to={`/stay/${order.stay._id}`}>{order.status}</Link></td>
-                        <td><Link to={`/stay/${order.stay._id}`}>{getDaysToCancelOrder(order)}</Link></td>
+                        <td><Link to={`/stay/${order.stay._id}`}>{getCancelationStatus(order)}</Link></td>
                         <td>
-                            <button onClick={() => onCancelOrder(order)}>Cancel Order</button>
+                            {getCancelationStatus(order) !== 'Non-refundable' && <button onClick={() => onCancelOrder(order)}>Cancel Order</button>}
+                            {getCancelationStatus(order) === 'Non-refundable' && <button disabled onClick={() => onCancelOrder(order)}>Cancel Order</button>}
                         </td>
                     </tr>
                 )

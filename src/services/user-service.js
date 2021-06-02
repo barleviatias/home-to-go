@@ -42,7 +42,10 @@ async function logout() {
 	sessionStorage.clear();
 	return await httpService.post('auth/logout')
 }
+
+
 async function update(user) {
+	console.log('user-service: ' , user);
 	user = await httpService.put(`user/${user._id}`, user)
 	// Handle case in which admin updates other stay's details
 	if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
