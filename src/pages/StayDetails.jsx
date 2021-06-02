@@ -131,7 +131,7 @@ export class StayDetails extends Component {
 				return <i className="fas fa-tv"></i>;
 			case 'Wifi':
 				return <i className="fas fa-wifi"></i>;
-			case 'Air-conditioning':
+			case 'Air conditioning':
 				return <i className="fas fa-fan"></i>;
 			case 'Smoking allowed':
 				return <i className="fas fa-smoking"></i>;

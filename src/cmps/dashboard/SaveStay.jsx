@@ -20,8 +20,8 @@ class _StayEdit extends Component {
 				Pets_allowed: false,
 				Cooking_basics: false,
 			},
-			stayType: '',
-			propertyType: '',
+			stayType: 'entire place',
+			propertyType: 'appartment room',
 			host: {
 				_id: this.props.loggedInUser._id,
 				fullname: this.props.loggedInUser.fullname,
@@ -186,6 +186,8 @@ class _StayEdit extends Component {
 										<select name="propertyType" onChange={this.handleChange} value={stay.propertyType}>
 											{/* <option value="">choice type</option> */}
 											<option value="loft">loft</option>
+											<option value="room">room</option>
+											<option value="studio">studio</option>
 											<option value="villa">villa</option>
 											<option value="appartment room">appartment</option>
 										</select>
