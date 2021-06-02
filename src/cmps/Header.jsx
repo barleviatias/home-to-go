@@ -8,7 +8,12 @@ import { NavMenu } from './app/NavMenu'
 export class Header extends React.Component {
 
     state = {
-        isFullHeader: false
+        isFullHeader: true,
+        isWindowTop: true
+    }
+
+    componentDidMount(){
+        window.addEventListener('scroll' , this.getScrollPos, true )
     }
 
     toggleUserMenu = () => {
@@ -25,13 +30,23 @@ export class Header extends React.Component {
         this.setState({ isFullHeader: true }, () => { window.addEventListener('click', this.closeFullHeader, true) })
     }
 
+    getScrollPos=()=>{
+       const isWindowTop = (window.scrollY )
+       if (isWindowTop < 100){
+        this.setState({isWindowTop: true, isFullHeader: true})
+       }else{
+        this.setState({isWindowTop: false,  isFullHeader: false})
+       }
+    }
+
+
     render() {
         const { onSearch, loggedInUser, logout, trip, openDynamicModal, modalType, setModalContent } = this.props
-        const { isFullHeader } = this.state
+        const { isFullHeader , isWindowTop} = this.state
         const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
 
         return (
-            <header className={`main-header ${isFullHeader && 'full-header'}`}>
+            <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'top'}`}>
                 <section>
                     <NavLink to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
                     <nav>

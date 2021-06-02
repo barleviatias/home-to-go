@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+import {tripService} from '../../services/trip-service'
 
 
-export function FooterLinks({ onSearch, topRatedStays, nearbayStays }) {
+export function FooterLinks({ onSearch, topRatedStays, nearbayStays}) {
 
     function onSelectLink(address) {
         const trip = {
@@ -14,6 +15,8 @@ export function FooterLinks({ onSearch, topRatedStays, nearbayStays }) {
             top: 0
         })
     }
+
+    const topCities = tripService.getTopCities()
 
     return (
         <section className="footer-links-container">
@@ -39,14 +42,11 @@ export function FooterLinks({ onSearch, topRatedStays, nearbayStays }) {
                 </div>
                 <div>
                     <h3>Cities</h3>
-                    <Link to="/explore" onClick={() => { onSelectLink('Hong Kong') }}><span>Hong Kong </span><span>China</span></Link>
-                    <Link to="/explore" onClick={() => { onSelectLink('Bangkok') }}><span>Bangkok</span><span>Thailand</span></Link>
-                    <Link to="/explore" onClick={() => { onSelectLink('London') }}><span>London</span><span>England</span></Link>
-                    <Link to="/explore" onClick={() => { onSelectLink('Paris') }}><span>Paris</span><span>France</span></Link>
-                    <Link to="/explore" onClick={() => { onSelectLink('Dubai') }}><span>Dubai</span><span>United Arab Emirates</span></Link>
-                    <Link to="/explore" onClick={() => { onSelectLink('New York') }}><span>New York</span><span>United States</span></Link>
-                    <Link to="/explore" onClick={() => { onSelectLink('Amsterdam') }}><span>Amsterdam</span><span>Netherlands</span></Link>
-                    <Link to="/explore" onClick={() => { onSelectLink('Tel Aviv') }}><span>Tel Aviv</span><span>Israel</span></Link>
+                    {topCities.map((city, idx) => {
+                        if (idx < 8) {
+                            return <Link key={Math.random()} to="/explore" onClick={() => { onSelectLink(`${city.city}`) }}><span>{city.city}</span><span>{city.state}</span></Link>
+                        }
+                    })}
                 </div>
             </div>
         </section>

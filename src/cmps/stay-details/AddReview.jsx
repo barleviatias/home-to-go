@@ -1,4 +1,3 @@
-import { stayService } from '../../services/stay-service';
 import { userService } from '../../services/user-service';
 import ReactStars from 'react-rating-stars-component';
 import { utilService } from '../../services/util-service';
@@ -9,9 +8,9 @@ import Avatar from "../../assets/img/avatar.png"
 export class AddReview extends Component {
 	state = {
 		review: {
-			txt: 'enter review',
+			txt: '',
 			avgRate: 0,
-			category: {
+			categories: {
 				Cleanliness: 0,
 				Accuracy: 0,
 				Communication: 0,
@@ -19,121 +18,172 @@ export class AddReview extends Component {
 				'Check-in': 0,
 				Accessibility: 0,
 			},
-            user:{
-                "_id" : "123456789",
-                "fullname" : "Guest",
-                "imgUrl" : Avatar,
-                "time" : Date.now()
-            }
+			user: {
+				_id: "123456789",
+				fullname: "Guest",
+				imgUrl: Avatar,
+				time: Date.now()
+			}
 		},
 	};
-	handleRateChange = (rate, key) => {
 
+	componentDidMount() {
+		const loggedInUser = userService.getLoggedinUser()
+		if (loggedInUser) {
+			this.setState({
+				review: {
+					...this.state.review,
+					user: {
+						_id: loggedInUser._id,
+						fullname: loggedInUser.username,
+						imgUrl: loggedInUser.imgUrl,
+						time: Date.now()
+					}
+				}
+			})
+
+		}
+	}
+
+	handleRateChange = (rate, key) => {
 		this.setState({
 			review: {
 				...this.state.review,
-				category: { ...this.state.review.category, [key]: rate },
+				categories: { ...this.state.review.categories, [key]: rate },
 			},
 		});
-		// }
-		console.log(this.state);
+
 	};
+
 	handleChange = ({ target }) => {
-		let { value } = target;
+		const { value } = target;
 		this.setState({ review: { ...this.state.review, txt: value } });
 	};
 
 	saveReview = () => {
-		const currReview = this.state.review;
-		const cat = this.state.review.category;
+		const { review } = this.state
+		const { categories } = review
+
 		let avg = 0;
-		for (const key in cat) {
-			avg += cat[key];
+		for (const key in categories) {
+			avg += categories[key];
 		}
-        const user=userService.getLoggedinUser()
-        if(user){
-            currReview.user.imgUrl=user.imgUrl
-            currReview.user.fullname=user.fullname
-            currReview.user._id=user._id
-            currReview.user.time=Date.now()
-        }
-		currReview.avgRate = avg / 6;
-		currReview._id = utilService.makeId();
-		this.props.addReview(currReview);
+		const loggedInUser = userService.getLoggedinUser()
+		if (loggedInUser) {
+			review.user.imgUrl = loggedInUser.imgUrl
+			review.user.fullname = loggedInUser.fullname
+			review.user._id = loggedInUser._id
+			review.user.time = Date.now()
+		}
+		review.avgRate = avg / 6;
+		review._id = utilService.makeId();
+		this.props.addReview(review);
 	};
+
 	render() {
+
+		const { review } = this.state
+		const { imgUrl, fullname, time } = review.user
+
 		return (
-			<section className="stay-review">
-				<label htmlFor="">Location</label>
-				<ReactStars
-					count={5}
-					onChange={(rate) => {
-						this.handleRateChange(rate, 'Location');
-					}}
-					size={32}
-					isHalf={true}
-					activeColor="#ff385c"
-				/>
-				<label htmlFor="">Check-in</label>
-				<ReactStars
-					count={5}
-					onChange={(rate) => {
-						this.handleRateChange(rate, 'Check-in');
-					}}
-					size={32}
-					isHalf={true}
-					activeColor="#ff385c"
-				/>
-				<label htmlFor="">Accessibility</label>
-				<ReactStars
-					count={5}
-					onChange={(rate) => {
-						this.handleRateChange(rate, 'Accessibility');
-					}}
-					size={32}
-					isHalf={true}
-					activeColor="#ff385c"
-				/>
-				<label htmlFor="">Communication</label>
-				<ReactStars
-					count={5}
-					onChange={(rate) => {
-						this.handleRateChange(rate, 'Communication');
-					}}
-					size={32}
-					isHalf={true}
-					activeColor="#ff385c"
-				/>
-				<label htmlFor="">Accuracy</label>
-				<ReactStars
-					count={5}
-					onChange={(rate) => {
-						this.handleRateChange(rate, 'Accuracy');
-					}}
-					size={32}
-					isHalf={true}
-					activeColor="#ff385c"
-				/>
-				<label htmlFor="">Cleanliness-in</label>
-				<ReactStars
-					id="clean"
-					classNames="rate-clean"
-					count={5}
-					onChange={(rate) => {
-						this.handleRateChange(rate, 'Cleanliness');
-					}}
-					size={32}
-					isHalf={true}
-					activeColor="#ff385c"
-				/>
-				<textarea
-					type="text"
-					name="txt"
-					autoComplete="off"
-					onChange={this.handleChange}
-					value={this.state.review.txt}
-				/>
-				<button onClick={this.saveReview}> send </button>
+			<section className="stay-add-review">
+
+				<h2>Add review</h2>
+				<div className="add-review-header">
+					<img src={imgUrl} alt="avater" />
+					<div>
+						<h3>{fullname}</h3>
+						<h4>{utilService.getTimeFormat(time)}</h4>
+					</div>
+				</div>
+				<div className="stay-add-review-ctgs">
+					<div className="ctg-statistics">
+
+						<label htmlFor="">Location</label>
+						<ReactStars
+							count={5}
+							onChange={(rate) => {
+								this.handleRateChange(rate, 'Location');
+							}}
+							size={20}
+							isHalf={true}
+							activeColor="#ff385c"
+						/>
+					</div>
+					<div className="ctg-statistics">
+						<label htmlFor="">Check-in</label>
+						<ReactStars
+							count={5}
+							onChange={(rate) => {
+								this.handleRateChange(rate, 'Check-in');
+							}}
+							size={20}
+							isHalf={true}
+							activeColor="#ff385c"
+						/>
+					</div>
+					<div className="ctg-statistics">
+						<label htmlFor="">Accessibility</label>
+						<ReactStars
+							count={5}
+							onChange={(rate) => {
+								this.handleRateChange(rate, 'Accessibility');
+							}}
+							size={20}
+							isHalf={true}
+							activeColor="#ff385c"
+						/>
+					</div>
+					<div className="ctg-statistics">
+						<label htmlFor="">Communication</label>
+						<ReactStars
+							count={5}
+							onChange={(rate) => {
+								this.handleRateChange(rate, 'Communication');
+							}}
+							size={20}
+							isHalf={true}
+							activeColor="#ff385c"
+						/>
+					</div>
+					<div className="ctg-statistics">
+						<label htmlFor="">Accuracy</label>
+						<ReactStars
+							count={5}
+							onChange={(rate) => {
+								this.handleRateChange(rate, 'Accuracy');
+							}}
+							size={20}
+							isHalf={true}
+							activeColor="#ff385c"
+						/>
+					</div>
+					<div className="ctg-statistics">
+						<label htmlFor="">Cleanliness-in</label>
+						<ReactStars
+							id="clean"
+							classNames="rate-clean"
+							count={5}
+							onChange={(rate) => {
+								this.handleRateChange(rate, 'Cleanliness');
+							}}
+							size={20}
+							isHalf={true}
+							activeColor="#ff385c"
+						/>
+					</div>
+				</div>
+				<div className="add-review-txt">
+					<textarea
+						type="text"
+						name="txt"
+						autoComplete="off"
+						onChange={this.handleChange}
+						value={this.state.review.txt}
+						placeholder="Write your opinion about this stay..."
+					/>
+					<button onClick={this.saveReview}> send </button>
+				</div>
 			</section>
 		);
 	}

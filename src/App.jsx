@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
 import { stayService } from './services/stay-service'
 import { loadOrders, removeOrder } from './store/actions/orderActions';
-import { addTrip, loadTrip } from './store/actions/tripActions';
+import { addTrip, loadTrip} from './store/actions/tripActions';
 import { updateUser, loadUsers, logout } from './store/actions/userActions';
 import { DynamicModal } from './cmps/app/DynamicModal';
 import { UserMsg } from './cmps/app/UserMsg';
@@ -129,7 +129,7 @@ class _App extends Component {
           // loadStays={loadStays}
         />
         <Switch>
-          <Route path="/login" render={(props)=> (<LoginSignup setFooterDisplay={this.setFooterDisplay}/>)} />
+          <Route path="/login" render={(props)=> (<LoginSignup {...props} setFooterDisplay={this.setFooterDisplay}/>)} />
           <Route
             path="/orders"
             render={(props) => (
