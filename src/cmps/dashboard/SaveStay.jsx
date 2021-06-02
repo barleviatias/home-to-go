@@ -76,7 +76,7 @@ class _StayEdit extends Component {
 
 	handleChange = ({ target }) => {
 		let { name, value, id, checked } = target;
-		value = name === 'price' ? +value : value;
+		value = name === 'price'||  name === 'capacity' ? +value : value;
 		if (id === 'amenities') {
 			this.setState({
 				stay: {
