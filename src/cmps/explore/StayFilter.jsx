@@ -3,23 +3,15 @@ import { Component } from "react";
 export class StayFilter extends Component {
 
     state = {
-        stayFilterBy: {
-            placeType: '',
-            propertyType: '',
-            price: 250,
-            amenities: {
-                TV: false,
-                Wifi: false,
-                AC: false,
-                Smoking_allowed: false,
-                Pets_allowed: false,
-                Cooking_basics: false
-            }
-        },
+
         dynamicModal: {
             modalContent: '',
             modalPosition: {}
         }
+    }
+
+    componentDidMount() {
+        this.resetFilter()
     }
 
     componentDidUpdate(prevProps) {
@@ -38,17 +30,35 @@ export class StayFilter extends Component {
         }, () => { this.openModal(modalKey) })
     }
 
+    resetFilter = () => {
+        this.setState({
+            stayFilterBy: {
+                placeType: '',
+                propertyType: '',
+                price: 250,
+                amenities: {
+                    TV: false,
+                    Wifi: false,
+                    "Air conditioning": false,
+                    "Smoking allowed": false,
+                    "Pets allowed": false,
+                    "Cooking basics": false
+                }
+            }
+        }, () => { this.props.onfilterStays(this.state.stayFilterBy) })
+    }
+
     handleChange = (key, val, isAmenities = false) => {
         if (isAmenities) {
             this.setState({ stayFilterBy: { ...this.state.stayFilterBy, amenities: { ...this.state.stayFilterBy.amenities, [key]: val } } }, () => {
-                // console.log(this.state.stayFilterBy);
+                console.log(this.state.stayFilterBy);
                 this.openModal('amenities')
                 this.props.onfilterStays(this.state.stayFilterBy)
             })
 
         } else {
             this.setState({ stayFilterBy: { ...this.state.stayFilterBy, [key]: val } }, () => {
-                // console.log(this.state.stayFilterBy);
+                console.log(this.state.stayFilterBy);
                 if (key === 'price') this.openModal('price')
                 this.props.onfilterStays(this.state.stayFilterBy)
             })
@@ -126,13 +136,13 @@ export class StayFilter extends Component {
                         <div className={amenities.AC ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('AC', !amenities.AC, true)}>
                             <span>AC</span>
                         </div >
-                        <div className={amenities.Smoking_allowed ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Smoking_allowed', !amenities.Smoking_allowed, true)}>
+                        <div className={amenities.Smoking_allowed ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Smoking allowed', !amenities.Smoking_allowed, true)}>
                             <span>Smoking allowed</span>
                         </div>
-                        <div className={amenities.Pets_allowed ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Pets_allowed', !amenities.Pets_allowed, true)}>
+                        <div className={amenities.Pets_allowed ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Pets allowed', !amenities.Pets_allowed, true)}>
                             <span>Pets allowed</span>
                         </div>
-                        <div className={amenities.Cooking_basics ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Cooking_basics', !amenities.Cooking_basics, true)}>
+                        <div className={amenities.Cooking_basics ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Cooking basics', !amenities.Cooking_basics, true)}>
                             <span>Cooking basics</span>
                         </div>
                     </div>
@@ -166,7 +176,7 @@ export class StayFilter extends Component {
                 <button onClick={(event) => { this.onSetModal(event, 'propertyType') }} >Property type</button>
                 <button onClick={(event) => { this.onSetModal(event, 'price') }}>Price</button>
                 <button onClick={(event) => { this.onSetModal(event, 'amenities') }} >Amenities</button>
-                <button>More filters</button>
+                <button onClick={this.resetFilter} >Clear</button>
             </section>
         )
     }

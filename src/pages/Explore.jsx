@@ -27,8 +27,9 @@ export class Explore extends Component {
 
   onfilterStays = (filterBy) => {
     // console.log(filterBy);
-    var stays = filterStays(this.state.stays, filterBy)
+    var stays = filterStays(this.props.stays, filterBy)
     console.log('filtered satys', stays);
+    this.setState({ stays })
 
   }
 
@@ -49,30 +50,29 @@ export class Explore extends Component {
 }
 
 function filterStays(stays, filterBy) {
-  console.log('filterStays', stays, filterBy);
   let filteredStays = [];
   stays.forEach(stay => {
-    if (_isTypePlace(stay, filterBy.placeType)) filteredStays.unshift(stay);
+    if (_isTypePlace(stay, filterBy.placeType) && _isPropertyType(stay, filterBy.propertyType)
+      && _isPrice(stay, filterBy.price) && _isAmenities(stay, filterBy.amenities)) {
+      (Math.random() < 0.5) ? filteredStays.unshift(stay) : filteredStays.push(stay);
+    }
   })
   return filteredStays
-
-  // && _isPropertyType(stay, filterBy.propertyType) &&
-  //     _isPrice(stay, filterBy.price)
-  // && _isAmenities(stay, filterBy.amenities)
 }
 
 function _isTypePlace(stay, filter) {
-  return (stay.stayType === filter) ? true : false
+  return (filter === '' || stay.stayType === filter) ? true : false
 }
 function _isPropertyType(stay, filter) {
-  return (stay.propertyType === filter) ? true : false
+  return (filter === '' || stay.propertyType === filter) ? true : false
 }
 function _isPrice(stay, filter) {
   return (stay.price <= filter) ? true : false
 }
 function _isAmenities(stay, filter) {
   var _isAmenities = true;
-  return stay.amenities.forEach(amenity => {
-
-  })
+  for (const key in filter) {
+    if (filter[key] === true && !stay.amenities.find(amenity => amenity === key)) _isAmenities = false
+  }
+  return _isAmenities
 }
