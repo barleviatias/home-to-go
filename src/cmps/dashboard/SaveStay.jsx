@@ -71,7 +71,7 @@ class _StayEdit extends Component {
 	onUploadImg = (imgState, position) => {
 		const imgUrls=this.state.stay.imgUrls
 		imgUrls[position]=imgState.imgUrl
-		this.setState({ stay: { ...this.state.stay, imgUrls: [...this.state.stay.imgUrls, imgState.imgUrl] } })
+		this.setState({ stay: { ...this.state.stay, imgUrls } })
 	}
 
 	handleChange = ({ target }) => {
