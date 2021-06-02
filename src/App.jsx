@@ -67,7 +67,7 @@ class _App extends Component {
   };
 
   setModalContent = (dynamicModal, modalType) => {
-    console.log('setModalContent',dynamicModal, modalType);
+    // console.log('setModalContent',dynamicModal, modalType);
     this.setState({ dynamicModal, modalType });
   };
 

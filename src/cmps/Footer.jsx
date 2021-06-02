@@ -1,22 +1,22 @@
 import { Link } from "react-router-dom";
 import { FooterLinks } from './app/FooterLinks'
 
-export function Footer({onSearch , topRatedStays , nearbayStays}) {
+export function Footer({ onSearch, topRatedStays, nearbayStays }) {
     return (
         <footer className="main-footer full">
 
             <section>
-                <FooterLinks onSearch={onSearch} topRatedStays={topRatedStays} nearbayStays={nearbayStays}/>
+                <FooterLinks onSearch={onSearch} topRatedStays={topRatedStays} nearbayStays={nearbayStays} />
 
                 <section className="footer-nav-container">
                     <div >
                         <p>© 2021 Home & Go, <span>Inc.</span></p>
                         <span>·</span>
-                        <Link>About</Link>
+                        <Link to="/about">""About</Link>
                         <span>·</span>
-                        <Link>Login</Link>
+                        <Link to="/login">Login</Link>
                         <span>·</span>
-                        <Link>Become a host</Link>
+                        <Link to="/host">Become a host</Link>
                     </div>
                     <div>
                         <p>
