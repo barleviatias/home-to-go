@@ -51,6 +51,7 @@ export function removeStay(stayId) {
 }
 
 export function loadHostStays(hostId) {
+
   return async dispatch => {
     try {
       const stays = await stayService.getHostStays(hostId)
@@ -62,6 +63,7 @@ export function loadHostStays(hostId) {
   }
 } 
 export function loadWishlist(user) {
+
   return async dispatch => {
     try {
       const stays = await stayService.getUserWishlist(user)

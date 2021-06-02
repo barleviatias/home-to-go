@@ -25,6 +25,7 @@ export class _Dashboard extends Component {
     }
 
     loadHostStays = async () => {
+        console.log('****** start to load host stays *****');
         await this.props.loadHostStays(this.state.loggedInUser._id);
         if (this.props.stays.length === 0) {
             this.setState({ action: 'add stay' })

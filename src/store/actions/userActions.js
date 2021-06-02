@@ -5,6 +5,7 @@ import { userService } from '../../services/user-service'
 // Work asynchronously with the service and dispatch actions to the reducers 
 
 export function loadUsers() {
+  console.log('enter to here **************');
   return async dispatch => {
     try {
       // dispatch({ type: 'LOADING_START' })
