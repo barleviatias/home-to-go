@@ -11,7 +11,7 @@
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 15px;
+        border-radius: 10px;
 
         width: 380px;
         font-size: 16px;
@@ -76,6 +76,21 @@
         }
     }
 
+    .book-date-modal{
+        z-index: 5;
+        position: absolute;
+        transform: translateX(-12.5%);
+        padding: 0 0;
+        
+        >*{
+            border-radius: 10px;
+            >*{
+                border-radius: 10px;
+
+            }
+        }
+    }
+
     .filter-loc-modal {
         position: fixed;
         z-index: 5;
@@ -87,7 +102,7 @@
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 15px;
+        border-radius: 10px;
 
         width: 400px;
         font-size: 16px;
@@ -153,7 +168,7 @@
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 15px;
+        border-radius: 10px;
 
         width: 400px;
         font-size: 16px;

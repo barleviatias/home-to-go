@@ -59,11 +59,12 @@ export class MainFilter extends Component {
         switch (modalKey) {
             case 'date':
                 dynamicModal.modalContent = (
-                    <section className="dynamic-modal-child filter-loc-modal">
+                    <section className="dynamic-modal-child book-date-modal">
                         <PickDates handleDates={this.handleDates} />
                     </section>)
                 dynamicModal.modalPosition = { top: y + 35, left: x }
                 break;
+
             case 'loc':
                 dynamicModal.modalContent = (
                     <section className="dynamic-modal-child filter-loc-modal">
@@ -193,11 +194,6 @@ export class MainFilter extends Component {
         else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
-
-
-
-
-
     onSearch = (ev) => {
         ev.preventDefault();
         this.props.onSearch(this.state.trip)
@@ -227,11 +223,11 @@ export class MainFilter extends Component {
                     </label>
                     <label htmlFor="check-in">
                         <span>Check in</span>
-                        <input value={checkIn} id="check-in" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
+                        <input value={checkIn} id="check-in" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
                     </label>
                     <label htmlFor="check-out">
                         <span>Check out</span>
-                        <input value={checkOut} id="check-out" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
+                        <input value={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
                     </label>
                     <label className="guests" htmlFor="guests">
                         <div>

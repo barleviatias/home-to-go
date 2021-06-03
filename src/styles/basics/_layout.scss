@@ -2,7 +2,7 @@ main {
     display: grid;
     grid-template-columns:
         minmax(2rem, 1fr)
-        minmax(auto, $normal-breakpoint)
+        minmax(auto, $mobile-breakpoint)
         minmax(2rem, 1fr);
 
     > * {
@@ -20,26 +20,26 @@ main {
     @include for-tablet-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $mobile-breakpoint)
+            minmax(auto, $tablet-breakpoint)
             minmax(2rem, 1fr);
     }
     @include for-narrow-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $tablet-breakpoint)
+            minmax(auto, $narrow-breakpoint)
             minmax(2rem, 1fr);
     }
     @include for-normal-layout {
         grid-template-columns:
             minmax(2rem, 1fr)
-            minmax(auto, $narrow-breakpoint)
+            minmax(auto, $normal-breakpoint)
             minmax(2rem, 1fr);
     }
     @include for-large-layout {
         grid-template-columns:
-            minmax(2rem, 1fr)
-            minmax(auto, $normal-breakpoint)
-            minmax(2rem, 1fr);
+            minmax(5rem, 1fr)
+            minmax(auto, $large-breakpoint)
+            minmax(5rem, 1fr);
     }
     @include for-wide-layout {
         grid-template-columns:
