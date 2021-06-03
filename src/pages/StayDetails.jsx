@@ -1,17 +1,17 @@
-import { Component } from 'react';
+import { Component } from 'react'
 import { Link } from 'react-router-dom'
-import { stayService } from '../services/stay-service';
-import { ReviewList } from '../cmps/stay-details/ReviewList';
-import { AddReview } from '../cmps/stay-details/AddReview';
-import { BookStay } from '../cmps/stay-details/BookStay';
-import { GoogleMap } from '../cmps/stay-details/GoogleMap';
-import ReactStars from 'react-rating-stars-component';
+import { stayService } from '../services/stay-service'
+import { ReviewList } from '../cmps/stay-details/ReviewList'
+import { AddReview } from '../cmps/stay-details/AddReview'
+import { BookStay } from '../cmps/stay-details/BookStay'
+import { GoogleMap } from '../cmps/stay-details/GoogleMap'
+import ReactStars from 'react-rating-stars-component'
+
 export class StayDetails extends Component {
 	state = {
 		stay: null,
 		toggleWish: '',
-
-	};
+	}
 
 	componentDidMount() {
 		this.loadStay();
@@ -23,19 +23,19 @@ export class StayDetails extends Component {
 		window.scroll({
 			top: 0,
 			behavior: 'smooth',
-		});
-	};
+		})
+	}
 
 	setWishList = () => {
 		const user = this.props.loggedInUser;
 		if (!user.wishlist) return;
 		const match = user.wishlist.findIndex(
 			(wishId) => wishId === this.state.stay._id
-		);
+		)
 		if (match !== -1) {
 			this.setState({ ...this.state, toggleWish: true });
 		}
-	};
+	}
 
 	loadStay = async () => {
 		const { stayId } = this.props.match.params
@@ -45,6 +45,7 @@ export class StayDetails extends Component {
 			this.setWishList()
 		}
 	}
+
 	setWishList = () => {
 		const user = this.props.loggedInUser
 		if (!user.wishlist) return
@@ -57,7 +58,13 @@ export class StayDetails extends Component {
 	onAddToWishList = () => {
 		const user = this.props.loggedInUser
 		if (!user) {
-			this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link><button className="demo-user-btn" onClick={() => { this.props.login({ username: 'mor', password: '1111' }) }}>Demo User</button></span>)
+			this.props.toggleMsgModal(
+				<span>
+					<h2>You must log in frist</h2>
+					<Link to='/login'>Login</Link>
+					<button className="demo-user-btn" onClick={() => { this.props.login({ username: 'mor', password: '1111' }) }}>Demo User</button>
+				</span>
+			)
 			return
 		}
 		if (user.wishlist) {
@@ -70,28 +77,24 @@ export class StayDetails extends Component {
 				this.setState({ ...this.state, toggleWish: false })
 				user.wishlist.splice(idx, 1)
 			}
-		} else {
-			user.wishlist = [this.state.stay._id]
-		}
+		} else user.wishlist = [this.state.stay._id]
 		this.props.updateUser(user)
 	}
 
 	getTotalRate = () => {
-		const rates = this.state.stay.reviews.map((review) => review.avgRate);
+		const rates = this.state.stay.reviews.map((review) => review.avgRate)
 		const sum = rates.reduce((acc, rate) => {
-			acc += rate;
-			return acc;
+			acc += rate
+			return acc
 		}, 0);
-		if (sum === 0) return 'new';
-		return (sum / rates.length).toFixed(1);
-	};
+		if (sum === 0) return 'new'
+		return (sum / rates.length).toFixed(1)
+	}
 
 	getStayReviewStatistics = () => {
-		const { reviews } = this.state.stay;
-		const num = reviews.length;
-
-		if (!reviews) return;
-
+		const { reviews } = this.state.stay
+		const num = reviews.length
+		if (!reviews) return
 		const reviewCtgMap = {
 			Cleanliness: 0,
 			Accuracy: 0,
@@ -99,55 +102,54 @@ export class StayDetails extends Component {
 			Location: 0,
 			'Check-in': 0,
 			Accessibility: 0,
-		};
+		}
 
 		reviews.forEach((review) => {
 			for (const key in review.category) {
-				reviewCtgMap[key] += review.category[key];
+				reviewCtgMap[key] += review.category[key]
 			}
-		});
+		})
 
 		for (const ctg in reviewCtgMap) {
-			reviewCtgMap[ctg] = +(reviewCtgMap[ctg] / num).toFixed(1);
+			reviewCtgMap[ctg] = +(reviewCtgMap[ctg] / num).toFixed(1)
 		}
 
-		const elReviews = [];
-
+		const elReviews = []
 		for (const ctg in reviewCtgMap) {
 			elReviews.push(
 				<div key={Math.random()} className="ctg-statistics">
 					<h3>{ctg}</h3>
 					<ReactStars
-							count={5}
-							value={reviewCtgMap[ctg]}
-							size={20}
-							isHalf={true}
-							edit={false}
-							activeColor="#ff385c"
-						/>
+						count={5}
+						value={reviewCtgMap[ctg]}
+						size={20}
+						isHalf={true}
+						edit={false}
+						activeColor="#ff385c"
+					/>
 				</div>
-			);
+			)
 		}
 
-		return elReviews;
-	};
+		return elReviews
+	}
 
 	getAmenityIcon(amenity) {
 		switch (amenity) {
 			case 'TV':
-				return <i className="fas fa-tv"></i>;
+				return <i className="fas fa-tv"></i>
 			case 'Wifi':
-				return <i className="fas fa-wifi"></i>;
+				return <i className="fas fa-wifi"></i>
 			case 'Air conditioning':
-				return <i className="fas fa-fan"></i>;
+				return <i className="fas fa-fan"></i>
 			case 'Smoking allowed':
-				return <i className="fas fa-smoking"></i>;
+				return <i className="fas fa-smoking"></i>
 			case 'Pets allowed':
-				return <i className="fas fa-paw"></i>;
+				return <i className="fas fa-paw"></i>
 			case 'Cooking basics':
-				return <i className="fas fa-blender"></i>;
+				return <i className="fas fa-blender"></i>
 			default:
-				return <i className="fab fa-airbnb"></i>;
+				return <i className="fab fa-airbnb"></i>
 		}
 	}
 
@@ -155,11 +157,18 @@ export class StayDetails extends Component {
 		const { stay } = this.state
 		stay.reviews.push(review)
 		this.props.updateStay(stay)
-		this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your review has been saved</h3></span>)
+		this.props.toggleMsgModal(
+			<span>
+				<i className="far fa-check-circle"></i>
+				<h3>Your review has been saved</h3>
+			</span>
+		)
 	}
 
 	render() {
 		const { stay } = this.state;
+		if (!stay) return <h1>loading...</h1>
+
 		const {
 			loggedInUser,
 			toggleMsgModal,
@@ -167,9 +176,10 @@ export class StayDetails extends Component {
 			openDynamicModal,
 			modalType,
 			setModalContent,
-		} = this.props;
-		if (!stay) return <h1>loading...</h1>;
-		const { toggleWish } = this.state;
+		} = this.props
+
+		const { toggleWish } = this.state
+
 		const {
 			loc,
 			capacity,
@@ -180,7 +190,7 @@ export class StayDetails extends Component {
 			reviews,
 			name,
 			host,
-		} = stay;
+		} = stay
 
 		return (
 			<main className="stay-details-container page">
@@ -203,9 +213,7 @@ export class StayDetails extends Component {
 							</button>
 							<button onClick={this.onAddToWishList} className="stay-save-btn">
 								<p>
-									<i
-										className={toggleWish ? 'fas fa-heart' : 'far fa-heart'}
-									></i>
+									<i className={toggleWish ? 'fas fa-heart' : 'far fa-heart'}	></i>
 									save
 								</p>
 							</button>
@@ -217,12 +225,13 @@ export class StayDetails extends Component {
 						if (idx < 5) {
 							return (
 								<img src={imgUrl} alt="stay-gallery-preview-img" key={imgUrl} />
-							);
+							)
 						}
 					})}
 				</div>
 				<section className="stay-info-container">
 					<div className="stay-long-info">
+
 						<div className="stay-long-info-header">
 							<div>
 								<h2>{`${propertyType} hosted by ${host.fullname}`}</h2>
@@ -232,6 +241,7 @@ export class StayDetails extends Component {
 							</div>
 							<img src={host.imgUrl} alt="avatar" />
 						</div>
+
 						<div className="stay-feature-container">
 							<div>
 								<i className="fas fa-home"></i>
@@ -272,10 +282,12 @@ export class StayDetails extends Component {
 								</div>
 							</div>
 						</div>
+
 						<div className="description">
 							<h2>Description</h2>
 							<span>{desc}</span>
 						</div>
+
 						<div className="amenities-list">
 							<h2>Amenities</h2>
 							<ul>
@@ -285,7 +297,7 @@ export class StayDetails extends Component {
 											<span>{this.getAmenityIcon(amenity)}</span>
 											<span>{amenity}</span>
 										</li>
-									);
+									)
 								})}
 							</ul>
 						</div>
@@ -323,6 +335,6 @@ export class StayDetails extends Component {
 					<GoogleMap pos={loc} />
 				</section>
 			</main>
-		);
+		)
 	}
 }

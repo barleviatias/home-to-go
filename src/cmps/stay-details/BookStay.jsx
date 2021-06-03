@@ -48,49 +48,86 @@ class _BookStay extends Component {
         const dynamicModal = {}
         const { x, y } = this.state.dynamicModal.modalPosition
         switch (modalKey) {
+
             case 'book-guests':
-                const { kids, adults } = this.state.trip.guests;
-                dynamicModal.modalContent = (<section className="book-guest-modal">
-                    <div className="modal-label">
-                        <div>
-                            <span>Adults</span>
-                            <span>Ages 13 or above</span>
+                const { kids, adults } = this.state.trip.guests
+                dynamicModal.modalContent = (
+                    <section className="book-guest-modal">
+                        <div className="modal-label">
+                            <div>
+                                <span>Adults</span>
+                                <span>Ages 13 or above</span>
+                            </div>
+                            <div>
+                                <button className="modal-btn" type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "adults",
+                                            type: "number",
+                                            value: (adults - 1)
+                                        }
+                                    })
+                                }}>-</button>
+                                <span>{adults}</span>
+                                <button className="modal-btn" type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "adults",
+                                            type: "number",
+                                            value: (adults + 1)
+                                        }
+                                    })
+                                }}>+</button>
+                            </div>
                         </div>
-                        <div>
-                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults - 1) } }) }}>-</button>
-                            <span>{adults}</span>
-                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults + 1) } }) }}>+</button>
+                        <div className="modal-label">
+                            <div>
+                                <span>Kids</span>
+                                <span>Ages 2–12</span>
+                            </div>
+                            <div>
+                                <button className="modal-btn" type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "kids",
+                                            type: "number",
+                                            value: (kids - 1)
+                                        }
+                                    })
+                                }}>-</button>
+                                <span>{kids}</span>
+                                <button className="modal-btn" type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "kids",
+                                            type: "number",
+                                            value: (kids + 1)
+                                        }
+                                    })
+                                }}>+</button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="modal-label">
-                        <div>
-                            <span>Kids</span>
-                            <span>Ages 2–12</span>
-                        </div>
-                        <div>
-                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids - 1) } }) }}>-</button>
-                            <span>{kids}</span>
-                            <button className="modal-btn" type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids + 1) } }) }}>+</button>
-                        </div>
-                    </div>
-                </section>)
+                    </section>
+                )
                 dynamicModal.modalPosition = { top: y, left: x }
-                break;
+                break
+
             case '':
                 dynamicModal.modalContent = ''
                 dynamicModal.modalPosition = { top: 0, left: 0, height: 0, width: 0 }
-                break;
+                break
 
             default:
-                break;
+                break
         }
-        this.props.setModalContent(dynamicModal, modalKey)
 
+        this.props.setModalContent(dynamicModal, modalKey)
     }
 
     handleChange = (ev) => {
         if (ev.timeStamp) ev.preventDefault()
         const { name, value, type } = ev.target
+
         if (type === 'date') {
             this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [name]: value } } });
         } else if (type === 'number') {
@@ -98,13 +135,14 @@ class _BookStay extends Component {
             const sumGuest = this.state.trip.guests.adults + this.state.trip.guests.kids;
             const isLess = (this.state.trip.guests[name] < value) ? true : false
             if (sumGuest === this.props.stay.capacity && isLess) return
-            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } }, () => { this.openModal('book-guests') });
+            this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } },
+                () => { this.openModal('book-guests') }
+            )
         } else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
     toggleAvailability = () => {
         const { guests, time } = this.state.trip
-
         if (guests.adults + guests.kids < 1) {
             this.props.toggleMsgModal(<span><i className="fas fa-exclamation"></i><h2>Please enter guest number</h2></span>)
             return
@@ -115,7 +153,6 @@ class _BookStay extends Component {
             return
         }
 
-
         this.setState({ isAvailable: !this.state.isAvailable }, () => { this.props.onSearch(this.state.trip) })
     }
 
@@ -124,7 +161,13 @@ class _BookStay extends Component {
         const { stay, loggedInUser, login } = this.props
 
         if (!loggedInUser) {
-            this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link><button className="demo-user-btn" onClick={() => { login({ username: 'mor', password: '1111' }) }}>Demo User</button></span>)
+            this.props.toggleMsgModal(
+                <span>
+                    <h2>You must log in frist</h2>
+                    <Link to='/login'>Login</Link>
+                    <button className="demo-user-btn" onClick={() => { login({ username: 'mor', password: '1111' }) }}>Demo User</button>
+                </span>
+            )
             return
         }
 
@@ -143,7 +186,7 @@ class _BookStay extends Component {
     }
 
     getTripTime = () => {
-        const diff = new Date(this.state.trip.time.checkOut).getTime() - new Date(this.state.trip.time.checkIn).getTime();
+        const diff = new Date(this.state.trip.time.checkOut).getTime() - new Date(this.state.trip.time.checkIn).getTime()
         return diff / 1000 / 60 / 60 / 24
     }
 
@@ -156,6 +199,7 @@ class _BookStay extends Component {
             <section className="order-form-container">
                 <div className="order-form-sticky">
                     <div className="order-form">
+
                         <div className="order-form-header">
                             <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span><span> / night</span></p>
                             <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p>( {reviews.length} reviews )</p></span>

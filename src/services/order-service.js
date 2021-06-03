@@ -1,11 +1,6 @@
-import { storageService } from './asyncStorageService'
 import { tripService } from '../services/trip-service'
 import { utilService } from '../services/util-service'
-
-// import axios from 'axios'
 import { httpService } from './http.service'
-// const SCORE_FOR_REVIEW = 10
-// const IMG_API_KEY = '20031048-f5c2a8cb9ae058a58da123891'
 
 export const orderService = {
     query,
@@ -18,29 +13,8 @@ export const orderService = {
 window.orderService = orderService
 
 async function query(user = { id: null, type: 'all', filterBy: { num: 1, name: 'ifek' } }) {
-
-
-    // var orders = await storageService.query('order')
-    let orders = await httpService.get(`order`, user)
-    //  orders = _filterByUser(user, orders);
+    const orders = await httpService.get(`order`, user)
     return orders;
-
-    // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
-    // return httpService.get(`order${queryStr}`)
-}
-
-function _filterByUser(user, orders) {
-    if (user.type === 'host') {
-        return orders.filter(order => {
-            return order.host._id === user.id;
-        })
-    }
-    else if (user.type === 'user') {
-        return orders.filter(order => {
-            return order.user._id === user.id;
-        })
-    }
-    else return orders;
 }
 
 async function add(trip, stay, loggedInUser) {
@@ -56,14 +30,9 @@ async function add(trip, stay, loggedInUser) {
         totalPrice: trip.totalPrice,
         user: loggedInUser
     }
-    tripService.remove()
-    // return storageService.post('order', order)
 
-    // order.imgUrl = await getOrderImage(order.name)
-    // order.msgs = []
+    tripService.remove()
     return await httpService.post(`order`, order)
-    // Handle case in which admin updates other order's details
-    // if (getLoggedinOrder()._id === order._id) _saveLocalOrder(order)
 }
 
 async function getHostOrders(userId) {
@@ -83,33 +52,6 @@ async function getUserOrders(userId) {
 }
 
 function remove(orderId) {
-    // return storageService.remove('order', orderId)
-
     return httpService.delete(`order/${orderId}`)
 }
-
-// SERVICE TO BACKEND
-
-// function query(trip) {
-//     return storageService.query('order', userId)
-
-//     // var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
-//     // return httpService.get(`order${queryStr}`)
-// }
-
-// function getById(orderId) {
-//     return storageService.get('order', orderId)
-
-//     // return httpService.get(`order/${orderId}`)
-// }
-
-// async function update(order) {
-//     return storageService.put('order', order)
-
-//     // return await httpService.put(`order/${order._id}`, order)
-//     // Handle case in which admin updates other order's details
-//     // if (getLoggedinOrder()._id === order._id) _saveLocalOrder(order)
-// }
-
-
 
