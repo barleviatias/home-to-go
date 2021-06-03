@@ -240,7 +240,18 @@
             flex-direction: column;
             justify-content: flex-start;
             width: 100%;
+            background-color: white;
             cursor: pointer;
+
+            &.amenities{
+                div{
+                    &.clicked{
+                        background-color: rgb(230, 230, 230);
+
+                    }
+                }
+
+            }
 
             div {
                 display: flex;

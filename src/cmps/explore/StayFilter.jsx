@@ -131,16 +131,16 @@ export class StayFilter extends Component {
                         <div className={amenities.Wifi ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Wifi', !amenities.Wifi, true)}>
                             <span>Wifi</span>
                         </div>
-                        <div className={amenities.AC ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('AC', !amenities.AC, true)}>
+                        <div className={amenities["Air conditioning"] ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Air conditioning', !amenities["Air conditioning"], true)}>
                             <span>AC</span>
                         </div >
-                        <div className={amenities.Smoking_allowed ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Smoking allowed', !amenities.Smoking_allowed, true)}>
+                        <div className={amenities['Smoking allowed'] ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Smoking allowed', !amenities['Smoking allowed'], true)}>
                             <span>Smoking allowed</span>
                         </div>
-                        <div className={amenities.Pets_allowed ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Pets allowed', !amenities.Pets_allowed, true)}>
+                        <div className={amenities['Pets allowed'] ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Pets allowed', !amenities['Pets allowed'], true)}>
                             <span>Pets allowed</span>
                         </div>
-                        <div className={amenities.Cooking_basics ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Cooking basics', !amenities.Cooking_basics, true)}>
+                        <div className={amenities['Cooking basics'] ? 'clicked' : 'unclicked'} onClick={() => this.handleChange('Cooking basics', !amenities['Cooking basics'], true)}>
                             <span>Cooking basics</span>
                         </div>
                     </div>
