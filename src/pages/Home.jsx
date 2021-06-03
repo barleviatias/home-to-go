@@ -10,10 +10,18 @@ export class Home extends Component {
 
   componentDidMount() {
     this.props.setHomePage(true)
+    this.scrollUp()
   }
 
   componentWillUnmount() {
     this.props.setHomePage(false)
+  }
+
+  scrollUp = ()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
 

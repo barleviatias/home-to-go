@@ -10,7 +10,8 @@ export class Header extends React.Component {
     state = {
         isFullHeader: true,
         isWindowTop: true,
-        isHomePage: false
+        isHomePage: false,
+        modalPosition: { x: 0, y: 0 }
     }
 
     componentDidMount() {
@@ -24,12 +25,12 @@ export class Header extends React.Component {
     setCurrPage() {
         if (this.props.isHomePage) {
             window.addEventListener('scroll', this.getScrollPos, true)
-            this.setState({ isHomePage: this.props.isHomePage , isFullHeader: true, isWindowTop: true})
+            this.setState({ isHomePage: this.props.isHomePage, isFullHeader: true, isWindowTop: true })
         }
-        else{
+        else {
             window.removeEventListener('scroll', this.getScrollPos, true)
-            this.setState({ isHomePage: this.props.isHomePage, isFullHeader: false , isWindowTop: false})
-        } 
+            this.setState({ isHomePage: this.props.isHomePage, isFullHeader: false, isWindowTop: false })
+        }
     }
 
     explorAll = () => {
@@ -40,7 +41,9 @@ export class Header extends React.Component {
         })
     }
 
-    toggleUserMenu = () => {
+    toggleUserMenu = (event) => {
+        const clickPos = event.target.getBoundingClientRect()
+        this.setState({ modalPosition: clickPos })
         this.props.openDynamicModal('user-menu')
     }
 
@@ -66,7 +69,7 @@ export class Header extends React.Component {
 
     render() {
         const { onSearch, loggedInUser, logout, trip, openDynamicModal, modalType, setModalContent } = this.props
-        const { isFullHeader, isWindowTop } = this.state
+        const { isFullHeader, isWindowTop, modalPosition } = this.state
         const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
 
         return (
@@ -81,7 +84,7 @@ export class Header extends React.Component {
                             <img src={imgUrl} alt="avatar" />
                         </button>
                     </nav>
-                    {modalType === 'user-menu' && <NavMenu logout={logout} loggedInUser={loggedInUser} toggleUserMenu={this.toggleUserMenu} />}
+                    {modalType === 'user-menu' && <NavMenu logout={logout} loggedInUser={loggedInUser} toggleUserMenu={this.toggleUserMenu} modalPosition={modalPosition} />}
                 </section>
                 <MainFilter trip={trip} modalType={modalType} onSearch={onSearch} openDynamicModal={openDynamicModal} isFullHeader={isFullHeader} openFullHeader={this.openFullHeader} toggleFullHeader={this.toggleFullHeader} setModalContent={setModalContent} />
             </header>

@@ -11,6 +11,7 @@ export class Explore extends Component {
   componentDidMount() {
     this.setState({ stays: this.props.stays })
     this.props.setHomePage(false)
+    this.scrollUp()
   }
 
   componentDidUpdate(prevProps) {
@@ -22,7 +23,13 @@ export class Explore extends Component {
   onfilterStays = (filterBy) => {
     var stays = filterStays(this.props.stays, filterBy)
     this.setState({ stays })
+  }
 
+  scrollUp = ()=>{
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
   }
 
   render() {

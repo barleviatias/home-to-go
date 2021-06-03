@@ -27,7 +27,7 @@ export function FooterLinks({ onSearch, topRatedStays, nearbayStays}) {
                     <h3>Top Rated</h3>
                     {topRatedStays.map((stay, idx) => {
                         if (idx < 8) {
-                            return <Link key={Math.random()} to="/explore" onClick={() => { onSelectLink(stay.loc.address) }}><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
+                            return <Link key={Math.random()} to={`/stay/${stay._id}`} ><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
                         }
                     })}
                 </div>
@@ -36,7 +36,7 @@ export function FooterLinks({ onSearch, topRatedStays, nearbayStays}) {
                     <h3>Nearby</h3>
                     {nearbayStays.map((stay, idx) => {
                         if (idx < 8) {
-                            return <Link key={Math.random()} to="/explore" onClick={() => { onSelectLink(stay.loc.address) }}><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
+                            return <Link key={Math.random()} to={`/stay/${stay._id}`} ><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
                         }
                     })}
                 </div>

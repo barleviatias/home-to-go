@@ -1,9 +1,11 @@
 import { Link } from 'react-router-dom';
 
 
-export function NavMenu({ logout, toggleUserMenu, loggedInUser }) {
+export function NavMenu({ logout, toggleUserMenu, loggedInUser, modalPosition }) {
 
-        return (<section className="user-menu" onClick={toggleUserMenu}>{!loggedInUser && <div>
+        console.log(modalPosition);
+
+        return (<section className="user-menu" style={{top: modalPosition.y+40 , left: modalPosition.x}} onClick={toggleUserMenu}>{!loggedInUser && <div>
                 <div>
                         <Link to="/login">log in</Link>
                         {/* <Link to="/login">sign up</Link> */}
