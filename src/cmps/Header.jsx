@@ -75,12 +75,12 @@ export class Header extends React.Component {
         return (
             <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'}`}>
                 <section>
-                    <NavLink to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
+                    <NavLink className="logo-link" to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
                     <nav>
-                        {/* <NavLink to="/host">Become a host</NavLink> */}
+                        <NavLink to="/host">Become a host</NavLink>
                         <NavLink to="/explore" onClick={this.explorAll}>Explore</NavLink>
                         <button onClick={this.toggleUserMenu} className="user-menu-btn">
-                            <span>☰</span>
+                            <span><i className="fas fa-bars"></i></span>
                             <img src={imgUrl} alt="avatar" />
                         </button>
                     </nav>
