@@ -12,7 +12,7 @@ export const orderService = {
 
 window.orderService = orderService
 
-async function query(user = { id: null, type: 'all', filterBy: { num: 1, name: 'ifek' } }) {
+async function query(user = { id: null, type: 'all', filterBy: { num: 1, name: '' } }) {
     const orders = await httpService.get(`order`, user)
     return orders;
 }
@@ -30,7 +30,6 @@ async function add(trip, stay, loggedInUser) {
         totalPrice: trip.totalPrice,
         user: loggedInUser
     }
-
     tripService.remove()
     return await httpService.post(`order`, order)
 }

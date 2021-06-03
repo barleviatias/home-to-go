@@ -3,6 +3,7 @@ import { addOrder } from '../../store/actions/orderActions'
 import { login } from '../../store/actions/userActions'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import { PickDates } from '../app/Dates'
 
 class _BookStay extends Component {
 
@@ -35,6 +36,7 @@ class _BookStay extends Component {
     }
 
     onSetModal = (event, modalKey) => {
+        console.log('event', event);
         const clickPos = { x: event.pageX, y: event.pageY }
         this.setState({
             dynamicModal: {
@@ -44,11 +46,24 @@ class _BookStay extends Component {
         }, () => { this.openModal(modalKey) })
     }
 
+    handleDates = (time) => {
+        var inti = time.startDate.toDateString()
+        var endi = time.endDate.toDateString()
+        this.setState({ trip: { ...this.state.trip, time: { checkIn: inti, checkOut: endi } } });
+    }
+
     openModal = (modalKey) => {
         const dynamicModal = {}
         const { x, y } = this.state.dynamicModal.modalPosition
         switch (modalKey) {
 
+            case 'date':
+                dynamicModal.modalContent = (
+                    <section className="dynamic-modal-child filter-loc-modal">
+                        <PickDates handleDates={this.handleDates} />
+                    </section>)
+                dynamicModal.modalPosition = { top: y, left: x }
+                break
             case 'book-guests':
                 const { kids, adults } = this.state.trip.guests
                 dynamicModal.modalContent = (
@@ -193,6 +208,8 @@ class _BookStay extends Component {
     render() {
         const { stay, getTotalRate } = this.props
         const { trip, isAvailable } = this.state
+        const { time } = trip
+        const { checkIn, checkOut } = time;
         const { reviews, price } = stay
 
         return (
@@ -207,15 +224,23 @@ class _BookStay extends Component {
 
                         <form>
                             <div className="order-form-date-picker">
-                                <label className="check-in">
+                                <label htmlFor="check-in">
+                                    <span>Check in</span>
+                                    <input value={checkIn} id="check-in" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
+                                </label>
+                                <label htmlFor="check-out">
+                                    <span>Check out</span>
+                                    <input value={checkOut} id="check-out" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
+                                </label>
+                            </div>
+                            {/* <label className="check-in">
                                     <span>Check in</span>
                                     <input name="checkIn" value={trip.time.checkIn} type="date" placeholder="Add dates" onChange={this.handleChange} />
                                 </label>
                                 <label className="check-out" >
                                     <span>Check out</span>
                                     <input name="checkOut" value={trip.time.checkOut} type="date" placeholder="Add dates" onChange={this.handleChange} />
-                                </label>
-                            </div>
+                                </label> */}
 
                             <label className="guests-lable" >
                                 <span>Guests</span>

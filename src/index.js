@@ -6,6 +6,9 @@ import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux'
 import { store } from './store/store.js'
 
+import 'react-date-range/dist/styles.css'; // main style file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

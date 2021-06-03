@@ -2,6 +2,8 @@ import { Component } from "react";
 import { Link } from 'react-router-dom'
 import { stayService } from '../../services/stay-service'
 import { tripService } from '../../services/trip-service'
+import { PickDates } from './Dates'
+
 
 export class MainFilter extends Component {
 
@@ -43,11 +45,25 @@ export class MainFilter extends Component {
         }, () => { this.openModal(modalKey) })
     }
 
+    handleDates = (time) => {
+        var inti = time.startDate.toDateString()
+        var endi = time.endDate.toDateString()
+        this.setState({ trip: { ...this.state.trip, time: { checkIn: inti, checkOut: endi } } });
+    }
+
     openModal = (modalKey) => {
         const dynamicModal = {}
         const { x, y } = this.state.dynamicModal.modalPosition
 
+
         switch (modalKey) {
+            case 'date':
+                dynamicModal.modalContent = (
+                    <section className="dynamic-modal-child filter-loc-modal">
+                        <PickDates handleDates={this.handleDates} />
+                    </section>)
+                dynamicModal.modalPosition = { top: y + 35, left: x }
+                break;
             case 'loc':
                 dynamicModal.modalContent = (
                     <section className="dynamic-modal-child filter-loc-modal">
@@ -177,6 +193,11 @@ export class MainFilter extends Component {
         else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
+
+
+
+
+
     onSearch = (ev) => {
         ev.preventDefault();
         this.props.onSearch(this.state.trip)
@@ -186,10 +207,6 @@ export class MainFilter extends Component {
     loadRated = async () => {
         const topRated = await stayService.getTopRatedStays();
         this.setState({ topRatedStays: topRated })
-    }
-
-    handleGuestChang = () => {
-
     }
 
     render() {
@@ -208,17 +225,14 @@ export class MainFilter extends Component {
                         <span>Location</span>
                         <input onClick={(event) => this.onSetModal(event, 'loc')} name="address" value={address} autoComplete="off" id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
                     </label>
-
                     <label htmlFor="check-in">
                         <span>Check in</span>
-                        <input type="date" value={checkIn} name="checkIn" id="check-in" placeholder="Add dates" onChange={this.handleChange} />
+                        <input value={checkIn} id="check-in" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
                     </label>
-
                     <label htmlFor="check-out">
                         <span>Check out</span>
-                        <input type="date" value={checkOut} name="checkOut" id="check-out" placeholder="Add dates" onChange={this.handleChange} />
+                        <input value={checkOut} id="check-out" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
                     </label>
-
                     <label className="guests" htmlFor="guests">
                         <div>
                             <span>Guests</span>
@@ -231,13 +245,13 @@ export class MainFilter extends Component {
                     </button>
 
                 </form>
-
                 <form className={!isFullHeader ? "min-filter" : "filter-close"} onClick={openFullHeader} >
                     <span>Start your search</span>
                     <button onClick={this.onSearch}>
                         <Link to="/explore"><i className="fas fa-search"></i> </Link>
                     </button>
                 </form>
+                {/* < Dates /> */}
             </section>
         )
     }
