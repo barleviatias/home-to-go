@@ -23,6 +23,7 @@ export class _Dashboard extends Component {
             this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'host' })
         })
         this.props.setFooterDisplay(false)
+        this.props.setHomePage(false)
     }
 
     componentWillUnmount(){

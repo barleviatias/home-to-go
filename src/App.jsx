@@ -91,8 +91,6 @@ class _App extends Component {
     this.setState({ modalType }, () => {
       window.addEventListener('click', this.closeDynamicModal, true);
       window.addEventListener('scroll', this.closeDynamicModal, true);
-      // console.log(this.state.modalType);
-      // console.log('openDynamicModal',modalType);
     });
   };
 
@@ -164,6 +162,7 @@ class _App extends Component {
                 toggleMsgModal={this.toggleMsgModal}
                 loadOrders={loadOrders} orders={orders}
                 setFooterDisplay={this.setFooterDisplay}
+                setHomePage={this.setHomePage}
               />
             )}
           />
@@ -200,6 +199,7 @@ class _App extends Component {
                 onSearch={this.onSearch}
                 loggedInUser={loggedInUser}
                 toggleMsgModal={this.toggleMsgModal}
+                login={login}
                 openDynamicModal={this.openDynamicModal}
                 modalType={modalType}
                 updateStay={updateStay}

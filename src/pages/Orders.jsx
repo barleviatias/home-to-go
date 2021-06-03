@@ -57,7 +57,6 @@ export class Orders extends Component {
 
     handleChange = (ev) => {
         var {name , value} = ev.target
-        console.log('name: ' ,name , 'value: ', value );
         this.setState({ filterBy: { ...this.state.filterBy, [name]: !this.state.filterBy[name] } }, () => {
         });
     }

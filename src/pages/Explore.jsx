@@ -19,17 +19,8 @@ export class Explore extends Component {
     }
   }
 
-  // loadStays = async () => {
-  //   console.log('loadStays');
-  //   await this.props.loadStays(this.props.trip);
-  //   console.log('props', this.props.stays);
-  //   this.setState({ stays: this.props.stays })
-  // }
-
   onfilterStays = (filterBy) => {
-    // console.log(filterBy);
     var stays = filterStays(this.props.stays, filterBy)
-    console.log('filtered satys', stays);
     this.setState({ stays })
 
   }
@@ -37,7 +28,6 @@ export class Explore extends Component {
   render() {
     const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login} = this.props
     const { stays } = this.state
-    // console.log(stays);
     if (!stays) return <h1>Loading....</h1>
     return (
       <main className="explore-container page">

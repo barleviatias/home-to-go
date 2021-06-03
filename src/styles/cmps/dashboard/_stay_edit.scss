@@ -6,6 +6,12 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+
+            h1{
+                input{
+                    width: 450px;
+                }
+            }
             .stay-edit-short-info {
                 display: flex;
                 justify-content: space-between;
@@ -31,6 +37,10 @@
                     p {
                         text-decoration: underline;
                         color: rgb(82, 82, 82);
+
+                        input{
+                            width: 300px;
+                        }
                     }
                 }
 

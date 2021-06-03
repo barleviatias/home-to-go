@@ -36,7 +36,7 @@ export class MainFilter extends Component {
     }
 
     onSetModal = (event, modalKey) => {
-        const clickPos = event.target.getBoundingClientRect()
+        const clickPos = { x: event.pageX, y: event.pageY }
         this.setState({
             dynamicModal: {
                 ...this.state.dynamicModal,
@@ -47,7 +47,7 @@ export class MainFilter extends Component {
 
     openModal = (modalKey) => {
         const dynamicModal = {}
-        const { top, left, height } = this.state.dynamicModal.modalPosition
+        const { x, y } = this.state.dynamicModal.modalPosition
         switch (modalKey) {
             case 'loc':
                 dynamicModal.modalContent = (<section className="dynamic-modal-child filter-loc-modal">
@@ -65,7 +65,7 @@ export class MainFilter extends Component {
                         )
                     })}
                 </section>)
-                dynamicModal.modalPosition = { top: (top + 35), left: (left - 20) }
+                dynamicModal.modalPosition ={ top: y+35, left: x }
                 break;
 
             case 'guests':
@@ -94,7 +94,7 @@ export class MainFilter extends Component {
                         </div>
                     </div>
                 </section>)
-                dynamicModal.modalPosition = { top: (top + 35), left: (left - 20) }
+                dynamicModal.modalPosition = { top: y+35, left: x }
                 break;
 
             case '':

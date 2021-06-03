@@ -21,7 +21,7 @@ export class StayFilter extends Component {
     }
 
     onSetModal = (event, modalKey) => {
-        const clickPos = event.target.getBoundingClientRect()
+        const clickPos = { x: event.pageX, y: event.pageY }
         this.setState({
             dynamicModal: {
                 ...this.state.dynamicModal,
@@ -51,14 +51,12 @@ export class StayFilter extends Component {
     handleChange = (key, val, isAmenities = false) => {
         if (isAmenities) {
             this.setState({ stayFilterBy: { ...this.state.stayFilterBy, amenities: { ...this.state.stayFilterBy.amenities, [key]: val } } }, () => {
-                console.log(this.state.stayFilterBy);
                 this.openModal('amenities')
                 this.props.onfilterStays(this.state.stayFilterBy)
             })
 
         } else {
             this.setState({ stayFilterBy: { ...this.state.stayFilterBy, [key]: val } }, () => {
-                console.log(this.state.stayFilterBy);
                 if (key === 'price') this.openModal('price')
                 this.props.onfilterStays(this.state.stayFilterBy)
             })
@@ -67,9 +65,9 @@ export class StayFilter extends Component {
 
     openModal = (modalKey) => {
         const { placeType, propertyType, price, amenities } = this.state.stayFilterBy
-        // console.log('modal key', modalKey);
         const dynamicModal = {}
-        const { top, left, height, x, y } = this.state.dynamicModal.modalPosition
+        const { x, y } = this.state.dynamicModal.modalPosition
+
         switch (modalKey) {
             case 'placeType':
                 dynamicModal.modalContent = (<section className="stay-filter-modal">
@@ -84,7 +82,7 @@ export class StayFilter extends Component {
                         </div>
                     </div>
                 </section>)
-                dynamicModal.modalPosition = { top: 245, left: x }
+                dynamicModal.modalPosition = { top: y, left: x }
                 break;
             case 'propertyType':
                 dynamicModal.modalContent = (<section className="stay-filter-modal">
@@ -109,7 +107,7 @@ export class StayFilter extends Component {
                         </div>
                     </div>
                 </section>)
-                dynamicModal.modalPosition = { top: 245, left: x }
+                dynamicModal.modalPosition = { top: y, left: x }
                 break;
             case 'price':
                 dynamicModal.modalContent = (<section className="stay-filter-modal">
@@ -121,7 +119,7 @@ export class StayFilter extends Component {
                         </div>
                     </div>
                 </section >)
-                dynamicModal.modalPosition = { top: 245, left: x }
+                dynamicModal.modalPosition = { top: y, left: x }
                 break;
 
             case 'amenities':
@@ -146,14 +144,8 @@ export class StayFilter extends Component {
                             <span>Cooking basics</span>
                         </div>
                     </div>
-                    {/*   TV: false,
-                Wifi: false,
-                AC: false,
-                Smoking_allowed: false,
-                Pets_allowed: false,
-                Cooking_basics: false */}
                 </section>)
-                dynamicModal.modalPosition = { top: 245, left: x }
+                dynamicModal.modalPosition = { top: y, left: x }
                 break;
             case '':
                 dynamicModal.modalContent = ''

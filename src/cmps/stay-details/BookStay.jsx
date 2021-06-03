@@ -35,7 +35,7 @@ class _BookStay extends Component {
     }
 
     onSetModal = (event, modalKey) => {
-        const clickPos = event.target.getBoundingClientRect()
+        const clickPos = { x: event.pageX, y: event.pageY }
         this.setState({
             dynamicModal: {
                 ...this.state.dynamicModal,
@@ -46,7 +46,7 @@ class _BookStay extends Component {
 
     openModal = (modalKey) => {
         const dynamicModal = {}
-        const { top, left, height, x, y } = this.state.dynamicModal.modalPosition
+        const { x, y } = this.state.dynamicModal.modalPosition
         switch (modalKey) {
             case 'book-guests':
                 const { kids, adults } = this.state.trip.guests;
@@ -74,7 +74,7 @@ class _BookStay extends Component {
                         </div>
                     </div>
                 </section>)
-                dynamicModal.modalPosition = { top: 940, left: left - 26 }
+                dynamicModal.modalPosition = { top: y, left: x }
                 break;
             case '':
                 dynamicModal.modalContent = ''
@@ -121,10 +121,10 @@ class _BookStay extends Component {
 
     onReserveTrip = async () => {
         const { trip } = this.state
-        const { stay, loggedInUser , login } = this.props
+        const { stay, loggedInUser, login } = this.props
 
         if (!loggedInUser) {
-            this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link><button className="demo-user-btn" onClick={()=>{login({ username: 'mor', password: '1111' })}}>Demo User</button></span>)
+            this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link><button className="demo-user-btn" onClick={() => { login({ username: 'mor', password: '1111' }) }}>Demo User</button></span>)
             return
         }
 

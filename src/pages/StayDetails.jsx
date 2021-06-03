@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom'
 import { stayService } from '../services/stay-service';
 import { ReviewList } from '../cmps/stay-details/ReviewList';
 import { AddReview } from '../cmps/stay-details/AddReview';
@@ -28,7 +29,6 @@ export class StayDetails extends Component {
 	setWishList = () => {
 		const user = this.props.loggedInUser;
 		if (!user.wishlist) return;
-		console.log(this.state.stay._id);
 		const match = user.wishlist.findIndex(
 			(wishId) => wishId === this.state.stay._id
 		);
@@ -57,7 +57,7 @@ export class StayDetails extends Component {
 	onAddToWishList = () => {
 		const user = this.props.loggedInUser
 		if (!user) {
-			console.log('not log in');
+			this.props.toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link><button className="demo-user-btn" onClick={() => { this.props.login({ username: 'mor', password: '1111' }) }}>Demo User</button></span>)
 			return
 		}
 		if (user.wishlist) {
@@ -67,14 +67,12 @@ export class StayDetails extends Component {
 				user.wishlist.push(this.state.stay._id)
 			} else {
 				let idx = user.wishlist.findIndex((wishidx) => wishidx === wishId)
-				console.log(idx);
 				this.setState({ ...this.state, toggleWish: false })
 				user.wishlist.splice(idx, 1)
 			}
 		} else {
 			user.wishlist = [this.state.stay._id]
 		}
-		console.log(this.state.toggleWish);
 		this.props.updateUser(user)
 	}
 
