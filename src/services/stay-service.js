@@ -78,7 +78,7 @@ async function add(stay) {
 //     // return httpService.get(`stay${queryStr}`)
 // }
 
-async function getTopRatedStays(trip = { loc: { address: '' }, guests: { adults: 1, kids: 0 } }) {
+async function getTopRatedStays(trip = { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'top rated' }) {
 
 	return await httpService.get(`stay`, trip)
 	// var stays = await storageService.query('stay');
