@@ -79,15 +79,21 @@ class _App extends Component {
       });
       return;
     }
+
     if (ev.target.closest('.dynamic-modal')) return;
     if (ev.target.nodeName === 'BUTTON') return;
+
     this.setState({ modalType: '' }, () => {
       window.removeEventListener('click', this.closeDynamicModal, true);
       window.removeEventListener('scroll', this.closeDynamicModal, true);
     });
   };
 
-  openDynamicModal = (modalType) => {
+  openDynamicModal = (modalType, ev = null) => {
+    if (ev && ev.target.innerText === 'logout'){
+      this.setState({ modalType : ''})
+      return
+    } 
     this.setState({ modalType }, () => {
       window.addEventListener('click', this.closeDynamicModal, true);
       window.addEventListener('scroll', this.closeDynamicModal, true);

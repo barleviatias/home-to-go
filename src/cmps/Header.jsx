@@ -44,7 +44,7 @@ export class Header extends React.Component {
     toggleUserMenu = (event) => {
         const clickPos = event.target.getBoundingClientRect()
         this.setState({ modalPosition: clickPos })
-        this.props.openDynamicModal('user-menu')
+        this.props.openDynamicModal('user-menu' , event)
     }
 
     closeFullHeader = (ev) => {
