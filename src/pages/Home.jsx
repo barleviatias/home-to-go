@@ -26,11 +26,11 @@ export class Home extends Component {
 
 
   render() {
-    const { loggedInUser, onSearch, topRatedStays, nearbayStays } = this.props
+    const { loggedInUser, onSearch, topRatedStays, nearbayStays , loadStays} = this.props
 
     return (
       <main className="home-page">
-        <Hero />
+        <Hero loadStays={loadStays} />
         <h1>Popular destinations</h1>
         <FilterCities onSearch={onSearch} />
         <h1>Explore nearby</h1>

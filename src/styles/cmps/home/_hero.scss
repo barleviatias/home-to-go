@@ -59,7 +59,7 @@
             color: $clr-light;
         }
 
-        button {
+        a {
             font-size: 14px;
             font-weight: 600;
             letter-spacing: 0.5px;
@@ -69,6 +69,11 @@
             border-radius: 8px;
             background-color: $clr-dark;
             color: $clr-light;
+
+            button{
+                width: 100%;
+                height: 100%;
+            }
         }
     }
 }
