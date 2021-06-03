@@ -15,6 +15,7 @@ export class StayDetails extends Component {
 	componentDidMount() {
 		this.loadStay();
 		this.scrollUp();
+		this.props.setHomePage(false)
 	}
 
 	scrollUp = () => {

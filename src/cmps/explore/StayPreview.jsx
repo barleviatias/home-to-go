@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export function StayPreview({ stay, loggedInUser, updateUser }) {
+export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login }) {
 
     const getTotalRate = () => {
         const rates = stay.reviews.map(review => review.avgRate)
@@ -13,8 +13,8 @@ export function StayPreview({ stay, loggedInUser, updateUser }) {
     }
 
     function toggleWish(stayId) {
-        if (!loggedInUser){
-            
+        if (!loggedInUser) {
+            toggleMsgModal(<span><h2>You must log in frist</h2><Link to='/login'>Login</Link><button className="demo-user-btn" onClick={() => { login({ username: 'mor', password: '1111' }) }}>Demo User</button></span>)
             return false
         }
         if (!loggedInUser.wishlist) loggedInUser.wishlist = [stayId]

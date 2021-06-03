@@ -16,7 +16,7 @@ import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from '
 import { stayService } from './services/stay-service'
 import { loadOrders, removeOrder } from './store/actions/orderActions';
 import { addTrip, loadTrip } from './store/actions/tripActions';
-import { updateUser, loadUsers, logout } from './store/actions/userActions';
+import { updateUser, loadUsers, logout, login } from './store/actions/userActions';
 import { DynamicModal } from './cmps/app/DynamicModal';
 import { UserMsg } from './cmps/app/UserMsg';
 
@@ -118,7 +118,8 @@ class _App extends Component {
       loadOrders,
       removeOrder,
       loadWishlist,
-      updateStay
+      updateStay,
+      login
     } = this.props;
     const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays, isFooterOn, isHomePage } = this.state;
 
@@ -184,6 +185,10 @@ class _App extends Component {
                 stays={stays}
                 loadWishlist={loadWishlist}
                 loggedInUser={loggedInUser}
+                toggleMsgModal={this.toggleMsgModal}
+                login={login}
+                setHomePage={this.setHomePage}
+                updateUser={updateUser}
               />
             )}
           />
@@ -200,6 +205,7 @@ class _App extends Component {
                 updateStay={updateStay}
                 updateUser={updateUser}
                 setModalContent={this.setModalContent}
+                setHomePage={this.setHomePage}
               />
             )}
           />
@@ -217,6 +223,8 @@ class _App extends Component {
                 closeDynamicModal={this.closeDynamicModal}
                 setModalContent={this.setModalContent}
                 setHomePage={this.setHomePage}
+                toggleMsgModal={this.toggleMsgModal}
+                login={login}
               />
             )}
           />
@@ -289,7 +297,8 @@ const mapDispatchToProps = {
   loadOrders,
   removeOrder,
   loadWishlist,
-  updateStay
+  updateStay,
+  login
 };
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App);

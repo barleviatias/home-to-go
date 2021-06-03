@@ -41,9 +41,27 @@ export class AddReview extends Component {
 					}
 				}
 			})
-
 		}
 	}
+
+	clearForm = () => {
+		this.setState({
+			review: {
+				...this.state.review,
+				txt: '',
+				avgRate: 0,
+				categories: {
+					Cleanliness: 0,
+					Accuracy: 0,
+					Communication: 0,
+					Location: 0,
+					'Check-in': 0,
+					Accessibility: 0,
+				}
+			}
+		})
+	}
+
 
 	handleRateChange = (rate, key) => {
 		this.setState({
@@ -78,6 +96,7 @@ export class AddReview extends Component {
 		review.avgRate = avg / 6;
 		review._id = utilService.makeId();
 		this.props.addReview(review);
+		this.clearForm()
 	};
 
 	render() {
