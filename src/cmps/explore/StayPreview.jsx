@@ -13,7 +13,10 @@ export function StayPreview({ stay, loggedInUser, updateUser }) {
     }
 
     function toggleWish(stayId) {
-        if (!loggedInUser) return false
+        if (!loggedInUser){
+            
+            return false
+        }
         if (!loggedInUser.wishlist) loggedInUser.wishlist = [stayId]
         else {
             let match = loggedInUser.wishlist.findIndex((wishId) => wishId === stayId)
@@ -44,7 +47,7 @@ export function StayPreview({ stay, loggedInUser, updateUser }) {
                             <h3>
                                 <span>{stay.propertyType}</span>
                                      •
-                                     <span>{stay.loc.country}</span>
+                                     <span>{stay.loc.address.substring(0, stay.loc.address.indexOf(','))}</span>
                             </h3>
                         </span>
                         <span className="stay-preview-header-rate">

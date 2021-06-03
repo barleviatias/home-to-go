@@ -10,6 +10,7 @@ export class Explore extends Component {
 
   componentDidMount() {
     this.setState({ stays: this.props.stays })
+    this.props.setHomePage(false)
   }
 
   componentDidUpdate(prevProps) {

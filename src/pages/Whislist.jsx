@@ -24,7 +24,6 @@ export class Wishlist extends Component {
       <main className="explore-container page">
       <span>{stays.length}+ stays</span>
       <h1>Wishlist</h1>
-      {/* <StayFilter /> */}
       <StayList stays={stays} />
 
     </main>

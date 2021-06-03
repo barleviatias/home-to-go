@@ -216,6 +216,7 @@ class _App extends Component {
                 openDynamicModal={this.openDynamicModal}
                 closeDynamicModal={this.closeDynamicModal}
                 setModalContent={this.setModalContent}
+                setHomePage={this.setHomePage}
               />
             )}
           />
