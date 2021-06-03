@@ -19,7 +19,6 @@ export class BecomeHost extends Component {
             <main >
                 <section className="full bocome-host-container">
                     <div className="hosting-img">
-                        {/* <Link to="/"><img className="logo" src={Logo} alt="logo" /></Link> */}
                         <Link className="a" to="/"><i className="fab fa-airbnb fa-3x logo-icon"></i></Link>
                         <img className="guests-img" src="https://www.insidehook.com/wp-content/uploads/2021/03/good-airbnb-guest-2.jpg?fit=1200%2C800" />
                     </div>
