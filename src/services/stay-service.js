@@ -49,7 +49,6 @@ function remove(stayId) {
 }
 
 async function update(stay) {
-	stay.amenities = convertAmenetiesToArray(stay.amenities)
 	return await httpService.put(`stay/${stay._id}`, stay)
 	// return await httpService.put(`stay/${stay._id}`, stay)
 	// Handle case in which admin updates other stay's details
@@ -57,7 +56,6 @@ async function update(stay) {
 }
 
 async function add(stay) {
-	stay.amenities = convertAmenetiesToArray(stay.amenities)
 	return await httpService.post(`stay`, stay)
 
 	// return storageService.post('stay', currStay);
@@ -141,15 +139,4 @@ async function getUserWishlist(user) {
 	// return httpService.get(`stay${queryStr}`)
 }
 
-function convertAmenetiesToArray(amenities) {
-	const currAmenities = [];
-	for (const key in amenities) {
-		if (amenities[key]) {
-			var str = key;
-			var res = str.replace('_', ' ');
-			currAmenities.push(res);
-		}
-	}
-	return currAmenities;
-}
 
