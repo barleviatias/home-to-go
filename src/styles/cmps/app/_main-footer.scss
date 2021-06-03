@@ -36,47 +36,58 @@
             minmax(2rem, 1fr);
     }
 
+    margin-top: 40px;
+
     > section {
         grid-column: 2;
 
         > * {
-            padding: 20px 0px;
+            padding: 40px 0px;
         }
-        .footer-links-container{
+        .footer-links-container {
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 40px;
 
-            h3{
+            h3 {
+                font-size: rem(28px);
                 font-family: airbnb-bold, sans-serif;
+                color: $clr-black;
             }
 
-            >div{
+            > div {
                 display: flex;
                 justify-content: flex-start;
-               
-               >*{
-                   flex: 1;
-                   display: flex;
-                   flex-direction: column;
-                   gap: 30px;
 
-                   >*{
+                > * {
+                    flex: 1;
                     display: flex;
-                    flex-direction: column; 
+                    flex-direction: column;
+                    gap: 30px;
 
-                    >*{
-                        font-size: rem(12px);
+                    h4 {
+                        font-size: rem(13px);
+                        line-height: rem(18px);
+                        font-family: airbnb-regular, sans-serif;
+                        color: $clr-black;
                     }
-                    
-                    >:first-child{
-                        color: black;
+
+                    > * {
+                        display: flex;
+                        flex-direction: column;
+
+                        > * {
+                            font-size: rem(12px);
+                        }
+
+                        > :first-child {
+                            color: black;
+                        }
+                        > :last-child {
+                            color: $clr-gray;
+                        }
                     }
-                    >:last-child{
-                        color: $clr-gray;
-                    }
-                   }
-               } 
+                }
             }
         }
 
@@ -98,7 +109,7 @@
                     align-items: center;
                     gap: 10px;
 
-                    i{
+                    i {
                         font-size: rem(16px);
                         cursor: pointer;
                     }
@@ -120,14 +131,14 @@
             }
         }
 
-        .fa-facebook-f:hover{
-            color: #4267B2;
+        .fa-facebook-f:hover {
+            color: #4267b2;
         }
-        .fa-twitter:hover{
-            color: #1DA1F2;
+        .fa-twitter:hover {
+            color: #1da1f2;
         }
-        .fa-instagram:hover{
-            color: #C13584;
+        .fa-instagram:hover {
+            color: #c13584;
         }
     }
 
@@ -137,7 +148,7 @@
 }
 
 .footer-off {
-    .main-footer{
+    .main-footer {
         display: none;
     }
 }

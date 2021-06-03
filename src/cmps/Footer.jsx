@@ -12,7 +12,7 @@ export function Footer({ onSearch, topRatedStays, nearbayStays }) {
                     <div >
                         <p>© 2021 Home & Go, <span>Inc.</span></p>
                         <span>·</span>
-                        <Link to="/about">""About</Link>
+                        <Link to="/about">About</Link>
                         <span>·</span>
                         <Link to="/login">Login</Link>
                         <span>·</span>
