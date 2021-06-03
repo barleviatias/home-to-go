@@ -3,8 +3,6 @@ import { Link } from 'react-router-dom'
 import { stayService } from '../../services/stay-service'
 import { tripService } from '../../services/trip-service'
 
-
-
 export class MainFilter extends Component {
 
     state = {
@@ -48,53 +46,98 @@ export class MainFilter extends Component {
     openModal = (modalKey) => {
         const dynamicModal = {}
         const { x, y } = this.state.dynamicModal.modalPosition
+
         switch (modalKey) {
             case 'loc':
-                dynamicModal.modalContent = (<section className="dynamic-modal-child filter-loc-modal">
-                    {tripService.getTopCities().map(city => {
-                        return (
-                            <div onClick={() => {
-                                this.handleChange({ target: { name: "address", type: "search", value: `${city.city}, ${city.state}` } })
-                            }} key={Math.random()} className="modal-label">
-                                <img src={city.imgUrl} alt="city" />
-                                <div>
-                                    <span>{city.city}</span>
-                                    <span>{city.state}</span>
+                dynamicModal.modalContent = (
+                    <section className="dynamic-modal-child filter-loc-modal">
+                        {tripService.getTopCities().map(city => {
+                            return (
+                                <div onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "address",
+                                            type: "search",
+                                            value: `${city.city}, ${city.state}`
+                                        }
+                                    })
+                                }} key={Math.random()} className="modal-label">
+                                    <img src={city.imgUrl} alt="city" />
+                                    <div>
+                                        <span>{city.city}</span>
+                                        <span>{city.state}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        )
-                    })}
-                </section>)
-                dynamicModal.modalPosition ={ top: y+35, left: x }
+                            )
+                        })}
+                    </section>)
+                dynamicModal.modalPosition = { top: y + 35, left: x }
                 break;
 
             case 'guests':
                 const { kids, adults } = this.state.trip.guests;
-                dynamicModal.modalContent = (<section className="dynamic-modal-child filter-guest-modal">
-                    <div className="modal-label">
-                        <div>
-                            <span>Adults</span>
-                            <span>Ages 13 or above</span>
+                dynamicModal.modalContent = (
+                    <section className="dynamic-modal-child filter-guest-modal">
+                        <div className="modal-label">
+                            <div>
+                                <span>Adults</span>
+                                <span>Ages 13 or above</span>
+                            </div>
+                            <div>
+                                <button type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "adults",
+                                            type: "number",
+                                            value: (adults - 1)
+                                        }
+                                    })
+                                }}>-
+                                </button>
+                                <span>{adults}</span>
+                                <button type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "adults",
+                                            type: "number",
+                                            value: (adults + 1)
+                                        }
+                                    })
+                                }}>+
+                                </button>
+                            </div>
                         </div>
-                        <div>
-                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults - 1) } }) }}>-</button>
-                            <span>{adults}</span>
-                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "adults", type: "number", value: (adults + 1) } }) }}>+</button>
+                        <div className="modal-label">
+                            <div>
+                                <span>Kids</span>
+                                <span>Ages 2–12</span>
+                            </div>
+                            <div>
+                                <button type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "kids",
+                                            type: "number",
+                                            value: (kids - 1)
+                                        }
+                                    })
+                                }}>-
+                                </button>
+                                <span>{kids}</span>
+                                <button type={"button"} onClick={() => {
+                                    this.handleChange({
+                                        target: {
+                                            name: "kids",
+                                            type: "number",
+                                            value: (kids + 1)
+                                        }
+                                    })
+                                }}>+
+                                </button>
+                            </div>
                         </div>
-                    </div>
-                    <div className="modal-label">
-                        <div>
-                            <span>Kids</span>
-                            <span>Ages 2–12</span>
-                        </div>
-                        <div>
-                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids - 1) } }) }}>-</button>
-                            <span>{kids}</span>
-                            <button type={"button"} onClick={() => { this.handleChange({ target: { name: "kids", type: "number", value: (kids + 1) } }) }}>+</button>
-                        </div>
-                    </div>
-                </section>)
-                dynamicModal.modalPosition = { top: y+35, left: x }
+                    </section>)
+                dynamicModal.modalPosition = { top: y + 35, left: x }
                 break;
 
             case '':
@@ -107,7 +150,6 @@ export class MainFilter extends Component {
         }
         this.props.setModalContent(dynamicModal, modalKey)
     }
-
 
     loadTrip = () => {
         var trip = this.props.trip
@@ -122,12 +164,17 @@ export class MainFilter extends Component {
     handleChange = (ev) => {
         if (ev.timeStamp) ev.preventDefault()
         const { name, value, type } = ev.target
+
         if (type === 'date') {
             this.setState({ trip: { ...this.state.trip, time: { ...this.state.trip.time, [name]: value } } });
-        } else if (type === 'number') {
+        }
+
+        else if (type === 'number') {
             if (value < 0) return
             this.setState({ trip: { ...this.state.trip, guests: { ...this.state.trip.guests, [name]: +value } } }, () => { this.openModal('guests') });
-        } else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
+        }
+
+        else this.setState({ trip: { ...this.state.trip, loc: { ...this.state.trip.loc, [name]: value } } });
     }
 
     onSearch = (ev) => {
@@ -145,17 +192,18 @@ export class MainFilter extends Component {
 
     }
 
-
     render() {
         const { isFullHeader, openFullHeader } = this.props
-        const { address } = this.state.trip.loc;
-        const { checkIn, checkOut } = this.state.trip.time;
-        const { kids, adults } = this.state.trip.guests;
+        const { loc, time, guests } = this.state.trip
+        const { address } = loc;
+        const { checkIn, checkOut } = time;
+        const { kids, adults } = guests;
 
 
         return (
             <section className="main-filter-container">
                 <form className={isFullHeader ? "max-filter" : "filter-close"}>
+
                     <label>
                         <span>Location</span>
                         <input onClick={(event) => this.onSetModal(event, 'loc')} name="address" value={address} autoComplete="off" id="location" type="search" placeholder="Where are you going?" onChange={this.handleChange} />
@@ -165,6 +213,7 @@ export class MainFilter extends Component {
                         <span>Check in</span>
                         <input type="date" value={checkIn} name="checkIn" id="check-in" placeholder="Add dates" onChange={this.handleChange} />
                     </label>
+
                     <label htmlFor="check-out">
                         <span>Check out</span>
                         <input type="date" value={checkOut} name="checkOut" id="check-out" placeholder="Add dates" onChange={this.handleChange} />
@@ -177,8 +226,10 @@ export class MainFilter extends Component {
                         </div>
                     </label>
 
-                    <button onClick={this.onSearch}> <Link to="/explore"><i className="fas fa-search"></i>
-                    </Link></button>
+                    <button onClick={this.onSearch}>
+                        <Link to="/explore"><i className="fas fa-search"></i></Link>
+                    </button>
+
                 </form>
 
                 <form className={!isFullHeader ? "min-filter" : "filter-close"} onClick={openFullHeader} >

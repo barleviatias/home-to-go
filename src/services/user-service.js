@@ -45,10 +45,12 @@ async function logout() {
 
 
 async function update(user) {
-	user = await httpService.put(`user/${user._id}`, user)
+	console.log('currUser: ' , user);
+	const updatedUser = await httpService.put(`user/${user._id}`, user)
 	// Handle case in which admin updates other stay's details
-	if (getLoggedinUser()._id === user._id) _saveLocalUser(user)
-	return user
+	if (getLoggedinUser()._id === updatedUser._id) _saveLocalUser(updatedUser)
+	console.log('updatedUser: ' , updatedUser);
+	return updatedUser
 
 	// _saveLocalUser(user);
 	// return storageService.put('user', user)

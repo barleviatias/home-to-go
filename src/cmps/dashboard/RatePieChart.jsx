@@ -6,7 +6,7 @@ export function RatePieChart({ stay }) {
 
     function getRateData() {
         var chartData = stay.reviews.reduce((acc, review) => {
-            acc[Math.floor(review.avgRate) - 1]++
+            acc[Math.round(review.avgRate) - 1]++
             return acc
         }, [0, 0, 0, 0, 0])
         return chartData;

@@ -1,8 +1,7 @@
 import { Link } from "react-router-dom";
-import {tripService} from '../../services/trip-service'
+import { tripService } from '../../services/trip-service'
 
-
-export function FooterLinks({ onSearch, topRatedStays, nearbayStays}) {
+export function FooterLinks({ onSearch, topRatedStays, nearbayStays }) {
 
     function onSelectLink(address) {
         const trip = {
@@ -22,7 +21,6 @@ export function FooterLinks({ onSearch, topRatedStays, nearbayStays}) {
         <section className="footer-links-container">
             <h3>Inspiration for future getaways</h3>
             <div>
-
                 <div>
                     <h3>Top Rated</h3>
                     {topRatedStays.map((stay, idx) => {
@@ -31,7 +29,6 @@ export function FooterLinks({ onSearch, topRatedStays, nearbayStays}) {
                         }
                     })}
                 </div>
-
                 <div>
                     <h3>Nearby</h3>
                     {nearbayStays.map((stay, idx) => {

@@ -70,6 +70,7 @@ export class Header extends React.Component {
     render() {
         const { onSearch, loggedInUser, logout, trip, openDynamicModal, modalType, setModalContent } = this.props
         const { isFullHeader, isWindowTop, modalPosition } = this.state
+        console.log(loggedInUser);
         const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
 
         return (
