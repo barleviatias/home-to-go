@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { StayGallery } from '../explore/StayGallery'
 
 export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login }) {
 
@@ -39,7 +40,8 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
         <section className="stay-preview-container" >
             <Link to={`/stay/${stay._id}`} className="stay-preview">
                 <div className="stay-preview-img">
-                    <img src={stay.imgUrls[0]} alt="stay-preview" />
+                    <StayGallery stay={stay} />
+                    {/* <img src={stay.imgUrls[0]} alt="stay-preview" /> */}
                 </div>
                 <div className="stay-preview-info">
                     <span className="stay-preview-header">
