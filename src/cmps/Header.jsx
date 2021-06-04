@@ -11,7 +11,8 @@ export class Header extends React.Component {
         isFullHeader: true,
         isWindowTop: true,
         isHomePage: false,
-        modalPosition: { x: 0, y: 0 }
+        modalPosition: { x: 0, y: 0 },
+        isNarrow: false
     }
 
     componentDidMount() {
@@ -19,17 +20,21 @@ export class Header extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if (prevProps.isHomePage !== this.props.isHomePage) this.setCurrPage()
+        if (prevProps.currPage !== this.props.currPage) this.setCurrPage()
     }
 
     setCurrPage() {
-        if (this.props.isHomePage) {
+        if (this.props.currPage === 'home') {
             window.addEventListener('scroll', this.getScrollPos, true)
-            this.setState({ isHomePage: this.props.isHomePage, isFullHeader: true, isWindowTop: true })
+            this.setState({ isHomePage: true, isFullHeader: true, isWindowTop: true, isNarrow: false  })
+        }
+        else if (this.props.currPage === 'stay') {
+            window.removeEventListener('scroll', this.getScrollPos, true)
+            this.setState({ isHomePage: false, isFullHeader: false, isWindowTop: false , isNarrow: true })
         }
         else {
             window.removeEventListener('scroll', this.getScrollPos, true)
-            this.setState({ isHomePage: this.props.isHomePage, isFullHeader: false, isWindowTop: false })
+            this.setState({ isHomePage: false, isFullHeader: false, isWindowTop: false, isNarrow: false })
         }
     }
 
@@ -69,11 +74,11 @@ export class Header extends React.Component {
 
     render() {
         const { onSearch, loggedInUser, logout, trip, openDynamicModal, modalType, setModalContent } = this.props
-        const { isFullHeader, isWindowTop, modalPosition } = this.state
+        const { isFullHeader, isWindowTop, modalPosition, isNarrow } = this.state
         const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
 
         return (
-            <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'}`}>
+            <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'} ${isNarrow ? 'narrow-header': 'wide-header'}`}>
                 <section>
                     <NavLink className="logo-link" to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
                     <nav>

@@ -9,7 +9,7 @@
     background-size: cover;
     background-position: right;
     background-repeat: no-repeat;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 
     @include for-tablet-layout {
         grid-template-columns:
@@ -48,7 +48,7 @@
         flex-direction: column;
         justify-content: flex-end;
         align-items: flex-start;
-        margin-bottom: 26vh;
+        margin-bottom: 19vh;
         gap: 20px;
         width: rem(750px);
 

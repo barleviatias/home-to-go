@@ -159,15 +159,6 @@ class _LoginSignup extends Component {
 					<h2>Log in</h2>
 				</div>
 
-				{/* <select
-          name="username"
-          value={this.state.loginCred.username}
-          onChange={this.loginHandleChange}
-        >
-          <option value="">Select User</option>
-          {this.props.users && this.props.users.map(user => <option key={user._id} value={user.username}>{user.fullname}</option>)}
-        </select> */}
-
 				<div className="login-form-body">
 
 					<h1>Welcome back </h1>
@@ -216,7 +207,7 @@ class _LoginSignup extends Component {
 		const { formType } = this.state;
 
 		return (
-			<main className="login-container page">
+			<main className="login-container main page">
 				{/* <h2> Login / Signup </h2> */}
 				<p>{this.state.msg}</p>
 				{loggedInUser && <button onClick={this.props.logout}>logged out</button>}

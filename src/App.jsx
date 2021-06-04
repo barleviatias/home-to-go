@@ -32,12 +32,11 @@ class _App extends Component {
     topRatedStays: [],
     nearbayStays: [],
     isFooterOn: true,
-    isHomePage: true
+    // isHomePage: true,
+    currPage: 'home'
   };
 
   componentDidMount() {
-    // this.props.loadStays();
-    // this.props.loadUsers();
     this.loadRated();
     this.loadNearby();
   }
@@ -105,7 +104,8 @@ class _App extends Component {
   }
 
   setHomePage = (page) => {
-    this.setState({ isHomePage: page })
+    // this.setState({ isHomePage: page })
+    this.setState({ currPage: page })
   }
 
 
@@ -125,7 +125,7 @@ class _App extends Component {
       updateStay,
       login
     } = this.props;
-    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays, isFooterOn, isHomePage } = this.state;
+    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays, isFooterOn,currPage, isHomePage } = this.state;
 
     return (
       <Router>
@@ -139,7 +139,8 @@ class _App extends Component {
           openDynamicModal={this.openDynamicModal}
           closeDynamicModal={this.closeDynamicModal}
           setModalContent={this.setModalContent}
-          isHomePage={isHomePage}
+          // isHomePage={isHomePage}
+          currPage={currPage}
           loadStays={loadStays}
         />
         <Switch>

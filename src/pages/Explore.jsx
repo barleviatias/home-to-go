@@ -10,7 +10,7 @@ export class Explore extends Component {
 
   componentDidMount() {
     this.setState({ stays: this.props.stays })
-    this.props.setHomePage(false)
+    this.props.setHomePage('explore')
     this.scrollUp()
   }
 
@@ -37,9 +37,9 @@ export class Explore extends Component {
     const { stays } = this.state
     if (!stays) return <h1>Loading....</h1>
     return (
-      <main className="explore-container page">
-        <span>{stays.length}+ stays</span>
-        <h1>Find Places to stay {trip && trip.loc && trip.loc.address && `in ${trip.loc.address}`}</h1>
+      <main className="explore-container main page">
+        <span>{stays.length} stays</span>
+        <h1>Stays {trip && trip.loc && trip.loc.address && `in ${trip.loc.address}`}</h1>
         <StayFilter openDynamicModal={openDynamicModal} closeDynamicModal={closeDynamicModal} setModalContent={setModalContent} onfilterStays={this.onfilterStays} />
         <StayList stays={stays} updateUser={updateUser} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} login={login}/>
       </main>

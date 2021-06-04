@@ -234,19 +234,12 @@ class _BookStay extends Component {
                                     <input defaultValue={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')}  />
                                 </label>
                             </div>
-                            {/* <label className="check-in">
-                                    <span>Check in</span>
-                                    <input name="checkIn" value={trip.time.checkIn} type="date" placeholder="Add dates" onChange={this.handleChange} />
-                                </label>
-                                <label className="check-out" >
-                                    <span>Check out</span>
-                                    <input name="checkOut" value={trip.time.checkOut} type="date" placeholder="Add dates" onChange={this.handleChange} />
-                                </label> */}
-
+                
                             <label className="guests-lable" >
                                 <span>Guests</span>
                                 <input onClick={(event) => { this.onSetModal(event, 'book-guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" onChange={this.handleChange} />
                             </label>
+                            
                             {!isAvailable && <button type="button" className="book-stay-btn" onClick={this.toggleAvailability}>Check availability</button>}
                             {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}
                             {isAvailable && <div className="book-info">

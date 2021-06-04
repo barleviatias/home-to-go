@@ -9,12 +9,12 @@ import { Component } from 'react'
 export class Home extends Component {
 
   componentDidMount() {
-    this.props.setHomePage(true)
+    this.props.setHomePage('home')
     this.scrollUp()
   }
 
   componentWillUnmount() {
-    this.props.setHomePage(false)
+    this.props.setHomePage('')
   }
 
   scrollUp = ()=>{
@@ -29,7 +29,7 @@ export class Home extends Component {
     const { loggedInUser, onSearch, topRatedStays, nearbayStays , loadStays} = this.props
 
     return (
-      <main className="home-page">
+      <main className="home-page main">
         <Hero loadStays={loadStays} />
         <h1>Popular destinations</h1>
         <FilterCities onSearch={onSearch} />

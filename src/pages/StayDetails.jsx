@@ -16,7 +16,7 @@ export class StayDetails extends Component {
 	componentDidMount() {
 		this.loadStay();
 		this.scrollUp();
-		this.props.setHomePage(false)
+		this.props.setHomePage('stay')
 	}
 
 	scrollUp = () => {
@@ -193,7 +193,7 @@ export class StayDetails extends Component {
 		} = stay
 
 		return (
-			<main className="stay-details-container page">
+			<main className="stay-details-container narrow page">
 				<section className="stay-details-header">
 					<h1>{name}</h1>
 					<div className="stay-short-info">

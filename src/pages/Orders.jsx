@@ -65,7 +65,7 @@ export class Orders extends Component {
         const { orders ,filterBy} = this.state;
         const { name, price , status , checkIn , checkOut} = filterBy
         return (
-            <main className="user-order-container page">
+            <main className="user-order-container main page">
                 <section className="user-order-list">
                     <table className="user-order-list-table">
                         <thead>
