@@ -1,57 +1,73 @@
+
 .dashboard-container {
-    margin-top: 12vh;
+    display: flex;
+   
 
-    .dash-main-container {
+    .dash-nav-container {
+        padding-top: 60px;
+        position: sticky;
+        top: 12vh;
         display: flex;
+        flex: 1;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        text-align: start;
+        width: 100%;
+        margin-right: 20px;
 
-
-        .dash-nav-container {
-            padding-top: 60px;
-            position: sticky;
-            top: 12vh;
-            display: flex;
-            flex: 1;
-            flex-direction: column;
-            justify-content: flex-start;
-            align-items: flex-start;
+        button {
+            background-color: rgba(255, 255, 255, 0);
             width: 100%;
-            margin-right: 20px;
+            padding: 15px 20px;
+            font-size: rem(14px);
+            font-weight: 600;
+            color: $clr-dark;
+            text-align: start;
+            border-top-right-radius: 100px;
+            border-bottom-right-radius: 100px;
 
-            button {
-                background-color: rgba(255, 255, 255, 0);
-                width: 100%;
-                padding: 15px 20px;
-                font-size: rem(14px);
-                font-weight: 600;
-                color: $clr-dark;
-                text-align: start;
-                border-top-right-radius: 100px;
-                border-bottom-right-radius: 100px;
+            i{
+                font-size: 16px;
+                padding-right: 10px;
+            }
 
-                &.add-stay-btn {
-                    position: absolute;
-                    top: 0;
-                    border-top-left-radius: 100px;
-                    border-bottom-left-radius: 100px;
-                    box-shadow: 0 2px 4px 0px #0000003b;
-
-                    &:hover {
-                        background-color: unset;
-                        box-shadow: 0 2px 6px 1px #0000003b;
-                    }
-                }
-
-                &.active {
-                    background-color: rgb(243, 240, 240);
-                }
+            &.add-stay-btn {
+                position: absolute;
+                top: 0;
+                border-top-left-radius: 100px;
+                border-bottom-left-radius: 100px;
+                box-shadow: 0 2px 4px 0px #0000003b;
 
                 &:hover {
-                    background-color: rgb(243, 240, 240);
+                    background-color: unset;
+                    box-shadow: 0 2px 6px 1px #0000003b;
                 }
             }
+
+            &.active {
+                background-color: rgb(243, 240, 240);
+            }
+
+            &:hover {
+                background-color: rgb(243, 240, 240);
+            }
         }
+    }
+
+    .dash-main-container {
+        flex: 5;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        background-color: #edf0f4;
+        padding: 20px;
+        border-radius: 13px;
+
         .dash-info-container {
             flex: 4;
+            background-color: $clr-light;
+            border-radius: 13px;
         }
     }
 }

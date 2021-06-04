@@ -8,7 +8,8 @@
                 th {
                     padding: 10px 20px;
                     text-align: start;
-                    font-family: airbnb-bold, sans-serif;
+                    font-family: airbnb-book, sans-serif;
+                    color: $clr-black;
 
                     &.stay-actions {
                         text-align: center;
@@ -22,13 +23,32 @@
                 td {
                     padding: 10px 20px;
                     border-top: 1px solid rgb(223, 223, 223);
+                    font-size: 16px;
 
                     &.stay-actions {
                         text-align: center;
-                    }
+                        display: flex;
+                        align-items: center;
+                        justify-content: space-evenly;
+                        height: 100%;
 
-                    &:first-of-type {
-                        font-family: airbnb-regular, sans-serif;
+                        button {
+                            display: flex;
+                            align-items: center;
+                            background-color: rgb(221, 221, 221);
+                            padding: 5px 10px;
+                            border-radius: 5px;
+                            font-size: 14px;
+
+                            i {
+                                font-size: 14px;
+                                padding-inline-end: 5px;
+
+                                &:hover {
+                                    color: $clr-brand;
+                                }
+                            }
+                        }
                     }
 
                     &:last-of-type {
@@ -46,10 +66,15 @@
                         }
                     }
 
-                    &:hover {
-                        box-shadow: 0 2px 9px 1px #d8d8d8;
-                        padding: 11px 20px;
+                    img {
+                        height: 50px;
+                        width: 50px;
+                        border-radius: 50%;
                     }
+                }
+                &:hover {
+                    box-shadow: 0 2px 9px 1px #d8d8d8;
+                    padding: 11px 20px;
                 }
             }
         }
