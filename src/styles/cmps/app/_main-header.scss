@@ -70,6 +70,113 @@
                 minmax(auto, $normal-breakpoint)
                 minmax(2rem, 1fr);
         }
+
+        &.details-header {
+            nav {
+                display: none;
+            }
+
+            .user-menu {
+                display: none;
+            }
+
+            .main-filter-container {
+                display: none;
+            }
+
+            .logo-link {
+                display: none;
+            }
+
+            .details-header-nav {
+                position:relative;
+                bottom: 5px;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+
+                .details-nav {
+                    display: flex;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 30px;
+                    padding-top: auto;
+    
+
+                    a {
+                        font-size: 14px;
+                        line-height: 20px;
+                        font-family: airbnb-regular;
+                        color: $clr-black;
+
+                        &:hover{
+                            text-decoration: underline;
+                        }
+                    }
+                }
+
+                .book-stay-mini {
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+                    color: $clr-black;
+
+                    div {
+                        display: flex;
+                        flex-direction: column;
+                        align-items: flex-start;
+
+                        h3 {
+                            font-size: 14px;
+                            line-height: 18px;
+                            font-family: airbnb-book, sans-serif;
+                            color: $clr-black;
+
+                            span {
+                                font-size: 18px;
+                                line-height: 24px;
+                                font-family: airbnb-regular, sans-serif;
+                            }
+                        }
+
+                        h4 {
+                            font-size: 12px;
+                            line-height: 16px;
+                            font-family: airbnb-regular, sans-serif;
+                            color: $clr-black;
+
+                            .fa-star {
+                                color: $clr-brand;
+                                padding-inline-end: 5px;
+                            }
+
+                            span {
+                                padding-inline-start: 3px;
+                                color: $clr-gray;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+
+                    button {
+                        padding: 14px 25px;
+                        border-radius: 10px;
+                        background-image: linear-gradient(
+                            to right,
+                            rgb(230, 30, 77) 0%,
+                            rgb(227, 28, 95) 50%,
+                            rgb(215, 4, 102) 100%
+                        );
+
+                        color: $clr-light;
+                        font-size: 16px;
+                        line-height: 20px;
+                        font-family: airbnb-regular, sans-serif;
+                    }
+                }
+            }
+        }
     }
 
     z-index: 5;
@@ -83,6 +190,10 @@
 
     &.full-header {
         height: 180px;
+    }
+
+    .details-header-nav {
+        display: none;
     }
 
     &.top {
@@ -110,6 +221,10 @@
         padding-top: 20px;
         height: 100%;
 
+        .details-header-nav {
+            display: none;
+        }
+
         .logo-link {
             .logo {
                 display: flex;
@@ -118,6 +233,7 @@
                 gap: 1px;
                 font-family: airbnb-bold, sans-serif;
                 font-size: rem(20px);
+                letter-spacing: -0.5px;
 
                 .fa-airbnb {
                     font-size: 36px;

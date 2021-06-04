@@ -11,7 +11,7 @@ export function StayGallery({ stay }) {
         slidesToScroll: 1,
     };
     return (
-        <Slider {...settings}>
+        <Slider {...settings} className="stay-preview-slider">
             <div>
                 <img src={stay.imgUrls[0]} alt="" />
             </div>

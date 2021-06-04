@@ -88,7 +88,7 @@ export class StayDetails extends Component {
 			return acc
 		}, 0);
 		if (sum === 0) return 'new'
-		return (sum / rates.length).toFixed(1)
+		return (sum / rates.length).toFixed(2)
 	}
 
 	getStayReviewStatistics = () => {
@@ -193,19 +193,20 @@ export class StayDetails extends Component {
 		} = stay
 
 		return (
-			<main className="stay-details-container narrow page">
+			<main className="stay-details-container narrow">
 				<section className="stay-details-header">
 					<h1>{name}</h1>
 					<div className="stay-short-info">
 						<div>
 							<span className="stay-rate-display">
 								<i className="fas fa-star"></i>
-								{this.getTotalRate()} <p> ( {reviews.length} reviews )</p>
+								<span>{this.getTotalRate()}</span>
+								<p> ( {reviews.length} reviews )</p>
 							</span>
 							<span>•</span>
 							<p>{loc.address}</p>
 						</div>
-						<div>
+						<div className="action-btn-container">
 							<button>
 								<p>
 									<i className="fas fa-external-link-alt"></i>share
@@ -318,7 +319,7 @@ export class StayDetails extends Component {
 						<h2>
 							<span className="stay-rate-display">
 								<i className="fas fa-star"></i>
-								{this.getTotalRate()} <p> ( {reviews.length} reviews )</p>
+								{this.getTotalRate()} <p> ({reviews.length} reviews)</p>
 							</span>
 						</h2>
 						<div className="stay-review-ststistics">
@@ -332,6 +333,7 @@ export class StayDetails extends Component {
 				</section>
 				<section className="stay-details-map">
 					<h2>Location</h2>
+					<h3>{loc.address}</h3>
 					<GoogleMap pos={loc} />
 				</section>
 			</main>

@@ -15,6 +15,14 @@
             }
         }
 
+        .ctg-statistics {
+            h3 {
+                font-size: 16px;
+                line-height: 20px;
+                color: $clr-black;
+            }
+        }
+
         .stay-review-ststistics {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -49,15 +57,27 @@
                     border-radius: 50%;
                 }
 
+                h3 {
+                    font-size: 16px;
+                    line-height: 20px;
+                    font-family: airbnb-regular, sans-serif;
+                    color: $clr-black;
+                }
+
                 h4 {
-                    font-weight: 100;
+                    font-size: 14px;
+                    line-height: 20px;
+                    font-family: airbnb-book, sans-serif;
+                    color: $clr-gray;
                 }
             }
 
             .review-body {
                 h2 {
-                    font-weight: 100;
-                    font-size: rem(14px);
+                    font-size: 16px;
+                    line-height: 24px;
+                    font-family: airbnb-book, sans-serif;
+                    color: $clr-black;
                 }
             }
         }

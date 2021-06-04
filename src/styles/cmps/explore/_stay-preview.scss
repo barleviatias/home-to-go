@@ -1,26 +1,37 @@
 .stay-preview-container {
-    // position: relative;
+    position: relative;
     @include aspect-ratio(1, 1);
-    margin: 0 0;
-    padding: 0 0;
-    height: 100%;
-    width: 100%;
     cursor: pointer;
 
     .stay-preview-link {
-        height: 100%;
-        width: 100%;
-        margin: 0 0;
-        padding: 0 0;
-
-        .stay-preview-img {
+        .slick-slider {
+            position: relative;
             margin-bottom: 8px;
             height: calc(100% - 100px);
 
-            img {
+            .slick-prev {
+                position: absolute;
+                left: 10px;
+                z-index: 5;
+            }
+
+            .slick-next {
+                position: absolute;
+                right: 10px;
+                z-index: 5;
+            }
+
+            div {
                 height: 100%;
-                border-radius: 10px;
-                object-fit: cover;
+                width: 100%;
+                margin: 0 0;
+                padding: 0 0;
+
+                img {
+                    height: 100%;
+                    border-radius: 10px;
+                    object-fit: cover;
+                }
             }
         }
 
@@ -72,28 +83,36 @@
             }
 
             .stay-price {
-            
                 color: $clr-black;
                 padding-top: 4px;
                 padding-bottom: 2px;
 
-                span{
+                span {
                     font-family: airbnb-regular, sans-serif;
                 }
             }
         }
     }
-    // .stay-preview-save-btn {
-    //     position: absolute;
-    //     top: 15px;
-    //     right: 15px;
+    .stay-preview-save-btn {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 100%;
+        top: 10px;
+        z-index: 2;
+        height: fit-content;
 
-    //     .fa-heart {
-    //         font-size: rem(20px);
-
-    //         &.fas {
-    //             color: $clr-brand;
-    //         }
-    //     }
-    // }
+        .fa-heart {
+            padding-right: 5px;
+            font-size: rem(18px);
+            color: $clr-brand;
+            text-shadow: 0px 0 1px $clr-light;
+            
+            &.off{
+                color: $clr-gray;
+                opacity: 0.9;
+            }
+        }
+    }
 }
