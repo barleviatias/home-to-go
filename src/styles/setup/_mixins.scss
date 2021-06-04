@@ -36,6 +36,12 @@
     }
 }
 
+@mixin for-very-wide-layout {
+    @media (min-width: 1500px) {
+        @content;
+    }
+}
+
 
 // @mixin header-mobile-layout {
 //     @media (max-width: $mobile-breakpoint) {

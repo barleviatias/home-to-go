@@ -23,7 +23,7 @@ export class _Dashboard extends Component {
             this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'host' })
         })
         this.props.setFooterDisplay(false)
-        this.props.setHomePage(false)
+        this.props.setHomePage('dash')
     }
 
     componentWillUnmount(){
@@ -52,7 +52,7 @@ export class _Dashboard extends Component {
         const { action, loggedInUser, selsctedEditStay, } = this.state
         const { removeStay, stays, toggleMsgModal,orders } = this.props
         return (
-            <main className="dashboard-container">
+            <main className="dashboard-container main page">
                 <section className="dash-main-container">
                     <DashHeader onSelectAction={this.onSelectAction} />
                     <section className="dash-info-container">

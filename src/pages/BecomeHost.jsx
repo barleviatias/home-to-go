@@ -16,7 +16,7 @@ export class BecomeHost extends Component {
     render() {
         const { loggedInUser } = this.props
         return (
-            <main >
+            <main className="main" >
                 <section className="full bocome-host-container">
                     <div className="hosting-img">
                         <Link className="a" to="/"><i className="fab fa-airbnb fa-3x logo-icon"></i></Link>

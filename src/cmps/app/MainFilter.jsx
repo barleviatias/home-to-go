@@ -242,12 +242,11 @@ export class MainFilter extends Component {
 
                 </form>
                 <form className={!isFullHeader ? "min-filter" : "filter-close"} onClick={openFullHeader} >
-                    <span>Start your search</span>
+                    <span>{address ? address : 'Start your search'}</span>
                     <button onClick={this.onSearch}>
                         <Link to="/explore"><i className="fas fa-search"></i> </Link>
                     </button>
                 </form>
-                {/* < Dates /> */}
             </section>
         )
     }
