@@ -1,6 +1,7 @@
 .dynamic-modal {
     position: absolute;
     z-index: 5;
+ 
 
     .book-guest-modal {
         display: flex;
@@ -77,17 +78,17 @@
         }
     }
 
-    .book-date-modal{
+    .book-date-modal {
         z-index: 5;
         position: absolute;
         transform: translateX(-12.5%);
         padding: 0 0;
-        
-        >*{
-            border-radius: 10px;
-            >*{
-                border-radius: 10px;
+        border-radius: 10px;
 
+        > * {
+            border-radius: 10px;
+            > * {
+                border-radius: 10px;
             }
         }
     }
@@ -124,6 +125,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+                border-radius: 10px;
 
                 > span:first-child {
                     color: black;
@@ -131,13 +133,13 @@
             }
 
             &:first-of-type {
-                border-top-left-radius: 15px;
-                border-top-right-radius: 15px;
+                border-top-left-radius: 10px;
+                border-top-right-radius: 10px;
             }
 
             &:last-of-type {
-                border-bottom-left-radius: 15px;
-                border-bottom-right-radius: 15px;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
             }
 
             &:not(:last-of-type) {
@@ -165,7 +167,6 @@
         position: absolute;
         transform: translateX(-12.5%);
         padding: 0 0;
-
 
         display: flex;
         flex-direction: column;
@@ -240,15 +241,15 @@
     .stay-filter-modal {
         position: fixed;
         z-index: 5;
-        transform: translateX(-50%);
+        transform: translateX(-12.5%);
 
-        display: flex;
+
         flex-direction: column;
         align-items: flex-start;
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 15px;
+        border-radius: 10px;
 
         width: fit-content;
         font-size: 16px;
@@ -262,15 +263,14 @@
             width: 100%;
             background-color: white;
             cursor: pointer;
+            border-radius: 10px;
 
-            &.amenities{
-                div{
-                    &.clicked{
+            &.amenities {
+                div {
+                    &.clicked {
                         background-color: rgb(230, 230, 230);
-
                     }
                 }
-
             }
 
             div {
@@ -279,17 +279,24 @@
                 align-items: flex-start;
                 padding: 10px 20px;
 
+                &.price {
+                    display: flex;
+                    flex-direction: row;
+                    border-radius: 10px;
+
+                }
+
                 &:not(:last-of-type) {
                     border-bottom: 1px solid rgb(216, 216, 216);
                 }
 
                 &:first-of-type {
-                    border-top-left-radius: 15px;
-                    border-top-right-radius: 15px;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
                 }
                 &:last-of-type {
-                    border-bottom-left-radius: 15px;
-                    border-bottom-right-radius: 15px;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
                 }
 
                 &:hover {

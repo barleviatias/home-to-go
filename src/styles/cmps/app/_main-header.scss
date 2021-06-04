@@ -12,24 +12,64 @@
                 minmax(2rem, 1fr)
                 minmax(auto, $mobile-breakpoint)
                 minmax(2rem, 1fr);
+
+                .min-filter{
+                    display: none;
+                }
         }
         @include for-narrow-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
-                minmax(auto, $tablet-breakpoint)
+                minmax(auto, $narrow-breakpoint)
                 minmax(2rem, 1fr);
+
+            .logo-link {
+                display: none;
+            }
+            .mini-logo-link {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 1px;
+                font-family: airbnb-bold, sans-serif;
+                font-size: rem(20px);
+                letter-spacing: -0.5px;
+                font-size: 36px;
+            }
+
+            .min-filter{
+                display: flex;
+                left: 30%;
+            }
         }
         @include for-normal-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
                 minmax(auto, $narrow-breakpoint)
                 minmax(2rem, 1fr);
+
+                .logo-link {
+                    display: flex;
+                }
+                .mini-logo-link {
+                    display: none;
+                    justify-content: flex-start;
+                    align-items: center;
+                    gap: 1px;
+                    font-family: airbnb-bold, sans-serif;
+                    font-size: rem(20px);
+                    letter-spacing: -0.5px;
+                    font-size: 36px;
+                }
+                .min-filter{
+                    left: 50%;
+                }
         }
         @include for-large-layout {
             grid-template-columns:
-                minmax(2rem, 1fr)
+                minmax(5rem, 1fr)
                 minmax(auto, $normal-breakpoint)
-                minmax(2rem, 1fr);
+                minmax(5rem, 1fr);
         }
         @include for-wide-layout {
             grid-template-columns:
@@ -89,12 +129,11 @@
             }
 
             .details-header-nav {
-                position:relative;
+                position: relative;
                 bottom: 5px;
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-
 
                 .details-nav {
                     display: flex;
@@ -102,7 +141,6 @@
                     align-items: center;
                     gap: 30px;
                     padding-top: auto;
-    
 
                     a {
                         font-size: 14px;
@@ -110,7 +148,7 @@
                         font-family: airbnb-regular;
                         color: $clr-black;
 
-                        &:hover{
+                        &:hover {
                             text-decoration: underline;
                         }
                     }
@@ -193,6 +231,10 @@
     }
 
     .details-header-nav {
+        display: none;
+    }
+
+    .mini-logo-link {
         display: none;
     }
 

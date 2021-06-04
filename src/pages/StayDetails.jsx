@@ -221,7 +221,7 @@ export class StayDetails extends Component {
 						</div>
 					</div>
 				</section>
-				<div className="stay-gallery">
+				<div id="stay-gallery" className="stay-gallery">
 					{stay.imgUrls.map((imgUrl, idx) => {
 						if (idx < 5) {
 							return (
@@ -289,7 +289,7 @@ export class StayDetails extends Component {
 							<span>{desc}</span>
 						</div>
 
-						<div className="amenities-list">
+						<div id="amenities" className="amenities-list">
 							<h2>Amenities</h2>
 							<ul>
 								{amenities.map((amenity) => {

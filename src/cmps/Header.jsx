@@ -110,6 +110,7 @@ export class Header extends React.Component {
                 </section>
                 <section >
                     <NavLink className="logo-link" to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
+                    <NavLink className="mini-logo-link" to="/"><i className="fab fa-airbnb"/></NavLink>
                     <nav>
                         <NavLink to="/host">Become a host</NavLink>
                         <NavLink to="/explore" onClick={this.explorAll}>Explore</NavLink>
