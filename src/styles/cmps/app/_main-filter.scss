@@ -25,6 +25,7 @@
         padding: 0px 10px 0px 0px;
         margin: 0 0;
 
+
         &:hover {
             background-color: rgb(246, 246, 246);
         }
@@ -40,7 +41,7 @@
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s;
 
-            &:first-child {
+            &:first-child{
                 padding-inline-start: 30px;
             }
 
@@ -88,15 +89,16 @@
                     padding-right: 10px;
                     cursor: pointer;
                 }
+
             }
 
-            &:nth-child(2) {
+            &:nth-child(2){
                 width: 180px;
             }
-            &:nth-child(3) {
+            &:nth-child(3){
                 width: 180px;
             }
-
+            
             &:not(:last-of-type)::after {
                 content: "";
                 border-left: 1px solid #8f8f8f38;
@@ -139,7 +141,7 @@
 
         span {
             height: 100%;
-            padding: 12.5px 125px 12.5px 25px;
+            padding: 12.5px 12.5px 12.5px 25px;
             cursor: pointer;
             font-family: airbnb-regular, sans-serif;
             color: $clr-black;
