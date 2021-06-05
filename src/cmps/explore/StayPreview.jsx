@@ -40,7 +40,6 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
         var updatedTrip = trip
         updatedTrip.stay = stay
         addTrip(updatedTrip)
-
     }
 
     return (
