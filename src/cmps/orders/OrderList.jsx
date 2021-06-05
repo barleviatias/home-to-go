@@ -3,7 +3,7 @@ import { OrderPreview } from './OrderPreview'
 export function OrderList({ orders, getCancelationStatus, onCancelOrder }) {
 
 
-    if (!orders) return <h1>No Orders To Show</h1>
+    if (!orders || !orders.length) return <h1>No Orders To Show</h1>
 
     return (
         <section className="order-list">

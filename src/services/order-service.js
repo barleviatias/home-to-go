@@ -25,9 +25,8 @@ async function add(trip, stay, loggedInUser) {
         startDate: trip.time.checkIn,
         guests: trip.guests,
         host: stay.host,
-        status: 'pending',
+        status: 'wait for approval',
         stay: trip.stay,
-        // stay: { _id: stay._id, name: stay.name, price: stay.price },
         totalPrice: trip.totalPrice,
         user: loggedInUser,
         stay

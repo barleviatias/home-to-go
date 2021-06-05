@@ -1,8 +1,41 @@
-.user-details{
-    img {
-        object-fit: contain;
-        height: 100px;
-        width: 100px;
-        border-radius: 50%;
+.user-details {
+
+    .user-details-header {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+        padding-bottom: 40px;
+        img {
+            object-fit: contain;
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+        }
+
+        >span{
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            align-items: flex-start;
+        }
+
+        h1 {
+            font-size: rem(20px);
+            line-height: rem(22px);
+            color: $clr-black;
+            font-family: airbnb-bold, sans-serif;
+        }
+
+        p{
+            font-size: rem(14px);
+            line-height: rem(16px);
+            color: $clr-black;
+            font-family: airbnb-book, sans-serif; 
+        }
+    }
+
+    .user-details-info {
+        &.user-edit {
+        }
     }
 }

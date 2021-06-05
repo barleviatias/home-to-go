@@ -239,7 +239,11 @@ class _App extends Component {
           <Route
             path="/user"
             render={(props) => (
-              <UserDetails {...props} updateUser={updateUser} />
+              <UserDetails {...props} 
+              updateUser={updateUser}
+              setHomePage={this.setHomePage}
+              setFooterDisplay={this.setFooterDisplay}
+              />
             )}
           />
           <Route

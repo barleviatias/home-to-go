@@ -219,7 +219,7 @@ class _BookStay extends Component {
                     <div className="order-form">
 
                         <div className="order-form-header">
-                            <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span> / night</p>
+                            <p><span className="order-price">${(trip.guests.kids + trip.guests.adults === 0) ? price :(trip.guests.kids + trip.guests.adults) * price}</span> / night</p>
                             <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p> ({reviews.length} reviews) </p></span>
                         </div>
 

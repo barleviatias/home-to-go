@@ -13,7 +13,8 @@ export class Orders extends Component {
             checkIn: true,
             checkOut: true,
             name: true
-        }
+        },
+        currPage: 'upcoming'
     }
 
     componentDidMount() {
@@ -63,51 +64,35 @@ export class Orders extends Component {
     }
 
     render() {
-        const { orders, filterBy } = this.state;
+        const { orders, filterBy, currPage } = this.state;
         const { name, price, status, checkIn, checkOut } = filterBy
         return (
             <main className="user-order-container main page">
                 <section className="user-order-list">
-                    <div className="order-nav">
-                        <button>Upcoming</button>
-                        <button>Past</button>
+
+                    <h1>Trips</h1>
+
+                    <div className="order-header">
+                        <div className="order-nav">
+                            <button className={currPage === 'upcoming' && 'active'} onClick={() => { this.setState({ currPage: 'upcoming' }) }}>Upcoming</button>
+                            <button className={currPage === 'past' && 'active'} onClick={() => { this.setState({ currPage: 'past' }) }}>Past</button>
+                        </div>
+
+                        <div className="order-filter">
+                            <button name="name" value={name} onClick={this.handleChange}>Stay name</button>
+                            <button name="checkIn" value={checkIn} onClick={this.handleChange}>Check in</button>
+                            <button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button>
+                            <button name="price" value={price} onClick={this.handleChange}>Price</button>
+                            <button name="status" value={status} onClick={this.handleChange}>Status</button>
+                        </div>
                     </div>
-                    <div className="order-filter">
-                        <button name="name" value={name} onClick={this.handleChange}>Stay name</button>
-                        <button name="checkIn" value={checkIn} onClick={this.handleChange}>Check in</button>
-                        <button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button>
-                        <button name="price" value={price} onClick={this.handleChange}>Price</button>
-                        <button name="status" value={status} onClick={this.handleChange}>Status</button>
-                    </div>
+
                     <OrderList
                         orders={orders}
                         getCancelationStatus={this.getCancelationStatus}
                         onCancelOrder={this.onCancelOrder}
                     />
 
-
-
-                    {/* <table className="user-order-list-table">
-                        <thead>
-                            <tr>
-                                <th> <button name="name" value={name} onClick={this.handleChange}>Stay name</button></th>
-                                <th><button name="checkIn" value={checkIn} onClick={this.handleChange}>Check in</button></th>
-                                <th> <button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button></th>
-                                <th><button name="price" value={price} onClick={this.handleChange}>Price</button></th>
-                                <th>host</th>
-                                <th><button name="status" value={status} onClick={this.handleChange}>Status</button></th>
-                                <th>cancelation</th>
-                                <th>Actions</th>
-                            </tr>
-                        </thead>
-                        <OrderList
-                            orders={orders}
-                            getCancelationStatus={this.getCancelationStatus}
-                            onCancelOrder={this.onCancelOrder}
-                        />
-                    </table> */}
-
-                    
                 </section>
             </main>
         )
