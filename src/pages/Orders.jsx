@@ -14,7 +14,7 @@ export class Orders extends Component {
             checkOut: true,
             name: true
         },
-        currPage: 'upcoming'
+        currPage: 'upcoming',
     }
 
     componentDidMount() {
@@ -32,6 +32,7 @@ export class Orders extends Component {
     loadOrders = async () => {
         await this.props.loadOrders({ id: this.state.loggedInUser._id, type: 'user' })
         this.setState({ orders: this.props.orders })
+        this.showOrdersByTime()
     }
 
     onCancelOrder = async (stay) => {
@@ -43,6 +44,25 @@ export class Orders extends Component {
         }
         else this.props.toggleMsgModal(<span><i className="far fa-times-circle"></i><h3>You can't cancel this order</h3></span>)
 
+    }
+
+    toggleShowOrderTime = (currPage) => {
+        this.setState({ currPage }, () => { this.showOrdersByTime() })
+    }
+
+    showOrdersByTime = () => {
+        const orders = this.props.orders
+        var filteredOrders = [];
+        if (this.state.currPage === 'upcoming') {
+            orders.forEach(order => {
+                if (new Date(order.startDate) - new Date(Date.now()) > 0) filteredOrders.push(order)
+            })
+        } else {
+            orders.forEach(order => {
+                if (new Date(order.startDate) - new Date(Date.now()) < 0) filteredOrders.push(order)
+            })
+        }
+        this.setState({ orders: filteredOrders })
     }
 
     getCancelationStatus = (stay) => {
@@ -63,6 +83,32 @@ export class Orders extends Component {
         });
     }
 
+    onSortOrders = (ev) => {
+        ev.preventDefault()
+        const orders = this.state.orders;
+        const sortBy = ev.target.name
+        var sortOrders = [];
+        console.log(sortBy);
+        switch (sortBy) {
+            case 'name':
+                sortOrders = _sortByName(orders);
+                break
+            case 'checkIn':
+                sortOrders = _sortByDate(orders, 'startDate');
+                console.log(sortOrders);
+                break
+            case 'checkOut':
+                sortOrders = _sortByDate(orders, 'endDate');
+                break
+            case 'price':
+                sortOrders = _sortByPrice(orders);
+                break
+        }
+
+        this.setState({ orders: sortOrders })
+    }
+
+
     render() {
         const { orders, filterBy, currPage } = this.state;
         const { name, price, status, checkIn, checkOut } = filterBy
@@ -74,16 +120,16 @@ export class Orders extends Component {
 
                     <div className="order-header">
                         <div className="order-nav">
-                            <button className={currPage === 'upcoming' && 'active'} onClick={() => { this.setState({ currPage: 'upcoming' }) }}>Upcoming</button>
-                            <button className={currPage === 'past' && 'active'} onClick={() => { this.setState({ currPage: 'past' }) }}>Past</button>
+                            <button className={currPage === 'upcoming' && 'active'} onClick={() => { this.toggleShowOrderTime('upcoming') }}> Upcoming</button>
+                            <button className={currPage === 'past' && 'active'} onClick={() => { this.toggleShowOrderTime('past') }}>Past</button>
                         </div>
 
                         <div className="order-filter">
-                            <button name="name" value={name} onClick={this.handleChange}>Stay name</button>
-                            <button name="checkIn" value={checkIn} onClick={this.handleChange}>Check in</button>
-                            <button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button>
-                            <button name="price" value={price} onClick={this.handleChange}>Price</button>
-                            <button name="status" value={status} onClick={this.handleChange}>Status</button>
+                            <button name="name" value={name} onClick={this.onSortOrders} >Stay name</button>
+                            <button name="checkIn" value={checkIn} onClick={this.onSortOrders}>Check in</button>
+                            <button name="checkOut" value={checkOut} onClick={this.onSortOrders}>Check out</button>
+                            <button name="price" value={price} onClick={this.onSortOrders}>Price</button>
+                            <button name="status" value={status} >Status</button>
                         </div>
                     </div>
 
@@ -97,4 +143,31 @@ export class Orders extends Component {
             </main>
         )
     }
+}
+
+function _sortByName(orders) {
+    return orders.sort(function (orderA, orderB) {
+        var nameA = orderA.stay.name.toUpperCase(); // ignore upper and lowercase
+        var nameB = orderB.stay.name.toUpperCase(); // ignore upper and lowercase
+        if (nameA < nameB) {
+            return -1;
+        }
+        if (nameA > nameB) {
+            return 1;
+        }
+        return 0;
+    });
+}
+
+function _sortByDate(orders, dateType) {
+
+    return orders.sort(function (orderA, orderB) {
+        return new Date(orderA[dateType]) - new Date(orderB[dateType]);
+    });
+}
+function _sortByPrice(orders) {
+
+    return orders.sort(function (orderA, orderB) {
+        return orderA.totalPrice - orderB.totalPrice
+    });
 }
