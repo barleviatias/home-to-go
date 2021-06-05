@@ -7,25 +7,74 @@
         minmax(2rem, 1fr);
 
     &.wide-header {
-        @include for-tablet-layout {
+        @include for-mobile-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
                 minmax(auto, $mobile-breakpoint)
                 minmax(2rem, 1fr);
 
-                .min-filter{
-                    display: none;
+            &.top {
+                .logo-link {
+                    display: flex;
                 }
+            }
+
+            .logo-link {
+                display: none;
+            }
+
+            nav {
+                > * {
+                    display: none;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
         }
+        @include for-tablet-layout {
+            grid-template-columns:
+                minmax(2rem, 1fr)
+                minmax(auto, $tablet-breakpoint)
+                minmax(2rem, 1fr);
+
+            &.top {
+                .logo-link {
+                    display: flex;
+                }
+            }
+
+            .logo-link {
+                display: none;
+            }
+
+            nav {
+                > * {
+                    display: none;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+        }
+
         @include for-narrow-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
                 minmax(auto, $narrow-breakpoint)
                 minmax(2rem, 1fr);
 
+            &.top {
+                .logo-link {
+                    display: flex;
+                }
+                .mini-logo-link {
+                    display: none;
+                }
+            }
+
             .logo-link {
                 display: none;
             }
+
             .mini-logo-link {
                 display: flex;
                 justify-content: flex-start;
@@ -37,38 +86,37 @@
                 font-size: 36px;
             }
 
-            .min-filter{
-                display: flex;
-                left: 30%;
+            nav {
+                > * {
+                    display: initial;
+                    opacity: unset;
+                    pointer-events: initial;
+                }
             }
         }
+
         @include for-normal-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
-                minmax(auto, $narrow-breakpoint)
+                minmax(auto, $normal-breakpoint)
                 minmax(2rem, 1fr);
 
-                .logo-link {
-                    display: flex;
-                }
-                .mini-logo-link {
-                    display: none;
-                    justify-content: flex-start;
-                    align-items: center;
-                    gap: 1px;
-                    font-family: airbnb-bold, sans-serif;
-                    font-size: rem(20px);
-                    letter-spacing: -0.5px;
-                    font-size: 36px;
-                }
-                .min-filter{
-                    left: 50%;
-                }
+            .logo-link {
+                display: flex;
+            }
+
+            .mini-logo-link {
+                display: none;
+            }
+
+            .min-filter {
+                left: 50%;
+            }
         }
         @include for-large-layout {
             grid-template-columns:
                 minmax(5rem, 1fr)
-                minmax(auto, $normal-breakpoint)
+                minmax(auto, $large-breakpoint)
                 minmax(5rem, 1fr);
         }
         @include for-wide-layout {
@@ -80,30 +128,96 @@
     }
 
     &.narrow-header {
+        @include for-mobile-layout {
+            grid-template-columns:
+                minmax(0.5rem, 1fr)
+                minmax(auto, 350px)
+                minmax(0.5rem, 1fr);
+
+            .logo-link {
+                display: none;
+            }
+
+            nav {
+                > * {
+                    display: none;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
+        }
         @include for-tablet-layout {
             grid-template-columns:
-                minmax(2rem, 1fr)
+                minmax(0.5rem, 1fr)
                 minmax(auto, $mobile-breakpoint)
-                minmax(2rem, 1fr);
+                minmax(0.5rem, 1fr);
+
+            .logo-link {
+                display: none;
+            }
+
+            nav {
+                > * {
+                    display: none;
+                    opacity: 0;
+                    pointer-events: none;
+                }
+            }
         }
         @include for-narrow-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
-                minmax(auto, $mobile-breakpoint)
+                minmax(auto, $tablet-breakpoint)
                 minmax(2rem, 1fr);
+
+            .logo-link {
+                display: none;
+            }
+
+            .mini-logo-link {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 1px;
+                font-family: airbnb-bold, sans-serif;
+                font-size: rem(20px);
+                letter-spacing: -0.5px;
+                font-size: 36px;
+            }
+
+            nav {
+                > * {
+                    display: initial;
+                    opacity: unset;
+                    pointer-events: initial;
+                }
+            }
         }
         @include for-normal-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
-                minmax(auto, $tablet-breakpoint)
+                minmax(auto, $narrow-breakpoint)
                 minmax(2rem, 1fr);
+
+            .logo-link {
+                display: flex;
+            }
+
+            .mini-logo-link {
+                display: none;
+            }
+
+            .min-filter {
+                left: 50%;
+            }
         }
         @include for-large-layout {
             grid-template-columns:
-                minmax(2rem, 1fr)
-                minmax(auto, $narrow-breakpoint)
-                minmax(2rem, 1fr);
+                minmax(5rem, 1fr)
+                minmax(auto, $normal-breakpoint)
+                minmax(5rem, 1fr);
         }
+
         @include for-wide-layout {
             grid-template-columns:
                 minmax(2rem, 1fr)
@@ -126,6 +240,28 @@
 
             .logo-link {
                 display: none;
+            }
+
+            @include for-mobile-layout {
+                .mini-logo-link {
+                    opacity: 0;
+                    pointer-events: none;
+                    width: 0;
+                }
+            }
+            @include for-tablet-layout {
+                .mini-logo-link {
+                    opacity: 0;
+                    pointer-events: none;
+                    width: 0;
+                }
+            }
+            @include for-normal-layout {
+                .mini-logo-link {
+                    opacity: 1;
+                    pointer-events: unset;
+                    width: unset;
+                }
             }
 
             .details-header-nav {
@@ -152,6 +288,27 @@
                         &:hover {
                             text-decoration: underline;
                         }
+                    }
+                }
+                @include for-mobile-layout {
+                    .details-nav {
+                        opacity: 0;
+                        pointer-events: none;
+                        width: 0;
+                    }
+                }
+                @include for-tablet-layout {
+                    .details-nav {
+                        opacity: 0;
+                        pointer-events: none;
+                        width: 0;
+                    }
+                }
+                @include for-normal-layout {
+                    .details-nav {
+                        opacity: 1;
+                        pointer-events: unset;
+                        width: unset;
                     }
                 }
 
@@ -215,6 +372,7 @@
                     }
                 }
             }
+        
         }
     }
 
@@ -274,6 +432,7 @@
                 justify-content: flex-start;
                 align-items: center;
                 gap: 1px;
+                margin-top: 2px;
                 font-family: airbnb-bold, sans-serif;
                 font-size: rem(20px);
                 letter-spacing: -0.5px;

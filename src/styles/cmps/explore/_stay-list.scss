@@ -4,4 +4,14 @@
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 17px;
 
+    @include for-mobile-layout {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    }
+    @include for-tablet-layout {
+        grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    }
+    @include for-narrow-layout {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    }
+
 }

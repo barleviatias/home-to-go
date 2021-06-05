@@ -1,23 +1,15 @@
 .main-footer {
-    display: grid;
-    grid-template-columns:
-        minmax(2rem, 1fr)
-        minmax(auto, $mobile-breakpoint)
-        minmax(2rem, 1fr);
-
+    @include for-mobile-layout {
+        display: none;
+    }
     @include for-tablet-layout {
-        grid-template-columns:
-            minmax(2rem, 1fr)
-            minmax(auto, $mobile-breakpoint)
-            minmax(2rem, 1fr);
+        display: none;
     }
     @include for-narrow-layout {
-        grid-template-columns:
-            minmax(2rem, 1fr)
-            minmax(auto, $tablet-breakpoint)
-            minmax(2rem, 1fr);
+        display: none;
     }
     @include for-normal-layout {
+        display: grid;
         grid-template-columns:
             minmax(2rem, 1fr)
             minmax(auto, $narrow-breakpoint)
