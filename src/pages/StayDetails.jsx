@@ -93,7 +93,9 @@ export class StayDetails extends Component {
 
 	getStayReviewStatistics = () => {
 		const { reviews } = this.state.stay
+
 		const num = reviews.length
+
 		if (!reviews) return
 		const reviewCtgMap = {
 			Cleanliness: 0,
@@ -105,13 +107,13 @@ export class StayDetails extends Component {
 		}
 
 		reviews.forEach((review) => {
-			for (const key in review.category) {
-				reviewCtgMap[key] += review.category[key]
+			for (const key in review.categories) {
+				reviewCtgMap[key] += review.categories[key]
 			}
 		})
 
 		for (const ctg in reviewCtgMap) {
-			reviewCtgMap[ctg] = +(reviewCtgMap[ctg] / num).toFixed(1)
+			reviewCtgMap[ctg] = +(reviewCtgMap[ctg] / num).toFixed(2)
 		}
 
 		const elReviews = []

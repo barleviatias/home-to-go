@@ -21,10 +21,11 @@ export class Orders extends Component {
             this.loadOrders();
         })
         this.props.setFooterDisplay(false)
+        this.props.setHomePage('orders')
     }
 
-    componentWillUnmount(){
-        this.props.setFooterDisplay(true) 
+    componentWillUnmount() {
+        this.props.setFooterDisplay(true)
     }
 
     loadOrders = async () => {
@@ -56,24 +57,43 @@ export class Orders extends Component {
     }
 
     handleChange = (ev) => {
-        var {name , value} = ev.target
+        var { name, value } = ev.target
         this.setState({ filterBy: { ...this.state.filterBy, [name]: !this.state.filterBy[name] } }, () => {
         });
     }
 
     render() {
-        const { orders ,filterBy} = this.state;
-        const { name, price , status , checkIn , checkOut} = filterBy
+        const { orders, filterBy } = this.state;
+        const { name, price, status, checkIn, checkOut } = filterBy
         return (
             <main className="user-order-container main page">
                 <section className="user-order-list">
-                    <table className="user-order-list-table">
+                    <div className="order-nav">
+                        <button>Upcoming</button>
+                        <button>Past</button>
+                    </div>
+                    <div className="order-filter">
+                        <button name="name" value={name} onClick={this.handleChange}>Stay name</button>
+                        <button name="checkIn" value={checkIn} onClick={this.handleChange}>Check in</button>
+                        <button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button>
+                        <button name="price" value={price} onClick={this.handleChange}>Price</button>
+                        <button name="status" value={status} onClick={this.handleChange}>Status</button>
+                    </div>
+                    <OrderList
+                        orders={orders}
+                        getCancelationStatus={this.getCancelationStatus}
+                        onCancelOrder={this.onCancelOrder}
+                    />
+
+
+
+                    {/* <table className="user-order-list-table">
                         <thead>
                             <tr>
                                 <th> <button name="name" value={name} onClick={this.handleChange}>Stay name</button></th>
                                 <th><button name="checkIn" value={checkIn} onClick={this.handleChange}>Check in</button></th>
-                                <th>  <th><button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button></th></th>
-                                <th>  <button name="price" value={price} onClick={this.handleChange}>Price</button></th>
+                                <th> <button name="checkOut" value={checkOut} onClick={this.handleChange}>Check out</button></th>
+                                <th><button name="price" value={price} onClick={this.handleChange}>Price</button></th>
                                 <th>host</th>
                                 <th><button name="status" value={status} onClick={this.handleChange}>Status</button></th>
                                 <th>cancelation</th>
@@ -85,7 +105,9 @@ export class Orders extends Component {
                             getCancelationStatus={this.getCancelationStatus}
                             onCancelOrder={this.onCancelOrder}
                         />
-                    </table>
+                    </table> */}
+
+                    
                 </section>
             </main>
         )
