@@ -45,7 +45,6 @@ async function logout() {
 
 
 async function update(user) {
-	console.log('currUser: ' , user);
 	const updatedUser = await httpService.put(`user/${user._id}`, user)
 	// Handle case in which admin updates other stay's details
 	if (getLoggedinUser()._id === updatedUser._id) _saveLocalUser(updatedUser)

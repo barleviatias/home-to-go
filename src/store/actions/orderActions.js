@@ -11,14 +11,25 @@ export function loadOrders(user) {
   }
 }
 
-export function addOrder(trip ,stay, loggedInUser) {
+export function addOrder(trip, stay, loggedInUser) {
   return async dispatch => {
     try {
       const addedOrder = await orderService.add(trip, stay, loggedInUser)
       dispatch({ type: 'ADD_ORDER', order: addedOrder })
-      
+
     } catch (err) {
       console.log('OrderActions: err in addOrder', err)
+    }
+  }
+}
+
+export function updateOrder(order) {
+  return async dispatch => {
+    try {
+      const updatedOrder = await orderService.update(order)
+      dispatch({ type: 'UPDATE_ORDER', order: updatedOrder })
+    } catch (err) {
+      console.log('StayActions: err in update Stay', err)
     }
   }
 }
@@ -33,3 +44,5 @@ export function removeOrder(orderId) {
     }
   }
 }
+
+

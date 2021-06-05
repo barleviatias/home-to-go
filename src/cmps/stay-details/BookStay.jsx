@@ -60,11 +60,11 @@ class _BookStay extends Component {
             case 'date':
                 dynamicModal.modalContent = (
                     <section className="dynamic-modal-child book-date-modal">
-                            <PickDates handleDates={this.handleDates} />
+                        <PickDates handleDates={this.handleDates} />
                     </section>)
-                dynamicModal.modalPosition = { top: y+20, left: x }
+                dynamicModal.modalPosition = { top: y + 20, left: x }
                 break
-                
+
             case 'book-guests':
                 const { kids, adults } = this.state.trip.guests
                 dynamicModal.modalContent = (
@@ -194,7 +194,7 @@ class _BookStay extends Component {
             trip: {
                 guests: { adults: 0, kids: 0 },
                 loc: { address: '' },
-                time: { checkIn: '', checkOut: '' }
+                time: { checkIn: '', checkOut: '' },
             },
             isAvailable: false
         })
@@ -220,26 +220,26 @@ class _BookStay extends Component {
 
                         <div className="order-form-header">
                             <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span> / night</p>
-                            <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate() }<p> ({reviews.length} reviews) </p></span>
+                            <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p> ({reviews.length} reviews) </p></span>
                         </div>
 
                         <form>
                             <div className="order-form-date-picker">
                                 <label htmlFor="check-in" className="check-in">
                                     <span>Check in</span>
-                                    <input defaultValue={checkIn} id="check-in" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')}   />
+                                    <input defaultValue={checkIn} id="check-in" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
                                 </label>
                                 <label htmlFor="check-out" className="check-out">
                                     <span>Check out</span>
-                                    <input defaultValue={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')}  />
+                                    <input defaultValue={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
                                 </label>
                             </div>
-                
+
                             <label className="guests-lable" >
                                 <span>Guests</span>
                                 <input onClick={(event) => { this.onSetModal(event, 'book-guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" onChange={this.handleChange} />
                             </label>
-                            
+
                             {!isAvailable && <button type="button" className="book-stay-btn" onClick={this.toggleAvailability}>Check availability</button>}
                             {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}
                             {isAvailable && <div className="book-info">

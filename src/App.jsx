@@ -14,8 +14,8 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
 import { stayService } from './services/stay-service'
-import { loadOrders, removeOrder } from './store/actions/orderActions';
-import { addTrip, loadTrip } from './store/actions/tripActions';
+import { loadOrders, removeOrder ,updateOrder} from './store/actions/orderActions';
+import { addTrip, loadTrip, removeTrip } from './store/actions/tripActions';
 import { updateUser, loadUsers, logout, login } from './store/actions/userActions';
 import { DynamicModal } from './cmps/app/DynamicModal';
 import { UserMsg } from './cmps/app/UserMsg';
@@ -70,7 +70,7 @@ class _App extends Component {
   };
 
   closeDynamicModal = (ev) => {
-    console.log('close modal',ev);
+    console.log('close modal', ev);
     if (ev.type === 'scroll') {
       this.setState({ modalType: '' }, () => {
         window.removeEventListener('click', this.closeDynamicModal, true);
@@ -78,22 +78,22 @@ class _App extends Component {
       });
       return;
     }
-    
+
     if (ev.target.closest('.dynamic-modal')) return;
     if (ev.target.nodeName === 'BUTTON') return;
-    
+
     this.setState({ modalType: '' }, () => {
       window.removeEventListener('click', this.closeDynamicModal, true);
       window.removeEventListener('scroll', this.closeDynamicModal, true);
     });
   };
-  
+
   openDynamicModal = (modalType, ev = null) => {
-    console.log('open modal',modalType,ev);
-    if (ev && ev.target.innerText === 'logout'){
-      this.setState({ modalType : ''})
+    console.log('open modal', modalType, ev);
+    if (ev && ev.target.innerText === 'logout') {
+      this.setState({ modalType: '' })
       return
-    } 
+    }
     this.setState({ modalType }, () => {
       window.addEventListener('click', this.closeDynamicModal, true);
       window.addEventListener('scroll', this.closeDynamicModal, true);
@@ -116,6 +116,7 @@ class _App extends Component {
       updateUser,
       trip,
       addTrip,
+      removeTrip,
       loggedInUser,
       logout,
       loadStays,
@@ -123,15 +124,17 @@ class _App extends Component {
       removeOrder,
       loadWishlist,
       updateStay,
-      login
+      login,
+      updateOrder
     } = this.props;
-    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays, isFooterOn,currPage } = this.state;
+    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays, isFooterOn, currPage } = this.state;
 
     return (
       <Router>
         <Header
           trip={trip}
           addTrip={addTrip}
+          removeTrip={removeTrip}
           modalType={modalType}
           onSearch={this.onSearch}
           loggedInUser={loggedInUser}
@@ -170,6 +173,7 @@ class _App extends Component {
                 loadOrders={loadOrders} orders={orders}
                 setFooterDisplay={this.setFooterDisplay}
                 setHomePage={this.setHomePage}
+                updateOrder={updateOrder}
               />
             )}
           />
@@ -232,6 +236,7 @@ class _App extends Component {
                 setHomePage={this.setHomePage}
                 toggleMsgModal={this.toggleMsgModal}
                 login={login}
+                addTrip={addTrip}
               />
             )}
           />
@@ -253,6 +258,7 @@ class _App extends Component {
                 topRatedStays={topRatedStays}
                 nearbayStays={nearbayStays}
                 setHomePage={this.setHomePage}
+                addTrip={addTrip}
               />
             )}
           />
@@ -298,6 +304,7 @@ const mapDispatchToProps = {
   updateUser,
   loadUsers,
   loadTrip,
+  removeTrip,
   logout,
   removeStay,
   loadHostStays,
@@ -305,7 +312,8 @@ const mapDispatchToProps = {
   removeOrder,
   loadWishlist,
   updateStay,
-  login
+  login,
+  updateOrder
 };
 
 export const App = connect(mapStateToProps, mapDispatchToProps)(_App);
