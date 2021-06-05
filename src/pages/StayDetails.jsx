@@ -6,6 +6,7 @@ import { AddReview } from '../cmps/stay-details/AddReview'
 import { BookStay } from '../cmps/stay-details/BookStay'
 import { GoogleMap } from '../cmps/stay-details/GoogleMap'
 import ReactStars from 'react-rating-stars-component'
+import { Loader } from '../cmps/app/Loader'
 
 export class StayDetails extends Component {
 	state = {
@@ -169,7 +170,7 @@ export class StayDetails extends Component {
 
 	render() {
 		const { stay } = this.state;
-		if (!stay) return <h1>loading...</h1>
+		if (!stay) return <Loader />
 
 		const {
 			loggedInUser,

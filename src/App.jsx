@@ -19,6 +19,7 @@ import { addTrip, loadTrip, removeTrip } from './store/actions/tripActions';
 import { updateUser, loadUsers, logout, login } from './store/actions/userActions';
 import { DynamicModal } from './cmps/app/DynamicModal';
 import { UserMsg } from './cmps/app/UserMsg';
+import {Message} from './pages/Message'
 
 class _App extends Component {
   state = {
@@ -155,6 +156,7 @@ class _App extends Component {
         />
         <Switch>
           <Route path="/login" render={(props) => (<LoginSignup {...props} setFooterDisplay={this.setFooterDisplay} />)} />
+          {/* <Route path="/msg" render={(props) => (<Message {...props} />)} /> */}
           <Route
             path="/orders"
             render={(props) => (

@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink ,Link} from 'react-router-dom'
 import { MainFilter } from './app/MainFilter'
 import Avatar from "../assets/img/avatar.png"
 import { NavMenu } from './app/NavMenu'
@@ -126,7 +126,7 @@ export class Header extends React.Component {
                     <NavLink className="logo-link" to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
                     <NavLink className="mini-logo-link" to="/"><i className="fab fa-airbnb" /></NavLink>
                     <nav>
-                        <NavLink to="/host">Become a host</NavLink>
+                        <Link to={(loggedInUser)? `/host/${loggedInUser._id}`:"/host"}>Become a host</Link>
                         <NavLink to="/explore" onClick={this.explorAll}>Explore</NavLink>
                         <button onClick={this.toggleUserMenu} className="user-menu-btn">
                             <span><i className="fas fa-bars"></i></span>
