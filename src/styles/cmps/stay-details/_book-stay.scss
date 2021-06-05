@@ -8,19 +8,43 @@
         top: 120px;
 
         .order-form {
-            border: 1px solid rgb(204, 204, 204);
+            border: 1px solid rgb(218, 218, 218);
             border-radius: 15px;
-            padding: 15px 20px;
+            padding: 15px 25px;
             box-shadow: 0 6px 16px -2px #d8d8d8;
             
             .order-form-header {
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding-bottom: 10px;
+                padding-bottom: 15px;
+
                 
-                .order-price {
-                    font-weight: 700;
+                >p{
+                    color: $clr-black;
+                    font-size: 16px;
+                    line-height: 20px;
+                    font-family: airbnb-book, sans-serif;
+
+                    span{
+                        color: $clr-black;
+                        font-size: 22px;
+                        line-height: 26px;
+                        font-family: airbnb-regular, sans-serif;
+                    }
+                }
+
+                >span{
+                    color: $clr-black;
+                    font-size: 14px;
+                    line-height: 18px;
+                    font-family: airbnb-regular, sans-serif;
+
+                    p{
+                        padding-inline-start: 3px;
+                        color: $clr-gray;
+                        text-decoration: underline;
+                    }
                 }
             }
             
@@ -41,9 +65,9 @@
                     flex-direction: column;
                     gap: 5px;
                     align-items: flex-start;
-                    height: 100%;
-                    padding: 10px 5px;
+                    padding: 10px 12px;
                     cursor: pointer;
+                    height: 100%;
                     width: 100%;
                     border: 1px solid rgb(153, 153, 153);
                     
@@ -75,20 +99,23 @@
                 input {
                     font-size: 14px;
                     border: none;
-                    font-size: 13px;
                     line-height: 15px;
+                    height: 15px;
                     outline: none;
                     background-color: transparent;
                     cursor: pointer;
-                    padding: 0 0;
+                    color: $clr-gray;
+                    font-family: airbnb-book, sans-serif;
+                    width: 136px;
+                    text-align: start;
                     margin: 0 0;
-                    text-align: center;
+                    padding: 0 0;
                 }
             }
             
             .book-stay-btn {
                 padding: 14px;
-                margin: 15px 0px;
+                margin: 15px 0px 10px;
                 width: 100%;
                 border-radius: 10px;
                 background-image: linear-gradient(to right, rgb(230, 30, 77) 0%, rgb(227, 28, 95) 50%, rgb(215, 4, 102) 100%);

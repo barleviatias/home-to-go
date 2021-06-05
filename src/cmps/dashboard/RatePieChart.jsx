@@ -12,6 +12,7 @@ export function RatePieChart({ stay }) {
         return chartData;
     }
 
+
     const data = {
         labels: ['1 Star', '2 Star', '3 Star', '4 Star', '5 Star'],
         datasets: [
@@ -19,27 +20,28 @@ export function RatePieChart({ stay }) {
                 label: '# of Votes',
                 data: getRateData(),
                 backgroundColor: [
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(54, 162, 235, 0.2)',
-                    'rgba(255, 206, 86, 0.2)',
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)'
+                    'rgba(255, 61, 61, 0.5)',
+                    'rgba(255, 163, 59, 0.5)',
+                    'rgba(252, 255, 71, 0.5)',
+                    'rgba(184, 255, 103, 0.5)',
+                    'rgba(66, 245, 110, 0.5)'
                 ],
                 borderColor: [
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(54, 162, 235, 1)',
-                    'rgba(255, 206, 86, 1)',
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)'
+                    'rgba(255, 61, 61, 0.8)',
+                    'rgba(255, 163, 59, 0.8)',
+                    'rgba(252, 255, 71, 0.8)',
+                    'rgba(184, 255, 103, 0.5)',
+                    'rgba(66, 245, 110, 0.8)'
                 ],
                 borderWidth: 1,
             },
         ],
+        
     };
 
 
     return (
-        <div className="rate-chart">
+        <div className="rate-chart" >
             <Doughnut data={data} />
         </div>
     )

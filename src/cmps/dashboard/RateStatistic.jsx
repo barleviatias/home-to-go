@@ -8,6 +8,10 @@ export class RateStatistic extends Component {
         stay: null
     }
 
+    componentDidMount(){
+        this.setState({stay: this.props.stays[0]})
+    }
+
     updateSelectedStay = (stay) => {
         this.setState({ stay })
     }
@@ -17,11 +21,12 @@ export class RateStatistic extends Component {
         const { stay } = this.state
         return (
             <section className="dash-rate-statistics-container">
-                {stay && <h3>{stay.name}</h3>}
-                {!stay && <h3>Rate statistics</h3>}
                 <div className="dash-rate-statistics">
                     <HostStaysMenu stays={stays} updateSelectedStay={this.updateSelectedStay} />
-                    {stay && <RatePieChart stay={stay} />}
+                    {stay && <div className="chart-container">
+                        <h3>{stay.name}</h3>
+                        <RatePieChart stay={stay} />
+                    </div>}
                 </div>
             </section>
 

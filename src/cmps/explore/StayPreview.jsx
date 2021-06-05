@@ -39,12 +39,8 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
     return (
         <section className="stay-preview-container" >
             <Link to={`/stay/${stay._id}`} className="stay-preview-link">
-                <div className="stay-preview-img">
-                    <StayGallery stay={stay} />
-                    {/* <img src={stay.imgUrls[0]} alt="stay-preview" /> */}
-                </div>
+                <StayGallery stay={stay} />
                 <div className="stay-preview-info">
-
                     <span className="stay-preview-rate">
                         <i className="fas fa-star"></i>
                         <p>{getTotalRate()}</p>
@@ -53,16 +49,15 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
                     <h3>
                         <span>{stay.propertyType}</span>
                                      •
-                            <span>{stay.loc.address.substring(0, stay.loc.address.indexOf(','))}</span>
+                        <span>{stay.loc.address.substring(0, stay.loc.address.indexOf(','))}</span>
                     </h3>
                     <h3>{stay.name}</h3>
                     <h3 className="stay-price"><span >${stay.price}</span> / night</h3>
                 </div>
             </Link>
-            {/* <button className="stay-preview-save-btn" onClick={() => { toggleWish(stay._id) }} >
-                {!checkIsWish(stay._id) && <i className="far fa-heart"></i>}
-                {checkIsWish(stay._id) && <i className="fas fa-heart"></i>}
-            </button> */}
+            <button className="stay-preview-save-btn" onClick={() => { toggleWish(stay._id) }} >
+                {!checkIsWish(stay._id) ? <i className="fas fa-heart off"></i> : <i className="fas fa-heart"></i>}
+            </button>
         </section>
     )
 }

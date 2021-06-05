@@ -7,6 +7,7 @@ export function HostStayList({ stays, onRemoveStays, onEditStay }) {
             <table className="host-stay-list-table">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Name</th>
                         <th>Address</th>
                         <th>Price</th>

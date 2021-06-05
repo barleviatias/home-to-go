@@ -6,12 +6,13 @@ export function OrderList({ orders }) {
             <table className="host-order-list-table">
                 <thead>
                     <tr>
+                        <th></th>
                         <th>Guest Name</th>
                         <th>Check in</th>
                         <th>Check out</th>
                         <th>Status</th>
                         <th>Price</th>
-                        <th>Action</th>
+                        <th className="stay-actions">Action</th>
                     </tr>
                 </thead>
                 <tbody>

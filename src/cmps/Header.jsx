@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Link } from 'react-router-dom'
 import { MainFilter } from './app/MainFilter'
 import Avatar from "../assets/img/avatar.png"
 import { NavMenu } from './app/NavMenu'
@@ -12,7 +12,8 @@ export class Header extends React.Component {
         isWindowTop: true,
         isHomePage: false,
         modalPosition: { x: 0, y: 0 },
-        isNarrow: false
+        isNarrow: false,
+        isDetailsHeader: false
     }
 
     componentDidMount() {
@@ -26,15 +27,27 @@ export class Header extends React.Component {
     setCurrPage() {
         if (this.props.currPage === 'home') {
             window.addEventListener('scroll', this.getScrollPos, true)
-            this.setState({ isHomePage: true, isFullHeader: true, isWindowTop: true, isNarrow: false  })
+            window.removeEventListener('scroll', this.openDetailsHeader, true)
+            this.setState({ isHomePage: true, isFullHeader: true, isWindowTop: true, isNarrow: false, isDetailsHeader: false })
         }
         else if (this.props.currPage === 'stay') {
+            window.addEventListener('scroll', this.openDetailsHeader, true)
             window.removeEventListener('scroll', this.getScrollPos, true)
-            this.setState({ isHomePage: false, isFullHeader: false, isWindowTop: false , isNarrow: true })
+            this.setState({ isHomePage: false, isFullHeader: false, isWindowTop: false, isNarrow: true })
         }
         else {
             window.removeEventListener('scroll', this.getScrollPos, true)
-            this.setState({ isHomePage: false, isFullHeader: false, isWindowTop: false, isNarrow: false })
+            window.removeEventListener('scroll', this.openDetailsHeader, true)
+            this.setState({ isHomePage: false, isFullHeader: false, isWindowTop: false, isNarrow: false, isDetailsHeader: false })
+        }
+    }
+
+    openDetailsHeader = () => {
+        const detailsHeaderPos = (window.scrollY)
+        if (detailsHeaderPos > 1500) {
+            this.setState({ isDetailsHeader: true })
+        } else {
+            this.setState({ isDetailsHeader: false })
         }
     }
 
@@ -49,7 +62,7 @@ export class Header extends React.Component {
     toggleUserMenu = (event) => {
         const clickPos = event.target.getBoundingClientRect()
         this.setState({ modalPosition: clickPos })
-        this.props.openDynamicModal('user-menu' , event)
+        this.props.openDynamicModal('user-menu', event)
     }
 
     closeFullHeader = (ev) => {
@@ -74,13 +87,30 @@ export class Header extends React.Component {
 
     render() {
         const { onSearch, loggedInUser, logout, trip, openDynamicModal, modalType, setModalContent } = this.props
-        const { isFullHeader, isWindowTop, modalPosition, isNarrow } = this.state
+        const { isFullHeader, isWindowTop, modalPosition, isNarrow, isDetailsHeader } = this.state
         const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
 
         return (
-            <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'} ${isNarrow ? 'narrow-header': 'wide-header'}`}>
-                <section>
+            <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'} ${isNarrow ? 'narrow-header' : 'wide-header'} ${isDetailsHeader && 'details-header'}`}>
+                <section className="details-header-nav">
+                    <div className="details-nav">
+                        <Link>Photos</Link>
+                        <Link>Amenities</Link>
+                        <Link>Reviews</Link>
+                        <Link>Location</Link>
+                    </div>
+
+                    <div className="book-stay-mini">
+                        <div>
+                            <h3><span>$Price</span> / night</h3>
+                            <h4><i className="fas fa-star"></i>rate <span>(10 reviews)</span></h4>
+                        </div>
+                        <button>Check availability</button>
+                    </div>
+                </section>
+                <section >
                     <NavLink className="logo-link" to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
+                    <NavLink className="mini-logo-link" to="/"><i className="fab fa-airbnb"/></NavLink>
                     <nav>
                         <NavLink to="/host">Become a host</NavLink>
                         <NavLink to="/explore" onClick={this.explorAll}>Explore</NavLink>

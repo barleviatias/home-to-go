@@ -1,23 +1,42 @@
 .stay-details-container {
+    margin-top: 105px;
+
     .stay-details-header {
+        > h1 {
+            font-family: airbnb-regular, sans-serif;
+            font-size: rem(23.5px);
+            line-height: rem(27px);
+            color: $clr-black;
+        }
+
         .stay-short-info {
             display: flex;
             justify-content: space-between;
             align-items: center;
             font-size: 13px;
-            text-transform: capitalize;
-            font-family: airbnb-regular;
+            font-family: airbnb-regular, sans-serif;
             letter-spacing: -0.3px;
 
             .stay-rate-display {
                 display: flex;
                 align-items: center;
-                gap: 10px;
+            }
+
+            span {
+                color: $clr-black;
+                font-size: 14px;
+                line-height: 20px;
+                font-family: airbnb-regular, sans-serif;
+                padding-right: 5px;
             }
 
             p {
+                text-transform: unset;
                 text-decoration: underline;
-                color: rgb(82, 82, 82);
+                color: #717171;
+                font-size: 14px;
+                line-height: 20px;
+                font-family: airbnb-regular, sans-serif;
             }
 
             > div:first-of-type {
@@ -26,9 +45,21 @@
                 gap: 5px;
             }
 
-            .stay-save-btn:hover {
-                .fa-heart {
-                    color: rgb(255, 56, 92);
+            .action-btn-container {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                button {
+                    p {
+                        color: $clr-black;
+                    }
+                }
+
+                .stay-save-btn:hover {
+                    .fa-heart {
+                        color: rgb(255, 56, 92);
+                    }
                 }
             }
         }
@@ -43,11 +74,11 @@
             display: flex;
             flex-direction: column;
 
-            >*{
+            > * {
                 padding: 20px 0px;
             }
 
-            > *:not(:last-child){
+            > *:not(:last-child) {
                 border-bottom: 1px solid rgb(221, 221, 221);
             }
 
@@ -56,6 +87,20 @@
                 align-items: center;
                 justify-content: space-between;
                 text-transform: capitalize;
+                border-bottom: 1px solid #00000029;
+
+                h2 {
+                    font-size: 22px;
+                    line-height: 26px;
+                    color: $clr-black;
+                    font-family: airbnb-regular, sans-serif;
+                }
+
+                span {
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: $clr-black;
+                }
 
                 img {
                     object-fit: contain;
@@ -63,16 +108,13 @@
                     width: 60px;
                     border-radius: 50%;
                 }
-
-                > span:first-of-type {
-                    border-bottom: 1px solid #00000029;
-                }
             }
 
             .stay-feature-container {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
+                padding-bottom: 30px;
 
                 > div {
                     display: flex;
@@ -89,8 +131,11 @@
                         flex-direction: column;
 
                         h3 {
-                            font-weight: 600;
-                            color: rgb(44, 44, 44);
+                            font-size: 16px;
+                            line-height: 20px;
+                            color: $clr-black;
+                            font-family: airbnb-regular, sans-serif;
+                            text-transform: capitalize;
                         }
 
                         h4 {
@@ -101,15 +146,30 @@
                 }
             }
 
-            .description{
+            .description {
                 display: flex;
                 flex-direction: column;
                 gap: 20px;
-                padding: 20px 0px; 
-                font-size: rem(13px);
+                padding: 30px 0px;
+                font-size: 16px;
+                line-height: 25px;
+                color: $clr-black;
+
+                h2 {
+                    font-family: airbnb-regular, sans-serif;
+                }
             }
 
             .amenities-list {
+                padding: 40px 0px;
+
+                h2 {
+                    font-size: 22px;
+                    line-height: 26px;
+                    color: $clr-black;
+                    font-family: airbnb-regular, sans-serif;
+                }
+
                 ul {
                     list-style: none;
                     padding: 0px;
@@ -128,11 +188,30 @@
         display: flex;
         align-items: center;
         padding: 10px 0px;
+        font-size: 22px;
+        line-height: 26px;
+        font-family: airbnb-regular, sans-serif;
+        color: $clr-black;
     }
 
     .stay-details-map {
-        padding: 20px 0px;
+        padding: 45px 0px;
         border-top: 1px solid rgb(221, 221, 221);
+
+        h2 {
+            font-size: 22px;
+            line-height: 26px;
+            color: $clr-black;
+            font-family: airbnb-regular, sans-serif;
+            margin-bottom: 20px;
+        }
+
+        h3 {
+            font-size: 16px;
+            line-height: 20px;
+            color: $clr-black;
+            font-family: airbnb-book, sans-serif;
+        }
     }
 
     .fas,

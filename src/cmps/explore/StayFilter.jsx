@@ -21,7 +21,8 @@ export class StayFilter extends Component {
     }
 
     onSetModal = (event, modalKey) => {
-        const clickPos = { x: event.pageX, y: event.pageY }
+        const { x, y } = event.target.getBoundingClientRect()
+        const clickPos = { x, y: y+30 }
         this.setState({
             dynamicModal: {
                 ...this.state.dynamicModal,
@@ -64,7 +65,7 @@ export class StayFilter extends Component {
     }
 
     openModal = (modalKey) => {
-        const { placeType, propertyType, price, amenities } = this.state.stayFilterBy
+        const { price, amenities } = this.state.stayFilterBy
         const dynamicModal = {}
         const { x, y } = this.state.dynamicModal.modalPosition
 
@@ -112,7 +113,7 @@ export class StayFilter extends Component {
             case 'price':
                 dynamicModal.modalContent = (<section className="stay-filter-modal">
                     <div className="modal-label">
-                        <div>
+                        <div class="price">
                             <button className="modal-btn" type={"button"} onClick={() => { this.handleChange('price', (price - 10)) }}>-</button>
                             <span>{price}</span>
                             <button className="modal-btn" type={"button"} onClick={() => { this.handleChange('price', (price + 10)) }}>+</button>

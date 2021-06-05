@@ -38,7 +38,7 @@
     @include for-large-layout {
         grid-template-columns:
             minmax(5rem, 1fr)
-            minmax(auto, $large-breakpoint)
+            minmax(auto, $normal-breakpoint)
             minmax(5rem, 1fr);
     }
     @include for-wide-layout {

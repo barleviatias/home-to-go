@@ -219,17 +219,17 @@ class _BookStay extends Component {
                     <div className="order-form">
 
                         <div className="order-form-header">
-                            <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span><span> / night</span></p>
-                            <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p>( {reviews.length} reviews )</p></span>
+                            <p><span className="order-price">${(trip.guests.kids + trip.guests.adults) * price}</span> / night</p>
+                            <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate() }<p> ({reviews.length} reviews) </p></span>
                         </div>
 
                         <form>
                             <div className="order-form-date-picker">
-                                <label htmlFor="check-in">
+                                <label htmlFor="check-in" className="check-in">
                                     <span>Check in</span>
                                     <input defaultValue={checkIn} id="check-in" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')}   />
                                 </label>
-                                <label htmlFor="check-out">
+                                <label htmlFor="check-out" className="check-out">
                                     <span>Check out</span>
                                     <input defaultValue={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')}  />
                                 </label>

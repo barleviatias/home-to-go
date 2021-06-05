@@ -10,7 +10,13 @@
                 tr {
                     th {
                         padding: 10px 20px;
-                        font-family: airbnb-bold, sans-serif;
+                        text-align: start;
+                        font-family: airbnb-book, sans-serif;
+                        color: $clr-black;
+
+                        &.stay-actions {
+                            text-align: center;
+                        }
                     }
                 }
             }
@@ -20,9 +26,53 @@
                     td {
                         padding: 10px 20px;
                         border-top: 1px solid rgb(223, 223, 223);
-         
-                        &:first-of-type {
-                            font-family: airbnb-regular, sans-serif;
+                        font-size: 16px;
+
+                        &.stay-actions {
+                            text-align: center;
+                            display: flex;
+                            align-items: center;
+                            justify-content: space-evenly;
+                            height: 100%;
+
+                            button {
+                                display: flex;
+                                align-items: center;
+                                background-color: rgb(221, 221, 221);
+                                padding: 5px 10px;
+                                border-radius: 5px;
+                                font-size: 14px;
+
+                                i {
+                                    font-size: 14px;
+                                    padding-inline-end: 5px;
+
+                                    &:hover {
+                                        color: $clr-brand;
+                                    }
+                                }
+                            }
+                        }
+
+                        &:last-of-type {
+                            td {
+                                border-bottom: 1px solid rgb(223, 223, 223);
+                            }
+                        }
+
+                        .far {
+                            font-size: 25px;
+                            color: $clr-dark;
+    
+                            &:hover {
+                                color: $clr-brand;
+                            }
+                        }
+    
+                        img {
+                            height: 50px;
+                            width: 50px;
+                            border-radius: 50%;
                         }
                     }
                     &:hover {
