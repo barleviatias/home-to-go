@@ -1,5 +1,11 @@
 
-export function OrdersPrview({ order }) {
+export function OrdersPrview({ order, updateOrder }) {
+
+    function onUpdateOrder(status) {
+        order.status = status;
+        updateOrder(order)
+    }
+
     return (
         <tr className="host-stay-preview">
             <td><img src={order.user.imgUrl} alt="user" /></td>
@@ -9,8 +15,8 @@ export function OrdersPrview({ order }) {
             <td>{order.status}</td>
             <td>$ {order.totalPrice}</td>
             <td className="stay-actions" >
-                <button><i class="fas fa-check"></i>Approve</button>
-                <button><i class="fas fa-times"></i>Decline</button>
+                <button onClick={() => { onUpdateOrder('approved') }}><i class="fas fa-check"></i>Approve</button>
+                <button onClick={() => { onUpdateOrder('declined') }}><i class="fas fa-times"></i>Decline</button>
             </td>
         </tr>
     )

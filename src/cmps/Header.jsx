@@ -5,6 +5,7 @@ import Avatar from "../assets/img/avatar.png"
 import { NavMenu } from './app/NavMenu'
 
 
+
 export class Header extends React.Component {
 
     state = {
@@ -84,6 +85,19 @@ export class Header extends React.Component {
         }
     }
 
+    scrollTo = (top) => {
+        window.scrollTo({ top, left: 0, behavior: 'smooth' })
+    }
+
+    getAvgRate = (stay) => {
+        const rates = stay.reviews.map((review) => review.avgRate);
+        const sum = rates.reduce((acc, rate) => {
+            acc += rate;
+            return acc;
+        }, 0);
+        if (sum === 0) return 'new';
+        return (sum / rates.length).toFixed(1);
+    };
 
     render() {
         const { onSearch, loggedInUser, logout, trip, openDynamicModal, modalType, setModalContent } = this.props
@@ -94,23 +108,23 @@ export class Header extends React.Component {
             <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'} ${isNarrow ? 'narrow-header' : 'wide-header'} ${isDetailsHeader && 'details-header'}`}>
                 <section className="details-header-nav">
                     <div className="details-nav">
-                        <Link>Photos</Link>
-                        <Link>Amenities</Link>
-                        <Link>Reviews</Link>
-                        <Link>Location</Link>
+                        <Link onClick={() => { this.scrollTo(0) }}>Photos</Link>
+                        <Link onClick={() => { this.scrollTo(1210) }}>Amenities</Link>
+                        <Link onClick={() => { this.scrollTo(1580) }}>Reviews</Link>
+                        <Link onClick={() => { this.scrollTo(2100) }}>Location</Link>
                     </div>
 
                     <div className="book-stay-mini">
                         <div>
-                            <h3><span>$Price</span> / night</h3>
-                            <h4><i className="fas fa-star"></i>rate <span>(10 reviews)</span></h4>
+                            <h3><span>$ {(trip && trip.stay && trip.stay.price) ? trip.stay.price : 0}</span> / night</h3>
+                            <h4><i className="fas fa-star"></i>{(trip && trip.stay && trip.stay.reviews) ? this.getAvgRate(trip.stay) : ''} <span>( {(trip && trip.stay && trip.stay.reviews) ? trip.stay.reviews.length + ' reviews' : 'new'} )</span></h4>
                         </div>
-                        <button>Check availability</button>
+                        <button onClick={() => { this.scrollTo(650) }}>Check availability</button>
                     </div>
                 </section>
                 <section >
                     <NavLink className="logo-link" to="/"><h1 className="logo">Home<i className="fab fa-airbnb"></i>Go</h1></NavLink>
-                    <NavLink className="mini-logo-link" to="/"><i className="fab fa-airbnb"/></NavLink>
+                    <NavLink className="mini-logo-link" to="/"><i className="fab fa-airbnb" /></NavLink>
                     <nav>
                         <NavLink to="/host">Become a host</NavLink>
                         <NavLink to="/explore" onClick={this.explorAll}>Explore</NavLink>

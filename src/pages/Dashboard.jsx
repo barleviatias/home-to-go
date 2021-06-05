@@ -8,13 +8,15 @@ import { StayEdit } from '../cmps/dashboard/SaveStay'
 import { HostOrders } from '../cmps/dashboard/HostOrders'
 import { connect } from 'react-redux';
 import { loadHostStays, removeStay } from '../store/actions/stayActions'
+import { utilService } from '../services/util-service.js'
 
 export class _Dashboard extends Component {
 
     state = {
         action: '',
         loggedInUser: null,
-        selsctedEditStay: null
+        selsctedEditStay: null,
+        orderChangeStatus: 0
     }
 
     componentDidMount() {
@@ -25,10 +27,15 @@ export class _Dashboard extends Component {
         })
         this.props.setFooterDisplay(false)
         this.props.setHomePage('dash')
+        this.setState({ orderChangeStatus: utilService.getRandomIntInclusive(0, 5) })
     }
 
     componentWillUnmount() {
         this.props.setFooterDisplay(true)
+    }
+
+    getRateChangStatus = () => {
+        return utilService.getRandomIntInclusive(0, 5)
     }
 
     loadHostStays = async () => {
@@ -50,21 +57,21 @@ export class _Dashboard extends Component {
     }
 
     render() {
-        const { action, loggedInUser, selsctedEditStay, } = this.state
-        const { removeStay, stays, toggleMsgModal, orders } = this.props
+        const { action, loggedInUser, selsctedEditStay, orderChangeStatus } = this.state
+        const { removeStay, stays, toggleMsgModal, orders ,updateOrder} = this.props
         return (
             <main className="main page">
                 <section className="dashboard-container">
                     <DashSideNav onSelectAction={this.onSelectAction} />
                     <section className="dash-main-container">
-                        <DashHeader />
+                        <DashHeader stays={stays} orders={orders} orderChangeStatus={orderChangeStatus} />
                         <section className="dash-info-container">
                             {(action === '' || action === 'my Stays') && <MyStays stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} />}
                             {action === 'finance stat' && <FinanceStatistic />}
                             {action === 'rate stat' && <RateStatistic stays={stays} />}
                             {action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
                             {action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
-                            {action === 'orders' && <HostOrders loggedInUser={loggedInUser} orders={orders} />}
+                            {action === 'orders' && <HostOrders loggedInUser={loggedInUser} orders={orders} updateOrder={updateOrder}/>}
                         </section>
                     </section>
                 </section>

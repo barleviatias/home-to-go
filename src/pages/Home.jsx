@@ -26,7 +26,7 @@ export class Home extends Component {
 
 
   render() {
-    const { loggedInUser, onSearch, topRatedStays, nearbayStays , loadStays} = this.props
+    const { loggedInUser, onSearch, topRatedStays, nearbayStays , loadStays,addTrip} = this.props
 
     return (
       <main className="home-page main">
@@ -34,10 +34,10 @@ export class Home extends Component {
         <h1>Popular destinations</h1>
         <FilterCities onSearch={onSearch} />
         <h1>Explore nearby</h1>
-        <FilterGallery stays={nearbayStays} />
+        <FilterGallery stays={nearbayStays} addTrip={addTrip} />
         <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
         <h1>Top Rated</h1>
-        <FilterGallery stays={topRatedStays} />
+        <FilterGallery stays={topRatedStays} addTrip={addTrip} />
         <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} loggedInUser={loggedInUser} />
       </main>
     )

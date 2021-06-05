@@ -6,6 +6,7 @@ export const orderService = {
     query,
     remove,
     add,
+    update,
     getHostOrders,
     getUserOrders
 }
@@ -55,3 +56,9 @@ function remove(orderId) {
     return httpService.delete(`order/${orderId}`)
 }
 
+async function update(order) {
+	return await httpService.put(`order/${order._id}`, order)
+	// return await httpService.put(`stay/${stay._id}`, stay)
+	// Handle case in which admin updates other stay's details
+	// if (getLoggedinStay()._id === stay._id) _saveLocalStay(stay)
+}

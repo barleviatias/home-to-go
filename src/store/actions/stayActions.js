@@ -1,12 +1,11 @@
 import { stayService } from '../../services/stay-service'
 
 
-export function loadStays(trip) {
+export function loadStays(trip = { guests: { adults: 1, kids: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }) {
   return async dispatch => {
     try {
       const stays = await stayService.query(trip)
       dispatch({ type: 'SET_STAYS', stays })
-
     } catch (err) {
       console.log('StayActions: err in loadStays', err)
     }
@@ -19,7 +18,7 @@ export function addStay(stay) {
       const addedStay = await stayService.add(stay)
       dispatch({ type: 'ADD_STAY', stay: addedStay })
 
-      
+
     } catch (err) {
       console.log('StayActions: err in addStay', err)
     }
@@ -31,7 +30,7 @@ export function updateStay(stay) {
       const updatedStay = await stayService.update(stay)
       dispatch({ type: 'UPDATE_STAY', stay: updatedStay })
 
-      
+
     } catch (err) {
       console.log('StayActions: err in update Stay', err)
     }
@@ -60,7 +59,7 @@ export function loadHostStays(hostId) {
       console.log('StayActions: err in loadHostStays', err)
     }
   }
-} 
+}
 export function loadWishlist(user) {
 
   return async dispatch => {
@@ -72,4 +71,4 @@ export function loadWishlist(user) {
       console.log('StayActions: err in loadHostStays', err)
     }
   }
-} 
+}
