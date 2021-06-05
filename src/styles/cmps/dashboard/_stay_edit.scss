@@ -144,7 +144,6 @@
                     justify-content: space-between;
                     text-transform: capitalize;
 
-            
                     img {
                         object-fit: contain;
                         height: 60px;
@@ -156,10 +155,9 @@
                         border-bottom: 1px solid #00000029;
                     }
 
-                    input.capacity{
+                    input.capacity {
                         width: 50px;
                     }
-                  
                 }
 
                 .stay-feature-container {
@@ -217,7 +215,7 @@
             .order-form-container {
                 flex: 1;
                 padding: 30px 0px;
-                input{
+                input {
                     width: 60px;
                 }
             }
@@ -241,43 +239,42 @@
         .fa-external-link-alt {
             color: rgb(53, 53, 53);
         }
-    }
-    .stay-edit-save-btn {
-        background-color: $clr-brand;
-        padding: 7px 40px;
-        border-radius: 5px;
-        color: white;
-        font-size: rem(14px);
-        font-weight: 600;
-        margin-top: 20px;
-    }
-    
-    input {
-        margin: 0px 20px;
-        padding: 5px 10px;
-        border: none;
-        box-shadow: 0 1px 0 0px #00000025;
-    }
-    
-    select {
-        margin: 0px 10px;
-        padding: 5px 10px;
-        border: 1px solid rgb(182, 182, 182);
-        border-radius: 5px;
-    }
-    
-    textarea {
-        resize: none;
-        width: 100%;
-        height: 20vh;
-        border: 1px solid rgb(182, 182, 182);
-        border-radius: 5px;
-        margin: 20px 0px;
-        font-size: 16px;
-        line-height: 25px;
-        color: $clr-black;
-        font-family: airbnb-book, sans-serif;
-        padding: 10px;
+        .stay-edit-save-btn {
+            background-color: $clr-brand;
+            padding: 7px 40px;
+            border-radius: 5px;
+            color: white;
+            font-size: rem(14px);
+            font-weight: 600;
+            margin-top: 20px;
+        }
+
+        input {
+            margin: 0px 20px;
+            padding: 5px 10px;
+            border: none;
+            box-shadow: 0 1px 0 0px #00000025;
+        }
+
+        select {
+            margin: 0px 10px;
+            padding: 5px 10px;
+            border: 1px solid rgb(182, 182, 182);
+            border-radius: 5px;
+        }
+
+        textarea {
+            resize: none;
+            width: 100%;
+            height: 20vh;
+            border: 1px solid rgb(182, 182, 182);
+            border-radius: 5px;
+            margin: 20px 0px;
+            font-size: 16px;
+            line-height: 25px;
+            color: $clr-black;
+            font-family: airbnb-book, sans-serif;
+            padding: 10px;
+        }
     }
 }
-

@@ -33,7 +33,7 @@ export class Explore extends Component {
   }
 
   render() {
-    const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, addTrip,toggleMsgModal, login} = this.props
+    const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login, addTrip} = this.props
     const { stays } = this.state
     if (!stays) return <h1>Loading....</h1>
     return (

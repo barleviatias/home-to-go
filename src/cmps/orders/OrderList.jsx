@@ -8,7 +8,7 @@ export function OrderList({ orders, getCancelationStatus, onCancelOrder }) {
     return (
         <section className="order-list">
             {orders.map(order => <OrderPreview
-                key={order._id}
+                key={Math.random()}
                 order={order}
                 getCancelationStatus={getCancelationStatus}
                 onCancelOrder={onCancelOrder}

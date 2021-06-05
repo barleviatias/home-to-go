@@ -18,7 +18,7 @@ export function HostStayList({ stays, onRemoveStays, onEditStay }) {
                     {stays.map(stay => {
                         return (
                             <HostStayPreview
-                                key={stay._id}
+                                key={Math.random()}
                                 stay={stay}
                                 onRemoveStays={onRemoveStays}
                                 onEditStay={onEditStay}

@@ -10,7 +10,7 @@ export function FilterGallery({ stays ,addTrip}) {
             {stays.map((stay, idx) => {
                 if (idx < 4) {
                     return (
-                        <Link to={`/stay/${stay._id}`} key={stay._id} onClick={() => onSelectStay(stay)}>
+                        <Link to={`/stay/${stay._id}`} key={Math.random()} onClick={() => onSelectStay(stay)}>
                             <div className="gallery-preview-img">
                                 <img src={`${stay.imgUrls[0]}`} alt={stay.name} />
                             </div>

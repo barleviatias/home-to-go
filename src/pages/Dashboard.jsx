@@ -58,11 +58,13 @@ export class _Dashboard extends Component {
 
     render() {
         const { action, loggedInUser, selsctedEditStay, orderChangeStatus } = this.state
-        const { removeStay, stays, toggleMsgModal, orders ,updateOrder} = this.props
+        const { removeStay, stays, toggleMsgModal, orders, updateOrder } = this.props
         return (
             <main className="main page">
                 <section className="dashboard-container">
-                    <DashSideNav onSelectAction={this.onSelectAction} />
+                    <section className="dash-nav-sticky-container">
+                        <DashSideNav onSelectAction={this.onSelectAction} />
+                    </section>
                     <section className="dash-main-container">
                         <DashHeader stays={stays} orders={orders} orderChangeStatus={orderChangeStatus} />
                         <section className="dash-info-container">
@@ -71,7 +73,7 @@ export class _Dashboard extends Component {
                             {action === 'rate stat' && <RateStatistic stays={stays} />}
                             {action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
                             {action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
-                            {action === 'orders' && <HostOrders loggedInUser={loggedInUser} orders={orders} updateOrder={updateOrder}/>}
+                            {action === 'orders' && <HostOrders loggedInUser={loggedInUser} orders={orders} updateOrder={updateOrder} />}
                         </section>
                     </section>
                 </section>

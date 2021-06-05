@@ -19,12 +19,6 @@ window.userService = userService;
 async function login(userCred) {
 	const user = await httpService.post('auth/login', userCred)
 	if (user) return _saveLocalUser(user)
-
-
-	// const users = await storageService.query('user');
-	// const user = users.find((user) => user.username === userCred.username);
-	// return _saveLocalUser(user);
-
 }
 
 async function signup(userCred) {
@@ -32,10 +26,6 @@ async function signup(userCred) {
 	userCred.imgUrl = `https://randomuser.me/api/portraits/${gender}/${utilService.getRandomIntInclusive(0,100)}.jpg`
 	const user = await httpService.post('auth/signup', userCred)
 	return _saveLocalUser(user);
-
-
-	// userCred.isHost = false
-	// const user = await storageService.post('user', userCred);
 }
 
 async function logout() {
@@ -46,14 +36,8 @@ async function logout() {
 
 async function update(user) {
 	const updatedUser = await httpService.put(`user/${user._id}`, user)
-	// Handle case in which admin updates other stay's details
 	if (getLoggedinUser()._id === updatedUser._id) _saveLocalUser(updatedUser)
-	console.log('updatedUser: ' , updatedUser);
 	return updatedUser
-
-	// _saveLocalUser(user);
-	// return storageService.put('user', user)
-
 }
 
 function getLoggedinUser() {
@@ -61,7 +45,6 @@ function getLoggedinUser() {
 }
 
 function getById(userId) {
-	// return storageService.get('user', userId)
 	return httpService.get(`user/${userId}`)
 }
 
