@@ -1,6 +1,7 @@
 import { StayList } from '../cmps/explore/StayList'
 import { StayFilter } from '../cmps/explore/StayFilter'
 import { Component } from 'react'
+import {Loader} from '../cmps/app/Loader'
 
 export class Explore extends Component {
 
@@ -35,7 +36,7 @@ export class Explore extends Component {
   render() {
     const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login, addTrip} = this.props
     const { stays } = this.state
-    if (!stays) return <h1>Loading....</h1>
+    if (!stays) return <Loader />
     return (
       <main className="explore-container main page">
         <span>{stays.length} stays</span>

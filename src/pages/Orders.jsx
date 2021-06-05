@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { OrderList } from '../cmps/orders/OrderList';
+import {Loader} from '../cmps/app/Loader'
 
 export class Orders extends Component {
 
@@ -112,6 +113,7 @@ export class Orders extends Component {
     render() {
         const { orders, filterBy, currPage } = this.state;
         const { name, price, status, checkIn, checkOut } = filterBy
+        if (!orders) return <Loader />
         return (
             <main className="user-order-container main page">
                 <section className="user-order-list">
