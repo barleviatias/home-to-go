@@ -57,6 +57,45 @@
                 color: $clr-black;
             }
         }
+        
+    }
+    @include for-mobile-layout {
+        .stay-add-review-ctgs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+    }
+    @include for-tablet-layout {
+        .stay-add-review-ctgs {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+      
+    }
+    @include for-normal-layout {
+        .stay-add-review-ctgs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 100px;
+            width: 100%;
+            margin-top: 20px;
+    
+            .ctg-statistics {
+                display: flex;
+                justify-content: space-between;
+    
+                label {
+                    font-size: 16px;
+                    line-height: 20px;
+                    color: $clr-black;
+                }
+            }
+            
+        }
     }
 
     .add-review-txt {

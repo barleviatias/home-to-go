@@ -4,8 +4,7 @@ import { Component } from "react";
 export class OrderPreview extends Component {
 
     render() {
-
-        const { order, getCancelationStatus, onCancelOrder } = this.props
+        const { order, getCancelationStatus, onCancelOrder } = this.props    
 
         return (
 
