@@ -1,8 +1,7 @@
 .user-order-container {
     padding-top: 20px;
     .user-order-list {
-
-        >h1{
+        > h1 {
             font-size: 32px;
             line-height: 36px;
             font-family: airbnb-bold, sans-serif;
@@ -10,36 +9,35 @@
             padding-bottom: 20px;
         }
 
-        .order-header{
+        .order-header {
             border-bottom: 1px solid rgb(224, 224, 224);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            
+
             .order-nav {
-    
                 align-self: flex-end;
-    
-                button{
+
+                button {
                     font-size: 16px;
                     line-height: 20px;
                     font-family: airbnb-regular, sans-serif;
                     color: $clr-gray;
                     padding-bottom: 20px;
                     margin-inline-end: 30px;
-    
-                    &.active{
-                       box-shadow: inset 0px -2px 0 0px black;
-                       color: $clr-black;
+
+                    &.active {
+                        box-shadow: inset 0px -2px 0 0px black;
+                        color: $clr-black;
                     }
                 }
             }
-    
+
             .order-filter {
                 display: flex;
                 align-items: center;
                 justify-content: flex-start;
-            
+
                 button {
                     padding: 10px 20px;
                     border: 1px solid #00000038;
@@ -47,11 +45,11 @@
                     margin: 0px 5px;
                     font-size: 14px;
                     transition: 0.3s;
-            
-                    &:first-of-type{
-                        margin: 10px 10px 10px 0px; 
+
+                    &:first-of-type {
+                        margin: 10px 10px 10px 0px;
                     }
-            
+
                     &:hover {
                         border: 1px solid #000000c7;
                     }
@@ -62,7 +60,7 @@
         .order-list {
             margin-top: 40px;
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
             gap: 17px;
 
             .order-preview {
@@ -74,7 +72,8 @@
                 .img-container {
                     flex: 1;
                     display: grid;
-                    grid-template-columns: repeat(3, 1fr);
+                    grid-template-columns: repeat(3, minmax(115px, 1fr));
+                    grid-template-rows: 115px 115px;
                     gap: 5px;
                     border-top-left-radius: 13px;
                     border-top-right-radius: 13px;
@@ -115,6 +114,9 @@
                         line-height: rem(15px);
                         font-family: airbnb-regular, sans-serif;
                         color: $clr-black;
+                        overflow: hidden;
+                        white-space: nowrap;
+                        width: 230px;
                     }
 
                     p {
@@ -164,6 +166,13 @@
                         > h4 {
                             text-decoration: underline;
                             color: $clr-gray;
+                        }
+
+                        button{
+                            font-size: rem(13px);
+                            color: $clr-dark;
+                            text-decoration: underline;
+                            font-family: airbnb-regular, sans-serif;
                         }
                     }
                 }

@@ -227,7 +227,7 @@ export class StayDetails extends Component {
 					{stay.imgUrls.map((imgUrl, idx) => {
 						if (idx < 5) {
 							return (
-								<img src={imgUrl} alt="stay-gallery-preview-img" key={imgUrl} />
+								<img src={imgUrl} alt="stay-gallery-preview-img" key={Math.random()} />
 							)
 						}
 					})}
@@ -296,7 +296,7 @@ export class StayDetails extends Component {
 							<ul>
 								{amenities.map((amenity) => {
 									return (
-										<li key={amenity}>
+										<li key={Math.random()}>
 											<span>{this.getAmenityIcon(amenity)}</span>
 											<span>{amenity}</span>
 										</li>

@@ -14,7 +14,7 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
 import { stayService } from './services/stay-service'
-import { loadOrders, removeOrder ,updateOrder} from './store/actions/orderActions';
+import { loadOrders, removeOrder, updateOrder } from './store/actions/orderActions';
 import { addTrip, loadTrip, removeTrip } from './store/actions/tripActions';
 import { updateUser, loadUsers, logout, login } from './store/actions/userActions';
 import { DynamicModal } from './cmps/app/DynamicModal';
@@ -70,7 +70,6 @@ class _App extends Component {
   };
 
   closeDynamicModal = (ev) => {
-    console.log('close modal', ev);
     if (ev.type === 'scroll') {
       this.setState({ modalType: '' }, () => {
         window.removeEventListener('click', this.closeDynamicModal, true);
@@ -89,7 +88,6 @@ class _App extends Component {
   };
 
   openDynamicModal = (modalType, ev = null) => {
-    console.log('open modal', modalType, ev);
     if (ev && ev.target.innerText === 'logout') {
       this.setState({ modalType: '' })
       return
@@ -110,6 +108,7 @@ class _App extends Component {
 
 
   render() {
+
     const {
       stays,
       orders,
@@ -127,7 +126,16 @@ class _App extends Component {
       login,
       updateOrder
     } = this.props;
-    const { userMsg, isUserMsg, modalType, dynamicModal, topRatedStays, nearbayStays, isFooterOn, currPage } = this.state;
+
+    const { userMsg,
+      isUserMsg,
+      modalType,
+      dynamicModal,
+      topRatedStays,
+      nearbayStays,
+      isFooterOn,
+      currPage
+    } = this.state;
 
     return (
       <Router>
@@ -243,10 +251,10 @@ class _App extends Component {
           <Route
             path="/user"
             render={(props) => (
-              <UserDetails {...props} 
-              updateUser={updateUser}
-              setHomePage={this.setHomePage}
-              setFooterDisplay={this.setFooterDisplay}
+              <UserDetails {...props}
+                updateUser={updateUser}
+                setHomePage={this.setHomePage}
+                setFooterDisplay={this.setFooterDisplay}
               />
             )}
           />

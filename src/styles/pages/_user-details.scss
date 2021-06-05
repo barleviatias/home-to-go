@@ -1,41 +1,136 @@
 .user-details {
-
-    .user-details-header {
-        display: flex;
-        align-items: center;
-        gap: 30px;
-        padding-bottom: 40px;
-        img {
-            object-fit: contain;
-            height: 100px;
-            width: 100px;
-            border-radius: 50%;
-        }
-
-        >span{
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            align-items: flex-start;
-        }
-
-        h1 {
-            font-size: rem(20px);
-            line-height: rem(22px);
-            color: $clr-black;
-            font-family: airbnb-bold, sans-serif;
-        }
-
-        p{
-            font-size: rem(14px);
-            line-height: rem(16px);
-            color: $clr-black;
-            font-family: airbnb-book, sans-serif; 
-        }
+    padding: 0px 15vw;
+    h1 {
+        font-size: 32px;
+        line-height: 36px;
+        color: $clr-dark;
+        font-family: airbnb-bold, sans-serif;
+        padding-bottom: 70px;
     }
 
-    .user-details-info {
-        &.user-edit {
+    // .user-details-header {
+    //     display: flex;
+    //     align-items: center;
+    //     gap: 30px;
+    //     padding-bottom: 40px;
+
+    //     img {
+    //         object-fit: contain;
+    //         height: 100px;
+    //         width: 100px;
+    //         border-radius: 50%;
+    //     }
+
+    //     >span{
+    //         display: flex;
+    //         flex-direction: column;
+    //         gap: 5px;
+    //         align-items: flex-start;
+    //     }
+
+    //     h1 {
+    //         font-size: rem(20px);
+    //         line-height: rem(22px);
+    //         color: $clr-black;
+    //         font-family: airbnb-bold, sans-serif;
+    //     }
+
+    //     p{
+    //         font-size: rem(14px);
+    //         line-height: rem(16px);
+    //         color: $clr-black;
+    //         font-family: airbnb-book, sans-serif;
+    //     }
+    // }
+
+    .main-user-details {
+        display: flex;
+        justify-content: space-between;
+        gap: 100px;
+
+        .user-details-info {
+            flex: 1;
+            > * {
+                &:not(button) {
+                    border-bottom: 1px solid rgb(224, 224, 224);
+                }
+
+                &:not(:first-child) {
+                    padding-top: 30px;
+                }
+
+                h4 {
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: $clr-dark;
+                    text-transform: capitalize;
+                    font-family: airbnb-regular, sans-serif;
+                }
+
+                p {
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: $clr-dark;
+                    text-transform: capitalize;
+                    font-family: airbnb-book, sans-serif;
+                    padding-top: 10px;
+                    padding-bottom: 30px;
+                }
+            }
+            button {
+                font-size: 16px;
+                line-height: 22px;
+                color: #008489;
+                text-transform: capitalize;
+                font-family: airbnb-regular, sans-serif;
+
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+
+            &.user-edit {
+                input{
+                    font-size: 16px;
+                    line-height: 22px;
+                    color: $clr-dark;
+                    text-transform: capitalize;
+                    font-family: airbnb-book, sans-serif;
+                    padding: 0 0;
+                    margin: 0 0;
+                    border: none;
+                    border-radius: unset;
+                    box-shadow: 0px 1px 0 0px rgb(224, 224, 224);
+                }
+            }
+        }
+
+        .general-info-container {
+            height: 525px;
+            width: 335px;
+            border: 1px solid rgb(224, 224, 224);
+            padding: 25px;
+
+            h3 {
+                font-size: 18px;
+                line-height: 26px;
+                color: $clr-dark;
+                text-transform: capitalize;
+                font-family: airbnb-bold, sans-serif;
+                padding-top: 25px;
+                padding-bottom: 25px;
+            }
+            p {
+                font-size: 16px;
+                line-height: 22px;
+                color: $clr-dark;
+                font-family: airbnb-book, sans-serif;
+            }
+
+            img {
+                width: 60px;
+                object-fit: contain;
+            }
         }
     }
 }

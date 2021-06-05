@@ -142,11 +142,12 @@
                     gap: 30px;
                     padding-top: auto;
 
-                    a {
+                    span {
                         font-size: 14px;
                         line-height: 20px;
                         font-family: airbnb-regular;
                         color: $clr-black;
+                        cursor: pointer;
 
                         &:hover {
                             text-decoration: underline;

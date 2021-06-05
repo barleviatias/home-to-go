@@ -5,7 +5,7 @@ export function StayList({ stays, loggedInUser, updateUser, toggleMsgModal, logi
 
     return (
         <section className="stay-list">
-            {stays.map(stay => <StayPreview key={stay._id} updateUser={updateUser} loggedInUser={loggedInUser} stay={stay} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip} />)}
+            {stays.map(stay => <StayPreview key={Math.random()} updateUser={updateUser} loggedInUser={loggedInUser} stay={stay} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip} />)}
         </section>
     )
 }
