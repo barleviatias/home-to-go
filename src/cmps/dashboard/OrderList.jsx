@@ -1,6 +1,6 @@
 import { OrdersPrview } from './OrdersPrview'
 
-export function OrderList({ orders }) {
+export function OrderList({ orders ,updateOrder}) {
     return (
         <section className="host-order-list">
             <table className="host-order-list-table">
@@ -20,7 +20,8 @@ export function OrderList({ orders }) {
                         return (
                             <OrdersPrview
                                 key={order._id}
-                                order={order} />
+                                order={order}
+                                updateOrder={updateOrder} />
                         )
                     })}
                 </tbody>

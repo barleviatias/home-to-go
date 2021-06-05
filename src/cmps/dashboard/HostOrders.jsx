@@ -1,9 +1,9 @@
 import { OrderList } from './OrderList'
 
-export function HostOrders({orders}) {
+export function HostOrders({orders,updateOrder}) {
     return (
         <section className="host-order-container">
-            <OrderList orders={orders} />
+            <OrderList orders={orders} updateOrder={updateOrder}/>
         </section>
     )
 }
