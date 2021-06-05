@@ -23,7 +23,7 @@ export function NavMenu({ logout, toggleUserMenu, loggedInUser, modalPosition })
                                 <div>
                                         <Link to="/msg">Messages</Link>
                                         <Link to="/notif">Notifications</Link>
-                                        <Link to="/orders">Orders</Link>
+                                        <Link to="/orders">Trips</Link>
                                         <Link to="/wishlist">wish list</Link>
                                         {loggedInUser.isHost && <Link to={`/host/${loggedInUser._id}`}>Dashboard</Link>}
                                         {!loggedInUser.isHost && <Link to="/host">Host your home</Link>}
