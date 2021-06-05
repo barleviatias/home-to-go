@@ -234,6 +234,7 @@ class _App extends Component {
                 setHomePage={this.setHomePage}
                 toggleMsgModal={this.toggleMsgModal}
                 login={login}
+                addTrip={addTrip}
               />
             )}
           />

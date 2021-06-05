@@ -1,12 +1,11 @@
 import { StayPreview } from '../explore/StayPreview'
 
-export function StayList({ stays, loggedInUser, updateUser, toggleMsgModal, login }) {
+export function StayList({ stays, loggedInUser, updateUser, toggleMsgModal, login, trip,addTrip }) {
 
 
     return (
         <section className="stay-list">
-            {/* {stays.map(stay => <StayGallery key={stay._id} updateUser={updateUser} loggedInUser={loggedInUser} stay={stay} toggleMsgModal={toggleMsgModal} login={login} />)} */}
-            {stays.map(stay => <StayPreview key={stay._id} updateUser={updateUser} loggedInUser={loggedInUser} stay={stay} toggleMsgModal={toggleMsgModal} login={login} />)}
+            {stays.map(stay => <StayPreview key={stay._id} updateUser={updateUser} loggedInUser={loggedInUser} stay={stay} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip} />)}
         </section>
     )
 }

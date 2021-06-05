@@ -10,7 +10,7 @@ export class MainFilter extends Component {
     state = {
         trip: {
             guests: { adults: 1, kids: 0 },
-            loc: { address: '' },
+            loc: { address: '', stay: null },
             time: { checkIn: '', checkOut: '' }
         },
         topRatedStays: [],
@@ -172,7 +172,7 @@ export class MainFilter extends Component {
         var trip = this.props.trip
         if (!trip) trip = {
             guests: { adults: 1, kids: 0 },
-            loc: { address: '' },
+            loc: { address: '', stay: null },
             time: { checkIn: '', checkOut: '' }
         }
         this.setState({ trip })

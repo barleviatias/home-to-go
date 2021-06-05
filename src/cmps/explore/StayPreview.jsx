@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { StayGallery } from '../explore/StayGallery'
 
-export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login }) {
+export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login, trip, addTrip }) {
 
     const getTotalRate = () => {
         const rates = stay.reviews.map(review => review.avgRate)
@@ -36,9 +36,16 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
         return false
     }
 
+    function onSelectStay() {
+        var updatedTrip = trip
+        updatedTrip.stay = stay
+        addTrip(updatedTrip)
+
+    }
+
     return (
         <section className="stay-preview-container" >
-            <Link to={`/stay/${stay._id}`} className="stay-preview-link">
+            <Link to={`/stay/${stay._id}`} onClick={onSelectStay} className="stay-preview-link">
                 <StayGallery stay={stay} />
                 <div className="stay-preview-info">
                     <span className="stay-preview-rate">

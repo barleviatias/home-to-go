@@ -26,9 +26,11 @@ async function add(trip, stay, loggedInUser) {
         guests: trip.guests,
         host: stay.host,
         status: 'pending',
-        stay: { _id: stay._id, name: stay.name, price: stay.price },
+        stay: trip.stay,
+        // stay: { _id: stay._id, name: stay.name, price: stay.price },
         totalPrice: trip.totalPrice,
-        user: loggedInUser
+        user: loggedInUser,
+        stay
     }
     tripService.remove()
     return await httpService.post(`order`, order)

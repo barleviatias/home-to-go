@@ -33,7 +33,7 @@ export class Explore extends Component {
   }
 
   render() {
-    const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login} = this.props
+    const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login,addTrip} = this.props
     const { stays } = this.state
     if (!stays) return <h1>Loading....</h1>
     return (
@@ -41,7 +41,8 @@ export class Explore extends Component {
         <span>{stays.length} stays</span>
         <h1>Stays {trip && trip.loc && trip.loc.address && `in ${trip.loc.address}`}</h1>
         <StayFilter openDynamicModal={openDynamicModal} closeDynamicModal={closeDynamicModal} setModalContent={setModalContent} onfilterStays={this.onfilterStays} />
-        <StayList stays={stays} updateUser={updateUser} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} login={login}/>
+    const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login} = this.props
+        <StayList stays={stays} updateUser={updateUser} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip}/>
       </main>
     )
   }
