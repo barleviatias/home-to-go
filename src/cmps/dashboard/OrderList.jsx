@@ -19,7 +19,7 @@ export function OrderList({ orders ,updateOrder}) {
                     {orders.map(order => {
                         return (
                             <OrdersPrview
-                                key={order._id}
+                                key={Math.random()}
                                 order={order}
                                 updateOrder={updateOrder} />
                         )

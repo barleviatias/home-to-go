@@ -1,7 +1,6 @@
 .dash-header {
     flex: 1;
     display: flex;
-    // align-items: center;
     justify-content: space-evenly;
     gap: 20px;
 
@@ -82,10 +81,10 @@
                 font-size: 14px;
                 line-height: 16px;
                 font-family: airbnb-bold, sans-serif;
-                color: red;
+                color: rgb(34, 192, 34);
 
                 i {
-                    color: red;
+                    color: rgb(34, 192, 34);
                     padding-inline-start: 5px;
                 }
             }

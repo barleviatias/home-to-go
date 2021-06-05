@@ -238,9 +238,7 @@ class _StayEdit extends Component {
 										<select
 											name="propertyType"
 											onChange={this.handleChange}
-											value={stay.propertyType}
-										>
-											{/* <option value="">choice type</option> */}
+											value={stay.propertyType}>
 											<option value="loft">loft</option>
 											<option value="room">room</option>
 											<option value="studio">studio</option>

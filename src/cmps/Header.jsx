@@ -1,5 +1,5 @@
 import React from 'react'
-import { NavLink, Link } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { MainFilter } from './app/MainFilter'
 import Avatar from "../assets/img/avatar.png"
 import { NavMenu } from './app/NavMenu'
@@ -108,10 +108,10 @@ export class Header extends React.Component {
             <header className={`main-header ${isFullHeader && 'full-header'} ${isWindowTop && 'full-header top'} ${isNarrow ? 'narrow-header' : 'wide-header'} ${isDetailsHeader && 'details-header'}`}>
                 <section className="details-header-nav">
                     <div className="details-nav">
-                        <Link onClick={() => { this.scrollTo(0) }}>Photos</Link>
-                        <Link onClick={() => { this.scrollTo(1210) }}>Amenities</Link>
-                        <Link onClick={() => { this.scrollTo(1580) }}>Reviews</Link>
-                        <Link onClick={() => { this.scrollTo(2100) }}>Location</Link>
+                        <span onClick={() => { this.scrollTo(0) }}>Photos</span>
+                        <span onClick={() => { this.scrollTo(1210) }}>Amenities</span>
+                        <span onClick={() => { this.scrollTo(1580) }}>Reviews</span>
+                        <span onClick={() => { this.scrollTo(2100) }}>Location</span>
                     </div>
 
                     <div className="book-stay-mini">

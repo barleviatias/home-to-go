@@ -226,7 +226,7 @@ class _LoginSignup extends Component {
 							{this.props.users && (
 								<ul>
 									{this.props.users.map((user) => (
-										<li key={user._id}>
+										<li key={Math.random()}>
 											<pre>{JSON.stringify(user, null, 2)}</pre>
 											<button
 												onClick={() => {

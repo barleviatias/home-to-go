@@ -13,10 +13,10 @@ export function OrdersPrview({ order, updateOrder }) {
             <td>{order.startDate}</td>
             <td>{order.endtDate}</td>
             <td>{order.status}</td>
-            <td>$ {order.totalPrice}</td>
+            <td>$ {order.totalPrice.toLocaleString("en-US")}</td>
             <td className="stay-actions" >
-                <button onClick={() => { onUpdateOrder('approved') }}><i class="fas fa-check"></i>Approve</button>
-                <button onClick={() => { onUpdateOrder('declined') }}><i class="fas fa-times"></i>Decline</button>
+                <button onClick={() => { onUpdateOrder('approved') }}><i className="fas fa-check"></i>Approve</button>
+                <button onClick={() => { onUpdateOrder('declined') }}><i className="fas fa-times"></i>Decline</button>
             </td>
         </tr>
     )
