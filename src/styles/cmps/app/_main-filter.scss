@@ -9,16 +9,6 @@
     }
 
     .max-filter {
-        @include for-mobile-layout {
-            display: none;
-        }
-        @include for-tablet-layout {
-            display: none;
-        }
-        @include for-normal-layout {
-            display: flex;
-        }
-
         position: absolute;
         left: 50%;
         transform: translate(-50%, -75%);
@@ -117,6 +107,96 @@
             &:hover::after {
                 border-left: 1px solid #00000000;
             }
+            @include for-mobile-layout {
+                &:nth-child(1) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+                &:nth-child(2) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+                &:nth-child(3) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+                &:nth-child(4) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+            }
+            @include for-tablet-layout {
+                &:nth-child(1) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+                &:nth-child(2) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+                &:nth-child(3) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+                &:nth-child(4) {
+                    padding: 5px 24px;
+                    width: 15vw;
+                    input{
+                        display: none;
+                    }
+                }
+            }
+            @include for-normal-layout {
+                &:nth-child(1) {
+                    padding: 14px 24px;
+                    width: initial;
+                    input{
+                        display: initial;
+                    }
+                }
+                &:nth-child(2) {
+                    padding: 14px 24px;
+                    width: initial;
+                    input{
+                        display: initial;
+                    }
+                }
+                &:nth-child(3) {
+                    padding: 14px 24px;
+                    width: initial;
+                    input{
+                        display: initial;
+                    }
+                }
+                &:nth-child(4) {
+                    padding: 14px 24px;
+                    width: initial;
+                    input{
+                        display: initial;
+                    }
+                }
+            }
         }
 
         button {
@@ -142,8 +222,6 @@
         @include for-narrow-layout {
             width: 300px;
             left: 30%;
-        }
-        @include for-normal-layout {
         }
 
         position: absolute;

@@ -6,6 +6,19 @@
     grid-template-columns: repeat(4, minmax(100px, 1fr));
     gap: 20px;
 
+    @include for-mobile-layout {
+        grid-template-columns: repeat(2, minmax(100px, 1fr));
+        gap: 5px 0px;
+    }
+    @include for-tablet-layout {
+        grid-template-columns: repeat(3, minmax(100px, 1fr));
+        gap: 10px;
+    }
+    @include for-normal-layout {
+        grid-template-columns: repeat(4, minmax(100px, 1fr));
+        gap: 20px;
+    }
+
     .top-cities-card {
         display: flex;
         grid-column: unset;
@@ -17,6 +30,28 @@
             border-radius: 10px;
             height: 70px;
             width: 70px;
+        }
+
+        @include for-mobile-layout {
+            img {
+                border-radius: 5px;
+                height: 40px;
+                width: 40px;
+            }
+        }
+        @include for-tablet-layout {
+            img {
+                border-radius: 7px;
+                height: 55px;
+                width: 55px;
+            }
+        }
+        @include for-normal-layout {
+            img {
+                border-radius: 10px;
+                height: 70px;
+                width: 70px;
+            }
         }
 
         .city-details-container {
