@@ -116,7 +116,7 @@ export class Header extends React.Component {
 
                     <div className="book-stay-mini">
                         <div>
-                            <h3><span>$ {(trip && trip.stay && trip.stay.price) ? trip.stay.price : 0}</span> / night</h3>
+                            <h3><span>$ {(trip && trip.stay && trip.stay.price) ? trip.stay.price.toLocaleString("en-US") : 0}</span> / night</h3>
                             <h4><i className="fas fa-star"></i>{(trip && trip.stay && trip.stay.reviews) ? this.getAvgRate(trip.stay) : ''} <span>( {(trip && trip.stay && trip.stay.reviews) ? trip.stay.reviews.length + ' reviews' : 'new'} )</span></h4>
                         </div>
                         <button onClick={() => { this.scrollTo(650) }}>Check availability</button>

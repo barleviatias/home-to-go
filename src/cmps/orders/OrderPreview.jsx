@@ -24,7 +24,7 @@ export class OrderPreview extends Component {
                         </p>
                     </h3>
 
-                    <h4 className="order-price">$ {order.totalPrice}</h4>
+                    <h4 className="order-price">$ {order.totalPrice.toLocaleString("en-US")}</h4>
                     <h4 className={`order-status ${order.status ==='approved' && 'status-green'} ${order.status ==='declined' && 'status-red'}`}>{order.status}</h4>
                     <div className="order-cancelation">
                         <h4>{getCancelationStatus(order)}</h4>

@@ -40,14 +40,10 @@ class _StayEdit extends Component {
 
 	componentDidMount() {
 		if (this.props.stayEdit) {
-			console.log('stay edit', this.props.stayEdit);
 			const currAmenities = {};
 			this.props.stayEdit.amenities.forEach((amenitie) => {
-				// var str = amenitie;
-				// var res = str.replace(' ', '_');
 				currAmenities[amenitie] = true;
 			});
-			console.log('curr', currAmenities);
 			this.setState({
 				stay: {
 					...this.props.stayEdit,
@@ -108,7 +104,7 @@ class _StayEdit extends Component {
 				currAmenities.push(key);
 			}
 		}
-		stay.amenities=currAmenities
+		stay.amenities = currAmenities
 		if (stay._id) {
 			this.props.updateStay(stay);
 			this.props.toggleMsgModal(
@@ -127,7 +123,17 @@ class _StayEdit extends Component {
 			);
 		}
 		this.props.onSelectAction(ev);
-	};
+	}
+
+	getTotalRate = () => {
+		const rates = this.state.stay.reviews.map((review) => review.avgRate)
+		const sum = rates.reduce((acc, rate) => {
+			acc += rate
+			return acc
+		}, 0);
+		if (sum === 0) return 'new'
+		return (sum / rates.length).toFixed(2)
+	}
 
 	render() {
 		const { stay } = this.state;
@@ -135,24 +141,24 @@ class _StayEdit extends Component {
 		if (!stay) return ''; // LOADER
 		return (
 			<section className="stay-edit-container">
-				{/* <h1>{stay._id ? 'Edit stay' : 'Add new stay'}</h1> */}
 				<form className="stay-edit-form" onSubmit={this.onSaveStay}>
 					<section className="stay-edit-header">
 						<h1>
-							stay name:
 							<input
 								type="text"
 								name="name"
 								autoComplete="off"
 								onChange={this.handleChange}
 								value={stay.name}
+								placeholder="stay name"
 							/>
 						</h1>
 						<div className="stay-edit-short-info">
 							<div>
 								<span className="stay-rate-display">
 									<i className="fas fa-star"></i>
-									<div className="rate-placeholder"></div>
+									<span>{this.getTotalRate()}</span>
+									<p> ( {stay.reviews.length} reviews )</p>
 								</span>
 								<span>•</span>
 								<p>
@@ -216,6 +222,7 @@ class _StayEdit extends Component {
 									<span>
 										capacity:
 										<input
+											className="capacity"
 											type="number"
 											name="capacity"
 											autoComplete="off"
