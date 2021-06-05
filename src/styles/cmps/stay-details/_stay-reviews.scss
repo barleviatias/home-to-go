@@ -32,6 +32,39 @@
             .ctg-statistics {
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
+            }
+        }
+
+        @include for-mobile-layout {
+            .stay-review-ststistics {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+            }
+        }
+        @include for-tablet-layout {
+            .stay-review-ststistics {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 10px;
+            }
+          
+        }
+        @include for-normal-layout {
+            .stay-review-ststistics {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px 100px;
+                width: 100%;
+    
+                .ctg-statistics {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
             }
         }
     }
@@ -80,6 +113,26 @@
                     color: $clr-black;
                 }
             }
+        }
+    }
+
+    @include for-mobile-layout {
+        .review-list {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    @include for-tablet-layout {
+        .review-list {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+    @include for-normal-layout {
+        .review-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px 40px;
         }
     }
 }

@@ -69,6 +69,16 @@
         display: flex;
         gap: 100px;
 
+        @include for-mobile-layout {
+            flex-direction: column-reverse;
+        }
+        @include for-tablet-layout {
+            flex-direction: column-reverse;
+        }
+        @include for-normal-layout {
+            flex-direction: row;
+        }
+
         .stay-long-info {
             flex: 4;
             display: flex;

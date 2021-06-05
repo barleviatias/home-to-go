@@ -9,6 +9,16 @@
     }
 
     .max-filter {
+        @include for-mobile-layout {
+            display: none;
+        }
+        @include for-tablet-layout {
+            display: none;
+        }
+        @include for-normal-layout {
+            display: flex;
+        }
+
         position: absolute;
         left: 50%;
         transform: translate(-50%, -75%);
@@ -25,7 +35,6 @@
         padding: 0px 10px 0px 0px;
         margin: 0 0;
 
-
         &:hover {
             background-color: rgb(246, 246, 246);
         }
@@ -41,7 +50,7 @@
             cursor: pointer;
             transition: background-color 0.3s, box-shadow 0.3s;
 
-            &:first-child{
+            &:first-child {
                 padding-inline-start: 30px;
             }
 
@@ -89,16 +98,15 @@
                     padding-right: 10px;
                     cursor: pointer;
                 }
-
             }
 
-            &:nth-child(2){
+            &:nth-child(2) {
                 width: 180px;
             }
-            &:nth-child(3){
+            &:nth-child(3) {
                 width: 180px;
             }
-            
+
             &:not(:last-of-type)::after {
                 content: "";
                 border-left: 1px solid #8f8f8f38;
@@ -125,6 +133,19 @@
     }
 
     .min-filter {
+        @include for-mobile-layout {
+            width: 100%;
+        }
+        @include for-tablet-layout {
+            width: 100%;
+        }
+        @include for-narrow-layout {
+            width: 300px;
+            left: 30%;
+        }
+        @include for-normal-layout {
+        }
+
         position: absolute;
         left: 50%;
         width: 300px;
