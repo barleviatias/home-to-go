@@ -70,6 +70,7 @@ class _App extends Component {
   };
 
   closeDynamicModal = (ev) => {
+    console.log('close modal',ev);
     if (ev.type === 'scroll') {
       this.setState({ modalType: '' }, () => {
         window.removeEventListener('click', this.closeDynamicModal, true);
@@ -77,17 +78,18 @@ class _App extends Component {
       });
       return;
     }
-
+    
     if (ev.target.closest('.dynamic-modal')) return;
     if (ev.target.nodeName === 'BUTTON') return;
-
+    
     this.setState({ modalType: '' }, () => {
       window.removeEventListener('click', this.closeDynamicModal, true);
       window.removeEventListener('scroll', this.closeDynamicModal, true);
     });
   };
-
+  
   openDynamicModal = (modalType, ev = null) => {
+    console.log('open modal',modalType,ev);
     if (ev && ev.target.innerText === 'logout'){
       this.setState({ modalType : ''})
       return
