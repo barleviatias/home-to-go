@@ -156,7 +156,7 @@ class _App extends Component {
         />
         <Switch>
           <Route path="/login" render={(props) => (<LoginSignup {...props} setFooterDisplay={this.setFooterDisplay} />)} />
-          {/* <Route path="/msg" render={(props) => (<Message {...props} />)} /> */}
+          <Route path="/msg" render={(props) => (<Message {...props} />)} />
           <Route
             path="/orders"
             render={(props) => (

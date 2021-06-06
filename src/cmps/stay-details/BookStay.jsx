@@ -189,6 +189,7 @@ class _BookStay extends Component {
 
         trip.totalPrice = ((trip.guests.kids + trip.guests.adults) * stay.price) * this.getTripTime()
         this.props.addOrder(trip, stay, loggedInUser)
+        this.props.onBookStay()
 
         this.setState({
             trip: {
@@ -219,7 +220,7 @@ class _BookStay extends Component {
                     <div className="order-form">
 
                         <div className="order-form-header">
-                            <p><span className="order-price">${(trip.guests.kids + trip.guests.adults === 0) ? price :((trip.guests.kids + trip.guests.adults) * price).toLocaleString("en-US")}</span> / night</p>
+                            <p><span className="order-price">${(trip.guests.kids + trip.guests.adults === 0) ? price : ((trip.guests.kids + trip.guests.adults) * price).toLocaleString("en-US")}</span> / night</p>
                             <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p> ({reviews.length} reviews) </p></span>
                         </div>
 
@@ -247,7 +248,7 @@ class _BookStay extends Component {
                                 <h3><span>${price.toLocaleString("en-US")} X {this.getTripTime()} night{this.getTripTime() > 1 && 's'}</span> <span>${(((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime()).toLocaleString("en-US")}</span></h3>
                                 <h3><span>Cleaning fee</span> <span>${(6 * this.getTripTime())}</span></h3>
                                 <h3><span>Service fee</span> <span>${(17 * this.getTripTime())}</span></h3>
-                                <h5><span>Total</span><span>${((this.getTripTime()*6*17) + (((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime())).toLocaleString('en-US')}</span></h5>
+                                <h5><span>Total</span><span>${((this.getTripTime() * 6 * 17) + (((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime())).toLocaleString('en-US')}</span></h5>
                             </div>}
                         </form>
                     </div>

@@ -23,6 +23,7 @@ class _Message extends Component {
   }
 
   addMsg = newMsg => {
+    console.log('newMsg',newMsg);
     this.setState(prevState => ({ msgs: [...prevState.msgs, newMsg] }))
     if (this.state.isBotMode) this.sendBotResponse();
   }
@@ -65,7 +66,7 @@ class _Message extends Component {
 
   render() {
     return (
-      <div className="chat page">
+      <div className="chat page main">
         <h2>Lets Chat about {this.state.topic}</h2>
         <label>
           <input

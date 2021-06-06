@@ -7,6 +7,7 @@ import { BookStay } from '../cmps/stay-details/BookStay'
 import { GoogleMap } from '../cmps/stay-details/GoogleMap'
 import ReactStars from 'react-rating-stars-component'
 import { Loader } from '../cmps/app/Loader'
+import { socketService } from '../services/socketService.js'
 
 export class StayDetails extends Component {
 	state = {
@@ -14,11 +15,21 @@ export class StayDetails extends Component {
 		toggleWish: '',
 	}
 
-	componentDidMount() {
-		this.loadStay();
+	async componentDidMount() {
+		await this.loadStay();
 		this.scrollUp();
 		this.props.setHomePage('stay')
+		socketService.setup()
+
+		// socketService.on('chat addMsg', this.addMsg)
 	}
+
+	componentWillUnmount() {
+		// socketService.off('chat addMsg', this.addMsg)
+		socketService.terminate()
+		clearTimeout(this.timeout)
+	}
+
 
 	scrollUp = () => {
 		window.scroll({
@@ -54,6 +65,11 @@ export class StayDetails extends Component {
 		if (match !== -1) {
 			this.setState({ ...this.state, toggleWish: true })
 		}
+	}
+
+	onBookStay = () => {
+		console.log('onBookStay');
+		socketService.emit('book stay', { hostId: this.state.stay.host._id, from: this.props.loggedInUser, type: 'book stay' })
 	}
 
 	onAddToWishList = () => {
@@ -315,6 +331,7 @@ export class StayDetails extends Component {
 						openDynamicModal={openDynamicModal}
 						modalType={modalType}
 						setModalContent={setModalContent}
+						onBookStay={this.onBookStay}
 					/>
 				</section>
 				<section className="stay-review-container">
