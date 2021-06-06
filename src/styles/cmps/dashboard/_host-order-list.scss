@@ -14,7 +14,7 @@
                         display: flex;
                         align-items: center;
                         width: 100%;
-                        padding: 10px 30px;
+                        padding: 10px 25px;
                         text-align: start;
                         font-family: airbnb-regular, sans-serif;
                         color: $clr-black;
@@ -23,10 +23,11 @@
                             text-align: center;
                         }
                         &:first-of-type {
-                            width: 70px;
+                            width: 80px;
                         }
                         &:nth-of-type(2) {
                             width: 150%;
+                            padding-inline-start: 20px;
                         }
                     }
                 }
@@ -50,17 +51,17 @@
                             text-align: center;
                             align-content: center;
                             display: flex;
-                            gap: 5px;
                             align-items: center;
-                            justify-content: space-evenly;
+                            justify-content: flex-start;
                             width: 100%;
+                            gap: 10px;
 
                             button {
                                 display: flex;
                                 align-items: center;
                                 justify-content: center;
                                 background-color: rgb(236, 236, 236);
-                                padding: 5px;
+                                padding: 5px 10px;
                                 border-radius: 5px;
                                 font-size: 14px;
                                 font-family: airbnb-regular, sans-serif;

@@ -6,13 +6,13 @@ export function OrderList({ orders ,updateOrder , onSelectAction}) {
             <div className="host-order-list-table">
                 <div className="thead">
                     <div>
-                        <span></span>
+                        <span>{''}</span>
                         <span>Guest Name</span>
                         <span>Check in</span>
                         <span>Check out</span>
                         <span>Status</span>
                         <span>Price</span>
-                        <span className="stay-actions">Action</span>
+                        <span className="stay-actions">Actions</span>
                     </div>
                 </div>
                 <div className="tbody">

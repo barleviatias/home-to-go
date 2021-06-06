@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { loadHostStays, removeStay } from '../store/actions/stayActions'
 import { utilService } from '../services/util-service.js'
 import { Loader } from '../cmps/app/Loader'
+import Cash from '../assets/img/user-cash.PNG'
 
 export class _Dashboard extends Component {
 
@@ -65,6 +66,11 @@ export class _Dashboard extends Component {
                 <section className="dashboard-container">
                     <section className="dash-nav-sticky-container">
                         <DashSideNav onSelectAction={this.onSelectAction} />
+                        <div className="host-info-container">
+                            <img src={Cash} alt="cash" />
+                            <h2>Make all payments through Home & go</h2>
+                            <p>Always pay and communicate through Home & go to ensure you're protected under our Terms of Service, Payments Terms of Service, cancellation, and other safeguards.</p>
+                        </div>
                     </section>
                     {!stays && <Loader />}
                     {stays && <section className="dash-main-container">

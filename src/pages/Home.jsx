@@ -2,7 +2,6 @@ import { FilterGallery } from '../cmps/home/FilterGallery'
 import { Banner } from '../cmps/home/Banner'
 import { Hero } from '../cmps/home/Hero'
 import { FilterCities } from '../cmps/home/FilterCities'
-import { render } from '@testing-library/react'
 import { Component } from 'react'
 
 
