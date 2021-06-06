@@ -47,26 +47,26 @@ export class UserDetails extends Component {
     const currUser = this.state.user
 
     if (!currUser) return <h1>loading...</h1>
-    const { fullname, username, email } = currUser
+    const { fullname, username, email, imgUrl } = currUser
     const isEditMode = this.state.isEditMode
 
     return (
 
       <main className="user-details main page">
 
-        {/* <div className="user-details-header">
-          <img src={imgUrl} alt="avatar" />
-          <span>
-            <h1>Hello {firstName[0]}</h1>
-            <p>It's great to have you with us.</p>
-          </span>
-        </div> */}
 
         <h1>Personal info</h1>
 
         <section className="main-user-details">
           {!isEditMode &&
             <div className="user-details-info">
+              <div className="user-info-header">
+                <img src={imgUrl} alt="avatar" />
+                <span>
+                  <h4>{'Hello ' + fullname}</h4>
+                  <p>It's nice to have you with us</p>
+                </span>
+              </div>
               <div>
                 <h4>full name</h4>
                 <p> {fullname}</p>
@@ -79,13 +79,20 @@ export class UserDetails extends Component {
                 <h4>email</h4>
                 <p>{email}</p>
               </div>
-              {/* <p>password: ******</p> */}
               <button onClick={this.toggleEditMode}>Edit</button>
             </div>}
 
           {isEditMode &&
             <div className="user-details-info user-edit" >
-              
+
+              <div className="user-info-header">
+                <img src={imgUrl} alt="avatar" />
+                <span>
+                  <h4>{'Hello ' + fullname}</h4>
+                  <p>It's nice to have you with us</p>
+                </span>
+              </div>
+
               <div>
                 <h4>full name</h4>
                 <p><input type="text" name="fullname" autoComplete="off" onChange={this.handleChange} value={fullname} /></p>
@@ -100,7 +107,6 @@ export class UserDetails extends Component {
                 <h4>email</h4>
                 <p><input type="text" name="email" autoComplete="off" onChange={this.handleChange} value={email} /></p>
               </div>
-              {/* <h3>password: <input type="password" name="password" autoComplete="off" onChange={this.handleChange} value={password} /></h3> */}
               <button onClick={this.onUpdateUser}>save</button>
             </div>}
 
