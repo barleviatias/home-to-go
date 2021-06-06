@@ -23,7 +23,7 @@ export function userReducer(state = initialState, action = {}) {
 
     case 'UPDATE_USER':
       return {
-        loggedInUser: action.user,
+        loggedInUser: { ...action.user, notifications: [...action.user.notifications] },
         users: state.users.map(user =>
           user._id === action.user._id ? action.user : user
         )
