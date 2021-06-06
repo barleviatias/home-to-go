@@ -11,6 +11,28 @@
         height: 100%;
         width: 100%;
 
+        @include for-mobile-layout {
+            &:nth-child(4){
+                display: none;
+            }
+            &:nth-child(3){
+                display: none;
+            }
+        }
+        @include for-tablet-layout {
+            &:nth-child(3){
+                display: none;
+            }
+        }
+        @include for-normal-layout {
+            &:nth-child(4){
+                display: flex;
+            }
+            &:nth-child(3){
+                display: flex;
+            }
+        }
+
         .gallery-preview-img {
             @include aspect-ratio(1, 1);
 

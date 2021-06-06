@@ -9,6 +9,7 @@ import { HostOrders } from '../cmps/dashboard/HostOrders'
 import { connect } from 'react-redux';
 import { loadHostStays, removeStay } from '../store/actions/stayActions'
 import { utilService } from '../services/util-service.js'
+import { Loader } from '../cmps/app/Loader'
 
 export class _Dashboard extends Component {
 
@@ -59,6 +60,7 @@ export class _Dashboard extends Component {
     render() {
         const { action, loggedInUser, selsctedEditStay, orderChangeStatus } = this.state
         const { removeStay, stays, toggleMsgModal, orders, updateOrder } = this.props
+        if (!stays) return <Loader />
         return (
             <main className="main page">
                 <section className="dashboard-container">

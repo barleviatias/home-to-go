@@ -28,6 +28,7 @@
             white-space: pre-wrap;
         }
 
+        
         h2 {
             font-size: rem(16px);
             line-height: rem(26px);
@@ -36,7 +37,30 @@
             padding-top: 12px;
             padding-bottom: 40px;
         }
-
+        
+        @include for-mobile-layout {
+            h1 {
+                font-size: rem(33px);
+                line-height: rem(36px);
+                width: 200px;
+            }
+            h2 {
+                font-size: rem(12px);
+                line-height: rem(20px);
+            }
+        }
+     
+        @include for-normal-layout {
+            h1 {
+                font-size: rem(43px);
+                line-height: rem(46px);
+                width: 400px;
+            }
+            h2 {
+                font-size: rem(14px);
+                line-height: rem(24px);
+            }
+        }
         button {
             font-size: rem(14px);
             font-family: airbnb-regular, sans-serif;
