@@ -1,8 +1,8 @@
 // import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { tripService } from '../services/trip-service'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Loader } from '../cmps/app/Loader';
 
 import {
 	loadUsers,
@@ -208,7 +208,6 @@ class _LoginSignup extends Component {
 
 		return (
 			<main className="login-container main page">
-				{/* <h2> Login / Signup </h2> */}
 				<p>{this.state.msg}</p>
 				{loggedInUser && <button onClick={this.props.logout}>logged out</button>}
 
@@ -222,7 +221,7 @@ class _LoginSignup extends Component {
 						<details>
 							<summary>Admin</summary>
 							<button onClick={this.props.loadUsers}>Refresh Users</button>
-							{this.props.isLoading && 'Loading...'}
+							{this.props.isLoading && <Loader/>}
 							{this.props.users && (
 								<ul>
 									{this.props.users.map((user) => (

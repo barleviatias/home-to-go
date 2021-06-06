@@ -14,7 +14,7 @@ export function Loader() {
   let [color ] = useState("#FF385C");
 
   return (
-    <div className="BeatLoader page">
+    <div className="BeatLoader main-loader page main">
       <BeatLoader color={color} loading={loading} css={override} size={20} />
     </div>
   );

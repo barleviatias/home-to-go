@@ -1,27 +1,71 @@
-.notifications{
-    display: flex;
-    flex-direction: column;
+.notifications {
+    padding-top: 20px;
 
-    .notif-list{
+    .notif-list {
+        margin: 0 auto;
         display: flex;
         flex-direction: column;
 
-        .notif-card{
+        max-width: 700px;
+
+        h1 {
+            font-size: 32px;
+            line-height: 36px;
+            font-family: airbnb-bold, sans-serif;
+            color: $clr-black;
+            padding-bottom: 20px;
+        }
+
+        .notif-card {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 50px;
+            padding: 15px 0px;
+            border-bottom: 1px solid rgb(221, 220, 220);
 
-            img{
+            img {
                 height: 50px;
                 width: 50px;
+                border-radius: 50%;
             }
 
-            span{
+            span {
+                flex: 1;
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
+
+                h3 {
+                    font-size: rem(14px);
+                    line-height: rem(18px);
+                    font-family: airbnb-regular, sans-serif;
+                    color: $clr-black;
+                }
+
+                h4 {
+                    flex: 3;
+                    font-size: rem(12px);
+                    line-height: rem(16px);
+                    font-family: airbnb-book, sans-serif;
+                    color: $clr-dark; 
+                }
+            }
+
+            .notif-card-txt {
+                flex: 3;
+                font-size: rem(12px);
+                line-height: rem(16px);
+                font-family: airbnb-book, sans-serif;
+                color: $clr-black;
+            }
+
+            a {
+                font-size: rem(12px);
+                line-height: rem(16px);
+                font-family: airbnb-regular, sans-serif;
+                color: $clr-black;
             }
         }
     }
-
 }

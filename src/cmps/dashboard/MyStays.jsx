@@ -1,4 +1,5 @@
 import { HostStayList } from './HostStayList'
+import {Loader} from '../app/Loader'
 
 export function MyStays({ stays, removeStay, toggleMsgModal, onSelectedEditStay,  onSelectAction }) {
 
@@ -11,7 +12,7 @@ export function MyStays({ stays, removeStay, toggleMsgModal, onSelectedEditStay,
         onSelectedEditStay(stay)
     }
 
-    if (!stays) return <h3>Loading....</h3>
+    if (!stays) return <Loader/>
     return (
         <section className="host-stay-container">
             <HostStayList stays={stays} onRemoveStays={onRemoveStays} onEditStay={onEditStay} onSelectAction={onSelectAction} />

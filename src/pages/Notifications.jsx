@@ -19,8 +19,8 @@ export class Notifications extends Component {
 
     return (
       <main className="notifications main page">
-        <h1>Notifications</h1>
         <section className="notif-list">
+        <h1>Notifications</h1>
           {notifications && notifications.map(notif => {
             return (
               <div key={Math.random()} className="notif-card">
@@ -29,8 +29,8 @@ export class Notifications extends Component {
                   <h3>{notif.from.fullname}</h3>
                   <h4>{utilService.getTimeFormat(notif.body.createdAt)}</h4>
                 </span>
-                <h4>{notif.body.txt}</h4>
-                <Link to={`/host/${this.props.loggedInUser._id}`}>Dashboard</Link>
+                <h4 className="notif-card-txt">{notif.body.txt}</h4>
+                <Link to={`/host/${this.props.loggedInUser._id}`}>Read More</Link>
               </div>
             )
           })}

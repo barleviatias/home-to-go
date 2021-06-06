@@ -1,5 +1,5 @@
 .user-details {
-    padding: 0px 15vw;
+    padding: 20px 15vw;
     h1 {
         font-size: 32px;
         line-height: 36px;
@@ -7,41 +7,6 @@
         font-family: airbnb-bold, sans-serif;
         padding-bottom: 70px;
     }
-
-    // .user-details-header {
-    //     display: flex;
-    //     align-items: center;
-    //     gap: 30px;
-    //     padding-bottom: 40px;
-
-    //     img {
-    //         object-fit: contain;
-    //         height: 100px;
-    //         width: 100px;
-    //         border-radius: 50%;
-    //     }
-
-    //     >span{
-    //         display: flex;
-    //         flex-direction: column;
-    //         gap: 5px;
-    //         align-items: flex-start;
-    //     }
-
-    //     h1 {
-    //         font-size: rem(20px);
-    //         line-height: rem(22px);
-    //         color: $clr-black;
-    //         font-family: airbnb-bold, sans-serif;
-    //     }
-
-    //     p{
-    //         font-size: rem(14px);
-    //         line-height: rem(16px);
-    //         color: $clr-black;
-    //         font-family: airbnb-book, sans-serif;
-    //     }
-    // }
 
     .main-user-details {
         display: flex;

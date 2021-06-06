@@ -42,6 +42,7 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
         addTrip(updatedTrip)
     }
 
+
     return (
         <section className="stay-preview-container" >
             <Link to={`/stay/${stay._id}`} onClick={onSelectStay} className="stay-preview-link">
