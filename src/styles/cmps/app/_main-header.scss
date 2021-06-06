@@ -315,7 +315,7 @@
                 .book-stay-mini {
                     display: flex;
                     align-items: center;
-                    gap: 10px;
+                    gap: 15px;
                     color: $clr-black;
 
                     div {
@@ -357,7 +357,7 @@
 
                     button {
                         padding: 14px 25px;
-                        border-radius: 10px;
+                        border-radius: 13px;
                         background-image: linear-gradient(
                             to right,
                             rgb(230, 30, 77) 0%,

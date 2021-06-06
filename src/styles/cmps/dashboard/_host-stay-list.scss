@@ -91,6 +91,24 @@
                     }
                 }
             }
+            .empty-msg{
+                font-size: 16px;
+                line-height: 18px;
+                font-family: airbnb-book , sans-serif;
+                text-align: center;
+                width: 100%;
+                border-top: 1px solid rgb(223, 223, 223); 
+                padding: 50px 0px;
+
+                button{
+                    font-size: inherit;
+                    color: inherit;
+                    padding: 0 0;
+                    line-height: inherit;
+                    text-decoration: underline;
+                    font-family: airbnb-regular , sans-serif;
+                }
+            }
         }
     }
 }

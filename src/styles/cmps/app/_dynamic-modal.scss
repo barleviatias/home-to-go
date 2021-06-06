@@ -1,7 +1,6 @@
 .dynamic-modal {
     position: absolute;
     z-index: 5;
- 
 
     .book-guest-modal {
         display: flex;
@@ -13,7 +12,7 @@
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 10px;
+        border-radius: 13px;
 
         width: 380px;
         font-size: 16px;
@@ -83,12 +82,25 @@
         position: absolute;
         transform: translateX(-12.5%);
         padding: 0 0;
-        border-radius: 10px;
+        border-radius: 13px;
+
+        @include for-mobile-layout {
+            width:200px;
+            transform: translateX(-70%);
+        }
+        @include for-tablet-layout {
+            width:350px;
+            transform: translateX(-50%);
+        }
+        @include for-narrow-layout {
+            transform: translateX(-12.5%);
+            width: 400px;
+        }
 
         > * {
-            border-radius: 10px;
+            border-radius: 13px;
             > * {
-                border-radius: 10px;
+                border-radius: 13px;
             }
         }
     }
@@ -105,12 +117,22 @@
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 10px;
+        border-radius: 13px;
 
         width: 400px;
         font-size: 16px;
         text-transform: capitalize;
         box-shadow: 0 3px 8px 0px #0000002e;
+
+        @include for-mobile-layout {
+            width:280px;
+        }
+        @include for-tablet-layout {
+            width:350px;
+        }
+        @include for-narrow-layout {
+            width: 400px;
+        }
 
         .modal-label {
             display: flex;
@@ -125,7 +147,7 @@
                 display: flex;
                 flex-direction: column;
                 align-items: flex-start;
-                border-radius: 10px;
+                border-radius: 13px;
 
                 > span:first-child {
                     color: black;
@@ -133,13 +155,13 @@
             }
 
             &:first-of-type {
-                border-top-left-radius: 10px;
-                border-top-right-radius: 10px;
+                border-top-left-radius: 13px;
+                border-top-right-radius: 13px;
             }
 
             &:last-of-type {
-                border-bottom-left-radius: 10px;
-                border-bottom-right-radius: 10px;
+                border-bottom-left-radius: 13px;
+                border-bottom-right-radius: 13px;
             }
 
             &:not(:last-of-type) {
@@ -174,12 +196,29 @@
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 10px;
+        border-radius: 13px;
 
         width: 400px;
         font-size: 16px;
         text-transform: capitalize;
         box-shadow: 0 3px 8px 0px #0000002e;
+
+        @include for-mobile-layout {
+            width:280px;
+            transform: translateX(-75%);
+        }
+        @include for-tablet-layout {
+            width:350px;
+            transform: translateX(-50%);
+        }
+        @include for-narrow-layout {
+            transform: translateX(-50%);
+            width: 350px;
+        }
+        @include for-normal-layout {
+            transform: translateX(-12.5%);
+            width: 400px;
+        }
 
         .modal-label {
             display: flex;
@@ -243,13 +282,12 @@
         z-index: 5;
         transform: translateX(-12.5%);
 
-
         flex-direction: column;
         align-items: flex-start;
 
         color: $clr-dark;
         background-color: white;
-        border-radius: 10px;
+        border-radius: 13px;
 
         width: fit-content;
         font-size: 16px;
@@ -263,7 +301,7 @@
             width: 100%;
             background-color: white;
             cursor: pointer;
-            border-radius: 10px;
+            border-radius: 13px;
 
             &.amenities {
                 div {
@@ -282,8 +320,7 @@
                 &.price {
                     display: flex;
                     flex-direction: row;
-                    border-radius: 10px;
-
+                    border-radius: 13px;
                 }
 
                 &:not(:last-of-type) {
@@ -291,12 +328,12 @@
                 }
 
                 &:first-of-type {
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px;
+                    border-top-left-radius: 13px;
+                    border-top-right-radius: 13px;
                 }
                 &:last-of-type {
-                    border-bottom-left-radius: 10px;
-                    border-bottom-right-radius: 10px;
+                    border-bottom-left-radius: 13px;
+                    border-bottom-right-radius: 13px;
                 }
 
                 &:hover {

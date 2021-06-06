@@ -1,6 +1,6 @@
 import { HostStayList } from './HostStayList'
 
-export function MyStays({ stays, removeStay, toggleMsgModal, onSelectedEditStay }) {
+export function MyStays({ stays, removeStay, toggleMsgModal, onSelectedEditStay,  onSelectAction }) {
 
     async function onRemoveStays(stayId) {
         await removeStay(stayId)
@@ -14,7 +14,7 @@ export function MyStays({ stays, removeStay, toggleMsgModal, onSelectedEditStay 
     if (!stays) return <h3>Loading....</h3>
     return (
         <section className="host-stay-container">
-            <HostStayList stays={stays} onRemoveStays={onRemoveStays} onEditStay={onEditStay} />
+            <HostStayList stays={stays} onRemoveStays={onRemoveStays} onEditStay={onEditStay} onSelectAction={onSelectAction} />
         </section>
     )
 }

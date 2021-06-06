@@ -112,14 +112,14 @@
                 &:first-child {
                     grid-column: 1 / span 2;
                     grid-row: 1 / span 2;
-                    border-top-left-radius: 15px;
-                    border-bottom-left-radius: 15px;
+                    border-top-left-radius: 13px;
+                    border-bottom-left-radius: 13px;
                 }
                 &:nth-child(3) {
-                    border-top-right-radius: 15px;
+                    border-top-right-radius: 13px;
                 }
                 &:nth-child(5) {
-                    border-bottom-right-radius: 15px;
+                    border-bottom-right-radius: 13px;
                 }
             }
         }
