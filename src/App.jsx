@@ -53,13 +53,13 @@ class _App extends Component {
     const user = this.props.loggedInUser
     if (user.username === msg.from.username) return
 
-    if (msg.type === 'book stay'){
+    if (msg.type === 'book stay') {
       const txt = `${msg.from.username} booked your stay`
-      const createdAt = new Date() 
-      const body = { txt, createdAt}
+      const createdAt = new Date()
+      const body = { txt, createdAt }
       msg.body = body
     }
-      
+
     if (user.notifications && user.notifications.length) user.notifications.push(msg)
     else {
       user.notifications = []
@@ -246,6 +246,8 @@ class _App extends Component {
                 login={login}
                 setHomePage={this.setHomePage}
                 updateUser={updateUser}
+                trip={trip}
+                addTrip={addTrip}
               />
             )}
           />

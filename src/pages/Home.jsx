@@ -29,7 +29,7 @@ export class Home extends Component {
 
     return (
       <main className="home-page main">
-        <Hero loadStays={loadStays} />
+        <Hero loadStays={loadStays} addTrip={addTrip} />
         <h1>Popular destinations</h1>
         <FilterCities onSearch={onSearch} />
         <h1>Explore nearby</h1>

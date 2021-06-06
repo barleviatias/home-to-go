@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { StayGallery } from '../explore/StayGallery'
+import { Loader } from '../app/Loader'
 
 export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login, trip, addTrip }) {
 
@@ -37,6 +38,7 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
     }
 
     function onSelectStay() {
+        console.log(trip);
         var updatedTrip = trip
         updatedTrip.stay = stay
         addTrip(updatedTrip)

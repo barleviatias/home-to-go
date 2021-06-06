@@ -23,26 +23,20 @@ export function FooterLinks({ onSearch, topRatedStays, nearbayStays }) {
             <div>
                 <div>
                     <h4>Top Rated</h4>
-                    {topRatedStays.map((stay, idx) => {
-                        if (idx < 8) {
-                            return <Link key={Math.random()} to={`/stay/${stay._id}`} ><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
-                        }
+                    {topRatedStays.map((stay) => {
+                        return <Link key={Math.random()} to={`/stay/${stay._id}`} ><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
                     })}
                 </div>
                 <div>
                     <h4>Nearby</h4>
-                    {nearbayStays.map((stay, idx) => {
-                        if (idx < 8) {
-                            return <Link key={Math.random()} to={`/stay/${stay._id}`} ><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
-                        }
+                    {nearbayStays.map((stay) => {
+                        return <Link key={Math.random()} to={`/stay/${stay._id}`} ><span>{stay.name}</span><span>{stay.loc.address}</span></Link>
                     })}
                 </div>
                 <div>
                     <h4>Cities</h4>
-                    {topCities.map((city, idx) => {
-                        if (idx < 8) {
-                            return <Link key={Math.random()} to="/explore" onClick={() => { onSelectLink(`${city.city}`) }}><span>{city.city}</span><span>{city.state}</span></Link>
-                        }
+                    {topCities.map((city) => {
+                        return <Link key={Math.random()} to="/explore" onClick={() => { onSelectLink(`${city.city}`) }}><span>{city.city}</span><span>{city.state}</span></Link>
                     })}
                 </div>
             </div>

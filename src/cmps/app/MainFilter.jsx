@@ -75,7 +75,7 @@ export class MainFilter extends Component {
                                         target: {
                                             name: "address",
                                             type: "search",
-                                            value: `${city.city}, ${city.state}`
+                                            value: `${city.city}`
                                         }
                                     })
                                 }} key={Math.random()} className="modal-label">
