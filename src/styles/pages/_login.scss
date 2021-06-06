@@ -8,7 +8,7 @@
 
         .login-form {
             border: 1px solid rgb(219, 219, 219);
-            border-radius: 10px;
+            border-radius: 13px;
             box-shadow: 0 0 0 black;
             width: 30vw;
 
@@ -40,8 +40,8 @@
                     border: 1px solid rgb(182, 182, 182);
 
                     &:first-of-type {
-                        border-top-left-radius: 10px;
-                        border-top-right-radius: 10px;
+                        border-top-left-radius: 13px;
+                        border-top-right-radius: 13px;
                     }
 
                     &:not(:last-of-type){
@@ -49,8 +49,8 @@
                     }
 
                     &:last-of-type {
-                        border-bottom-left-radius: 10px;
-                        border-bottom-right-radius: 10px;
+                        border-bottom-left-radius: 13px;
+                        border-bottom-right-radius: 13px;
                     }
                 }
 
@@ -59,7 +59,7 @@
                     background-color: $clr-brand;
                     padding: 15px;
                     margin: 20px 0px;
-                    border-radius: 10px;
+                    border-radius: 13px;
                     color: $clr-light;
                     font-weight: 600;
                 }

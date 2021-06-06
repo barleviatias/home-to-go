@@ -9,7 +9,9 @@ export function DashHeader({ stays, orders, orderChangeStatus }) {
             var stayAvgRate = rates.reduce((a, b) => a + b, 0)
             totalRate += (stayAvgRate / rates.length)
         })
-        return (totalRate / stays.length).toFixed(1);
+        var RateToDisplay = (totalRate / stays.length) ? (totalRate / stays.length).toFixed(1) : 0
+    
+        return RateToDisplay
     };
 
     function getSumByOrderStatus(status) {

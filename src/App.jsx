@@ -10,6 +10,7 @@ import { Footer } from './cmps/Footer';
 import { Dashboard } from './pages/Dashboard';
 import { Orders } from './pages/Orders';
 import { BecomeHost } from './pages/BecomeHost';
+import { Notifications } from './pages/Notifications';
 import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
@@ -255,6 +256,17 @@ class _App extends Component {
             render={(props) => (
               <UserDetails {...props}
                 updateUser={updateUser}
+                setHomePage={this.setHomePage}
+                setFooterDisplay={this.setFooterDisplay}
+              />
+            )}
+          />
+          <Route
+            path="/notif"
+            render={(props) => (
+              <Notifications {...props}
+                updateUser={updateUser}
+                loggedInUser={loggedInUser}
                 setHomePage={this.setHomePage}
                 setFooterDisplay={this.setFooterDisplay}
               />

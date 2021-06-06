@@ -27,7 +27,7 @@
 
         img {
             object-fit: cover;
-            border-radius: 10px;
+            border-radius: 13px;
             height: 70px;
             width: 70px;
         }
@@ -48,7 +48,7 @@
         }
         @include for-normal-layout {
             img {
-                border-radius: 10px;
+                border-radius: 13px;
                 height: 70px;
                 width: 70px;
             }
