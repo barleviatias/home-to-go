@@ -97,7 +97,7 @@ export class StayFilter extends Component {
                         <div onClick={() => this.handleChange('propertyType', 'penthouse')}>
                             <span>Penthouse</span>
                         </div>
-                        <div onClick={() => this.handleChange('propertyType', 'ppartment')}>
+                        <div onClick={() => this.handleChange('propertyType', 'appartment')}>
                             <span>Appartment</span>
                         </div>
                         <div onClick={() => this.handleChange('propertyType', 'hotel')}>

@@ -68,6 +68,7 @@ class _LoginSignup extends Component {
 			this.setState({ loginCred: { username: '', password: '' } },this.props.history.go(-1)
 			)
 		} catch (err) {
+			
 			this.setState({ msg: 'Login failed, try again.' });
 		}
 	};
