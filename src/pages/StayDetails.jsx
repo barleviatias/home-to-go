@@ -16,19 +16,14 @@ export class StayDetails extends Component {
 	}
 
 	async componentDidMount() {
-		await this.loadStay();
 		this.scrollUp();
+		await this.loadStay();
 		this.props.setHomePage('stay')
-		socketService.setup()
-
-		// socketService.on('chat addMsg', this.addMsg)
 	}
 
-	componentWillUnmount() {
-		// socketService.off('chat addMsg', this.addMsg)
-		socketService.terminate()
-		clearTimeout(this.timeout)
-	}
+	// componentWillUnmount() {
+	// 	clearTimeout(this.timeout)
+	// }
 
 
 	scrollUp = () => {
@@ -67,9 +62,11 @@ export class StayDetails extends Component {
 		}
 	}
 
-	onBookStay = () => {
+	onBookStay = async () => {
 		console.log('onBookStay');
-		socketService.emit('book stay', { hostId: this.state.stay.host._id, from: this.props.loggedInUser, type: 'book stay' })
+		console.log('hostId: ' , this.state.stay.host._id);
+		await this.props.setHostSocket(this.state.stay.host._id)
+		await socketService.emit('add notif', {from: this.props.loggedInUser, type: 'book stay' })
 	}
 
 	onAddToWishList = () => {
@@ -194,7 +191,7 @@ export class StayDetails extends Component {
 			onSearch,
 			openDynamicModal,
 			modalType,
-			setModalContent,
+			setModalContent
 		} = this.props
 
 		const { toggleWish } = this.state
@@ -332,6 +329,7 @@ export class StayDetails extends Component {
 						modalType={modalType}
 						setModalContent={setModalContent}
 						onBookStay={this.onBookStay}
+				
 					/>
 				</section>
 				<section className="stay-review-container">

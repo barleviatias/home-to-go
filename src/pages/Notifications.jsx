@@ -1,67 +1,40 @@
 import { Component } from "react";
-import { socketService } from "../services/socketService";
-
-
+import { Link } from "react-router-dom";
+import { utilService } from '../services/util-service'
 
 export class Notifications extends Component {
 
-  state = {
-    notifications: [
-      {
-        from: {
-          imgUrl: '',
-          username: '',
-          fullname: ''
-        },
-        body: {
-          txt: '',
-          createdAt: ''
-        }
-      }
-    ]
-  }
-
-
-  componentDidMount() {
-    this.loadUser()
+  async componentDidMount() {
     this.props.setFooterDisplay(false)
     this.props.setHomePage('user')
-    socketService.on('notify host', this.setNewMsg)
   }
 
-  setNewMsg = (msg) => {
-    this.setState({})
-  }
-
-  componentWillUnmount() {
+  async componentWillUnmount() {
     this.props.setFooterDisplay(true)
   }
 
-  loadUser = async () => {
-    this.setState({ user: this.props.loggedInUser })
-  }
 
   render() {
-    const { user } = this.state
+    const { notifications } = this.props.loggedInUser
 
     return (
       <main className="notifications main page">
         <h1>Notifications</h1>
-        <section>
-          {user && user.notifications && user.notifications.map(notif => {
+        <section className="notif-list">
+          {notifications && notifications.map(notif => {
             return (
-              <div className="notif-card">
+              <div key={Math.random()} className="notif-card">
                 <img src={notif.from.imgUrl} alt="avatar" />
-                <h3>{notif.from.username}</h3>
+                <span>
+                  <h3>{notif.from.fullname}</h3>
+                  <h4>{utilService.getTimeFormat(notif.body.createdAt)}</h4>
+                </span>
                 <h4>{notif.body.txt}</h4>
-                <h4>{notif.body.createdAt}</h4>
+                <Link to={`/host/${this.props.loggedInUser._id}`}>Dashboard</Link>
               </div>
             )
           })}
         </section>
-
-
-
       </main>
     );
   }

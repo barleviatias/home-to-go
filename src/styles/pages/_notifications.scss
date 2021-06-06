@@ -1,0 +1,27 @@
+.notifications{
+    display: flex;
+    flex-direction: column;
+
+    .notif-list{
+        display: flex;
+        flex-direction: column;
+
+        .notif-card{
+            display: flex;
+            align-items: center;
+            gap: 50px;
+
+            img{
+                height: 50px;
+                width: 50px;
+            }
+
+            span{
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    }
+
+}

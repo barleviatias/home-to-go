@@ -15,12 +15,13 @@ import { Component } from 'react';
 import { connect } from 'react-redux';
 import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
 import { stayService } from './services/stay-service'
+import { socketService } from './services/socketService'
 import { loadOrders, removeOrder, updateOrder } from './store/actions/orderActions';
 import { addTrip, loadTrip, removeTrip } from './store/actions/tripActions';
 import { updateUser, loadUsers, logout, login } from './store/actions/userActions';
 import { DynamicModal } from './cmps/app/DynamicModal';
 import { UserMsg } from './cmps/app/UserMsg';
-import {Message} from './pages/Message'
+import { Message } from './pages/Message'
 
 class _App extends Component {
   state = {
@@ -37,9 +38,44 @@ class _App extends Component {
     currPage: 'home'
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     this.loadRated();
     this.loadNearby();
+    await socketService.setup()
+    if (this.props.loggedInUser && this.props.loggedInUser.isHost) {
+      await socketService.emit('book stay', this.props.loggedInUser._id)
+      await socketService.on('notify host', this.setNewNotif)
+    }
+  }
+
+  setNewNotif = (msg) => {
+
+    const user = this.props.loggedInUser
+    if (user.username === msg.from.username) return
+
+    if (msg.type === 'book stay'){
+      const txt = `${msg.from.username} booked your stay`
+      const createdAt = new Date() 
+      const body = { txt, createdAt}
+      msg.body = body
+    }
+      
+    if (user.notifications && user.notifications.length) user.notifications.push(msg)
+    else {
+      user.notifications = []
+      user.notifications.push(msg)
+    }
+    this.props.updateUser(user)
+  }
+
+  setHostSocket = async (hostId) => {
+    console.log();
+    await socketService.emit('book stay', hostId)
+  }
+
+  async componentWillUnmount() {
+    socketService.terminate()
+    await socketService.off('notify host', this.setNewNotif)
   }
 
   loadRated = async () => {
@@ -228,6 +264,7 @@ class _App extends Component {
                 updateUser={updateUser}
                 setModalContent={this.setModalContent}
                 setHomePage={this.setHomePage}
+                setHostSocket={this.setHostSocket}
               />
             )}
           />
