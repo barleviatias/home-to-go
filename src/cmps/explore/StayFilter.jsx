@@ -113,7 +113,7 @@ export class StayFilter extends Component {
             case 'price':
                 dynamicModal.modalContent = (<section className="stay-filter-modal">
                     <div className="modal-label">
-                        <div class="price">
+                        <div className="price">
                             <button className="modal-btn" type={"button"} onClick={() => { this.handleChange('price', (price - 10)) }}>-</button>
                             <span>{price}</span>
                             <button className="modal-btn" type={"button"} onClick={() => { this.handleChange('price', (price + 10)) }}>+</button>

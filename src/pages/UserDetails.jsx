@@ -47,8 +47,7 @@ export class UserDetails extends Component {
     const currUser = this.state.user
 
     if (!currUser) return <h1>loading...</h1>
-    const { fullname, username, email, imgUrl } = currUser
-    const firstName = fullname.split(' ')
+    const { fullname, username, email } = currUser
     const isEditMode = this.state.isEditMode
 
     return (

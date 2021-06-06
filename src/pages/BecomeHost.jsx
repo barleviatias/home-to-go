@@ -9,8 +9,8 @@ export class BecomeHost extends Component {
         this.props.setFooterDisplay(false)
     }
 
-    componentWillUnmount(){
-        this.props.setFooterDisplay(true) 
+    componentWillUnmount() {
+        this.props.setFooterDisplay(true)
     }
 
     render() {
@@ -20,7 +20,7 @@ export class BecomeHost extends Component {
                 <section className="full bocome-host-container">
                     <div className="hosting-img">
                         <Link className="a" to="/"><i className="fab fa-airbnb fa-3x logo-icon"></i></Link>
-                        <img className="guests-img" src="https://www.insidehook.com/wp-content/uploads/2021/03/good-airbnb-guest-2.jpg?fit=1200%2C800" />
+                        <img className="guests-img" src="https://www.insidehook.com/wp-content/uploads/2021/03/good-airbnb-guest-2.jpg?fit=1200%2C800" alt="" />
                     </div>
                     <div className="hosting-info">
                         <h1>Hosting makes us</h1>

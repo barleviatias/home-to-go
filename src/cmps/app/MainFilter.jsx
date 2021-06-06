@@ -205,6 +205,10 @@ export class MainFilter extends Component {
         this.setState({ topRatedStays: topRated })
     }
 
+    handle=() => {
+        return
+    }
+
     render() {
         const { isFullHeader, openFullHeader } = this.props
         const { loc, time, guests } = this.state.trip
@@ -223,16 +227,16 @@ export class MainFilter extends Component {
                     </label>
                     <label htmlFor="check-in">
                         <span>Check in</span>
-                        <input value={checkIn} id="check-in" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
+                        <input value={checkIn} id="check-in" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')}  onChange={this.handle}/>
                     </label>
                     <label htmlFor="check-out">
                         <span>Check out</span>
-                        <input value={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
+                        <input value={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} onChange={this.handle} />
                     </label>
                     <label className="guests" htmlFor="guests">
                         <div>
                             <span>Guests</span>
-                            <input onClick={(event) => { this.onSetModal(event, 'guests') }} value={kids + adults + '  guests'} id="guests" name="guests" placeholder="Add guests" onChange={this.handleGuestChang} />
+                            <input onClick={(event) => { this.onSetModal(event, 'guests') }} value={kids + adults + '  guests'} id="guests" name="guests" placeholder="Add guests" onChange={this.handle} />
                         </div>
                     </label>
 

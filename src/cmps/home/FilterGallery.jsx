@@ -18,6 +18,7 @@ export function FilterGallery({ stays ,addTrip}) {
                         </Link>
                     )
                 }
+                else return ''
             })}
         </section>
     )

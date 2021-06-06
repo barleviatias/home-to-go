@@ -21,11 +21,6 @@ export class StayDetails extends Component {
 		this.props.setHomePage('stay')
 	}
 
-	// componentWillUnmount() {
-	// 	clearTimeout(this.timeout)
-	// }
-
-
 	scrollUp = () => {
 		window.scroll({
 			top: 0,
@@ -63,10 +58,8 @@ export class StayDetails extends Component {
 	}
 
 	onBookStay = async () => {
-		console.log('onBookStay');
-		console.log('hostId: ' , this.state.stay.host._id);
 		await this.props.setHostSocket(this.state.stay.host._id)
-		await socketService.emit('add notif', {from: this.props.loggedInUser, type: 'book stay' })
+		await socketService.emit('add notif', { from: this.props.loggedInUser, type: 'book stay' })
 	}
 
 	onAddToWishList = () => {
@@ -244,6 +237,7 @@ export class StayDetails extends Component {
 								<img src={imgUrl} alt="stay-gallery-preview-img" key={Math.random()} />
 							)
 						}
+						else return ''
 					})}
 				</div>
 				<section className="stay-info-container">
@@ -329,7 +323,7 @@ export class StayDetails extends Component {
 						modalType={modalType}
 						setModalContent={setModalContent}
 						onBookStay={this.onBookStay}
-				
+
 					/>
 				</section>
 				<section className="stay-review-container">

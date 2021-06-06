@@ -33,7 +33,7 @@ function getRandomIntInclusive(min, max) {
 }
 
 function getTimeFormat(time) {
-    var time = new Date(time)
+    time = new Date(time)
     var day = time.getDay()+1;
     var month = time.getMonth()+1;
     var year = time.getFullYear();

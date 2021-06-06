@@ -93,15 +93,6 @@ async function getTopRatedStays(trip = { loc: { address: '' }, guests: { adults:
 	// var queryStr = `?availability=${filterBy.availability}&searchTxt=${filterBy.searchTxt}&sortBy=${filterBy.sortBy}&type=${filterBy.type}`
 }
 
-function _getRate(stay) {
-	const rates = stay.reviews.map((review) => review.avgRate);
-	const sum = rates.reduce((acc, rate) => {
-		acc += rate;
-		return acc;
-	}, 0);
-	return sum / rates.length;
-}
-
 async function getNearbyStays(location) {
 	// return await httpService.get(`stay`, { loc: { address: location }, guests: { adults: 1, kids: 0 } })
 	return await httpService.get(`stay`, { loc: { address: '' }, guests: { adults: 1, kids: 0 }, type: 'nearby', data: location })

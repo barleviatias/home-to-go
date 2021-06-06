@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import { OrderList } from '../cmps/orders/OrderList';
-import {Loader} from '../cmps/app/Loader'
+import { Loader } from '../cmps/app/Loader'
 
 export class Orders extends Component {
 
@@ -79,7 +79,7 @@ export class Orders extends Component {
     }
 
     handleChange = (ev) => {
-        var { name, value } = ev.target
+        var { name } = ev.target
         this.setState({ filterBy: { ...this.state.filterBy, [name]: !this.state.filterBy[name] } }, () => {
         });
     }
@@ -104,6 +104,8 @@ export class Orders extends Component {
             case 'price':
                 sortOrders = _sortByPrice(orders);
                 break
+            default:
+                break;
         }
 
         this.setState({ orders: sortOrders })

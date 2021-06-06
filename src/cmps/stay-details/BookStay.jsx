@@ -37,7 +37,6 @@ class _BookStay extends Component {
 
     onSetModal = (event, modalKey) => {
         const clickPos = { x: event.pageX, y: event.pageY }
-        console.log('clickPos', clickPos);
         this.setState({
             dynamicModal: {
                 ...this.state.dynamicModal,
