@@ -12,11 +12,9 @@
         position: absolute;
         left: 50%;
         transform: translate(-50%, -75%);
-
         display: flex;
         align-items: center;
         justify-content: space-between;
-
         border: 1px solid #a1a1a138;
         font-size: rem(12px);
         border-radius: 40px;
@@ -24,6 +22,35 @@
         opacity: 1;
         padding: 0px 10px 0px 0px;
         margin: 0 0;
+
+        @include for-mobile-layout {
+            width: 100%;
+            justify-content: space-evenly;
+            label{
+                span{
+                    text-align: center;
+                }
+            }
+
+        }
+        @include for-tablet-layout {
+            width: 100%;
+            justify-content: space-evenly;
+            label{
+                span{
+                    text-align: center;
+                }
+            }
+        }
+        @include for-narrow-layout {
+            width: initial;
+            justify-content: space-between;
+            label{
+                span{
+                    text-align: start;
+                }
+            }
+        }
 
         &:hover {
             background-color: rgb(246, 246, 246);
@@ -66,6 +93,7 @@
                 line-height: rem(14px);
                 cursor: pointer;
                 padding-bottom: 5px;
+                text-align: start;
             }
 
             input {
@@ -109,60 +137,60 @@
             }
             @include for-mobile-layout {
                 &:nth-child(1) {
-                    padding: 5px 24px;
+                    padding: 10px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
                 &:nth-child(2) {
-                    padding: 5px 24px;
+                    padding: 10px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
                 &:nth-child(3) {
-                    padding: 5px 24px;
+                    padding: 10px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
                 &:nth-child(4) {
-                    padding: 5px 24px;
+                    padding: 10px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
             }
             @include for-tablet-layout {
                 &:nth-child(1) {
-                    padding: 5px 24px;
+                    padding: 15px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
                 &:nth-child(2) {
-                    padding: 5px 24px;
+                    padding: 15px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
                 &:nth-child(3) {
-                    padding: 5px 24px;
+                    padding: 15px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
                 &:nth-child(4) {
-                    padding: 5px 24px;
+                    padding: 15px 5px;
                     width: 15vw;
-                    input{
+                    input {
                         display: none;
                     }
                 }
@@ -171,28 +199,28 @@
                 &:nth-child(1) {
                     padding: 14px 24px;
                     width: initial;
-                    input{
+                    input {
                         display: initial;
                     }
                 }
                 &:nth-child(2) {
                     padding: 14px 24px;
                     width: initial;
-                    input{
+                    input {
                         display: initial;
                     }
                 }
                 &:nth-child(3) {
                     padding: 14px 24px;
                     width: initial;
-                    input{
+                    input {
                         display: initial;
                     }
                 }
                 &:nth-child(4) {
                     padding: 14px 24px;
                     width: initial;
-                    input{
+                    input {
                         display: initial;
                     }
                 }
@@ -209,6 +237,27 @@
             width: 47px;
             color: white;
             font-size: rem(14px);
+        }
+        @include for-mobile-layout {
+            button {
+                height: 35px;
+                width: 35px;
+                font-size: rem(10px);
+            }
+        }
+        @include for-tablet-layout {
+            button {
+                height: 40px;
+                width: 40px;
+                font-size: rem(12px);
+            }
+        }
+        @include for-narrow-layout {
+            button {
+                height: 47px;
+                width: 47px;
+                font-size: rem(14px);
+            }
         }
     }
 

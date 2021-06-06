@@ -4,17 +4,17 @@ import { HostStayPreview } from './HostStayPreview'
 export function HostStayList({ stays, onRemoveStays, onEditStay }) {
     return (
         <section className="host-stay-list">
-            <table className="host-stay-list-table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Name</th>
-                        <th>Address</th>
-                        <th>Price</th>
-                        <th className="stay-actions" >Action</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <div className="host-stay-list-table">
+                <div className="thead">
+                    <div>
+                        <span></span>
+                        <span>Name</span>
+                        <span>Address</span>
+                        <span>Price</span>
+                        <span className="stay-actions" >Action</span>
+                    </div>
+                </div>
+                <div className="tbody">
                     {stays.map(stay => {
                         return (
                             <HostStayPreview
@@ -25,8 +25,8 @@ export function HostStayList({ stays, onRemoveStays, onEditStay }) {
                             />
                         )
                     })}
-                </tbody>
-            </table>
+                </div>
+            </div>
         </section>
     )
 }
