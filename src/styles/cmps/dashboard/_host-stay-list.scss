@@ -25,6 +25,7 @@
                     }
                     &:nth-of-type(2) {
                         width: 150%;
+                        padding-inline-start: 30px;
                     }
                 }
             }
@@ -50,8 +51,9 @@
                         align-content: center;
                         display: flex;
                         align-items: center;
-                        justify-content: space-evenly;
+                        justify-content: flex-start;
                         width: 100%;
+                        gap: 10px;
 
                         button {
                             display: flex;

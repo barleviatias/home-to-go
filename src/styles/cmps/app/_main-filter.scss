@@ -145,6 +145,9 @@
                 border-left: 1px solid #00000000;
             }
             @include for-mobile-layout {
+                span{
+                    padding-bottom: 0px;
+                }
                 &:nth-child(1) {
                     padding: 10px 5px;
                     width: 15vw;
@@ -175,6 +178,9 @@
                 }
             }
             @include for-tablet-layout {
+                span{
+                    padding-bottom: 0px;
+                }
                 &:nth-child(1) {
                     padding: 15px 5px;
                     width: 15vw;
@@ -205,6 +211,9 @@
                 }
             }
             @include for-narrow-layout {
+                span{
+                    padding-bottom: 5px;
+                }
                 &:nth-child(1) {
                     padding: 14px;
                     width: 20vw;

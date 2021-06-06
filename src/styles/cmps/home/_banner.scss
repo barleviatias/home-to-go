@@ -57,8 +57,8 @@
                 width: 400px;
             }
             h2 {
-                font-size: rem(14px);
-                line-height: rem(24px);
+                font-size: rem(16px);
+                line-height: rem(26px);
             }
         }
         button {
@@ -71,7 +71,7 @@
     }
 
     &.banner-top {
-        background-image: url("https://a0.muscache.com/im/pictures/4602a952-afa0-46a6-b08a-24e67e958309.jpg?im_w=720");
+        background-image: url("https://a0.muscache.com/im/pictures/2da67c1c-0c61-4629-8798-1d4de1ac9291.jpg?im_w=1440");
 
         h1 {
             color: $clr-black;
@@ -88,14 +88,16 @@
     }
 
     &.banner-bottom {
-        background-image: url("https://a0.muscache.com/im/pictures/5b4dc94a-0b4c-4c27-b50f-9c5a5b93c775.jpg?im_w=720");
+        background-image: url("https://a0.muscache.com/im/pictures/2595054e-d1d9-4fde-8046-58d51fcb3164.jpg?im_w=1440");
 
         h1 {
             color: $clr-light;
+            text-shadow: 0 0 10px #0000007a;
         }
 
         h2 {
             color: $clr-light;
+            text-shadow: 0 0 6px #000000d0;
         }
 
         button {

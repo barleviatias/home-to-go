@@ -7,11 +7,11 @@ export function HostStayList({ stays, onRemoveStays, onEditStay, onSelectAction 
             <div className="host-stay-list-table">
                 <div className="thead">
                     <div>
-                        <span></span>
+                        <span>{''}</span>
                         <span>Name</span>
                         <span>Address</span>
                         <span>Price</span>
-                        <span className="stay-actions" >Action</span>
+                        <span className="stay-actions" >Actions</span>
                     </div>
                 </div>
                 <div className="tbody">
