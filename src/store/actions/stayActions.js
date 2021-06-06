@@ -68,7 +68,7 @@ export function loadWishlist(user) {
       dispatch({ type: 'SET_WISH_STAYS', stays })
 
     } catch (err) {
-      console.log('StayActions: err in loadHostStays', err)
+      console.log('StayActions: err in loadWishlist', err)
     }
   }
 }

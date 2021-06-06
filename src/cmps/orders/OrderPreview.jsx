@@ -1,4 +1,5 @@
 import { Component } from "react";
+import { Link } from "react-router-dom";
 
 
 export class OrderPreview extends Component {
@@ -8,7 +9,7 @@ export class OrderPreview extends Component {
 
         return (
 
-            <div className="order-preview">
+            <Link to={`/stay/${order.stay._id}`} className="order-preview">
                 <div className="img-container">
                     <img src={order.stay.imgUrls[0]} alt="stay" />
                     <img src={order.stay.imgUrls[1]} alt="stay" />
@@ -31,7 +32,7 @@ export class OrderPreview extends Component {
                         {getCancelationStatus(order) === 'Non-refundable' && <button disabled onClick={() => onCancelOrder(order)}>Cancel</button>}
                     </div>
                 </div>
-            </div>
+            </Link>
 
         )
     }

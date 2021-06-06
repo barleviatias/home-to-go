@@ -16,6 +16,8 @@
             font-size: 13px;
             font-family: airbnb-regular, sans-serif;
             letter-spacing: -0.3px;
+            flex-wrap: wrap;
+            
 
             .stay-rate-display {
                 display: flex;
@@ -71,12 +73,15 @@
 
         @include for-mobile-layout {
             flex-direction: column-reverse;
+            gap: 30px;
         }
         @include for-tablet-layout {
             flex-direction: column-reverse;
+            gap: 50px;
         }
         @include for-normal-layout {
             flex-direction: row;
+            gap: 100px;
         }
 
         .stay-long-info {
