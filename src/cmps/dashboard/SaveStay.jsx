@@ -21,7 +21,7 @@ class _StayEdit extends Component {
 				'Cooking basics': false,
 			},
 			stayType: 'entire place',
-			propertyType: 'appartment room',
+			propertyType: 'appartment',
 			host: {
 				_id: this.props.loggedInUser._id,
 				fullname: this.props.loggedInUser.fullname,
@@ -151,6 +151,7 @@ class _StayEdit extends Component {
 								onChange={this.handleChange}
 								value={stay.name}
 								placeholder="stay name"
+								required
 							/>
 						</h1>
 						<div className="stay-edit-short-info">
@@ -169,6 +170,7 @@ class _StayEdit extends Component {
 										autoComplete="off"
 										onChange={this.handleChange}
 										value={stay.loc.address}
+										required
 									/>
 								</p>
 							</div>
@@ -228,6 +230,7 @@ class _StayEdit extends Component {
 											autoComplete="off"
 											onChange={this.handleChange}
 											value={stay.capacity}
+											required
 										/>
 										• stayType:
 										<select name="stayType" onChange={this.handleChange}>
@@ -243,7 +246,7 @@ class _StayEdit extends Component {
 											<option value="room">room</option>
 											<option value="studio">studio</option>
 											<option value="villa">villa</option>
-											<option value="appartment room">appartment</option>
+											<option value="appartment">appartment</option>
 										</select>
 									</span>
 								</div>
@@ -299,6 +302,7 @@ class _StayEdit extends Component {
 									autoComplete="off"
 									onChange={this.handleChange}
 									value={stay.desc}
+									required
 								/>
 							</span>
 							<div className="amenities-list">

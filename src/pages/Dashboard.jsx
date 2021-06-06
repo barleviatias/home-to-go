@@ -77,7 +77,6 @@ export class _Dashboard extends Component {
                         <DashHeader stays={stays} orders={orders} orderChangeStatus={orderChangeStatus} />
                         <section className="dash-info-container">
                             {(action === '' || action === 'my Stays') && <MyStays stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} onSelectAction={this.onSelectAction} />}
-                            {action === 'finance stat' && <FinanceStatistic />}
                             {action === 'rate stat' && <RateStatistic stays={stays} />}
                             {action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
                             {action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
