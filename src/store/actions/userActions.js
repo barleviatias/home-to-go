@@ -31,6 +31,7 @@ export function removeUser(userId) {
 }
 
 export function updateUser(user) {
+  console.log('enter to action updateUser ',user);
   return async dispatch => {
     try {
       const updatedUser = await userService.update(user)    
