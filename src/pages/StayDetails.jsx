@@ -341,7 +341,7 @@ export class StayDetails extends Component {
 					<ReviewList reviews={reviews} />
 				</section>
 				<section className="stay-review">
-					<AddReview addReview={this.addReview} />
+					<AddReview   loggedInUser={loggedInUser}  addReview={this.addReview} />
 				</section>
 				<section className="stay-details-map">
 					<h2>Location</h2>
