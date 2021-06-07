@@ -30,7 +30,8 @@ export class Notifications extends Component {
                   <h4>{utilService.getTimeFormat(notif.body.createdAt)}</h4>
                 </span>
                 <h4 className="notif-card-txt">{notif.body.txt}</h4>
-                <Link to={`/host/${this.props.loggedInUser._id}`}>Read More</Link>
+                { notif.from.fullname !== this.props.loggedInUser.fullname && <Link to={`/host/${this.props.loggedInUser._id}`}>Read More</Link>}
+                { notif.from.fullname === this.props.loggedInUser.fullname && <Link to={`/orders`}>Read More</Link>}
               </div>
             )
           })}

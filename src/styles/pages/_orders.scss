@@ -173,9 +173,9 @@
                         gap: 3px;
                         flex-direction: column;
                         color: $clr-black;
-                        font-size: rem(12px);
+                        font-size: rem(10px);
                         padding-bottom: 2px;
-                        font-family: airbnb-book, sans-serif;
+                        font-family: airbnb-regular, sans-serif;
                         text-align: end;
                         white-space: nowrap;
                     }
@@ -211,14 +211,25 @@
 
                         > h4 {
                             text-decoration: underline;
-                            color: $clr-gray;
+                            color: $clr-dark;
                         }
 
-                        button{
-                            font-size: rem(13px);
-                            color: $clr-dark;
-                            text-decoration: underline;
-                            font-family: airbnb-regular, sans-serif;
+                        button {
+                            font-size: rem(12px);
+                            color: $clr-black;
+                            font-family: airbnb-bold, sans-serif;
+                            padding: 0 0;
+
+                            &:hover{
+                                text-decoration: underline;
+                            }
+
+                            &.cancel-disabled{
+                                color: $clr-gray;
+                                &:hover{
+                                    text-decoration: unset;
+                                }
+                            }
                         }
                     }
                 }

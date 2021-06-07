@@ -28,8 +28,8 @@ export class OrderPreview extends Component {
                     <h4 className={`order-status ${order.status ==='approved' && 'status-green'} ${order.status ==='declined' && 'status-red'}`}>{order.status}</h4>
                     <div className="order-cancelation">
                         <h4>{getCancelationStatus(order)}</h4>
-                        {getCancelationStatus(order) !== 'Non-refundable' && <button onClick={() => onCancelOrder(order)}>Cancel</button>}
-                        {getCancelationStatus(order) === 'Non-refundable' && <button disabled onClick={() => onCancelOrder(order)}>Cancel</button>}
+                        {getCancelationStatus(order) !== 'Non-refundable' && <button onClick={() => onCancelOrder(order)}>Cancel order</button>}
+                        {getCancelationStatus(order) === 'Non-refundable' && <button className="cancel-disabled" disabled onClick={() => onCancelOrder(order)}>Cancel order</button>}
                     </div>
                 </div>
             </Link>
