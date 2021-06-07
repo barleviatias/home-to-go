@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { StayGallery } from '../explore/StayGallery'
 
-export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login, trip, addTrip }) {
+export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login, trip, addTrip, stayType, loadWishlist }) {
 
     const getTotalRate = () => {
         const rates = stay.reviews.map(review => review.avgRate)
@@ -27,6 +27,7 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
             else loggedInUser.wishlist.push(stayId)
         }
         updateUser(loggedInUser)
+        if (stayType === 'wish') loadWishlist(loggedInUser)
     }
 
     function checkIsWish(stayId) {

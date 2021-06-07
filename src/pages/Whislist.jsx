@@ -20,12 +20,12 @@ export class Wishlist extends Component {
   render() {
 
     this.scrollUp()
-    const { stays, loggedInUser, toggleMsgModal, login,   updateUser, trip, addTrip} = this.props
+    const { stays, loggedInUser, toggleMsgModal, login,   updateUser, trip, addTrip,loadWishlist} = this.props
     return (
       <main className="explore-container wishlist main page">
         <span>{stays.length} stays</span>
         <h1>Wishlist</h1>
-        <StayList stays={stays} updateUser={updateUser} toggleMsgModal={toggleMsgModal} loggedInUser={loggedInUser} login={login} trip={trip} addTrip={addTrip} />
+        <StayList stays={stays} stayType={'wish'} updateUser={updateUser} toggleMsgModal={toggleMsgModal} loggedInUser={loggedInUser} login={login} trip={trip} addTrip={addTrip} loadWishlist={loadWishlist} />
 
       </main>
     )

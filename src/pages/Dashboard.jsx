@@ -31,8 +31,10 @@ export class _Dashboard extends Component {
         this.setState({ orderChangeStatus: utilService.getRandomIntInclusive(0, 5) })
     }
 
-    componentWillUnmount() {
+    componentWillUnmount(prevProps, prevState) {
         this.props.setFooterDisplay(true)
+        if (prevState.action !== this.state.action) this.loadHostStays()
+
     }
 
     getRateChangStatus = () => {
@@ -40,15 +42,17 @@ export class _Dashboard extends Component {
     }
 
     loadHostStays = async () => {
+        console.log('enter load');
         await this.props.loadHostStays(this.state.loggedInUser._id);
         if (this.props.stays.length === 0) {
             this.setState({ action: 'add stay' })
         }
     }
 
-    onSelectAction = (ev) => {
+    onSelectAction = async (ev) => {
         const action = ev.target.value;
-        this.setState({ action })
+
+        this.setState({ action }, () => { console.log('action', this.state.action)})
     }
 
     onSelectedEditStay = (stay) => {
