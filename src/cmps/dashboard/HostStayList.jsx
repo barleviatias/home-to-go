@@ -1,7 +1,7 @@
 
 import { HostStayPreview } from './HostStayPreview'
 
-export function HostStayList({ stays, onRemoveStays, onEditStay, onSelectAction }) {
+export function HostStayList({ stays, onEditStay, onSelectAction }) {
     return (
         <section className="host-stay-list">
             <div className="host-stay-list-table">
@@ -21,7 +21,6 @@ export function HostStayList({ stays, onRemoveStays, onEditStay, onSelectAction 
                             <HostStayPreview
                                 key={Math.random()}
                                 stay={stay}
-                                onRemoveStays={onRemoveStays}
                                 onEditStay={onEditStay}
                             />
                         )

@@ -3,7 +3,7 @@ import { Banner } from '../cmps/home/Banner'
 import { Hero } from '../cmps/home/Hero'
 import { FilterCities } from '../cmps/home/FilterCities'
 import { Component } from 'react'
-
+import { Link } from 'react-router-dom'
 
 export class Home extends Component {
 
@@ -16,16 +16,26 @@ export class Home extends Component {
     this.props.setHomePage('')
   }
 
-  scrollUp = ()=>{
+  scrollUp = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
     })
   }
 
+  explorAll = async () => {
+    const trip = {
+      guests: { adults: 1, kids: 0 },
+      loc: { address: '' },
+      time: { checkIn: '', checkOut: '' }
+    }
+    await this.props.addTrip(trip)
+    this.props.loadStays()
+  }
+
 
   render() {
-    const { loggedInUser, onSearch, topRatedStays, nearbayStays , loadStays,addTrip} = this.props
+    const { loggedInUser, onSearch, topRatedStays, nearbayStays, loadStays, addTrip } = this.props
 
     return (
       <main className="home-page main">
@@ -33,8 +43,10 @@ export class Home extends Component {
         <h1>Popular destinations</h1>
         <FilterCities onSearch={onSearch} />
         <h1>Explore nearby</h1>
+        <Link to="/explore" onClick={this.explorAll}>Show more...</Link>
         <FilterGallery stays={nearbayStays} addTrip={addTrip} />
         <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
+        <Link to="/explore" onClick={this.explorAll}>Show more...</Link>
         <h1>Top Rated</h1>
         <FilterGallery stays={topRatedStays} addTrip={addTrip} />
         <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} loggedInUser={loggedInUser} />

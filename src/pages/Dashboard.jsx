@@ -33,7 +33,7 @@ export class _Dashboard extends Component {
 
     componentWillUnmount(prevProps, prevState) {
         this.props.setFooterDisplay(true)
-        if (prevState.action !== this.state.action) this.loadHostStays()
+        // if (prevState.action !== this.state.action) this.loadHostStays()
 
     }
 
@@ -79,9 +79,9 @@ export class _Dashboard extends Component {
                     {stays && <section className="dash-main-container">
                         <DashHeader stays={stays} orders={orders} orderChangeStatus={orderChangeStatus} />
                         <section className="dash-info-container">
-                            {(action === '' || action === 'my Stays') && <MyStays stays={stays} removeStay={removeStay} toggleMsgModal={toggleMsgModal} onSelectedEditStay={this.onSelectedEditStay} onSelectAction={this.onSelectAction} />}
+                            {(action === '' || action === 'my Stays') && <MyStays stays={stays} sonSelectedEditStay={this.onSelectedEditStay} onSelectAction={this.onSelectAction} />}
                             {action === 'rate stat' && <RateStatistic stays={stays} />}
-                            {action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
+                            {action === 'edit stay' && <StayEdit stayEdit={selsctedEditStay} removeStay={removeStay} onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
                             {action === 'add stay' && <StayEdit onSelectAction={this.onSelectAction} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} />}
                             {action === 'orders' && <HostOrders loggedInUser={loggedInUser} orders={orders} updateOrder={updateOrder} onSelectAction={this.onSelectAction} />}
                         </section>

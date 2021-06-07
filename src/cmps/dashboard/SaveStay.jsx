@@ -65,6 +65,13 @@ class _StayEdit extends Component {
 		}
 	}
 
+	onRemoveStays = async (ev, stayId) => {
+		ev.target.value = 'my Stays';
+		await this.props.removeStay(stayId)
+		this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your stay has been deleted</h3></span>)
+		this.props.onSelectAction(ev);
+	}
+
 	onUploadImg = (imgState, position) => {
 		const imgUrls = this.state.stay.imgUrls;
 		imgUrls[position] = imgState.imgUrl;
@@ -395,8 +402,9 @@ class _StayEdit extends Component {
 					</section>
 					<button type="submit" className="stay-edit-save-btn">
 						Save
-					</button>
+				</button>
 				</form>
+				{this.props.stayEdit && < button onClick={(event) => this.onRemoveStays(event, this.props.stayEdit._id)}> <i className="far fa-trash-alt"></i>Remove</button>}
 			</section>
 		);
 	}
