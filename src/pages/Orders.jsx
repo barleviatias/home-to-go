@@ -89,7 +89,6 @@ export class Orders extends Component {
         const orders = this.state.orders;
         const sortBy = ev.target.name
         var sortOrders = [];
-        console.log(sortBy);
         switch (sortBy) {
             case 'name':
                 sortOrders = _sortByName(orders);
@@ -111,23 +110,21 @@ export class Orders extends Component {
         this.setState({ orders: sortOrders })
     }
 
-
     render() {
         const { orders, filterBy, currPage } = this.state;
         const { name, price, status, checkIn, checkOut } = filterBy
+
         if (!orders) return <Loader />
+        
         return (
             <main className="user-order-container main page">
                 <section className="user-order-list">
-
                     <h1>Trips</h1>
-
                     <div className="order-header">
                         <div className="order-nav">
                             <button className={currPage === 'upcoming' && 'active'} onClick={() => { this.toggleShowOrderTime('upcoming') }}> Upcoming</button>
                             <button className={currPage === 'past' && 'active'} onClick={() => { this.toggleShowOrderTime('past') }}>Past</button>
                         </div>
-
                         <div className="order-filter">
                             <button name="name" value={name} onClick={this.onSortOrders} >Stay name</button>
                             <button name="checkIn" value={checkIn} onClick={this.onSortOrders}>Check in</button>
@@ -136,23 +133,23 @@ export class Orders extends Component {
                             <button name="status" value={status} >Status</button>
                         </div>
                     </div>
-
                     <OrderList
                         orders={orders}
                         getCancelationStatus={this.getCancelationStatus}
                         onCancelOrder={this.onCancelOrder}
                     />
-
                 </section>
             </main>
         )
     }
 }
 
+
+
 function _sortByName(orders) {
     return orders.sort(function (orderA, orderB) {
-        var nameA = orderA.stay.name.toUpperCase(); // ignore upper and lowercase
-        var nameB = orderB.stay.name.toUpperCase(); // ignore upper and lowercase
+        var nameA = orderA.stay.name.toUpperCase(); 
+        var nameB = orderB.stay.name.toUpperCase();
         if (nameA < nameB) {
             return -1;
         }
@@ -169,6 +166,7 @@ function _sortByDate(orders, dateType) {
         return new Date(orderA[dateType]) - new Date(orderB[dateType]);
     });
 }
+
 function _sortByPrice(orders) {
 
     return orders.sort(function (orderA, orderB) {

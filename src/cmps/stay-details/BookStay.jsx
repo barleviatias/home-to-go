@@ -55,7 +55,6 @@ class _BookStay extends Component {
         const dynamicModal = {}
         const { x, y } = this.state.dynamicModal.modalPosition
         switch (modalKey) {
-
             case 'date':
                 dynamicModal.modalContent = (
                     <section className="dynamic-modal-child book-date-modal">
@@ -198,6 +197,7 @@ class _BookStay extends Component {
             },
             isAvailable: false
         })
+        
         this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your order has sent to the host</h3></span>)
     }
 
