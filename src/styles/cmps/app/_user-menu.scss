@@ -24,7 +24,22 @@
         color: rgb(31, 31, 31);
     }
 
-    button{
+    .notif{
+        position: relative;
+        
+        .notif-circle {
+            width: 10px;
+            height: 10px;
+            background-color: rgb(79, 235, 79);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10%;
+        }
+    }
+
+    button {
         padding: 0 0;
         color: rgb(31, 31, 31);
         font-weight: 100;

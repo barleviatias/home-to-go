@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom'
 import { StayGallery } from '../explore/StayGallery'
-import { Loader } from '../app/Loader'
 
 export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, login, trip, addTrip }) {
 

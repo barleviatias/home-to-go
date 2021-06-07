@@ -35,7 +35,8 @@ class _App extends Component {
     topRatedStays: [],
     nearbayStays: [],
     isFooterOn: true,
-    currPage: 'home'
+    currPage: 'home',
+    isNewNotif: false
   };
 
   async componentDidMount() {
@@ -48,10 +49,16 @@ class _App extends Component {
     }
   }
 
-  setNewNotif = (msg) => {
+  async componentDidUpdate(prevProps){
+    if (this.props.loggedInUser && this.prevProps && this.prevProps.loggedInUser && (prevProps.loggedInUser._id !== this.props.loggedInUser._id)){
+      await socketService.emit('book stay', this.props.loggedInUser._id)
+    }
+  }
 
+  setNewNotif = (msg) => {
     const user = this.props.loggedInUser
     if (user.username === msg.from.username) return
+    this.setNotifStatus(true)
 
     if (msg.type === 'book stay') {
       const txt = `${msg.from.username} booked your stay`
@@ -63,9 +70,14 @@ class _App extends Component {
     if (user.notifications && user.notifications.length) user.notifications.push(msg)
     else {
       user.notifications = []
-      user.notifications.push(msg)
+      user.notifications.unshift(msg)
     }
+
     this.props.updateUser(user)
+  }
+
+  setNotifStatus=(isNewNotif)=>{
+    this.setState({isNewNotif})
   }
 
   setHostSocket = async (hostId) => {
@@ -172,7 +184,8 @@ class _App extends Component {
       topRatedStays,
       nearbayStays,
       isFooterOn,
-      currPage
+      currPage,
+      isNewNotif
     } = this.state;
 
     return (
@@ -190,6 +203,7 @@ class _App extends Component {
           setModalContent={this.setModalContent}
           currPage={currPage}
           loadStays={loadStays}
+          isNewNotif={isNewNotif}
         />
         <Switch>
           <Route path="/login" render={(props) => (<LoginSignup {...props} setFooterDisplay={this.setFooterDisplay} />)} />
@@ -308,6 +322,7 @@ class _App extends Component {
                 loggedInUser={loggedInUser}
                 setHomePage={this.setHomePage}
                 setFooterDisplay={this.setFooterDisplay}
+                setNotifStatus={this.setNotifStatus}
               />
             )}
           />

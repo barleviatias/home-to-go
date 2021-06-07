@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 
-export function NavMenu({ logout, toggleUserMenu, loggedInUser, modalPosition }) {
+export function NavMenu({ logout, toggleUserMenu, loggedInUser, modalPosition , isNewNotif}) {
 
         return (
                 <section className="user-menu" style={{ top: modalPosition.y + 40, left: modalPosition.x }} onClick={toggleUserMenu}>
@@ -22,7 +22,8 @@ export function NavMenu({ logout, toggleUserMenu, loggedInUser, modalPosition })
 
                                 <div>
                                         <Link to="/msg">Messages</Link>
-                                        <Link to="/notif">Notifications</Link>
+                                        {!isNewNotif && <Link className="notif" to="/notif">Notifications</Link>}
+                                        {isNewNotif && <Link className="notif" to="/notif"><p>Notifications</p><div className="notif-circle"></div></Link>}
                                         <Link to="/orders">Trips</Link>
                                         <Link to="/wishlist">wish list</Link>
                                         {loggedInUser.isHost && <Link to={`/host/${loggedInUser._id}`}>Dashboard</Link>}

@@ -2,7 +2,6 @@ import { Component } from 'react';
 import { DashSideNav } from '../cmps/dashboard/DashSideNav'
 import { DashHeader } from '../cmps/dashboard/DashHeader'
 import { MyStays } from '../cmps/dashboard/MyStays'
-import { FinanceStatistic } from '../cmps/dashboard/FinanceStatistic'
 import { RateStatistic } from '../cmps/dashboard/RateStatistic'
 import { StayEdit } from '../cmps/dashboard/SaveStay'
 import { HostOrders } from '../cmps/dashboard/HostOrders'

@@ -7,12 +7,12 @@ export class Notifications extends Component {
   async componentDidMount() {
     this.props.setFooterDisplay(false)
     this.props.setHomePage('user')
+    this.props.setNotifStatus(false)
   }
 
   async componentWillUnmount() {
     this.props.setFooterDisplay(true)
   }
-
 
   render() {
     const { notifications } = this.props.loggedInUser
@@ -20,7 +20,7 @@ export class Notifications extends Component {
     return (
       <main className="notifications main page">
         <section className="notif-list">
-        <h1>Notifications</h1>
+          <h1>Notifications</h1>
           {notifications && notifications.map(notif => {
             return (
               <div key={Math.random()} className="notif-card">

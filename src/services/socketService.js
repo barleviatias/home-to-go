@@ -79,12 +79,6 @@ function createSocketService() {
 // }
 
 
-// Basic Tests
-function cb(x) {console.log(x)}
-socketService.on('baba', cb)
-socketService.on('mama', cb)
-socketService.on('lala', cb)
-socketService.emit('baba', 'DATA')
-// socketService.off('baba', cb)
+
 
 
