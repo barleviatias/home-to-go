@@ -43,37 +43,58 @@ class _App extends Component {
     this.loadRated();
     this.loadNearby();
     await socketService.setup()
+    await socketService.on('notify host', this.setNewNotif)
+
     if (this.props.loggedInUser && this.props.loggedInUser.isHost) {
+      console.log('host is online! : ', this.props.loggedInUser);
       await socketService.emit('book stay', this.props.loggedInUser._id)
-      await socketService.on('notify host', this.setNewNotif)
     }
   }
 
   async componentDidUpdate(prevProps) {
-    if (this.props.loggedInUser && this.prevProps && this.prevProps.loggedInUser && (prevProps.loggedInUser._id !== this.props.loggedInUser._id)) {
-      await socketService.emit('book stay', this.props.loggedInUser._id)
+    
+    if (prevProps.loggedInUser !== this.props.loggedInUser) {
+      console.log('app.jsx update!');
+
+      if (this.props.loggedInUser && this.props.loggedInUser.isHost) {
+        console.log('host is change! : ', this.props.loggedInUser);
+        await socketService.emit('book stay', this.props.loggedInUser._id)
+      }
     }
   }
 
   setNewNotif = (msg) => {
     const user = this.props.loggedInUser
-    if (user.username === msg.from.username) return
-    this.setNotifStatus(true)
+    if (user.username !== msg.from.username) {
+      console.log('incoming msg for you: ', msg);
+      this.setNotifStatus(true)
 
-    if (msg.type === 'book stay') {
-      const txt = `${msg.from.username} booked your stay`
-      const createdAt = new Date()
-      const body = { txt, createdAt }
-      msg.body = body
+      if (msg.type === 'book stay') {
+        const txt = `${msg.from.username} booked your stay`
+        const createdAt = new Date()
+        const body = { txt, createdAt }
+        msg.body = body
+      }
     }
 
-    if (user.notifications && user.notifications.length) {
+    if (user.username === msg.from.username) {
+      console.log('sent msg from you: ', msg);
+      this.setNotifStatus(true)
+
+      if (msg.type === 'book stay') {
+        const txt = `your order has sent to the host`
+        const createdAt = new Date()
+        const body = { txt, createdAt }
+        msg.body = body
+      }
+    }
+
+    if (user.notifications) {
       user.notifications.unshift(msg)
     } else {
       user.notifications = []
       user.notifications.unshift(msg)
     }
-
     this.props.updateUser(user)
   }
 
