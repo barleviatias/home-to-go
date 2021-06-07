@@ -152,17 +152,20 @@ class _StayEdit extends Component {
 			<section className="stay-edit-container">
 				<form className="stay-edit-form" onSubmit={this.onSaveStay}>
 					<section className="stay-edit-header">
-						<h1>
-							<input
-								type="text"
-								name="name"
-								autoComplete="off"
-								onChange={this.handleChange}
-								value={stay.name}
-								placeholder="stay name"
-								required
-							/>
-						</h1>
+						<div className="stay-edit-header-name">
+							<h1>
+								<input
+									type="text"
+									name="name"
+									autoComplete="off"
+									onChange={this.handleChange}
+									value={stay.name}
+									placeholder="stay name"
+									required
+								/>
+							</h1>
+							{this.props.stayEdit && <button type="button" className="remove-btn" onClick={(event) => this.onRemoveStays(event, this.props.stayEdit._id)}><i className="far fa-trash-alt"></i>Remove</button>}
+						</div>
 						<div className="stay-edit-short-info">
 							<div>
 								<span className="stay-rate-display">
@@ -400,11 +403,8 @@ class _StayEdit extends Component {
 							</h3>
 						</div>
 					</section>
-					<button type="submit" className="stay-edit-save-btn">
-						Save
-				</button>
+					<button type="submit" className="stay-edit-save-btn">Save</button>
 				</form>
-				{this.props.stayEdit && < button onClick={(event) => this.onRemoveStays(event, this.props.stayEdit._id)}> <i className="far fa-trash-alt"></i>Remove</button>}
 			</section>
 		);
 	}

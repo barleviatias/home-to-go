@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 
-export function HostStayPreview({ stay, onEditStay }) {
+export function HostStayPreview({ stay, onSelectedEditStay }) {
 
     return (
         <div className="host-stay-preview">
@@ -10,7 +10,7 @@ export function HostStayPreview({ stay, onEditStay }) {
             <span><Link to={`/stay/${stay._id}`}>{stay.loc.address}</Link></span>
             <span><Link to={`/stay/${stay._id}`}>$ {stay.price}</Link></span>
             <span className="stay-actions">
-                <button onClick={() => onEditStay(stay)} ><i className="far fa-edit"></i>Edit</button>
+                <button onClick={() => onSelectedEditStay(stay)} ><i className="far fa-edit"></i>Edit</button>
             </span>
         </div>
     )
