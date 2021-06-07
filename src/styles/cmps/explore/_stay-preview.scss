@@ -40,6 +40,8 @@
                 width: 100%;
                 margin: 0 0;
                 padding: 0 0;
+                background-color: rgb(221, 221, 221);
+                border-radius: 13px;
 
                 img {
                     height: 100%;
@@ -125,7 +127,7 @@
             
             &.off{
                 color: $clr-gray;
-                opacity: 0.9;
+                opacity: 0.7;
             }
         }
     }
