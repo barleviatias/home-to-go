@@ -95,7 +95,8 @@ class _StayEdit extends Component {
 
 	onSaveStay = (ev) => {
 		ev.preventDefault();
-		ev.target.value = 'my places';
+
+		ev.target.value = 'my Stays';
 		const { stay } = this.state;
 		const { amenities } = stay;
 		const currAmenities = [];
@@ -123,6 +124,7 @@ class _StayEdit extends Component {
 			);
 		}
 		this.props.onSelectAction(ev);
+
 	}
 
 	getTotalRate = () => {
