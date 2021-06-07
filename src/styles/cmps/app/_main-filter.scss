@@ -27,6 +27,7 @@
         @include for-mobile-layout {
             width: 100%;
             justify-content: space-evenly;
+
             label{
                 span{
                     text-align: center;
@@ -44,7 +45,7 @@
         }
         @include for-narrow-layout {
             width: initial;
-            justify-content: space-evenly;
+            justify-content: space-between;
             label{
                 span{
                     text-align: start;
@@ -176,6 +177,9 @@
                         display: none;
                     }
                 }
+                &:not(:last-of-type)::after {
+                   bottom: 3px;
+                }
             }
             @include for-tablet-layout {
                 span{
@@ -209,6 +213,9 @@
                         display: none;
                     }
                 }
+                &:not(:last-of-type)::after {
+                    bottom: 8px;
+                 }
             }
             @include for-narrow-layout {
                 span{
@@ -291,13 +298,14 @@
                 height: 35px;
                 width: 35px;
                 font-size: rem(10px);
+                margin: 5px 0px;
             }
         }
         @include for-tablet-layout {
             button {
-                height: 40px;
-                width: 40px;
-                font-size: rem(12px);
+                height: 35px;
+                width: 35px;
+                font-size: rem(10px);
             }
         }
         @include for-narrow-layout {

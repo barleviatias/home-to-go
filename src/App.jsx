@@ -49,8 +49,8 @@ class _App extends Component {
     }
   }
 
-  async componentDidUpdate(prevProps){
-    if (this.props.loggedInUser && this.prevProps && this.prevProps.loggedInUser && (prevProps.loggedInUser._id !== this.props.loggedInUser._id)){
+  async componentDidUpdate(prevProps) {
+    if (this.props.loggedInUser && this.prevProps && this.prevProps.loggedInUser && (prevProps.loggedInUser._id !== this.props.loggedInUser._id)) {
       await socketService.emit('book stay', this.props.loggedInUser._id)
     }
   }
@@ -67,8 +67,9 @@ class _App extends Component {
       msg.body = body
     }
 
-    if (user.notifications && user.notifications.length) user.notifications.push(msg)
-    else {
+    if (user.notifications && user.notifications.length) {
+      user.notifications.unshift(msg)
+    } else {
       user.notifications = []
       user.notifications.unshift(msg)
     }
@@ -76,8 +77,8 @@ class _App extends Component {
     this.props.updateUser(user)
   }
 
-  setNotifStatus=(isNewNotif)=>{
-    this.setState({isNewNotif})
+  setNotifStatus = (isNewNotif) => {
+    this.setState({ isNewNotif })
   }
 
   setHostSocket = async (hostId) => {

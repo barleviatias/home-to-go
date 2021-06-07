@@ -12,6 +12,19 @@
             box-shadow: 0 0 0 black;
             width: 30vw;
 
+            @include for-mobile-layout {
+                width: 80vw;
+            }
+            @include for-tablet-layout {
+                width: 60vw;
+            }
+            @include for-narrow-layout {
+                width: 50vw;
+            }
+            @include for-normal-layout {
+                width: 30vw;
+            }
+
             .login-form-header {
                 text-align: center;
                 border-bottom: 1px solid rgb(219, 219, 219);

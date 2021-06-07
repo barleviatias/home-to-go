@@ -6,7 +6,20 @@
         display: flex;
         flex-direction: column;
 
-        max-width: 700px;
+        width: 50vw;
+
+        @include for-mobile-layout {
+            width: 100vw;
+        }
+        @include for-tablet-layout {
+            width: 90vw;
+        }
+        @include for-narrow-layout {
+            width: 80vw;
+        }
+        @include for-normal-layout {
+            width: 60vw;
+        }
 
         h1 {
             font-size: 32px;
