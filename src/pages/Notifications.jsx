@@ -13,7 +13,11 @@ export class Notifications extends Component {
   async componentWillUnmount() {
     this.props.setFooterDisplay(true)
   }
-
+  onClearNotif=()=>{
+    const currUser=this.props.loggedInUser
+    currUser.notifications=[]
+    this.props.updateUser(currUser)
+  }
   render() {
     const { notifications } = this.props.loggedInUser
 
@@ -21,6 +25,7 @@ export class Notifications extends Component {
       <main className="notifications main page">
         <section className="notif-list">
           <h1>Notifications</h1>
+          <button onClick={this.onClearNotif}>clear notifications</button>
           {notifications && notifications.map(notif => {
             return (
               <div key={Math.random()} className="notif-card">
