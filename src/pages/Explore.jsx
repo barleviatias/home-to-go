@@ -42,7 +42,7 @@ export class Explore extends Component {
         <span>{stays.length} stays</span>
         <h1>Stays {trip && trip.loc && trip.loc.address && `in ${trip.loc.address}`}</h1>
         <StayFilter openDynamicModal={openDynamicModal} closeDynamicModal={closeDynamicModal} setModalContent={setModalContent} onfilterStays={this.onfilterStays} />
-        <StayList stays={stays} updateUser={updateUser} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip}/>
+        <StayList stays={stays} stayType={'explor'} updateUser={updateUser} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip}/>
       </main>
     )
   }
