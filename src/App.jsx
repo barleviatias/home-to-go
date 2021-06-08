@@ -16,6 +16,7 @@ import { connect } from 'react-redux';
 import { loadStays, removeStay, loadHostStays, loadWishlist, updateStay } from './store/actions/stayActions';
 import { stayService } from './services/stay-service'
 import { socketService } from './services/socketService'
+import { userService } from './services/user-service'
 import { loadOrders, removeOrder, updateOrder } from './store/actions/orderActions';
 import { addTrip, loadTrip, removeTrip } from './store/actions/tripActions';
 import { updateUser, loadUsers, logout, login } from './store/actions/userActions';
@@ -43,73 +44,57 @@ class _App extends Component {
     this.loadRated();
     this.loadNearby();
     await socketService.setup()
-    await socketService.on('notify host', this.setNewNotif)
-
-    if (this.props.loggedInUser && this.props.loggedInUser.isHost) {
-      console.log('host is online! : ', this.props.loggedInUser);
-      await socketService.emit('book stay', this.props.loggedInUser._id)
-    }
+    await socketService.on('ORDER_IN', this.onOrderIn)
   }
 
-  async componentDidUpdate(prevProps) {
-    
-    if (prevProps.loggedInUser !== this.props.loggedInUser) {
-      console.log('app.jsx update!');
-
-      if (this.props.loggedInUser && this.props.loggedInUser.isHost) {
-        console.log('host is change! : ', this.props.loggedInUser);
-        await socketService.emit('book stay', this.props.loggedInUser._id)
-      }
-    }
-  }
-
-  setNewNotif = (msg) => {
+  onOrderIn = async (order) => {
     const user = this.props.loggedInUser
-    if (user.username !== msg.from.username) {
-      console.log('incoming msg for you: ', msg);
+
+    if (user._id === order.host._id) {
+      const host = await userService.getById(order.host._id)
+      const txt = `${order.user.fullname} booked your stay`
+      const createdAt = new Date()
+      const imgUrl = order.user.imgUrl
+      const fullname = order.user.fullname
+      const type = 'from'
+      const msg = { txt, createdAt, imgUrl, fullname, type }
       this.setNotifStatus(true)
 
-      if (msg.type === 'book stay') {
-        const txt = `${msg.from.username} booked your stay`
-        const createdAt = new Date()
-        const body = { txt, createdAt }
-        msg.body = body
+      if (host.notifications) {
+        host.notifications.unshift(msg)
+      } else {
+        host.notifications = []
+        host.notifications.unshift(msg)
       }
-    }
+      this.props.updateUser(host)
 
-    if (user.username === msg.from.username) {
-      console.log('sent msg from you: ', msg);
+    } else if (user._id === order.user._id) {
+      const txt = `Your order has been sent to ${order.host.fullname}`
+      const createdAt = new Date()
+      const imgUrl = order.host.imgUrl
+      const fullname = order.host.fullname
+      const type = 'to'
+      const msg = { txt, createdAt, imgUrl, fullname, type }
+
       this.setNotifStatus(true)
 
-      if (msg.type === 'book stay') {
-        const txt = `your order has sent to the host`
-        const createdAt = new Date()
-        const body = { txt, createdAt }
-        msg.body = body
+      if (user.notifications) {
+        user.notifications.unshift(msg)
+      } else {
+        user.notifications = []
+        user.notifications.unshift(msg)
       }
+      this.props.updateUser(user)
     }
-
-    if (user.notifications) {
-      user.notifications.unshift(msg)
-    } else {
-      user.notifications = []
-      user.notifications.unshift(msg)
-    }
-    this.props.updateUser(user)
   }
 
   setNotifStatus = (isNewNotif) => {
     this.setState({ isNewNotif })
   }
 
-  setHostSocket = async (hostId) => {
-    console.log();
-    await socketService.emit('book stay', hostId)
-  }
-
   async componentWillUnmount() {
+    await socketService.off('ORDER_IN', this.onOrderIn)
     socketService.terminate()
-    await socketService.off('notify host', this.setNewNotif)
   }
 
   loadRated = async () => {

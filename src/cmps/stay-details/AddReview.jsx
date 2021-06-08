@@ -1,4 +1,3 @@
-import { userService } from '../../services/user-service';
 import ReactStars from 'react-rating-stars-component';
 import { utilService } from '../../services/util-service';
 import { Component } from 'react';
@@ -115,7 +114,6 @@ export class AddReview extends Component {
 	};
 
 	render() {
-		// const { review } = this.state;
 		const {loggedInUser}=this.props	
 		const imgUrl=(loggedInUser)?loggedInUser.imgUrl:Avatar
 		const fullname=(loggedInUser)?loggedInUser.fullname:'Guest'

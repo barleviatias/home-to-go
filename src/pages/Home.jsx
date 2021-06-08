@@ -42,12 +42,16 @@ export class Home extends Component {
         <Hero loadStays={loadStays} addTrip={addTrip} />
         <h1>Popular destinations</h1>
         <FilterCities onSearch={onSearch} />
-        <h1>Explore nearby</h1>
-        <Link to="/explore" onClick={this.explorAll}>Show more...</Link>
+        <div className="filter-gallery-header">
+          <h1>Explore nearby</h1>
+          <Link to="/explore" onClick={this.explorAll}>Show more</Link>
+        </div>
         <FilterGallery stays={nearbayStays} addTrip={addTrip} />
         <Banner name={'banner-top'} btnTxt={'Get inspired'} title={'The Gearest Outdoors'} subtitle={'Wishlists curated by Airbnb.'} />
-        <Link to="/explore" onClick={this.explorAll}>Show more...</Link>
-        <h1>Top Rated</h1>
+        <div className="filter-gallery-header">
+          <h1>Top Rated</h1>
+          <Link to="/explore" onClick={this.explorAll}>Show more</Link>
+        </div>
         <FilterGallery stays={topRatedStays} addTrip={addTrip} />
         <Banner name={'banner-bottom'} btnTxt={'Learn more'} title={'Become a host'} subtitle={'earn extra income and unlock new opportunities by sharing your space.'} loggedInUser={loggedInUser} />
       </main>

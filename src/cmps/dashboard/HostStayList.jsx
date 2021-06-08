@@ -1,7 +1,7 @@
 
 import { HostStayPreview } from './HostStayPreview'
 
-export function HostStayList({ stays, onEditStay, onSelectAction }) {
+export function HostStayList({ stays, onSelectedEditStay, onSelectAction }) {
     return (
         <section className="host-stay-list">
             <div className="host-stay-list-table">
@@ -15,13 +15,13 @@ export function HostStayList({ stays, onEditStay, onSelectAction }) {
                     </div>
                 </div>
                 <div className="tbody">
-                {!stays.length && <h1 className="empty-msg">No Stays to show yet, you can add new stay on the <button value='add stay' onClick={onSelectAction}>Add Stay</button>tab</h1>}
-                  {stays.length && stays.map(stay => {
+                {!stays.length && <h1 className="empty-msg">No Stays to show yet, you can add new stay on the <button value='add stay' onClick={onSelectAction}>Add Stay </button> tab</h1>}
+                  {(stays.length > 0) && stays.map(stay => {
                         return (
                             <HostStayPreview
                                 key={Math.random()}
                                 stay={stay}
-                                onEditStay={onEditStay}
+                                onSelectedEditStay={onSelectedEditStay}
                             />
                         )
                     })}

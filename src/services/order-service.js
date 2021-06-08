@@ -1,5 +1,4 @@
 import { tripService } from '../services/trip-service'
-import { utilService } from '../services/util-service'
 import { httpService } from './http.service'
 
 export const orderService = {

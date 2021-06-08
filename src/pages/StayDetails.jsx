@@ -7,7 +7,6 @@ import { BookStay } from '../cmps/stay-details/BookStay'
 import { GoogleMap } from '../cmps/stay-details/GoogleMap'
 import ReactStars from 'react-rating-stars-component'
 import { Loader } from '../cmps/app/Loader'
-import { socketService } from '../services/socketService.js'
 
 export class StayDetails extends Component {
 	state = {
@@ -55,11 +54,6 @@ export class StayDetails extends Component {
 		if (match !== -1) {
 			this.setState({ ...this.state, toggleWish: true })
 		}
-	}
-
-	onBookStay = async () => {
-		await this.props.setHostSocket(this.state.stay.host._id)
-		await socketService.emit('add notif', { from: this.props.loggedInUser, type: 'book stay' })
 	}
 
 	onAddToWishList = () => {
@@ -322,8 +316,6 @@ export class StayDetails extends Component {
 						openDynamicModal={openDynamicModal}
 						modalType={modalType}
 						setModalContent={setModalContent}
-						onBookStay={this.onBookStay}
-
 					/>
 				</section>
 				<section className="stay-review-container">
@@ -341,7 +333,7 @@ export class StayDetails extends Component {
 					<ReviewList reviews={reviews} />
 				</section>
 				<section className="stay-review">
-					<AddReview   loggedInUser={loggedInUser}  addReview={this.addReview} />
+					<AddReview loggedInUser={loggedInUser} addReview={this.addReview} />
 				</section>
 				<section className="stay-details-map">
 					<h2>Location</h2>
