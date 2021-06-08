@@ -21,7 +21,7 @@ export function NavMenu({ logout, toggleUserMenu, loggedInUser, modalPosition , 
                         {loggedInUser && <div>
 
                                 <div>
-                                        <Link to="/msg">Messages</Link>
+                                        <Link to="/">Messages</Link>
                                         {!isNewNotif && <Link className="notif" to="/notif">Notifications</Link>}
                                         {isNewNotif && <Link className="notif" to="/notif"><p>Notifications</p><div className="notif-circle"></div></Link>}
                                         <Link to="/orders">Trips</Link>
