@@ -1,5 +1,4 @@
 
-
 export function DashHeader({ stays, orders, orderChangeStatus }) {
 
     function getTotalAvgRate() {
@@ -21,7 +20,6 @@ export function DashHeader({ stays, orders, orderChangeStatus }) {
         })
         return sum
     }
-
 
     function getActiveGuests() {
         const activeUsers = []

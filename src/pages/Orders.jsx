@@ -113,7 +113,7 @@ export class Orders extends Component {
     render() {
         const { orders, filterBy, currPage } = this.state;
         const { name, price, status, checkIn, checkOut } = filterBy
-
+        console.log(orders);
         if (!orders) return <Loader />
         
         return (
@@ -144,8 +144,6 @@ export class Orders extends Component {
     }
 }
 
-
-
 function _sortByName(orders) {
     return orders.sort(function (orderA, orderB) {
         var nameA = orderA.stay.name.toUpperCase(); 
@@ -161,14 +159,12 @@ function _sortByName(orders) {
 }
 
 function _sortByDate(orders, dateType) {
-
     return orders.sort(function (orderA, orderB) {
         return new Date(orderA[dateType]) - new Date(orderB[dateType]);
     });
 }
 
 function _sortByPrice(orders) {
-
     return orders.sort(function (orderA, orderB) {
         return orderA.totalPrice - orderB.totalPrice
     });

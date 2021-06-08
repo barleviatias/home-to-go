@@ -33,8 +33,6 @@ export class _Dashboard extends Component {
 
     componentWillUnmount(prevProps, prevState) {
         this.props.setFooterDisplay(true)
-        // if (prevState.action !== this.state.action) this.loadHostStays()
-
     }
 
     getRateChangStatus = () => {
@@ -42,7 +40,6 @@ export class _Dashboard extends Component {
     }
 
     loadHostStays = async () => {
-        console.log('enter load');
         await this.props.loadHostStays(this.state.loggedInUser._id);
         if (this.props.stays.length === 0) {
             this.setState({ action: 'add stay' })
@@ -51,8 +48,7 @@ export class _Dashboard extends Component {
 
     onSelectAction = async (ev) => {
         const action = ev.target.value;
-
-        this.setState({ action }, () => { console.log('action', this.state.action)})
+        this.setState({ action })
     }
 
     onSelectedEditStay = (stay) => {

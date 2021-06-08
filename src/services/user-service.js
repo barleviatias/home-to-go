@@ -19,7 +19,7 @@ async function login(userCred) {
 
 async function signup(userCred) {
 	const gender = Math.random() > 0.5 ? 'men' : 'women';
-	userCred.imgUrl = `https://randomuser.me/api/portraits/${gender}/${utilService.getRandomIntInclusive(0,100)}.jpg`
+	userCred.imgUrl = `https://randomuser.me/api/portraits/${gender}/${utilService.getRandomIntInclusive(0, 100)}.jpg`
 	const user = await httpService.post('auth/signup', userCred)
 	return _saveLocalUser(user);
 }
@@ -40,7 +40,7 @@ function getLoggedinUser() {
 }
 
 function getById(userId) {
-	console.log('getById: ' , userId);
+	console.log('getById: ', userId);
 	return httpService.get(`user/${userId}`)
 }
 

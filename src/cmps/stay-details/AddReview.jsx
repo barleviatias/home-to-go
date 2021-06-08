@@ -41,12 +41,9 @@ export class AddReview extends Component {
 			});
 		}
 	}
-	componentDidUpdate(prevProps) {
-		if (
-			prevProps.loggedInUser &&
-			prevProps.loggedInUser !== this.props.loggedInUser
 
-		) {
+	componentDidUpdate(prevProps) {
+		if (prevProps.loggedInUser && prevProps.loggedInUser !== this.props.loggedInUser) {
 			this.setState({
 				review: {
 					...this.state.review,
@@ -60,6 +57,7 @@ export class AddReview extends Component {
 			});
 		}
 	}
+	
 	clearForm = () => {
 		this.setState({
 			review: {
@@ -114,9 +112,9 @@ export class AddReview extends Component {
 	};
 
 	render() {
-		const {loggedInUser}=this.props	
-		const imgUrl=(loggedInUser)?loggedInUser.imgUrl:Avatar
-		const fullname=(loggedInUser)?loggedInUser.fullname:'Guest'
+		const { loggedInUser } = this.props
+		const imgUrl = (loggedInUser) ? loggedInUser.imgUrl : Avatar
+		const fullname = (loggedInUser) ? loggedInUser.fullname : 'Guest'
 		return (
 			<section className="stay-add-review">
 				<h2>Add review</h2>

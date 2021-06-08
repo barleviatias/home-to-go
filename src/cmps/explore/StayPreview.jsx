@@ -38,12 +38,10 @@ export function StayPreview({ stay, loggedInUser, updateUser, toggleMsgModal, lo
     }
 
     function onSelectStay() {
-        console.log(trip);
         var updatedTrip = trip
         updatedTrip.stay = stay
         addTrip(updatedTrip)
     }
-
 
     return (
         <section className="stay-preview-container" >

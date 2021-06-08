@@ -2,8 +2,6 @@ import { Doughnut } from 'react-chartjs-2';
 
 export function RatePieChart({ stay }) {
 
-
-
     function getRateData() {
         var chartData = stay.reviews.reduce((acc, review) => {
             acc[Math.round(review.avgRate) - 1]++
@@ -11,7 +9,6 @@ export function RatePieChart({ stay }) {
         }, [0, 0, 0, 0, 0])
         return chartData;
     }
-
 
     const data = {
         labels: ['1 Star', '2 Star', '3 Star', '4 Star', '5 Star'],
@@ -38,7 +35,6 @@ export function RatePieChart({ stay }) {
         ],
         
     };
-
 
     return (
         <div className="rate-chart" >

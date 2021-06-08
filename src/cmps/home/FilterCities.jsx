@@ -86,6 +86,5 @@ export function FilterCities({ onSearch }) {
                 </div>
             </Link>
         </main>
-
     )
 }

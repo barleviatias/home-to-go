@@ -5,6 +5,7 @@ export function FilterGallery({ stays ,addTrip}) {
     function onSelectStay(stay) {
         addTrip({ guests: { adults: 1, kids: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' }, stay })
     }
+    
     return (
         <section className="filter-gallery">
             {stays.map((stay, idx) => {

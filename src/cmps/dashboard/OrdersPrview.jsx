@@ -6,7 +6,6 @@ export function OrdersPrview({ order, updateOrder }) {
         order.status = status;
         updateOrder(order)
     }
-console.log(order);
     return (
         <div className="host-stay-preview">
             <span><img src={order.user.imgUrl} alt="user" /></span>

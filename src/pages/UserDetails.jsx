@@ -53,8 +53,6 @@ export class UserDetails extends Component {
     return (
 
       <main className="user-details main page">
-
-
         <h1>Personal info</h1>
 
         <section className="main-user-details">
@@ -121,10 +119,8 @@ export class UserDetails extends Component {
               <h3>What info is shared with others?</h3>
               <p>Airbnb only releases contact information for hosts and guests after a reservation is confirmed.</p>
             </div>
-
           </section>
         </section>
-
       </main>
     );
   }

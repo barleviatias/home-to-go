@@ -1,7 +1,5 @@
 import { tripService } from '../../services/trip-service'
 
-
-
 export function loadTrip() {
   return dispatch => {
     const trip = tripService.query()

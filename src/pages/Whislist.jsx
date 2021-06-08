@@ -1,7 +1,6 @@
 import { StayList } from '../cmps/explore/StayList'
 import { Component } from 'react'
 
-
 export class Wishlist extends Component {
 
   componentDidMount() {
@@ -16,11 +15,10 @@ export class Wishlist extends Component {
     })
   }
 
-
   render() {
-
+    const { stays, loggedInUser, toggleMsgModal, login, updateUser, trip, addTrip, loadWishlist } = this.props
     this.scrollUp()
-    const { stays, loggedInUser, toggleMsgModal, login,   updateUser, trip, addTrip,loadWishlist} = this.props
+
     return (
       <main className="explore-container wishlist main page">
         <span>{stays.length} stays</span>

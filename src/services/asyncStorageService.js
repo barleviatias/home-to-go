@@ -1,6 +1,3 @@
-import user from '../data/user.json'
-// import stay from '../data/stay.json'
-// import order from '../data/order.json'
 
 export const storageService = {
     query,
@@ -9,24 +6,6 @@ export const storageService = {
     put,
     remove
 }
-
-// loadDB()
-
-// function loadDB() {
-//     // var userDB = JSON.parse(localStorage.getItem('user')) || []
-//     // var stayDB ;
-//     // var orderDB = JSON.parse(localStorage.getItem('order')) || []
-
-//     // if (!userDB || !userDB.length) {
-//     //     _save('user', user)
-//     // }
-//     // if (!stayDB || !stayDB.length) {
-//     //     _save('stay', stay)
-//     // }
-//     // if (!orderDB || !orderDB.length) {
-//     //     _save('order', order)
-//     // }
-// }
 
 function query(entityType, trip = { guests: { adults: 0, kids: 0 }, loc: { address: '' }, time: { checkIn: '', checkOut: '' } }, user = null) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
@@ -37,12 +16,10 @@ function query(entityType, trip = { guests: { adults: 0, kids: 0 }, loc: { addre
             entities = _filterByTripInfo(entities, trip)
         }
     }
-    // if (entityType === 'wishlist') entities = _filterByWhishList(entities, trip)
     return Promise.resolve(entities)
 }
 
 function _filterByTripInfo(entities, { loc, guests }) {
-
     const address = loc.address.toUpperCase();
     const capacity = guests.adults + guests.kids;
     var filteredEntities = entities.filter((entitie) => {
@@ -50,14 +27,13 @@ function _filterByTripInfo(entities, { loc, guests }) {
     })
     return filteredEntities
 }
-function _filterByWhishList(entities, wishlist) {
 
+function _filterByWhishList(entities, wishlist) {
     return wishlist.map((entityId) => {
         return entities.find((entitie) => {
             return entitie._id === entityId
         })
-    }
-    )
+    })
 }
 
 function get(entityType, entityId) {

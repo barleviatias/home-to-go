@@ -9,7 +9,6 @@ export function Banner({ name, btnTxt, title, subtitle,loggedInUser }) {
                 <h2>{subtitle}</h2>
                 {title ==='Become a host' && <button><Link to={(loggedInUser)? `/host/${loggedInUser._id}`:"/host"}>{btnTxt}</Link></button>}
                 {title !=='Become a host' && <button>{btnTxt}</button>}
-                
             </div>
         </section>
     )

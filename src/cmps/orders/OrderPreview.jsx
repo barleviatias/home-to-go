@@ -1,12 +1,10 @@
 import { Component } from "react";
 import { Link } from "react-router-dom";
 
-
 export class OrderPreview extends Component {
 
     render() {
-        const { order, getCancelationStatus, onCancelOrder } = this.props    
-
+        const { order, getCancelationStatus, onCancelOrder } = this.props
         return (
 
             <Link to={`/stay/${order.stay._id}`} className="order-preview">
@@ -23,9 +21,8 @@ export class OrderPreview extends Component {
                             <span>{order.endDate}</span>
                         </p>
                     </h3>
-
                     <h4 className="order-price">$ {order.totalPrice.toLocaleString("en-US")}</h4>
-                    <h4 className={`order-status ${order.status ==='approved' && 'status-green'} ${order.status ==='declined' && 'status-red'}`}>{order.status}</h4>
+                    <h4 className={`order-status ${order.status === 'approved' && 'status-green'} ${order.status === 'declined' && 'status-red'}`}>{order.status}</h4>
                     <div className="order-cancelation">
                         <h4>{getCancelationStatus(order)}</h4>
                         {getCancelationStatus(order) !== 'Non-refundable' && <button onClick={() => onCancelOrder(order)}>Cancel order</button>}
@@ -33,7 +30,6 @@ export class OrderPreview extends Component {
                     </div>
                 </div>
             </Link>
-
         )
     }
 }

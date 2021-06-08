@@ -3,7 +3,6 @@ import {Loader} from '../app/Loader'
 
 export function OrderList({ orders, getCancelationStatus, onCancelOrder }) {
 
-
     if (!orders || !orders.length) return <Loader/>
 
     return (
@@ -15,6 +14,5 @@ export function OrderList({ orders, getCancelationStatus, onCancelOrder }) {
                 onCancelOrder={onCancelOrder}
             />)}
         </section>
-
     )
 }

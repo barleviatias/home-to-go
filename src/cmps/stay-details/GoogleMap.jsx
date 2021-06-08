@@ -11,19 +11,12 @@ class _GoogleMap extends Component {
     componentDidMount() {
         this.setState({ lat: this.props.pos.lat, lng: this.props.pos.lng })
     }
-    
-    onMapClicked = (props, map, ev) => {
-        // console.log("_GoogleMap ~ ev", ev)
-        // console.log("_GoogleMap ~ map", map)
-        // console.log("_GoogleMap ~ props", props)
-        // console.log(this.state);
-    }
 
     render() {
         return (
             <section className="google-map">
                 <Map
-                className="map"
+                    className="map"
                     google={this.props.google}
                     zoom={14}
                     initialCenter={{
@@ -31,7 +24,6 @@ class _GoogleMap extends Component {
                         lng: this.state.lng
                     }}
                     center={this.state}
-                    onClick={this.onMapClicked}
                 >
                     <Marker
                         position={this.state}

@@ -162,12 +162,10 @@ class _BookStay extends Component {
             this.props.toggleMsgModal(<span><i className="fas fa-exclamation"></i><h2>Please enter guest number</h2></span>)
             return
         }
-
         if (!time.checkIn || !time.checkOut) {
             this.props.toggleMsgModal(<span><i className="fas fa-exclamation"></i><h2>Please enter trip dates</h2></span>)
             return
         }
-
         this.setState({ isAvailable: !this.state.isAvailable }, () => { this.props.onSearch(this.state.trip) })
     }
 
@@ -198,7 +196,6 @@ class _BookStay extends Component {
             },
             isAvailable: false
         })
-        
         this.props.toggleMsgModal(<span><i className="far fa-check-circle"></i><h3>Your order has sent to the host</h3></span>)
     }
 

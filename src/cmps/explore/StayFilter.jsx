@@ -161,8 +161,6 @@ export class StayFilter extends Component {
 
     render() {
 
-
-
         return (
             <section className="stay-filter">
                 <button onClick={(event) => { this.onSetModal(event, 'placeType') }} >Type of place</button>

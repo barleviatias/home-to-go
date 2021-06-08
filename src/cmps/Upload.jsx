@@ -33,7 +33,6 @@ export class Upload extends Component {
     }
     return (
       <div className="upload-preview" style={previewStyle} >
-        {/* <img className="stay-img" src="" alt="" /> */}
         <label className="img-upload-label" htmlFor="imgUpload">{this.uploadMsg}
           <input type="file" onChange={this.uploadImg} accept="img/*" className="img-upload-btn" id="imgUpload" />
         </label>

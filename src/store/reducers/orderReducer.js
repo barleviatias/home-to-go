@@ -15,7 +15,8 @@ export function orderReducer(state = initialState, action = {}) {
         ...state,
         orders: state.orders.map(order =>
           order._id === action.order._id ? action.order : order
-        )}
+        )
+      }
     default:
       return state
   }

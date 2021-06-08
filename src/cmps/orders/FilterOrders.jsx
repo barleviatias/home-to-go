@@ -14,8 +14,7 @@ export class FilterOrders extends Component {
     handleChange = (ev) => {
         var field = ev.target.name;
         var input = ev.target.value
-        this.setState({ filterBy: { ...this.state.filterBy, [field]: input } }, () => {
-        });
+        this.setState({ filterBy: { ...this.state.filterBy, [field]: input }});
     }
 
     render() {
@@ -27,7 +26,6 @@ export class FilterOrders extends Component {
                     <option>Approve</option>
                     <option>Pending</option>
                 </select>
-
                 <button name="name" value={name} onClick={this.handleChange}>name</button>
                 <button name="price" value={price} onClick={this.handleChange}>price</button>
                 <button name="startDate" value={startDate} onClick={this.handleChange}>date</button>

@@ -54,5 +54,5 @@ function remove(orderId) {
 }
 
 async function update(order) {
-	return await httpService.put(`order/${order._id}`, order)
+    return await httpService.put(`order/${order._id}`, order)
 }

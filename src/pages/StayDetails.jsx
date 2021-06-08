@@ -94,7 +94,6 @@ export class StayDetails extends Component {
 
 	getStayReviewStatistics = () => {
 		const { reviews } = this.state.stay
-
 		const num = reviews.length
 
 		if (!reviews) return
@@ -182,7 +181,6 @@ export class StayDetails extends Component {
 		} = this.props
 
 		const { toggleWish } = this.state
-
 		const {
 			loc,
 			capacity,

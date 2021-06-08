@@ -1,21 +1,13 @@
 import { userService } from '../../services/user-service'
-// import { userService } from '../../store/reducers/'
-
-// THUNK action creators
-// Work asynchronously with the service and dispatch actions to the reducers 
 
 export function loadUsers() {
   return async dispatch => {
     try {
-      // dispatch({ type: 'LOADING_START' })
       const users = await userService.getUsers()
       dispatch({ type: 'SET_USERS', users })
     } catch (err) {
       console.log('UserActions: err in loadUsers', err)
-    } 
-    // finally {
-    //   // dispatch({ type: 'LOADING_DONE' })
-    // }
+    }
   }
 }
 
@@ -33,13 +25,14 @@ export function removeUser(userId) {
 export function updateUser(user) {
   return async dispatch => {
     try {
-      const updatedUser = await userService.update(user)    
+      const updatedUser = await userService.update(user)
       dispatch({ type: 'UPDATE_USER', user: updatedUser })
     } catch (err) {
       console.log('UserActions: err in updateUser', err)
     }
   }
 }
+
 export function login(userCreds) {
   return async dispatch => {
     try {
@@ -50,6 +43,7 @@ export function login(userCreds) {
     }
   }
 }
+
 export function signup(userCreds) {
   return async dispatch => {
     try {
@@ -60,6 +54,7 @@ export function signup(userCreds) {
     }
   }
 }
+
 export function logout() {
   return async dispatch => {
     try {

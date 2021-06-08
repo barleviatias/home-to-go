@@ -8,11 +8,9 @@ export const utilService = {
 function makeId(length = 6) {
     var txt = '';
     var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
     for (var i = 0; i < length; i++) {
         txt += possible.charAt(Math.floor(Math.random() * possible.length));
     }
-
     return txt;
 }
 
@@ -29,13 +27,13 @@ function makeLorem(size = 100) {
 function getRandomIntInclusive(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
-    return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
 function getTimeFormat(time) {
     time = new Date(time)
-    var day = time.getDay()+1;
-    var month = time.getMonth()+1;
+    var day = time.getDay() + 1;
+    var month = time.getMonth() + 1;
     var year = time.getFullYear();
     return `${_getTimeStr(day)} / ${_getTimeStr(month)} / ${year}`
 }

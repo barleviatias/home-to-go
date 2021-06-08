@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Loader } from '../cmps/app/Loader';
-import {socketService} from '../services/socketService.js'
+import { socketService } from '../services/socketService.js'
 
 import {
 	loadUsers,
@@ -266,7 +266,4 @@ const mapDispatchToProps = {
 	loadUsers,
 };
 
-export const LoginSignup = connect(
-	mapStateToProps,
-	mapDispatchToProps
-)(_LoginSignup);
+export const LoginSignup = connect(mapStateToProps, mapDispatchToProps)(_LoginSignup);

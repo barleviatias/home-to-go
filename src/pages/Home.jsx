@@ -33,7 +33,6 @@ export class Home extends Component {
     this.props.loadStays()
   }
 
-
   render() {
     const { loggedInUser, onSearch, topRatedStays, nearbayStays, loadStays, addTrip } = this.props
 
@@ -57,5 +56,4 @@ export class Home extends Component {
       </main>
     )
   }
-
 }

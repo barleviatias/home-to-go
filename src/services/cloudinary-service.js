@@ -1,6 +1,7 @@
 export const cloudinaryService = {
   uploadImg
 }
+
 function uploadImg(ev) {
   const CLOUD_NAME = 'home-to-go'
   const PRESET_NAME = 'aui0olgm'
@@ -16,7 +17,6 @@ function uploadImg(ev) {
   })
     .then(res => res.json())
     .then(res => {
-
       return res
     })
     .catch(err => console.error(err))
