@@ -1,18 +1,14 @@
-.btn-experiment-container {
+.book-stay-btn-container {
     position: relative;
-    display: grid;
-    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
     width: 100%;
     height: 48px;
     padding: 0 0;
     margin: 0 0;
     cursor: pointer;
 
-    .cell {
-        width: 100%;
-        height: 100%;
-        z-index: 1;
-    }
+    display: grid;
+    grid-template: repeat(10, 1fr) / repeat(10, 1fr);
+    
 
     @for $i from 0 to 10 {
         .cell:nth-child(10n + #{$i + 1}):hover ~ .content {
@@ -22,6 +18,13 @@
             --positionY: #{$i};
         }
     }
+
+    .cell {
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
 
     //button-container:
     .content {
@@ -38,6 +41,7 @@
         align-items: center;
         height: 100%;
         border-radius: 8px;
+
         background-image: radial-gradient(
             circle at calc((0 + var(--positionX, 0)) * 10%) calc((0 + var(--positionY, 0)) * 5%),
             rgb(241, 37, 75) 0%,
@@ -50,7 +54,7 @@
     }
 
     //button:
-    .square {
+    .action-btn {
         padding: 0 0;
         margin: 0 0;
         width: 100%;
@@ -58,7 +62,7 @@
   
 
         //button-txt:
-        p {
+        span {
             padding: 0 0;
             margin: 0 0;
             color: $clr-light;
