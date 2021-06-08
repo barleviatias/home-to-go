@@ -141,6 +141,7 @@
                 height: 30px;
                 position: absolute;
                 right: 0px;
+                bottom: 16px;
             }
             &:hover::after {
                 border-left: 1px solid #00000000;
@@ -249,6 +250,9 @@
                         display: initial;
                     }
                 }
+                &:not(:last-of-type)::after {
+                    bottom: 16px;
+                 }
             }
             @include for-normal-layout {
                 &:nth-child(1) {

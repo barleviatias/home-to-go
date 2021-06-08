@@ -237,9 +237,113 @@ class _BookStay extends Component {
                                 <span>Guests</span>
                                 <input onClick={(event) => { this.onSetModal(event, 'book-guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" onChange={this.handleChange} />
                             </label>
-
-                            {!isAvailable && <button type="button" className="book-stay-btn" onClick={this.toggleAvailability}>Check availability</button>}
-                            {isAvailable && <button type="button" className="book-stay-btn" onClick={this.onReserveTrip}>Reserve</button>}
+                            <section className="book-stay-btn btn-experiment-container" onClick={!isAvailable ? this.toggleAvailability: this.onReserveTrip }>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="cell"></div>
+                                <div className="content">
+                                    <button className="square">
+                                        <p>{!isAvailable ? 'Check availability' : 'Reserve'}</p>
+                                    </button>
+                                </div>
+                            </section>
                             {isAvailable && <div className="book-info">
                                 <h4>You won't be charged yet</h4>
                                 <h3><span>${price.toLocaleString("en-US")} X {this.getTripTime()} night{this.getTripTime() > 1 && 's'}</span> <span>${(((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime()).toLocaleString("en-US")}</span></h3>
