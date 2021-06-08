@@ -11,6 +11,7 @@
             border-radius: 13px;
             padding: 15px 25px;
             box-shadow: 0 6px 16px -2px #d8d8d8;
+            padding-top: 20px;
 
             .order-form-header {
                 display: flex;
@@ -52,7 +53,6 @@
                 gap: 0px;
             }
 
-            
             @include for-mobile-layout {
                 .order-form-date-picker {
                     width: 100%;
@@ -62,7 +62,6 @@
                 .order-form-date-picker {
                     width: 100%;
                 }
-              
             }
             @include for-normal-layout {
                 .order-form-date-picker {
@@ -140,7 +139,6 @@
                 }
 
                 .book-stay-btn {
-                    padding: 14px;
                     margin: 15px 0px 10px;
                     width: 100%;
                     border-radius: 13px;

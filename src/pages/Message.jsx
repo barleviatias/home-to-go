@@ -23,7 +23,7 @@ class _Message extends Component {
   }
 
   addMsg = newMsg => {
-    console.log('newMsg',newMsg);
+    console.log('newMsg', newMsg);
     this.setState(prevState => ({ msgs: [...prevState.msgs, newMsg] }))
     if (this.state.isBotMode) this.sendBotResponse();
   }
