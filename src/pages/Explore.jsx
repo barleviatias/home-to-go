@@ -1,7 +1,7 @@
 import { StayList } from '../cmps/explore/StayList'
 import { StayFilter } from '../cmps/explore/StayFilter'
 import { Component } from 'react'
-import {Loader} from '../cmps/app/Loader'
+import { Loader } from '../cmps/app/Loader'
 
 export class Explore extends Component {
 
@@ -26,7 +26,7 @@ export class Explore extends Component {
     this.setState({ stays })
   }
 
-  scrollUp = ()=>{
+  scrollUp = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth'
@@ -34,15 +34,16 @@ export class Explore extends Component {
   }
 
   render() {
-    const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login, addTrip} = this.props
+    const { trip, loggedInUser, updateUser, openDynamicModal, closeDynamicModal, setModalContent, toggleMsgModal, login, addTrip } = this.props
     const { stays } = this.state
     if (!stays) return <Loader />
     return (
       <main className="explore-container main page">
         <span>{stays.length} stays</span>
-        <h1>Stays {trip && trip.loc && trip.loc.address && `in ${trip.loc.address}`}</h1>
+        {trip.loc.address === "" && <h1>Find place to stay {trip && trip.loc && trip.loc.address && `in ${trip.loc.address}`}</h1>}
+        {trip.loc.address !== "" && <h1>Stays {trip && trip.loc && trip.loc.address && `in ${trip.loc.address}`}</h1>}
         <StayFilter openDynamicModal={openDynamicModal} closeDynamicModal={closeDynamicModal} setModalContent={setModalContent} onfilterStays={this.onfilterStays} />
-        <StayList stays={stays} stayType={'explor'} updateUser={updateUser} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip}/>
+        <StayList stays={stays} stayType={'explor'} updateUser={updateUser} loggedInUser={loggedInUser} toggleMsgModal={toggleMsgModal} login={login} trip={trip} addTrip={addTrip} />
       </main>
     )
   }
