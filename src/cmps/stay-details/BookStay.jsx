@@ -1,9 +1,9 @@
 import { Component } from "react";
-import { addOrder } from '../../store/actions/orderActions'
-import { login } from '../../store/actions/userActions'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { PickDates } from '../app/Dates'
+import { addOrder } from '../../store/actions/orderActions'
+import { login } from '../../store/actions/userActions'
 import { socketService } from '../../services/socketService.js'
 
 class _BookStay extends Component {
@@ -207,6 +207,14 @@ class _BookStay extends Component {
         return diff / 1000 / 60 / 60 / 24
     }
 
+    getCells = () => {
+        const cells = []
+        for (var i = 0; i < 100; i++) {
+            cells.push(<div key={Math.random()} className="cell"></div>)
+        }
+        return cells
+    }
+
     render() {
         const { stay, getTotalRate } = this.props
         const { trip, isAvailable } = this.state
@@ -218,12 +226,10 @@ class _BookStay extends Component {
             <section className="order-form-container">
                 <div className="order-form-sticky">
                     <div className="order-form">
-
                         <div className="order-form-header">
                             <p><span className="order-price">${(trip.guests.kids + trip.guests.adults === 0) ? price : ((trip.guests.kids + trip.guests.adults) * price).toLocaleString("en-US")}</span> / night</p>
                             <span className="stay-rate-display"><i className="fas fa-star"></i>{getTotalRate()}<p> ({reviews.length} reviews) </p></span>
                         </div>
-
                         <form>
                             <div className="order-form-date-picker">
                                 <label htmlFor="check-in" className="check-in">
@@ -235,118 +241,18 @@ class _BookStay extends Component {
                                     <input defaultValue={checkOut} id="check-out" autoComplete="off" placeholder="Add dates" onClick={(event) => this.onSetModal(event, 'date')} />
                                 </label>
                             </div>
-
                             <label className="guests-lable" >
                                 <span>Guests</span>
                                 <input onClick={(event) => { this.onSetModal(event, 'book-guests') }} name="guests" value={trip.guests.kids + trip.guests.adults} type="text" placeholder="Add guests" onChange={this.handleChange} />
                             </label>
-                            <section className="book-stay-btn btn-experiment-container" onClick={!isAvailable ? this.toggleAvailability: this.onReserveTrip }>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
-                                <div className="cell"></div>
+                            <div className="book-stay-btn book-stay-btn-container" onClick={!isAvailable ? this.toggleAvailability : this.onReserveTrip}>
+                                {this.getCells()}
                                 <div className="content">
-                                    <button className="square">
-                                        <p>{!isAvailable ? 'Check availability' : 'Reserve'}</p>
+                                    <button className="action-btn">
+                                        <span>{!isAvailable ? 'Check availability' : 'Reserve'}</span>
                                     </button>
                                 </div>
-                            </section>
+                            </div>
                             {isAvailable && <div className="book-info">
                                 <h4>You won't be charged yet</h4>
                                 <h3><span>${price.toLocaleString("en-US")} X {this.getTripTime()} night{this.getTripTime() > 1 && 's'}</span> <span>${(((trip.guests.kids + trip.guests.adults) * price) * this.getTripTime()).toLocaleString("en-US")}</span></h3>

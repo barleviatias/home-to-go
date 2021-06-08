@@ -121,7 +121,7 @@ export class Header extends React.Component {
                             <h3><span>$ {(trip && trip.stay && trip.stay.price) ? trip.stay.price.toLocaleString("en-US") : 0}</span> / night</h3>
                             <h4><i className="fas fa-star"></i>{(trip && trip.stay && trip.stay.reviews) ? this.getAvgRate(trip.stay) : ''} <span>( {(trip && trip.stay && trip.stay.reviews) ? trip.stay.reviews.length + ' reviews' : 'new'} )</span></h4>
                         </div>
-                         <section className="btn-experiment-container" onClick={() => { this.scrollTo(650) }}>
+                         <section className="book-stay-btn-container" onClick={() => { this.scrollTo(650) }}>
                                 <div className="cell"></div>
                                 <div className="cell"></div>
                                 <div className="cell"></div>
