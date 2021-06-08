@@ -13,11 +13,13 @@ export class Notifications extends Component {
   async componentWillUnmount() {
     this.props.setFooterDisplay(true)
   }
-  onClearNotif=()=>{
-    const currUser=this.props.loggedInUser
-    currUser.notifications=[]
+
+  onClearNotif = () => {
+    const currUser = this.props.loggedInUser
+    currUser.notifications = []
     this.props.updateUser(currUser)
   }
+
   render() {
     const { notifications } = this.props.loggedInUser
 
@@ -25,21 +27,21 @@ export class Notifications extends Component {
       <main className="notifications main page">
         <section className="notif-list">
           <h1>Notifications</h1>
-          <button onClick={this.onClearNotif}>clear notifications</button>
-          {notifications && notifications.map(notif => {
+          {notifications && notifications.map(msg => {
             return (
               <div key={Math.random()} className="notif-card">
-                <img src={notif.from.imgUrl} alt="avatar" />
+                <img src={msg.imgUrl} alt="avatar" />
                 <span>
-                  <h3>{notif.from.fullname}</h3>
-                  <h4>{utilService.getTimeFormat(notif.body.createdAt)}</h4>
+                  <h3>{msg.fullname}</h3>
+                  <h4>{utilService.getTimeFormat(msg.createdAt)}</h4>
                 </span>
-                <h4 className="notif-card-txt">{notif.body.txt}</h4>
-                { notif.from.fullname !== this.props.loggedInUser.fullname && <Link to={`/host/${this.props.loggedInUser._id}`}>Read More</Link>}
-                { notif.from.fullname === this.props.loggedInUser.fullname && <Link to={`/orders`}>Read More</Link>}
+                <h4 className="notif-card-txt">{msg.txt}</h4>
+                {msg.type === 'from' && <Link to={`/host/${this.props.loggedInUser._id}`}>Read More</Link>}
+                {msg.type === 'to' && <Link to={`/orders`}>Read More</Link>}
               </div>
             )
           })}
+          <button onClick={this.onClearNotif}>Clear all</button>
         </section>
       </main>
     );

@@ -16,7 +16,7 @@ export function addOrder(trip, stay, loggedInUser) {
     try {
       const addedOrder = await orderService.add(trip, stay, loggedInUser)
       dispatch({ type: 'ADD_ORDER', order: addedOrder })
-
+      return addedOrder
     } catch (err) {
       console.log('OrderActions: err in addOrder', err)
     }

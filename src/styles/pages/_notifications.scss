@@ -61,7 +61,7 @@
                     font-size: rem(12px);
                     line-height: rem(16px);
                     font-family: airbnb-book, sans-serif;
-                    color: $clr-dark; 
+                    color: $clr-dark;
                 }
             }
 
@@ -79,6 +79,17 @@
                 font-family: airbnb-regular, sans-serif;
                 color: $clr-black;
             }
+        }
+
+        button {
+            align-self: flex-start;
+            background-color: $clr-brand;
+            padding: 7px 40px;
+            border-radius: 5px;
+            color: white;
+            font-size: rem(14px);
+            font-weight: 600;
+            margin-top: 40px;
         }
     }
 }

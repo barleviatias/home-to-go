@@ -4,6 +4,7 @@ import { login } from '../../store/actions/userActions'
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import { PickDates } from '../app/Dates'
+import { socketService } from '../../services/socketService.js'
 
 class _BookStay extends Component {
 
@@ -186,8 +187,8 @@ class _BookStay extends Component {
         }
 
         trip.totalPrice = ((trip.guests.kids + trip.guests.adults) * stay.price) * this.getTripTime()
-        this.props.addOrder(trip, stay, loggedInUser)
-        this.props.onBookStay()
+        const order = await this.props.addOrder(trip, stay, loggedInUser)
+        socketService.emit('ORDER_OUT', order)
 
         this.setState({
             trip: {

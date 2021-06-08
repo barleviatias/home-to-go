@@ -1,8 +1,7 @@
-// import { faSignInAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Loader } from '../cmps/app/Loader';
+import {socketService} from '../services/socketService.js'
 
 import {
 	loadUsers,
@@ -32,9 +31,9 @@ class _LoginSignup extends Component {
 		this.props.setFooterDisplay(false)
 	}
 
-	componentWillUnmount(){
-        this.props.setFooterDisplay(true) 
-    }
+	componentWillUnmount() {
+		this.props.setFooterDisplay(true)
+	}
 
 	loginHandleChange = (ev) => {
 		const { name, value } = ev.target;
@@ -64,11 +63,13 @@ class _LoginSignup extends Component {
 		}
 		const userCreds = { username, password };
 		try {
-			this.props.login(userCreds);
-			this.setState({ loginCred: { username: '', password: '' } },this.props.history.go(-1)
+			await this.props.login(userCreds);
+			if (this.props.loggedInUser) {
+				socketService.emit('LOGIN', this.props.loggedInUser)
+			}
+			this.setState({ loginCred: { username: '', password: '' } }, this.props.history.go(-1)
 			)
 		} catch (err) {
-			
 			this.setState({ msg: 'Login failed, try again.' });
 		}
 	};
@@ -80,7 +81,10 @@ class _LoginSignup extends Component {
 			return this.setState({ msg: 'All inputs are required' });
 		}
 		const signupCreds = { username, password, fullname, email };
-		this.props.signup(signupCreds);
+		await this.props.signup(signupCreds);
+		if (this.props.loggedInUser) {
+			socketService.emit('LOGIN', this.props.loggedInUser)
+		}
 		this.setState(
 			{ signupCred: { username: '', password: '', fullname: '', email: '' } },
 			this.props.history.go(-1)
@@ -152,7 +156,7 @@ class _LoginSignup extends Component {
 					</div>
 				</div>
 			</form>
-		);
+		)
 		let loginSection = (
 			<form className="login-form" onSubmit={this.doLogin}>
 				<div className="login-form-header">
@@ -202,7 +206,7 @@ class _LoginSignup extends Component {
 					</div>
 				</div>
 			</form>
-		);
+		)
 
 		const { loggedInUser } = this.props;
 		const { formType } = this.state;
@@ -222,7 +226,7 @@ class _LoginSignup extends Component {
 						<details>
 							<summary>Admin</summary>
 							<button onClick={this.props.loadUsers}>Refresh Users</button>
-							{this.props.isLoading && <Loader/>}
+							{this.props.isLoading && <Loader />}
 							{this.props.users && (
 								<ul>
 									{this.props.users.map((user) => (
@@ -243,7 +247,7 @@ class _LoginSignup extends Component {
 					</section>
 				)}
 			</main>
-		);
+		)
 	}
 }
 
